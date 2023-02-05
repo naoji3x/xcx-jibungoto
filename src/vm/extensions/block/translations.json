@@ -1,0 +1,14 @@
+{
+  "en": {
+    "jibungotoPlanet.name": "Jibungoto Planet",
+    "jibungotoPlanet.doIt": "do it [SCRIPT]"
+  },
+  "ja": {
+    "jibungotoPlanet.name": "Jibungoto Planet",
+    "jibungotoPlanet.doIt": "[SCRIPT] を実行する"
+  },
+  "ja-Hira": {
+    "jibungotoPlanet.name": "Jibungoto Planet",
+    "jibungotoPlanet.doIt": "[SCRIPT] をじっこうする"
+  }
+}

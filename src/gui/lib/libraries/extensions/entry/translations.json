@@ -1,0 +1,14 @@
+{
+  "en": {
+    "jibungotoPlanet.entry.name": "Jibungoto Planet",
+    "jibungotoPlanet.entry.description": "Description of this extension"
+  },
+  "ja": {
+    "jibungotoPlanet.entry.name": "Jibungoto Planet",
+    "jibungotoPlanet.entry.description": "拡張機能の説明"
+  },
+  "ja-Hira": {
+    "jibungotoPlanet.entry.name": "Jibungoto Planet",
+    "jibungotoPlanet.entry.description": "かくちょうきのうのせつめい"
+  }
+}
