@@ -7,7 +7,8 @@
     "watch": "tsc -w",
     "export:footprints": "ts-node ./data/footprint2ts.ts",
     "export:parameters": "ts-node ./data/parameter2ts.ts",
-    "export:all": "npm run export:footprints && npm run export:parameters"
+    "export:all": "npm run export:footprints && npm run export:parameters",
+    "jest": "jest"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
