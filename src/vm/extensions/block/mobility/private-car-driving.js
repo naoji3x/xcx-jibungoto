@@ -9,6 +9,7 @@ export var estimatePrivateCarDrivingAmount = function (privateCarAnnualMileage) 
  * 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]を計算
  */
 export var estimatePrivateCarDrivingIntensity = function (carIntensityFactorFirstKey, carChargingKey, carPassengersFirstKey, electricityIntensityKey) {
+    if (electricityIntensityKey === void 0) { electricityIntensityKey = 'unknown'; }
     // ベースラインの運転時のGHG原単位を取得
     var baselineIntensity = getBaselineIntensity('mobility', 'private-car-driving').value;
     // 自家用車の場合は、自動車種類に応じて運転時GHG原単位の補正係数を取得

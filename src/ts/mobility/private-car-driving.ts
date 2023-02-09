@@ -53,7 +53,7 @@ export const estimatePrivateCarDrivingIntensity = (
   carIntensityFactorFirstKey: CarIntensityFactorFirstKey,
   carChargingKey: CarChargingKey,
   carPassengersFirstKey: CarPassengersFirstKey,
-  electricityIntensityKey: ElectricityIntensityKey
+  electricityIntensityKey: ElectricityIntensityKey = 'unknown'
 ): number => {
   // ベースラインの運転時のGHG原単位を取得
   const baselineIntensity = getBaselineIntensity(
