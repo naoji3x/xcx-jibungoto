@@ -1,41 +1,10 @@
+import {
+  CarIntensityFactorFirstKey,
+  CarChargingKey,
+  CarPassengersFirstKey,
+  ElectricityIntensityKey
+} from './types'
 import { getBaselineIntensity, getParameter } from '../data/database'
-
-// 自家用車の種類
-export type CarIntensityFactorFirstKey =
-  | 'gasoline'
-  | 'light'
-  | 'hv'
-  | 'phv'
-  | 'ev'
-  | 'unknown'
-
-// 自宅充電の割合
-export type CarChargingKey =
-  | 'charge-almost-at-home'
-  | 'use-charging-spots-occasionally'
-  | 'use-charging-spots-sometimes'
-  | 'use-charging-spots-usually'
-  | 'unknown'
-
-// 平均乗車人数
-export type CarPassengersFirstKey =
-  | '1'
-  | '1-2'
-  | '2'
-  | '2-3'
-  | '3'
-  | '3-4'
-  | '4-more'
-  | 'unknown'
-
-// 家庭での電力の種類
-export type ElectricityIntensityKey =
-  | 'conventional'
-  | '30-renewable'
-  | '50-renewable'
-  | '100-renewable'
-  | 'solar-panel'
-  | 'unknown'
 
 /**
  * 自家用車の運転時の活動量[km-passenger]を計算
@@ -51,8 +20,8 @@ export const estimatePrivateCarDrivingAmount = (
  */
 export const estimatePrivateCarDrivingIntensity = (
   carIntensityFactorFirstKey: CarIntensityFactorFirstKey,
-  carChargingKey: CarChargingKey,
   carPassengersFirstKey: CarPassengersFirstKey,
+  carChargingKey: CarChargingKey,
   electricityIntensityKey: ElectricityIntensityKey = 'unknown'
 ): number => {
   // ベースラインの運転時のGHG原単位を取得

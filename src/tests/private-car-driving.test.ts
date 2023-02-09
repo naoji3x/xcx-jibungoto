@@ -16,7 +16,7 @@ describe('private car driving', () => {
   // => 0.251702294
   test('intensity case 01', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('gasoline', 'unknown', '1')
+      estimatePrivateCarDrivingIntensity('gasoline', '1', 'unknown')
     ).toBeCloseTo(0.251702294)
   })
 
@@ -27,7 +27,7 @@ describe('private car driving', () => {
   // => 0.186998401
   test('intensity case 03', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('light', 'unknown', '1')
+      estimatePrivateCarDrivingIntensity('light', '1', 'unknown')
     ).toBeCloseTo(0.186998401)
   })
 
@@ -38,7 +38,7 @@ describe('private car driving', () => {
   // =>
   test('intensity case 04', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('hv', 'unknown', '1')
+      estimatePrivateCarDrivingIntensity('hv', '1', 'unknown')
     ).toBeCloseTo(0.161309963)
   })
 
@@ -49,7 +49,7 @@ describe('private car driving', () => {
   // => 0.144787514
   test('intensity case 05', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('phv', 'unknown', '1')
+      estimatePrivateCarDrivingIntensity('phv', '1', 'unknown')
     ).toBeCloseTo(0.144787514)
   })
 
@@ -60,7 +60,7 @@ describe('private car driving', () => {
   // => 0.133772549
   test('intensity case 06', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('ev', 'unknown', '1')
+      estimatePrivateCarDrivingIntensity('ev', '1', 'unknown')
     ).toBeCloseTo(0.133772549)
   })
 
@@ -71,7 +71,7 @@ describe('private car driving', () => {
   // => 0.22060004
   test('intensity case 07', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '1')
+      estimatePrivateCarDrivingIntensity('unknown', '1', 'unknown')
     ).toBeCloseTo(0.22060004)
   })
 
@@ -82,7 +82,7 @@ describe('private car driving', () => {
   // => 0.147066693
   test('intensity case 08', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '1-2')
+      estimatePrivateCarDrivingIntensity('unknown', '1-2', 'unknown')
     ).toBeCloseTo(0.147066693)
   })
 
@@ -93,7 +93,7 @@ describe('private car driving', () => {
   // => 0.11030002
   test('intensity case 09', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '2')
+      estimatePrivateCarDrivingIntensity('unknown', '2', 'unknown')
     ).toBeCloseTo(0.11030002)
   })
 
@@ -104,7 +104,7 @@ describe('private car driving', () => {
   // => 0.088240016
   test('intensity case 10', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '2-3')
+      estimatePrivateCarDrivingIntensity('unknown', '2-3', 'unknown')
     ).toBeCloseTo(0.088240016)
   })
 
@@ -115,7 +115,7 @@ describe('private car driving', () => {
   // => 0.073533347
   test('intensity case 11', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '3')
+      estimatePrivateCarDrivingIntensity('unknown', '3', 'unknown')
     ).toBeCloseTo(0.073533347)
   })
 
@@ -126,7 +126,7 @@ describe('private car driving', () => {
   // => 0.063028583
   test('intensity case 12', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '3-4')
+      estimatePrivateCarDrivingIntensity('unknown', '3-4', 'unknown')
     ).toBeCloseTo(0.063028583)
   })
 
@@ -137,7 +137,7 @@ describe('private car driving', () => {
   // => 0.05515001
   test('intensity case 13', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('unknown', 'unknown', '4-more')
+      estimatePrivateCarDrivingIntensity('unknown', '4-more', 'unknown')
     ).toBeCloseTo(0.05515001)
   })
 
@@ -159,7 +159,7 @@ describe('private car driving', () => {
   // => 0.133772549
   test('intensity case 15', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('ev', 'charge-almost-at-home', '1')
+      estimatePrivateCarDrivingIntensity('ev', '1', 'charge-almost-at-home')
     ).toBeCloseTo(0.133772549)
   })
 
@@ -172,8 +172,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'ev',
-        'use-charging-spots-occasionally',
-        '1'
+        '1',
+        'use-charging-spots-occasionally'
       )
     ).toBeCloseTo(0.133772549)
   })
@@ -187,8 +187,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'ev',
-        'use-charging-spots-sometimes',
-        '1'
+        '1',
+        'use-charging-spots-sometimes'
       )
     ).toBeCloseTo(0.133772549)
   })
@@ -202,8 +202,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'ev',
-        'use-charging-spots-usually',
-        '1'
+        '1',
+        'use-charging-spots-usually'
       )
     ).toBeCloseTo(0.133772549)
   })
@@ -218,8 +218,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'ev',
-        'charge-almost-at-home',
         '1',
+        'charge-almost-at-home',
         '30-renewable'
       )
     ).toBeCloseTo(0.114611753)
@@ -235,8 +235,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'phv',
-        'use-charging-spots-occasionally',
         '1-2',
+        'use-charging-spots-occasionally',
         '50-renewable'
       )
     ).toBeCloseTo(0.082615691)
@@ -252,8 +252,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'phv',
-        'use-charging-spots-sometimes',
         '1-2',
+        'use-charging-spots-sometimes',
         '100-renewable'
       )
     ).toBeCloseTo(0.0723966)
@@ -269,8 +269,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'phv',
-        'use-charging-spots-usually',
         '1-2',
+        'use-charging-spots-usually',
         'solar-panel'
       )
     ).toBeCloseTo(0.091875879)
@@ -284,7 +284,7 @@ describe('private car driving', () => {
   // => 0.09652501
   test('intensity case 23', () => {
     expect(
-      estimatePrivateCarDrivingIntensity('phv', 'unknown', '1-2', 'unknown')
+      estimatePrivateCarDrivingIntensity('phv', '1-2', 'unknown', 'unknown')
     ).toBeCloseTo(0.09652501)
   })
 
@@ -298,8 +298,8 @@ describe('private car driving', () => {
     expect(
       estimatePrivateCarDrivingIntensity(
         'phv',
-        'unknown',
         '1-2',
+        'unknown',
         'conventional'
       )
     ).toBeCloseTo(0.09652501)
