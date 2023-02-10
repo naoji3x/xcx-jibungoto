@@ -1,9 +1,9 @@
 module.exports = {
   env: {
+    'jest/globals': true, // 追加 vs codeのエラー対策 https://qiita.com/tutu/items/66f586c455ded70bd1e2
     browser: true,
     es2021: true,
-    node: true,
-    'jest/globals': true // 追加 vs codeのエラー対策 https://qiita.com/tutu/items/66f586c455ded70bd1e2
+    node: true
   },
   extends: ['standard-with-typescript', 'prettier'],
   overrides: [],
