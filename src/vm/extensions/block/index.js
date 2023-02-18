@@ -3,11 +3,7 @@ import ArgumentType from '../../extension-support/argument-type'
 import Cast from '../../util/cast'
 import translations from './translations.json'
 import blockIcon from './block-icon.png'
-import {
-  estimatePrivateCarDrivingAmount,
-  estimatePrivateCarDrivingFootprint,
-  estimatePrivateCarDrivingIntensity
-} from './mobility/private-car-driving'
+import { estimatePrivateCarDrivingFootprint } from './mobility/private-car-driving'
 
 /**
  * Formatter which is used for translation.

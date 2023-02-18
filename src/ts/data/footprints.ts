@@ -1,5 +1,5 @@
-import { Footprint } from './footprint'
-export const footprints: { [key: string]: Footprint } = {
+import { type Footprint } from './footprint'
+export const footprints: Record<string, Footprint> = {
   "baseline_housing_imputed-rent_amount": {
     "subdomain": "construction-maintenance",
     "value": 32.06179314,

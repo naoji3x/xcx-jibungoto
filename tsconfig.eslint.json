@@ -1,0 +1,8 @@
+// https://zenn.dev/rinda_1994/articles/07a30be1a26a38
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["./src/tests/**/*"]
+}

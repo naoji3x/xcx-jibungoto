@@ -25,8 +25,8 @@ const entry = {
     extensionId: 'jibungotoPlanet',
     extensionURL: 'https://naoji3x.github.io/xcx-jibungoto/dist/jibungotoPlanet.mjs',
     collaborator: 'naoji3x',
-    iconURL: iconURL,
-    insetIconURL: insetIconURL,
+    iconURL,
+    insetIconURL,
     get description () {
         return formatMessage({
             defaultMessage: 'an extension for Xcratch',

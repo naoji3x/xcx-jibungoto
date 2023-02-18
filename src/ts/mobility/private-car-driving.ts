@@ -1,8 +1,8 @@
 import {
-  CarIntensityFactorFirstKey,
-  CarChargingKey,
-  CarPassengersFirstKey,
-  ElectricityIntensityKey
+  type CarIntensityFactorFirstKey,
+  type CarChargingKey,
+  type CarPassengersFirstKey,
+  type ElectricityIntensityKey
 } from './types'
 import { getBaselineIntensity, getParameter } from '../data/database'
 

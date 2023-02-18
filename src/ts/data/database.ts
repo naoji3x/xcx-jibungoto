@@ -1,6 +1,6 @@
-import { Footprint } from './footprint'
+import { type Footprint } from './footprint'
 import { footprints } from './footprints'
-import { Parameter } from './parameter'
+import { type Parameter } from './parameter'
 import { parameters } from './parameters'
 
 export const getBaselineAmount = (domain: string, item: string): Footprint => ({

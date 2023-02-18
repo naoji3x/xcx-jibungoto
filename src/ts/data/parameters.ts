@@ -1,5 +1,5 @@
-import { Parameter } from './parameter'
-export const parameters: { [key: string]: Parameter } = {
+import { type Parameter } from './parameter'
+export const parameters: Record<string, Parameter> = {
   'family-size_unknown': {
     value: 2.33,
     unit: 'person',
