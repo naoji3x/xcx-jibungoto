@@ -8,7 +8,7 @@
     "prepare": "husky install",
     "lint": "eslint 'src/**/*.ts' 'src/**/index.{js,jsx}'",
     "lint:fix": "eslint --fix 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "format": "prettier 'src/**/*.ts' 'src/**/index.{js,jsx}'",
+    "format": "prettier --write 'src/**/*.ts' 'src/**/index.{js,jsx}'",
     "export:footprints": "ts-node ./data/footprint2ts.ts",
     "export:parameters": "ts-node ./data/parameter2ts.ts",
     "export:all": "npm run export:footprints && npm run export:parameters",
