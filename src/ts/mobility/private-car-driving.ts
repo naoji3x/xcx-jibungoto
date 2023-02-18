@@ -7,12 +7,30 @@ import {
 import { getBaselineIntensity, getParameter } from '../data/database'
 
 /**
+ * 自家用車の運転時のフットプリント[kgCO2e]を計算
+ */
+export const estimatePrivateCarDrivingFootprint = (
+  privateCarMileage: number,
+  carIntensityFactorFirstKey: CarIntensityFactorFirstKey,
+  carPassengersFirstKey: CarPassengersFirstKey,
+  carChargingKey: CarChargingKey = 'unknown',
+  electricityIntensityKey: ElectricityIntensityKey = 'unknown'
+): number =>
+  estimatePrivateCarDrivingAmount(privateCarMileage) *
+  estimatePrivateCarDrivingIntensity(
+    carIntensityFactorFirstKey,
+    carPassengersFirstKey,
+    carChargingKey,
+    electricityIntensityKey
+  )
+
+/**
  * 自家用車の運転時の活動量[km-passenger]を計算
  */
 export const estimatePrivateCarDrivingAmount = (
-  privateCarAnnualMileage: number
+  privateCarMileage: number
 ): number => {
-  return privateCarAnnualMileage
+  return privateCarMileage
 }
 
 /**
@@ -21,7 +39,7 @@ export const estimatePrivateCarDrivingAmount = (
 export const estimatePrivateCarDrivingIntensity = (
   carIntensityFactorFirstKey: CarIntensityFactorFirstKey,
   carPassengersFirstKey: CarPassengersFirstKey,
-  carChargingKey: CarChargingKey,
+  carChargingKey: CarChargingKey = 'unknown',
   electricityIntensityKey: ElectricityIntensityKey = 'unknown'
 ): number => {
   // ベースラインの運転時のGHG原単位を取得

@@ -5,6 +5,7 @@ import translations from './translations.json'
 import blockIcon from './block-icon.png'
 import {
   estimatePrivateCarDrivingAmount,
+  estimatePrivateCarDrivingFootprint,
   estimatePrivateCarDrivingIntensity
 } from './mobility/private-car-driving'
 
@@ -104,25 +105,26 @@ class ExtensionBlocks {
     const carPassengersFirstKey = Cast.toString(args.carPassengersFirstKey)
     const privateCarAnnualMileage = Cast.toNumber(args.privateCarAnnualMileage)
 
-    return (
-      estimatePrivateCarDrivingAmount(privateCarAnnualMileage) *
-      estimatePrivateCarDrivingIntensity(
-        carIntensityFactorFirstKey,
-        carPassengersFirstKey,
-        carChargingKey,
-        electricityIntensityKey
-      )
+    return estimatePrivateCarDrivingFootprint(
+      privateCarAnnualMileage,
+      carIntensityFactorFirstKey,
+      carPassengersFirstKey,
+      carChargingKey,
+      electricityIntensityKey
     )
   }
 
-  menuItem(item, defaultMessage) {
-    return {
-      value: item,
-      text: formatMessage({
-        id: 'jibungotoPlanet.' + item,
-        default: defaultMessage
-      })
-    }
+  menuItems(items) {
+    return items.map((item) => {
+      const id = 'jibungotoPlanet.' + item
+      return {
+        value: item,
+        text: formatMessage({
+          id,
+          default: translations.en[id]
+        })
+      }
+    })
   }
 
   /**
@@ -137,19 +139,14 @@ class ExtensionBlocks {
       blockIconURI: blockIcon,
       showStatusButton: false,
       blocks: [
+        // 自家用車の運転
         {
           opcode: 'private-car-driving',
           blockType: BlockType.REPORTER,
           blockAllThreads: false,
           text: formatMessage({
             id: 'jibungotoPlanet.privateCarDriving',
-            default:
-              'private car driving(kgCO2e): ' +
-              'car type[carIntensityFactorFirstKey] ' +
-              'car passengers[carPassengersFirstKey] ' +
-              'car charging[carChargingKey] ' +
-              'car charging type[electricityIntensityKey] ' +
-              'annual mileage[privateCarAnnualMileage]',
+            default: translations.en,
             description: 'estimate Private car driving footprint'
           }),
           func: 'privateCarDriving',
@@ -184,57 +181,48 @@ class ExtensionBlocks {
       menus: {
         carIntensityFactorFirstKey: {
           acceptReporters: false,
-          items: [
-            this.menuItem('gasoline', 'Gasoline'),
-            this.menuItem('light', 'Light car'),
-            this.menuItem('hv', 'HV'),
-            this.menuItem('phv', 'PHV'),
-            this.menuItem('ev', 'EV'),
-            this.menuItem('unknown', 'Unknown')
-          ]
+          items: this.menuItems([
+            'gasoline',
+            'light',
+            'hv',
+            'phv',
+            'ev',
+            'unknown'
+          ])
         },
         carChargingKey: {
           acceptReporters: false,
-          items: [
-            this.menuItem('charge-almost-at-home', 'Charge almost at home'),
-            this.menuItem(
-              'use-charging-spots-occasionally',
-              'Use charging spots occasionally'
-            ),
-            this.menuItem(
-              'use-charging-spots-sometimes',
-              'Use charging spots sometimes'
-            ),
-            this.menuItem(
-              'use-charging-spots-usually',
-              'Use charging spots usually'
-            ),
-            this.menuItem('unknown', 'Unknown')
-          ]
+          items: this.menuItems([
+            'charge-almost-at-home',
+            'use-charging-spots-occasionally',
+            'use-charging-spots-sometimes',
+            'use-charging-spots-usually',
+            'unknown'
+          ])
         },
         electricityIntensityKey: {
           acceptReporters: false,
-          items: [
-            this.menuItem('conventional', 'Conventional'),
-            this.menuItem('30-renewable', '30% renewable'),
-            this.menuItem('50-renewable', '50% renewable'),
-            this.menuItem('100-renewable', '100% renewable'),
-            this.menuItem('solar-panel', 'Solar panel'),
-            this.menuItem('unknown', 'Unknown')
-          ]
+          items: this.menuItems([
+            'conventional',
+            '30-renewable',
+            '50-renewable',
+            '100-renewable',
+            'solar-panel',
+            'unknown'
+          ])
         },
         carPassengersFirstKey: {
           acceptReporters: false,
-          items: [
-            this.menuItem('1', '1'),
-            this.menuItem('1-2', '1-2'),
-            this.menuItem('2', '2'),
-            this.menuItem('2-3', '2-3'),
-            this.menuItem('3', '3'),
-            this.menuItem('3-4', '3-4'),
-            this.menuItem('4-more', '4 or more'),
-            this.menuItem('unknown', 'Unknown')
-          ]
+          items: this.menuItems([
+            '1',
+            '1-2',
+            '2',
+            '2-3',
+            '3',
+            '3-4',
+            '4-more',
+            'unknown'
+          ])
         }
       }
     }

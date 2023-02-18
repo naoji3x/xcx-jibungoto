@@ -1,14 +1,24 @@
 import { getBaselineIntensity, getParameter } from '../data/database';
 /**
+ * 自家用車の運転時のフットプリント[kgCO2e]を計算
+ */
+export var estimatePrivateCarDrivingFootprint = function (privateCarMileage, carIntensityFactorFirstKey, carPassengersFirstKey, carChargingKey, electricityIntensityKey) {
+    if (carChargingKey === void 0) { carChargingKey = 'unknown'; }
+    if (electricityIntensityKey === void 0) { electricityIntensityKey = 'unknown'; }
+    return estimatePrivateCarDrivingAmount(privateCarMileage) *
+        estimatePrivateCarDrivingIntensity(carIntensityFactorFirstKey, carPassengersFirstKey, carChargingKey, electricityIntensityKey);
+};
+/**
  * 自家用車の運転時の活動量[km-passenger]を計算
  */
-export var estimatePrivateCarDrivingAmount = function (privateCarAnnualMileage) {
-    return privateCarAnnualMileage;
+export var estimatePrivateCarDrivingAmount = function (privateCarMileage) {
+    return privateCarMileage;
 };
 /**
  * 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]を計算
  */
 export var estimatePrivateCarDrivingIntensity = function (carIntensityFactorFirstKey, carPassengersFirstKey, carChargingKey, electricityIntensityKey) {
+    if (carChargingKey === void 0) { carChargingKey = 'unknown'; }
     if (electricityIntensityKey === void 0) { electricityIntensityKey = 'unknown'; }
     // ベースラインの運転時のGHG原単位を取得
     var baselineIntensity = getBaselineIntensity('mobility', 'private-car-driving').value;

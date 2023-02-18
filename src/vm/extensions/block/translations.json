@@ -1,7 +1,7 @@
 {
   "en": {
     "jibungotoPlanet.name": "Jibungoto Planet",
-    "jibungotoPlanet.privateCarDriving": "private car driving(kgCO2e): car type[carIntensityFactorFirstKey] car passengers[carPassengersFirstKey] car charging[carChargingKey] car charging type[electricityIntensityKey] annual mileage(km)[privateCarAnnualMileage]",
+    "jibungotoPlanet.privateCarDriving": "private car driving: car type[carIntensityFactorFirstKey] car passengers[carPassengersFirstKey] annual mileage(km)[privateCarAnnualMileage] car charging[carChargingKey] car charging type[electricityIntensityKey]",
     "jibungotoPlanet.unknown": "Unknown",
     "jibungotoPlanet.gasoline": "Gasoline",
     "jibungotoPlanet.light": "Light car",
@@ -27,7 +27,7 @@
   },
   "ja": {
     "jibungotoPlanet.name": "じぶんごとプラネット",
-    "jibungotoPlanet.privateCarDriving": "自家用車の運転(kgCO2e): 車の種類[carIntensityFactorFirstKey]乗車人数[carPassengersFirstKey]自宅充電の割合[carChargingKey]家庭の電力[electricityIntensityKey]年間走行距離(km)[privateCarAnnualMileage]",
+    "jibungotoPlanet.privateCarDriving": "自家用車の運転: 車の種類[carIntensityFactorFirstKey]乗車人数[carPassengersFirstKey]年間走行距離(km)[privateCarAnnualMileage]自宅充電の割合[carChargingKey]家庭の電力[electricityIntensityKey]",
     "jibungotoPlanet.unknown": "分からない",
     "jibungotoPlanet.gasoline": "ガソリン車",
     "jibungotoPlanet.light": "軽自動車",
@@ -53,7 +53,7 @@
   },
   "ja-Hira": {
     "jibungotoPlanet.name": "じぶんごとプラネット",
-    "jibungotoPlanet.privateCarDriving": "じかようしゃのうんてん(kgCO2e): くるまのしゅるい[carIntensityFactorFirstKey]じょうしゃにんずう[carPassengersFirstKey]じたくじゅうでんのわりあい[carChargingKey]かていのでんりょく[electricityIntensityKey]ねんかんそうこうきょり(km)[privateCarAnnualMileage]",
+    "jibungotoPlanet.privateCarDriving": "じかようしゃのうんてん: くるまのしゅるい[carIntensityFactorFirstKey]じょうしゃにんずう[carPassengersFirstKey]ねんかんそうこうきょり(km)[privateCarAnnualMileage]じたくじゅうでんのわりあい[carChargingKey]かていのでんりょく[electricityIntensityKey]",
     "jibungotoPlanet.unknown": "わからない",
     "jibungotoPlanet.gasoline": "ガソリンしゃ",
     "jibungotoPlanet.light": "けいじどうしゃ",
