@@ -5,6 +5,12 @@ import {
 } from './annual-amount'
 import { type MileageByAreaFirstKey } from './types'
 
+interface Param {
+  weeklyTravelingTime?: number
+  annualTravelingTime?: number
+  mileageByAreaFirstKey?: MileageByAreaFirstKey
+}
+
 /**
  * 電車の移動のフットプリントを計算
  * @param weeklyTravelingTime 週間の移動時間[hr]
@@ -12,16 +18,16 @@ import { type MileageByAreaFirstKey } from './types'
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
-export const estimateTrainFootprint = (
-  weeklyTravelingTime: number | undefined = undefined,
-  annualTravelingTime: number | undefined = undefined,
-  mileageByAreaFirstKey: MileageByAreaFirstKey | undefined = undefined
-): number =>
-  estimateTrainAnnualAmount(
+export const estimateTrainAnnualFootprint = ({
+  weeklyTravelingTime,
+  annualTravelingTime,
+  mileageByAreaFirstKey
+}: Param): number =>
+  estimateTrainAnnualAmount({
     weeklyTravelingTime,
     annualTravelingTime,
     mileageByAreaFirstKey
-  ) * estimateTrainIntensity()
+  }) * estimateTrainIntensity()
 
 /**
  * 電車での移動時の年間の活動量を計算
@@ -30,11 +36,11 @@ export const estimateTrainFootprint = (
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
-export const estimateTrainAnnualAmount = (
-  weeklyTravelingTime: number | undefined = undefined,
-  annualTravelingTime: number | undefined = undefined,
-  mileageByAreaFirstKey: MileageByAreaFirstKey | undefined = undefined
-): number => {
+export const estimateTrainAnnualAmount = ({
+  weeklyTravelingTime,
+  annualTravelingTime,
+  mileageByAreaFirstKey
+}: Param): number => {
   if (weeklyTravelingTime !== undefined || annualTravelingTime !== undefined) {
     weeklyTravelingTime = weeklyTravelingTime ?? 0
     annualTravelingTime = annualTravelingTime ?? 0

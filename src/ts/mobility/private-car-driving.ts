@@ -6,6 +6,16 @@ import {
 } from './types'
 import { getBaselineIntensity, getParameter } from '../data/database'
 
+interface IntensityParam {
+  carIntensityFactorFirstKey: CarIntensityFactorFirstKey
+  carPassengersFirstKey: CarPassengersFirstKey
+  carChargingKey?: CarChargingKey
+  electricityIntensityKey?: ElectricityIntensityKey
+}
+interface AmountParam {
+  mileage: number
+}
+
 /**
  * 自家用車の運転時のフットプリントを計算
  * @param privateCarMileage 自家用車の運転距離[km]
@@ -15,29 +25,29 @@ import { getBaselineIntensity, getParameter } from '../data/database'
  * @param electricityIntensityKey 家庭での電力の種類
  * @returns 自家用車の運転時のフットプリント[kgCO2e]
  */
-export const estimatePrivateCarDrivingFootprint = (
-  privateCarMileage: number,
-  carIntensityFactorFirstKey: CarIntensityFactorFirstKey,
-  carPassengersFirstKey: CarPassengersFirstKey,
-  carChargingKey: CarChargingKey = 'unknown',
-  electricityIntensityKey: ElectricityIntensityKey = 'unknown'
-): number =>
-  estimatePrivateCarDrivingAmount(privateCarMileage) *
-  estimatePrivateCarDrivingIntensity(
+export const estimatePrivateCarDrivingFootprint = ({
+  mileage,
+  carIntensityFactorFirstKey,
+  carPassengersFirstKey,
+  carChargingKey = 'unknown',
+  electricityIntensityKey = 'unknown'
+}: AmountParam & IntensityParam): number =>
+  estimatePrivateCarDrivingAmount({ mileage }) *
+  estimatePrivateCarDrivingIntensity({
     carIntensityFactorFirstKey,
     carPassengersFirstKey,
     carChargingKey,
     electricityIntensityKey
-  )
+  })
 
 /**
  * 自家用車の運転時の活動量を計算
  * @param privateCarMileage 自家用車の運転距離[km]
  * @returns 自家用車の運転時の活動量[km-passenger]
  */
-export const estimatePrivateCarDrivingAmount = (
-  privateCarMileage: number
-): number => {
+export const estimatePrivateCarDrivingAmount = ({
+  mileage: privateCarMileage
+}: AmountParam): number => {
   return privateCarMileage
 }
 
@@ -49,12 +59,12 @@ export const estimatePrivateCarDrivingAmount = (
  * @param electricityIntensityKey 家庭での電力の種類
  * @returns 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]
  */
-export const estimatePrivateCarDrivingIntensity = (
-  carIntensityFactorFirstKey: CarIntensityFactorFirstKey,
-  carPassengersFirstKey: CarPassengersFirstKey,
-  carChargingKey: CarChargingKey = 'unknown',
-  electricityIntensityKey: ElectricityIntensityKey = 'unknown'
-): number => {
+export const estimatePrivateCarDrivingIntensity = ({
+  carIntensityFactorFirstKey,
+  carPassengersFirstKey,
+  carChargingKey = 'unknown',
+  electricityIntensityKey = 'unknown'
+}: IntensityParam): number => {
   // ベースラインの運転時のGHG原単位を取得
   const baselineIntensity = getBaselineIntensity(
     'mobility',

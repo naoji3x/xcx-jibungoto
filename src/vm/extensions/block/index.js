@@ -5,6 +5,9 @@ import translations from './translations.json'
 import blockIcon from './block-icon.png'
 import { estimatePrivateCarDrivingFootprint } from './mobility/private-car-driving'
 import { estimateAirplaneAnnualFootprint } from './mobility/airplane'
+import { estimateFerryAnnualFootprint } from './mobility/ferry'
+import { estimateTrainAnnualFootprint } from './mobility/train'
+import { estimateBusAnnualFootprint } from './mobility/bus'
 
 /**
  * Formatter which is used for translation.
@@ -100,24 +103,62 @@ class ExtensionBlocks {
     const carChargingKey = Cast.toString(args.carChargingKey)
     const electricityIntensityKey = Cast.toString(args.electricityIntensityKey)
     const carPassengersFirstKey = Cast.toString(args.carPassengersFirstKey)
-    const privateCarAnnualMileage = Cast.toNumber(args.privateCarAnnualMileage)
+    const mileage = Cast.toNumber(args.privateCarAnnualMileage)
 
-    return estimatePrivateCarDrivingFootprint(
-      privateCarAnnualMileage,
+    return estimatePrivateCarDrivingFootprint({
+      mileage,
       carIntensityFactorFirstKey,
       carPassengersFirstKey,
       carChargingKey,
       electricityIntensityKey
-    )
+    })
   }
 
   airplaneTraveling(args) {
     const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
     const annualTravelingTime = Cast.toNumber(args.annualTravelingTime)
     if (mileageByAreaFirstKey === 'number-input') {
-      return estimateAirplaneAnnualFootprint(annualTravelingTime)
+      return estimateAirplaneAnnualFootprint({ annualTravelingTime })
     } else {
-      return estimateAirplaneAnnualFootprint(undefined, mileageByAreaFirstKey)
+      return estimateAirplaneAnnualFootprint({ mileageByAreaFirstKey })
+    }
+  }
+
+  ferryTraveling(args) {
+    const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
+    const annualTravelingTime = Cast.toNumber(args.annualTravelingTime)
+    if (mileageByAreaFirstKey === 'number-input') {
+      return estimateFerryAnnualFootprint({ annualTravelingTime })
+    } else {
+      return estimateFerryAnnualFootprint({ mileageByAreaFirstKey })
+    }
+  }
+
+  trainTraveling(args) {
+    const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
+    const weeklyTravelingTime = Cast.toNumber(args.weeklyTravelingTime)
+    const annualTravelingTime = Cast.toNumber(args.annualTravelingTime)
+    if (mileageByAreaFirstKey === 'number-input') {
+      return estimateTrainAnnualFootprint({
+        weeklyTravelingTime,
+        annualTravelingTime
+      })
+    } else {
+      return estimateTrainAnnualFootprint({ mileageByAreaFirstKey })
+    }
+  }
+
+  busTraveling(args) {
+    const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
+    const weeklyTravelingTime = Cast.toNumber(args.weeklyTravelingTime)
+    const annualTravelingTime = Cast.toNumber(args.annualTravelingTime)
+    if (mileageByAreaFirstKey === 'number-input') {
+      return estimateBusAnnualFootprint({
+        weeklyTravelingTime,
+        annualTravelingTime
+      })
+    } else {
+      return estimateBusAnnualFootprint({ mileageByAreaFirstKey })
     }
   }
 
@@ -184,6 +225,60 @@ class ExtensionBlocks {
             }
           }
         },
+        // 電車の移動
+        {
+          opcode: 'train',
+          blockType: BlockType.REPORTER,
+          blockAllThreads: false,
+          text: formatMessage({
+            id: 'jibungotoPlanet.train',
+            default: translations.en,
+            description: 'estimate train traveling footprint'
+          }),
+          func: 'trainTraveling',
+          arguments: {
+            weeklyTravelingTime: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            annualTravelingTime: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            mileageByAreaFirstKey: {
+              type: ArgumentType.STRING,
+              menu: 'mileageByAreaFirstKey',
+              defaultValue: 'number-input'
+            }
+          }
+        },
+        // バスの移動
+        {
+          opcode: 'bus',
+          blockType: BlockType.REPORTER,
+          blockAllThreads: false,
+          text: formatMessage({
+            id: 'jibungotoPlanet.bus',
+            default: translations.en,
+            description: 'estimate bus traveling footprint'
+          }),
+          func: 'busTraveling',
+          arguments: {
+            weeklyTravelingTime: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            annualTravelingTime: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            mileageByAreaFirstKey: {
+              type: ArgumentType.STRING,
+              menu: 'mileageByAreaFirstKey',
+              defaultValue: 'number-input'
+            }
+          }
+        },
         // 飛行機の移動
         {
           opcode: 'airplane',
@@ -195,6 +290,29 @@ class ExtensionBlocks {
             description: 'estimate airplane traveling footprint'
           }),
           func: 'airplaneTraveling',
+          arguments: {
+            annualTravelingTime: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            mileageByAreaFirstKey: {
+              type: ArgumentType.STRING,
+              menu: 'mileageByAreaFirstKey',
+              defaultValue: 'number-input'
+            }
+          }
+        },
+        // フェリーの移動
+        {
+          opcode: 'ferry',
+          blockType: BlockType.REPORTER,
+          blockAllThreads: false,
+          text: formatMessage({
+            id: 'jibungotoPlanet.ferry',
+            default: translations.en,
+            description: 'estimate ferry traveling footprint'
+          }),
+          func: 'ferryTraveling',
           arguments: {
             annualTravelingTime: {
               type: ArgumentType.NUMBER,

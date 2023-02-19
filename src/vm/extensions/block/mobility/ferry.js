@@ -6,10 +6,9 @@ import { estimateAnnualAmount, estimateAnnualAmountByArea } from './annual-amoun
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
-export var estimateFerryFootprint = function (annualTravelingTime, mileageByAreaFirstKey) {
-    if (annualTravelingTime === void 0) { annualTravelingTime = undefined; }
-    if (mileageByAreaFirstKey === void 0) { mileageByAreaFirstKey = undefined; }
-    return estimateFerryAnnualAmount(annualTravelingTime, mileageByAreaFirstKey) *
+export var estimateFerryAnnualFootprint = function (_a) {
+    var annualTravelingTime = _a.annualTravelingTime, mileageByAreaFirstKey = _a.mileageByAreaFirstKey;
+    return estimateFerryAnnualAmount({ annualTravelingTime: annualTravelingTime, mileageByAreaFirstKey: mileageByAreaFirstKey }) *
         estimateFerryIntensity();
 };
 /**
@@ -18,9 +17,8 @@ export var estimateFerryFootprint = function (annualTravelingTime, mileageByArea
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
-export var estimateFerryAnnualAmount = function (annualTravelingTime, mileageByAreaFirstKey) {
-    if (annualTravelingTime === void 0) { annualTravelingTime = undefined; }
-    if (mileageByAreaFirstKey === void 0) { mileageByAreaFirstKey = undefined; }
+export var estimateFerryAnnualAmount = function (_a) {
+    var annualTravelingTime = _a.annualTravelingTime, mileageByAreaFirstKey = _a.mileageByAreaFirstKey;
     if (annualTravelingTime !== undefined) {
         return estimateAnnualAmount(annualTravelingTime, 'ferry-speed');
     }

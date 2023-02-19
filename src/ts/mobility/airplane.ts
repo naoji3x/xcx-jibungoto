@@ -5,17 +5,22 @@ import {
 } from './annual-amount'
 import { type MileageByAreaFirstKey } from './types'
 
+interface Param {
+  annualTravelingTime?: number
+  mileageByAreaFirstKey?: MileageByAreaFirstKey
+}
+
 /**
  * 飛行機の移動のフットプリントを計算
  * @param annualTravelingTime 年間の移動時間[hr]
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
-export const estimateAirplaneAnnualFootprint = (
-  annualTravelingTime: number | undefined = undefined,
-  mileageByAreaFirstKey: MileageByAreaFirstKey | undefined = undefined
-): number =>
-  estimateAirplaneAnnualAmount(annualTravelingTime, mileageByAreaFirstKey) *
+export const estimateAirplaneAnnualFootprint = ({
+  annualTravelingTime,
+  mileageByAreaFirstKey
+}: Param): number =>
+  estimateAirplaneAnnualAmount({ annualTravelingTime, mileageByAreaFirstKey }) *
   estimateAirplaneIntensity()
 
 /**
@@ -24,10 +29,10 @@ export const estimateAirplaneAnnualFootprint = (
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
-export const estimateAirplaneAnnualAmount = (
-  annualTravelingTime: number | undefined = undefined,
-  mileageByAreaFirstKey: MileageByAreaFirstKey | undefined = undefined
-): number => {
+export const estimateAirplaneAnnualAmount = ({
+  annualTravelingTime,
+  mileageByAreaFirstKey
+}: Param): number => {
   if (annualTravelingTime !== undefined) {
     return estimateAnnualAmount(annualTravelingTime, 'airplane-speed')
   } else if (mileageByAreaFirstKey !== undefined) {

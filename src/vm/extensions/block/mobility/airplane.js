@@ -6,10 +6,9 @@ import { estimateAnnualAmount, estimateAnnualAmountByArea } from './annual-amoun
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
-export var estimateAirplaneAnnualFootprint = function (annualTravelingTime, mileageByAreaFirstKey) {
-    if (annualTravelingTime === void 0) { annualTravelingTime = undefined; }
-    if (mileageByAreaFirstKey === void 0) { mileageByAreaFirstKey = undefined; }
-    return estimateAirplaneAnnualAmount(annualTravelingTime, mileageByAreaFirstKey) *
+export var estimateAirplaneAnnualFootprint = function (_a) {
+    var annualTravelingTime = _a.annualTravelingTime, mileageByAreaFirstKey = _a.mileageByAreaFirstKey;
+    return estimateAirplaneAnnualAmount({ annualTravelingTime: annualTravelingTime, mileageByAreaFirstKey: mileageByAreaFirstKey }) *
         estimateAirplaneIntensity();
 };
 /**
@@ -18,9 +17,8 @@ export var estimateAirplaneAnnualFootprint = function (annualTravelingTime, mile
  * @param mileageByAreaFirstKey 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
-export var estimateAirplaneAnnualAmount = function (annualTravelingTime, mileageByAreaFirstKey) {
-    if (annualTravelingTime === void 0) { annualTravelingTime = undefined; }
-    if (mileageByAreaFirstKey === void 0) { mileageByAreaFirstKey = undefined; }
+export var estimateAirplaneAnnualAmount = function (_a) {
+    var annualTravelingTime = _a.annualTravelingTime, mileageByAreaFirstKey = _a.mileageByAreaFirstKey;
     if (annualTravelingTime !== undefined) {
         return estimateAnnualAmount(annualTravelingTime, 'airplane-speed');
     }
