@@ -2,6 +2,7 @@
   "en": {
     "jibungotoPlanet.name": "Jibungoto Planet",
     "jibungotoPlanet.privateCarDriving": "private car driving: car type[carIntensityFactorFirstKey] car passengers[carPassengersFirstKey] annual mileage(km)[privateCarAnnualMileage] car charging[carChargingKey] car charging type[electricityIntensityKey]",
+    "jibungotoPlanet.airplane": "airplane traveling: annual traveling time[annualTravelingTime] living area size [mileageByAreaFirstKey]",
     "jibungotoPlanet.unknown": "Unknown",
     "jibungotoPlanet.gasoline": "Gasoline",
     "jibungotoPlanet.light": "Light car",
@@ -23,11 +24,17 @@
     "jibungotoPlanet.30-renewable": "30% renewable",
     "jibungotoPlanet.50-renewable": "50% renewable",
     "jibungotoPlanet.100-renewable": "100% renewable",
-    "jibungotoPlanet.solar-panel": "Solar panel"
+    "jibungotoPlanet.solar-panel": "Solar panel",
+    "jibungotoPlanet.number-input": "number input",
+    "jibungotoPlanet.major-city-or-metropolitan-area": "major city or metropolitan area",
+    "jibungotoPlanet.city-150k-more": "population 150k or more",
+    "jibungotoPlanet.city-50k-150k": "population 50k-150k",
+    "jibungotoPlanet.area-less-than-50k": "population < 50k"
   },
   "ja": {
     "jibungotoPlanet.name": "じぶんごとプラネット",
     "jibungotoPlanet.privateCarDriving": "自家用車の運転: 車の種類[carIntensityFactorFirstKey]乗車人数[carPassengersFirstKey]年間走行距離(km)[privateCarAnnualMileage]自宅充電の割合[carChargingKey]家庭の電力[electricityIntensityKey]",
+    "jibungotoPlanet.airplane": "飛行機の移動: 年間移動時間[annualTravelingTime] 住んでいる地域の規模[mileageByAreaFirstKey]",
     "jibungotoPlanet.unknown": "分からない",
     "jibungotoPlanet.gasoline": "ガソリン車",
     "jibungotoPlanet.light": "軽自動車",
@@ -49,11 +56,17 @@
     "jibungotoPlanet.30-renewable": "30%再生可能エネルギー",
     "jibungotoPlanet.50-renewable": "50%再生可能エネルギー",
     "jibungotoPlanet.100-renewable": "100%再生可能エネルギー",
-    "jibungotoPlanet.solar-panel": "屋上太陽光パネル"
+    "jibungotoPlanet.solar-panel": "屋上太陽光パネル",
+    "jibungotoPlanet.number-input": "数字で入力",
+    "jibungotoPlanet.major-city-or-metropolitan-area": "政令指定都市・都区部",
+    "jibungotoPlanet.city-150k-more": "人口15万人以上の市",
+    "jibungotoPlanet.city-50k-150k": "人口5~15万人未満の市",
+    "jibungotoPlanet.area-less-than-50k": "人口5万人未満の市または町・村"
   },
   "ja-Hira": {
     "jibungotoPlanet.name": "じぶんごとプラネット",
     "jibungotoPlanet.privateCarDriving": "じかようしゃのうんてん: くるまのしゅるい[carIntensityFactorFirstKey]じょうしゃにんずう[carPassengersFirstKey]ねんかんそうこうきょり(km)[privateCarAnnualMileage]じたくじゅうでんのわりあい[carChargingKey]かていのでんりょく[electricityIntensityKey]",
+    "jibungotoPlanet.airplane": "ひこうきのいどう: ねんかんいどうじかん[annualTravelingTime] すんでいるちいきのきぼ[mileageByAreaFirstKey]",
     "jibungotoPlanet.unknown": "わからない",
     "jibungotoPlanet.gasoline": "ガソリンしゃ",
     "jibungotoPlanet.light": "けいじどうしゃ",
@@ -75,6 +88,10 @@
     "jibungotoPlanet.30-renewable": "30%さいせいかのうエネルギー",
     "jibungotoPlanet.50-renewable": "50%さいせいかのうエネルギー",
     "jibungotoPlanet.100-renewable": "100%さいせいかのうエネルギー",
-    "jibungotoPlanet.solar-panel": "おくじょうたいようこうパネル"
+    "jibungotoPlanet.solar-panel": "おくじょうたいようこうパネル",
+    "jibungotoPlanet.major-city-or-metropolitan-area": "せいれいしていとし・とくぶ",
+    "jibungotoPlanet.city-150k-more": "じんこう15まんにんいじょうのし",
+    "jibungotoPlanet.city-50k-150k": "じんこう5~15まんにんみまんのし",
+    "jibungotoPlanet.area-less-than-50k": "じんこう5まんにんみまんのしまたはまち・むら"
   }
 }

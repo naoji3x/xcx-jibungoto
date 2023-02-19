@@ -7,7 +7,13 @@ import {
 import { getBaselineIntensity, getParameter } from '../data/database'
 
 /**
- * 自家用車の運転時のフットプリント[kgCO2e]を計算
+ * 自家用車の運転時のフットプリントを計算
+ * @param privateCarMileage 自家用車の運転距離[km]
+ * @param carIntensityFactorFirstKey 自動車の種類
+ * @param carPassengersFirstKey 平均乗車人数
+ * @param carChargingKey 自宅充電の割合
+ * @param electricityIntensityKey 家庭での電力の種類
+ * @returns 自家用車の運転時のフットプリント[kgCO2e]
  */
 export const estimatePrivateCarDrivingFootprint = (
   privateCarMileage: number,
@@ -25,7 +31,9 @@ export const estimatePrivateCarDrivingFootprint = (
   )
 
 /**
- * 自家用車の運転時の活動量[km-passenger]を計算
+ * 自家用車の運転時の活動量を計算
+ * @param privateCarMileage 自家用車の運転距離[km]
+ * @returns 自家用車の運転時の活動量[km-passenger]
  */
 export const estimatePrivateCarDrivingAmount = (
   privateCarMileage: number
@@ -34,7 +42,12 @@ export const estimatePrivateCarDrivingAmount = (
 }
 
 /**
- * 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]を計算
+ * 自家用車の運転時のGHG原単位を計算
+ * @param carIntensityFactorFirstKey 自動車の種類
+ * @param carPassengersFirstKey 平均乗車人数
+ * @param carChargingKey 自宅充電の割合
+ * @param electricityIntensityKey 家庭での電力の種類
+ * @returns 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]
  */
 export const estimatePrivateCarDrivingIntensity = (
   carIntensityFactorFirstKey: CarIntensityFactorFirstKey,

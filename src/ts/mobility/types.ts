@@ -1,3 +1,4 @@
+// 自動車の種類
 export type CarIntensityFactorFirstKey =
   | 'gasoline'
   | 'light'
@@ -32,4 +33,12 @@ export type ElectricityIntensityKey =
   | '50-renewable'
   | '100-renewable'
   | 'solar-panel'
+  | 'unknown'
+
+// 住んでいる地域の規模
+export type MileageByAreaFirstKey =
+  | 'major-city-or-metropolitan-area'
+  | 'city-150k-more'
+  | 'city-50k-150k'
+  | 'area-less-than-50k'
   | 'unknown'

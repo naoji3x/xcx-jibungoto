@@ -4,6 +4,7 @@ import Cast from '../../util/cast'
 import translations from './translations.json'
 import blockIcon from './block-icon.png'
 import { estimatePrivateCarDrivingFootprint } from './mobility/private-car-driving'
+import { estimateAirplaneAnnualFootprint } from './mobility/airplane'
 
 /**
  * Formatter which is used for translation.
@@ -110,6 +111,16 @@ class ExtensionBlocks {
     )
   }
 
+  airplaneTraveling(args) {
+    const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
+    const annualTravelingTime = Cast.toNumber(args.annualTravelingTime)
+    if (mileageByAreaFirstKey === 'number-input') {
+      return estimateAirplaneAnnualFootprint(annualTravelingTime)
+    } else {
+      return estimateAirplaneAnnualFootprint(undefined, mileageByAreaFirstKey)
+    }
+  }
+
   menuItems(items) {
     return items.map((item) => {
       const id = 'jibungotoPlanet.' + item
@@ -172,6 +183,29 @@ class ExtensionBlocks {
               defaultValue: 0
             }
           }
+        },
+        // 飛行機の移動
+        {
+          opcode: 'airplane',
+          blockType: BlockType.REPORTER,
+          blockAllThreads: false,
+          text: formatMessage({
+            id: 'jibungotoPlanet.airplane',
+            default: translations.en,
+            description: 'estimate airplane traveling footprint'
+          }),
+          func: 'airplaneTraveling',
+          arguments: {
+            annualTravelingTime: {
+              type: ArgumentType.NUMBER,
+              defaultValue: 0
+            },
+            mileageByAreaFirstKey: {
+              type: ArgumentType.STRING,
+              menu: 'mileageByAreaFirstKey',
+              defaultValue: 'number-input'
+            }
+          }
         }
       ],
       menus: {
@@ -217,6 +251,17 @@ class ExtensionBlocks {
             '3',
             '3-4',
             '4-more',
+            'unknown'
+          ])
+        },
+        mileageByAreaFirstKey: {
+          acceptReporters: false,
+          items: this.menuItems([
+            'number-input',
+            'major-city-or-metropolitan-area',
+            'city-150k-more',
+            'city-50k-150k',
+            'area-less-than-50k',
             'unknown'
           ])
         }
