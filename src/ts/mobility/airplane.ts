@@ -2,7 +2,7 @@ import { getBaselineIntensity, getBaselineAmount } from '../data/database'
 import {
   estimateAnnualAmount,
   estimateAnnualAmountByArea
-} from './annual-amount'
+} from './amount-calculation'
 import { type ResidentialAreaSize } from './types'
 
 interface AirplaneAmountParam {

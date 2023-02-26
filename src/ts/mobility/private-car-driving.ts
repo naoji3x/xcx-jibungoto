@@ -6,13 +6,13 @@ import {
 } from './types'
 import { getBaselineIntensity, getParameter } from '../data/database'
 
-interface PrivateCarIntensityParam {
+interface PrivateCarDrivingIntensityParam {
   carType: CarType
   carPassengers: CarPassengers
   carCharging?: CarCharging
   electricityType?: ElectricityType
 }
-interface PrivateCarAmountParam {
+interface PrivateCarDrivingAmountParam {
   mileage: number
 }
 
@@ -31,7 +31,7 @@ export const estimatePrivateCarDrivingFootprint = ({
   carPassengers,
   carCharging = 'unknown',
   electricityType = 'unknown'
-}: PrivateCarAmountParam & PrivateCarIntensityParam): number =>
+}: PrivateCarDrivingAmountParam & PrivateCarDrivingIntensityParam): number =>
   estimatePrivateCarDrivingAmount({ mileage }) *
   estimatePrivateCarDrivingIntensity({
     carType,
@@ -47,14 +47,14 @@ export const estimatePrivateCarDrivingFootprint = ({
  */
 export const estimatePrivateCarDrivingAmount = ({
   mileage
-}: PrivateCarAmountParam): number => mileage
+}: PrivateCarDrivingAmountParam): number => mileage
 
 /**
  * 自家用車の運転時のGHG原単位を計算
- * @param carIntensityFactorFirstKey 自動車の種類
- * @param carPassengersFirstKey 平均乗車人数
- * @param carChargingKey 自宅充電の割合
- * @param electricityIntensityKey 家庭での電力の種類
+ * @param carType 自動車の種類
+ * @param carPassengers 平均乗車人数
+ * @param carCharging 自宅充電の割合
+ * @param electricityType 家庭での電力の種類
  * @returns 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]
  */
 export const estimatePrivateCarDrivingIntensity = ({
@@ -62,7 +62,7 @@ export const estimatePrivateCarDrivingIntensity = ({
   carPassengers,
   carCharging = 'unknown',
   electricityType = 'unknown'
-}: PrivateCarIntensityParam): number => {
+}: PrivateCarDrivingIntensityParam): number => {
   // ベースラインの運転時のGHG原単位を取得
   const baselineIntensity = getBaselineIntensity(
     'mobility',

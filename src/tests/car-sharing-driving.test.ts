@@ -1,228 +1,274 @@
 import {
-  estimatePrivateCarDrivingAmount,
-  estimatePrivateCarDrivingFootprint,
-  estimatePrivateCarDrivingIntensity
-} from '../ts/mobility/private-car-driving'
+  estimateCarSharingDrivingAnnualAmount,
+  estimateCarSharingDrivingAnnualFootprint,
+  estimateCarSharingDrivingIntensity
+  // estimateCarSharingDrivingAnnualFootprint
+} from '../ts/mobility/car-sharing-driving'
 
-describe('private car driving', () => {
-  test('amount', () => {
-    expect(estimatePrivateCarDrivingAmount({ mileage: 10 })).toBeCloseTo(10)
+describe('car-sharing-driving', () => {
+  test('amount case 01', () => {
+    expect(
+      estimateCarSharingDrivingAnnualAmount({
+        annualTravelingTime: 20,
+        weeklyTravelingTime: 1
+      })
+    ).toBeCloseTo(1352.912094)
+  })
+
+  test('amount case A1', () => {
+    expect(
+      estimateCarSharingDrivingAnnualAmount({
+        residentialAreaSize: 'major-city-or-metropolitan-area'
+      })
+    ).toBeCloseTo(89.06216)
+  })
+
+  test('amount case A2', () => {
+    expect(
+      estimateCarSharingDrivingAnnualAmount({
+        residentialAreaSize: 'city-150k-more'
+      })
+    ).toBeCloseTo(51.30309174)
+  })
+
+  test('amount case A3', () => {
+    expect(
+      estimateCarSharingDrivingAnnualAmount({
+        residentialAreaSize: 'city-50k-150k'
+      })
+    ).toBeCloseTo(47.62176474)
+  })
+
+  test('amount case A4', () => {
+    expect(
+      estimateCarSharingDrivingAnnualAmount({
+        residentialAreaSize: 'area-less-than-50k'
+      })
+    ).toBeCloseTo(46.47394961)
+  })
+
+  test('amount case A5', () => {
+    expect(
+      estimateCarSharingDrivingAnnualAmount({
+        residentialAreaSize: 'unknown'
+      })
+    ).toBeCloseTo(60.7815956)
   })
 
   // case 01: gasoline, unknown, 1, unknown
   test('intensity case 01', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'gasoline',
         carPassengers: '1'
       })
-    ).toBeCloseTo(0.251702294)
+    ).toBeCloseTo(0.252186904)
   })
 
   // case 03: light, unknown, 1
   test('intensity case 03', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'light',
         carPassengers: '1'
       })
-    ).toBeCloseTo(0.186998401)
+    ).toBeCloseTo(0.187358435)
   })
 
   // case 04: hv, unknown, 1
   test('intensity case 04', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'hv',
         carPassengers: '1'
       })
-    ).toBeCloseTo(0.161309963)
+    ).toBeCloseTo(0.161620538)
   })
 
   // case 05: phv, unknown, 1
   test('intensity case 05', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'phv',
         carPassengers: '1'
       })
-    ).toBeCloseTo(0.144787514)
+    ).toBeCloseTo(0.145066278)
   })
 
   // case 06: ev, unknown, 1
   test('intensity case 06', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'ev',
         carPassengers: '1'
       })
-    ).toBeCloseTo(0.133772549)
+    ).toBeCloseTo(0.134030105)
   })
 
   // case 07: unknown, unknown, 1
   test('intensity case 07', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '1'
       })
-    ).toBeCloseTo(0.22060004)
+    ).toBeCloseTo(0.221024768)
   })
 
   // case 08: unknown, unknown, 1-2
   test('intensity case 08', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '1-2'
       })
-    ).toBeCloseTo(0.147066693)
+    ).toBeCloseTo(0.147349845)
   })
 
   // case 09: 2,
   test('intensity case 09', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '2'
       })
-    ).toBeCloseTo(0.11030002)
+    ).toBeCloseTo(0.110512384)
   })
 
   // case 10: unknown, unknown, 2-3
   test('intensity case 10', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '2-3'
       })
-    ).toBeCloseTo(0.088240016)
+    ).toBeCloseTo(0.088409907)
   })
 
   // case 11: unknown, unknown, 3
   test('intensity case 11', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '3'
       })
-    ).toBeCloseTo(0.073533347)
+    ).toBeCloseTo(0.073674923)
   })
 
   // case 12: unknown, unknown, 3-4
   test('intensity case 12', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '3-4'
       })
-    ).toBeCloseTo(0.063028583)
+    ).toBeCloseTo(0.063149934)
   })
 
   // case 13: unknown, unknown, 4-more
   test('intensity case 13', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: '4-more'
       })
-    ).toBeCloseTo(0.05515001)
+    ).toBeCloseTo(0.055256192)
   })
 
   // case 14: unknown, unknown, unknown
   test('intensity case 14', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'unknown',
         carPassengers: 'unknown'
       })
-    ).toBeCloseTo(0.168396977)
+    ).toBeCloseTo(0.168721197)
   })
 
   // case 15: ev, charge-almost-at-home, 1
   test('intensity case 15', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'ev',
         carPassengers: '1',
         carCharging: 'charge-almost-at-home'
       })
-    ).toBeCloseTo(0.133772549)
+    ).toBeCloseTo(0.134030105)
   })
 
   // case 16: ev, use-charging-spots-occasionally, 1
   test('intensity case 16', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'ev',
         carPassengers: '1',
         carCharging: 'use-charging-spots-occasionally'
       })
-    ).toBeCloseTo(0.133772549)
+    ).toBeCloseTo(0.134030105)
   })
 
   // case 17: ev, use-charging-spots-sometimes, 1
   test('intensity case 17', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'ev',
         carPassengers: '1',
         carCharging: 'use-charging-spots-sometimes'
       })
-    ).toBeCloseTo(0.133772549)
+    ).toBeCloseTo(0.134030105)
   })
 
   // case 18: ev, use-charging-spots-usually, 1
   test('intensity case 18', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'ev',
         carPassengers: '1',
         carCharging: 'use-charging-spots-usually'
       })
-    ).toBeCloseTo(0.133772549)
+    ).toBeCloseTo(0.134030105)
   })
 
   // case 19: ev, charge-almost-at-home, 1, 30-renewable
   test('intensity case 19', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'ev',
         carPassengers: '1',
         carCharging: 'charge-almost-at-home',
         electricityType: '30-renewable'
       })
-    ).toBeCloseTo(0.114611753)
+    ).toBeCloseTo(0.114832418)
   })
 
   // case 20: phv, use-charging-spots-occasionally, 1-2, 50-renewable
   test('intensity case 20', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'phv',
         carPassengers: '1-2',
         carCharging: 'use-charging-spots-occasionally',
         electricityType: '50-renewable'
       })
-    ).toBeCloseTo(0.082615691)
+    ).toBeCloseTo(0.082774753)
   })
 
   // case 21: phv, use-charging-spots-sometimes, 1-2, 100-renewable
   test('intensity case 21', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'phv',
         carPassengers: '1-2',
         carCharging: 'use-charging-spots-sometimes',
         electricityType: '100-renewable'
       })
-    ).toBeCloseTo(0.0723966)
+    ).toBeCloseTo(0.072535987)
   })
 
   // case 22: phv, use-charging-spots-usually, 1-2, solar-panel
   test('intensity case 22', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'phv',
         carPassengers: '1-2',
         carCharging: 'use-charging-spots-usually',
@@ -234,34 +280,35 @@ describe('private car driving', () => {
   // case 23: phv, unknown, 1-2, unknown
   test('intensity case 23', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'phv',
         carPassengers: '1-2',
         carCharging: 'unknown',
         electricityType: 'unknown'
       })
-    ).toBeCloseTo(0.09652501)
+    ).toBeCloseTo(0.096710852)
   })
 
   // case 24: phv, unknown, 1-2, conventional
   test('intensity case 24', () => {
     expect(
-      estimatePrivateCarDrivingIntensity({
+      estimateCarSharingDrivingIntensity({
         carType: 'phv',
         carPassengers: '1-2',
         carCharging: 'unknown',
         electricityType: 'conventional'
       })
-    ).toBeCloseTo(0.09652501)
+    ).toBeCloseTo(0.096710852)
   })
 
   test('footprint', () => {
     expect(
-      estimatePrivateCarDrivingFootprint({
-        mileage: 5000,
+      estimateCarSharingDrivingAnnualFootprint({
+        annualTravelingTime: 20,
+        weeklyTravelingTime: 1,
         carType: 'gasoline',
         carPassengers: '1'
       })
-    ).toBeCloseTo(5000 * 0.251702294)
+    ).toBeCloseTo(0.252186904 * 1352.912094)
   })
 })

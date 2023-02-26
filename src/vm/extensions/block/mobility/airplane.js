@@ -1,5 +1,5 @@
 import { getBaselineIntensity, getBaselineAmount } from '../data/database';
-import { estimateAnnualAmount, estimateAnnualAmountByArea } from './annual-amount';
+import { estimateAnnualAmount, estimateAnnualAmountByArea } from './amount-calculation';
 /**
  * 飛行機の移動のフットプリントを計算
  * @param annualTravelingTime 年間の移動時間[hr]

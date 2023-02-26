@@ -1,5 +1,5 @@
 import { getBaselineIntensity, getBaselineAmount } from '../data/database';
-import { estimateAnnualAmountAddingWeeklyTravel, estimateAnnualAmountByArea } from './annual-amount';
+import { estimateAnnualAmountAddingWeeklyTravel, estimateAnnualAmountByArea } from './amount-calculation';
 /**
  * 電車の移動のフットプリントを計算
  * @param weeklyTravelingTime 週間の移動時間[hr]

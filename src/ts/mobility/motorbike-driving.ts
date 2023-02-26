@@ -5,61 +5,61 @@ import {
 } from './amount-calculation'
 import { type ResidentialAreaSize } from './types'
 
-interface BusAmountParam {
+interface MotorbikeDrivingAmountParam {
   weeklyTravelingTime?: number
   annualTravelingTime?: number
   residentialAreaSize?: ResidentialAreaSize
 }
 
 /**
- * バスの移動のフットプリントを計算
+ * バイクの移動のフットプリントを計算
  * @param weeklyTravelingTime 週間の移動時間[hr]
  * @param annualTravelingTime 年間の移動時間[hr]
  * @param residentialAreaSize 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
-export const estimateBusAnnualFootprint = ({
+export const estimateMotorbikeDrivingAnnualFootprint = ({
   weeklyTravelingTime,
   annualTravelingTime,
   residentialAreaSize
-}: BusAmountParam): number =>
-  estimateBusAnnualAmount({
+}: MotorbikeDrivingAmountParam): number =>
+  estimateMotorbikeDrivingAnnualAmount({
     weeklyTravelingTime,
     annualTravelingTime,
     residentialAreaSize
-  }) * estimateBusIntensity()
+  }) * estimateMotorbikeDrivingIntensity()
 
 /**
- * バスでの移動時の年間の活動量を計算
+ * バイクでの移動時の年間の活動量を計算
  * @param weeklyTravelingTime 週間の移動時間[hr]
  * @param annualTravelingTime 年間の移動時間[hr]
  * @param residentialAreaSize 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
-export const estimateBusAnnualAmount = ({
+export const estimateMotorbikeDrivingAnnualAmount = ({
   weeklyTravelingTime,
   annualTravelingTime,
   residentialAreaSize
-}: BusAmountParam): number => {
+}: MotorbikeDrivingAmountParam): number => {
   if (weeklyTravelingTime !== undefined || annualTravelingTime !== undefined) {
     weeklyTravelingTime = weeklyTravelingTime ?? 0
     annualTravelingTime = annualTravelingTime ?? 0
     return estimateAnnualAmountAddingWeeklyTravel(
       weeklyTravelingTime,
-      'bus-speed',
+      'motorbike-speed',
       annualTravelingTime,
-      'express-bus-speed'
+      'long-distance-motorbike-speed'
     )
   } else if (residentialAreaSize !== undefined) {
-    return estimateAnnualAmountByArea('bus', residentialAreaSize)
+    return estimateAnnualAmountByArea('motorbike-driving', residentialAreaSize)
   } else {
-    return getBaselineAmount('mobility', 'bus').value
+    return getBaselineAmount('mobility', 'motorbike-driving').value
   }
 }
 
 /**
- * バスでの移動時のGHG原単位を計算
+ * バイクでの移動時のGHG原単位を計算
  * @returns 電車での移動時のGHG原単位[kgCO2e/km-passenger]
  */
-export const estimateBusIntensity = (): number =>
-  getBaselineIntensity('mobility', 'bus').value
+export const estimateMotorbikeDrivingIntensity = (): number =>
+  getBaselineIntensity('mobility', 'motorbike-driving').value
