@@ -20,7 +20,7 @@ describe('ferry', () => {
   test('amount case A1', () => {
     expect(
       estimateFerryAnnualAmount({
-        mileageByAreaFirstKey: 'major-city-or-metropolitan-area'
+        residentialAreaSize: 'major-city-or-metropolitan-area'
       })
     ).toBeCloseTo(20.16526175)
   })
@@ -28,7 +28,7 @@ describe('ferry', () => {
   test('amount case A2', () => {
     expect(
       estimateFerryAnnualAmount({
-        mileageByAreaFirstKey: 'city-150k-more'
+        residentialAreaSize: 'city-150k-more'
       })
     ).toBeCloseTo(20.85237234)
   })
@@ -36,7 +36,7 @@ describe('ferry', () => {
   test('amount case A3', () => {
     expect(
       estimateFerryAnnualAmount({
-        mileageByAreaFirstKey: 'city-50k-150k'
+        residentialAreaSize: 'city-50k-150k'
       })
     ).toBeCloseTo(20.92105917)
   })
@@ -44,7 +44,7 @@ describe('ferry', () => {
   test('amount case A4', () => {
     expect(
       estimateFerryAnnualAmount({
-        mileageByAreaFirstKey: 'area-less-than-50k'
+        residentialAreaSize: 'area-less-than-50k'
       })
     ).toBeCloseTo(17.30611523)
   })
@@ -52,7 +52,7 @@ describe('ferry', () => {
   test('amount case A5', () => {
     expect(
       estimateFerryAnnualAmount({
-        mileageByAreaFirstKey: 'unknown'
+        residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(20.10019321)
   })

@@ -21,7 +21,7 @@ describe('bus', () => {
   test('amount case A1', () => {
     expect(
       estimateBusAnnualAmount({
-        mileageByAreaFirstKey: 'major-city-or-metropolitan-area'
+        residentialAreaSize: 'major-city-or-metropolitan-area'
       })
     ).toBeCloseTo(698.5895508)
   })
@@ -29,7 +29,7 @@ describe('bus', () => {
   test('amount case A2', () => {
     expect(
       estimateBusAnnualAmount({
-        mileageByAreaFirstKey: 'city-150k-more'
+        residentialAreaSize: 'city-150k-more'
       })
     ).toBeCloseTo(388.0210822)
   })
@@ -37,7 +37,7 @@ describe('bus', () => {
   test('amount case A3', () => {
     expect(
       estimateBusAnnualAmount({
-        mileageByAreaFirstKey: 'city-50k-150k'
+        residentialAreaSize: 'city-50k-150k'
       })
     ).toBeCloseTo(310.4002107)
   })
@@ -45,7 +45,7 @@ describe('bus', () => {
   test('amount case A4', () => {
     expect(
       estimateBusAnnualAmount({
-        mileageByAreaFirstKey: 'area-less-than-50k'
+        residentialAreaSize: 'area-less-than-50k'
       })
     ).toBeCloseTo(304.4881964)
   })
@@ -53,7 +53,7 @@ describe('bus', () => {
   test('amount case A5', () => {
     expect(
       estimateBusAnnualAmount({
-        mileageByAreaFirstKey: 'unknown'
+        residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(430.6177624)
   })

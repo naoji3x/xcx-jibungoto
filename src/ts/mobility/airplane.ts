@@ -3,40 +3,42 @@ import {
   estimateAnnualAmount,
   estimateAnnualAmountByArea
 } from './annual-amount'
-import { type MileageByAreaFirstKey } from './types'
+import { type ResidentialAreaSize } from './types'
 
-interface Param {
+interface AirplaneAmountParam {
   annualTravelingTime?: number
-  mileageByAreaFirstKey?: MileageByAreaFirstKey
+  residentialAreaSize?: ResidentialAreaSize
 }
 
 /**
  * 飛行機の移動のフットプリントを計算
  * @param annualTravelingTime 年間の移動時間[hr]
- * @param mileageByAreaFirstKey 住んでいる地域の規模
+ * @param residentialAreaSize 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
 export const estimateAirplaneAnnualFootprint = ({
   annualTravelingTime,
-  mileageByAreaFirstKey
-}: Param): number =>
-  estimateAirplaneAnnualAmount({ annualTravelingTime, mileageByAreaFirstKey }) *
-  estimateAirplaneIntensity()
+  residentialAreaSize
+}: AirplaneAmountParam): number =>
+  estimateAirplaneAnnualAmount({
+    annualTravelingTime,
+    residentialAreaSize
+  }) * estimateAirplaneIntensity()
 
 /**
  * 飛行機での移動時の年間の活動量を計算
  * @param annualTravelingTime 年間の移動時間[hr]
- * @param mileageByAreaFirstKey 住んでいる地域の規模
+ * @param residentialAreaSize 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
 export const estimateAirplaneAnnualAmount = ({
   annualTravelingTime,
-  mileageByAreaFirstKey
-}: Param): number => {
+  residentialAreaSize
+}: AirplaneAmountParam): number => {
   if (annualTravelingTime !== undefined) {
     return estimateAnnualAmount(annualTravelingTime, 'airplane-speed')
-  } else if (mileageByAreaFirstKey !== undefined) {
-    return estimateAnnualAmountByArea('airplane', mileageByAreaFirstKey)
+  } else if (residentialAreaSize !== undefined) {
+    return estimateAnnualAmountByArea('airplane', residentialAreaSize)
   } else {
     return getBaselineAmount('mobility', 'airplane').value
   }

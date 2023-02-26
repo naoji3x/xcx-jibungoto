@@ -18,7 +18,7 @@ describe('airplane', () => {
   test('amount case A1', () => {
     expect(
       estimateAirplaneAnnualAmount({
-        mileageByAreaFirstKey: 'major-city-or-metropolitan-area'
+        residentialAreaSize: 'major-city-or-metropolitan-area'
       })
     ).toBeCloseTo(1507.345223)
   })
@@ -26,7 +26,7 @@ describe('airplane', () => {
   test('amount case A2', () => {
     expect(
       estimateAirplaneAnnualAmount({
-        mileageByAreaFirstKey: 'city-150k-more'
+        residentialAreaSize: 'city-150k-more'
       })
     ).toBeCloseTo(1144.893404)
   })
@@ -34,7 +34,7 @@ describe('airplane', () => {
   test('amount case A3', () => {
     expect(
       estimateAirplaneAnnualAmount({
-        mileageByAreaFirstKey: 'city-50k-150k'
+        residentialAreaSize: 'city-50k-150k'
       })
     ).toBeCloseTo(1016.677146)
   })
@@ -42,7 +42,7 @@ describe('airplane', () => {
   test('amount case A4', () => {
     expect(
       estimateAirplaneAnnualAmount({
-        mileageByAreaFirstKey: 'area-less-than-50k'
+        residentialAreaSize: 'area-less-than-50k'
       })
     ).toBeCloseTo(775.2649318)
   })
@@ -50,7 +50,7 @@ describe('airplane', () => {
   test('amount case A5', () => {
     expect(
       estimateAirplaneAnnualAmount({
-        mileageByAreaFirstKey: 'unknown'
+        residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(1161.463556)
   })

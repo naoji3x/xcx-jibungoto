@@ -17,8 +17,8 @@ describe('private car driving', () => {
   test('intensity case 01', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'gasoline',
-        carPassengersFirstKey: '1'
+        carType: 'gasoline',
+        carPassengers: '1'
       })
     ).toBeCloseTo(0.251702294)
   })
@@ -31,8 +31,8 @@ describe('private car driving', () => {
   test('intensity case 03', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'light',
-        carPassengersFirstKey: '1'
+        carType: 'light',
+        carPassengers: '1'
       })
     ).toBeCloseTo(0.186998401)
   })
@@ -45,8 +45,8 @@ describe('private car driving', () => {
   test('intensity case 04', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'hv',
-        carPassengersFirstKey: '1'
+        carType: 'hv',
+        carPassengers: '1'
       })
     ).toBeCloseTo(0.161309963)
   })
@@ -59,8 +59,8 @@ describe('private car driving', () => {
   test('intensity case 05', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'phv',
-        carPassengersFirstKey: '1'
+        carType: 'phv',
+        carPassengers: '1'
       })
     ).toBeCloseTo(0.144787514)
   })
@@ -73,8 +73,8 @@ describe('private car driving', () => {
   test('intensity case 06', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'ev',
-        carPassengersFirstKey: '1'
+        carType: 'ev',
+        carPassengers: '1'
       })
     ).toBeCloseTo(0.133772549)
   })
@@ -87,8 +87,8 @@ describe('private car driving', () => {
   test('intensity case 07', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '1'
+        carType: 'unknown',
+        carPassengers: '1'
       })
     ).toBeCloseTo(0.22060004)
   })
@@ -101,8 +101,8 @@ describe('private car driving', () => {
   test('intensity case 08', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '1-2'
+        carType: 'unknown',
+        carPassengers: '1-2'
       })
     ).toBeCloseTo(0.147066693)
   })
@@ -115,8 +115,8 @@ describe('private car driving', () => {
   test('intensity case 09', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '2'
+        carType: 'unknown',
+        carPassengers: '2'
       })
     ).toBeCloseTo(0.11030002)
   })
@@ -129,8 +129,8 @@ describe('private car driving', () => {
   test('intensity case 10', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '2-3'
+        carType: 'unknown',
+        carPassengers: '2-3'
       })
     ).toBeCloseTo(0.088240016)
   })
@@ -143,8 +143,8 @@ describe('private car driving', () => {
   test('intensity case 11', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '3'
+        carType: 'unknown',
+        carPassengers: '3'
       })
     ).toBeCloseTo(0.073533347)
   })
@@ -157,8 +157,8 @@ describe('private car driving', () => {
   test('intensity case 12', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '3-4'
+        carType: 'unknown',
+        carPassengers: '3-4'
       })
     ).toBeCloseTo(0.063028583)
   })
@@ -171,8 +171,8 @@ describe('private car driving', () => {
   test('intensity case 13', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: '4-more'
+        carType: 'unknown',
+        carPassengers: '4-more'
       })
     ).toBeCloseTo(0.05515001)
   })
@@ -185,8 +185,8 @@ describe('private car driving', () => {
   test('intensity case 14', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'unknown',
-        carPassengersFirstKey: 'unknown'
+        carType: 'unknown',
+        carPassengers: 'unknown'
       })
     ).toBeCloseTo(0.168396977)
   })
@@ -199,9 +199,9 @@ describe('private car driving', () => {
   test('intensity case 15', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'ev',
-        carPassengersFirstKey: '1',
-        carChargingKey: 'charge-almost-at-home'
+        carType: 'ev',
+        carPassengers: '1',
+        carCharging: 'charge-almost-at-home'
       })
     ).toBeCloseTo(0.133772549)
   })
@@ -214,9 +214,9 @@ describe('private car driving', () => {
   test('intensity case 16', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'ev',
-        carPassengersFirstKey: '1',
-        carChargingKey: 'use-charging-spots-occasionally'
+        carType: 'ev',
+        carPassengers: '1',
+        carCharging: 'use-charging-spots-occasionally'
       })
     ).toBeCloseTo(0.133772549)
   })
@@ -229,9 +229,9 @@ describe('private car driving', () => {
   test('intensity case 17', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'ev',
-        carPassengersFirstKey: '1',
-        carChargingKey: 'use-charging-spots-sometimes'
+        carType: 'ev',
+        carPassengers: '1',
+        carCharging: 'use-charging-spots-sometimes'
       })
     ).toBeCloseTo(0.133772549)
   })
@@ -244,9 +244,9 @@ describe('private car driving', () => {
   test('intensity case 18', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'ev',
-        carPassengersFirstKey: '1',
-        carChargingKey: 'use-charging-spots-usually'
+        carType: 'ev',
+        carPassengers: '1',
+        carCharging: 'use-charging-spots-usually'
       })
     ).toBeCloseTo(0.133772549)
   })
@@ -260,10 +260,10 @@ describe('private car driving', () => {
   test('intensity case 19', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'ev',
-        carPassengersFirstKey: '1',
-        carChargingKey: 'charge-almost-at-home',
-        electricityIntensityKey: '30-renewable'
+        carType: 'ev',
+        carPassengers: '1',
+        carCharging: 'charge-almost-at-home',
+        electricityType: '30-renewable'
       })
     ).toBeCloseTo(0.114611753)
   })
@@ -277,10 +277,10 @@ describe('private car driving', () => {
   test('intensity case 19', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'phv',
-        carPassengersFirstKey: '1-2',
-        carChargingKey: 'use-charging-spots-occasionally',
-        electricityIntensityKey: '50-renewable'
+        carType: 'phv',
+        carPassengers: '1-2',
+        carCharging: 'use-charging-spots-occasionally',
+        electricityType: '50-renewable'
       })
     ).toBeCloseTo(0.082615691)
   })
@@ -294,10 +294,10 @@ describe('private car driving', () => {
   test('intensity case 21', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'phv',
-        carPassengersFirstKey: '1-2',
-        carChargingKey: 'use-charging-spots-sometimes',
-        electricityIntensityKey: '100-renewable'
+        carType: 'phv',
+        carPassengers: '1-2',
+        carCharging: 'use-charging-spots-sometimes',
+        electricityType: '100-renewable'
       })
     ).toBeCloseTo(0.0723966)
   })
@@ -311,10 +311,10 @@ describe('private car driving', () => {
   test('intensity case 22', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'phv',
-        carPassengersFirstKey: '1-2',
-        carChargingKey: 'use-charging-spots-usually',
-        electricityIntensityKey: 'solar-panel'
+        carType: 'phv',
+        carPassengers: '1-2',
+        carCharging: 'use-charging-spots-usually',
+        electricityType: 'solar-panel'
       })
     ).toBeCloseTo(0.091875879)
   })
@@ -328,10 +328,10 @@ describe('private car driving', () => {
   test('intensity case 23', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'phv',
-        carPassengersFirstKey: '1-2',
-        carChargingKey: 'unknown',
-        electricityIntensityKey: 'unknown'
+        carType: 'phv',
+        carPassengers: '1-2',
+        carCharging: 'unknown',
+        electricityType: 'unknown'
       })
     ).toBeCloseTo(0.09652501)
   })
@@ -345,10 +345,10 @@ describe('private car driving', () => {
   test('intensity case 24', () => {
     expect(
       estimatePrivateCarDrivingIntensity({
-        carIntensityFactorFirstKey: 'phv',
-        carPassengersFirstKey: '1-2',
-        carChargingKey: 'unknown',
-        electricityIntensityKey: 'conventional'
+        carType: 'phv',
+        carPassengers: '1-2',
+        carCharging: 'unknown',
+        electricityType: 'conventional'
       })
     ).toBeCloseTo(0.09652501)
   })

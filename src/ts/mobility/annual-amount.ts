@@ -1,31 +1,31 @@
 import { getParameter } from '../data/database'
-import { type MileageByAreaFirstKey } from './types'
+import { type ResidentialAreaSize } from './types'
 
 /**
  * 年間の移動距離を取得
  * @param annualTravelingTime 年間の移動時間[hr]
- * @param speedKey スピードを取得するキー情報
+ * @param speedType スピードの種類
  * @returns 年間の移動距離[km-passenger]
  */
 export const estimateAnnualAmount = (
   annualTravelingTime: number,
-  speedKey: string
+  speedType: string
 ): number =>
-  annualTravelingTime * getParameter('transportation-speed', speedKey).value
+  annualTravelingTime * getParameter('transportation-speed', speedType).value
 
 /**
  * 年間の移動距離を取得（週間の移動も考慮）
  * @param weeklyTravelingTime 週間の移動時間[hr]
- * @param weeklySpeedKey 週間の移動のスピードを取得するキー情報
+ * @param weeklySpeedType 週間の移動のスピード種類
  * @param annualTravelingTime 年間の移動時間[hr]
- * @param annualSpeedKey 年間の移動のスピードを取得するキー情報
+ * @param annualSpeedType 年間の移動のスピード種類
  * @returns 年間の移動距離[km-passenger]
  */
 export const estimateAnnualAmountAddingWeeklyTravel = (
   weeklyTravelingTime: number,
-  weeklySpeedKey: string,
+  weeklySpeedType: string,
   annualTravelingTime: number,
-  annualSpeedKey: string
+  annualSpeedType: string
 ): number => {
   const wpy = getParameter(
     'misc',
@@ -35,21 +35,21 @@ export const estimateAnnualAmountAddingWeeklyTravel = (
 
   const milage =
     annualTravelingTime *
-      getParameter('transportation-speed', annualSpeedKey).value +
+      getParameter('transportation-speed', annualSpeedType).value +
     weeklyTravelingTime *
       weekCount *
-      getParameter('transportation-speed', weeklySpeedKey).value
+      getParameter('transportation-speed', weeklySpeedType).value
   return milage
 }
 
 /**
  * 年間の移動距離を取得（住んでいる地域の規模での平均値を取得）
  * @param item 移動手段
- * @param mileageByAreaFirstKey 住んでいる地域の規模
+ * @param residentialAreaSize 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
 export const estimateAnnualAmountByArea = (
   item: string,
-  mileageByAreaFirstKey: MileageByAreaFirstKey
+  residentialAreaSize: ResidentialAreaSize
 ): number =>
-  getParameter('mileage-by-area', mileageByAreaFirstKey + '_' + item).value
+  getParameter('mileage-by-area', residentialAreaSize + '_' + item).value

@@ -3,43 +3,43 @@ import {
   estimateAnnualAmountAddingWeeklyTravel,
   estimateAnnualAmountByArea
 } from './annual-amount'
-import { type MileageByAreaFirstKey } from './types'
+import { type ResidentialAreaSize } from './types'
 
 interface Param {
   weeklyTravelingTime?: number
   annualTravelingTime?: number
-  mileageByAreaFirstKey?: MileageByAreaFirstKey
+  residentialAreaSize?: ResidentialAreaSize
 }
 
 /**
  * バスの移動のフットプリントを計算
  * @param weeklyTravelingTime 週間の移動時間[hr]
  * @param annualTravelingTime 年間の移動時間[hr]
- * @param mileageByAreaFirstKey 住んでいる地域の規模
+ * @param residentialAreaSize 住んでいる地域の規模
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
 export const estimateBusAnnualFootprint = ({
   weeklyTravelingTime,
   annualTravelingTime,
-  mileageByAreaFirstKey
+  residentialAreaSize
 }: Param): number =>
   estimateBusAnnualAmount({
     weeklyTravelingTime,
     annualTravelingTime,
-    mileageByAreaFirstKey
+    residentialAreaSize
   }) * estimateBusIntensity()
 
 /**
  * バスでの移動時の年間の活動量を計算
  * @param weeklyTravelingTime 週間の移動時間[hr]
  * @param annualTravelingTime 年間の移動時間[hr]
- * @param mileageByAreaFirstKey 住んでいる地域の規模
+ * @param residentialAreaSize 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
 export const estimateBusAnnualAmount = ({
   weeklyTravelingTime,
   annualTravelingTime,
-  mileageByAreaFirstKey
+  residentialAreaSize
 }: Param): number => {
   if (weeklyTravelingTime !== undefined || annualTravelingTime !== undefined) {
     weeklyTravelingTime = weeklyTravelingTime ?? 0
@@ -50,8 +50,8 @@ export const estimateBusAnnualAmount = ({
       annualTravelingTime,
       'express-bus-speed'
     )
-  } else if (mileageByAreaFirstKey !== undefined) {
-    return estimateAnnualAmountByArea('bus', mileageByAreaFirstKey)
+  } else if (residentialAreaSize !== undefined) {
+    return estimateAnnualAmountByArea('bus', residentialAreaSize)
   } else {
     return getBaselineAmount('mobility', 'bus').value
   }

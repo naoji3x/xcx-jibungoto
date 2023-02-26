@@ -21,7 +21,7 @@ describe('train', () => {
   test('amount case A1', () => {
     expect(
       estimateTrainAnnualAmount({
-        mileageByAreaFirstKey: 'major-city-or-metropolitan-area'
+        residentialAreaSize: 'major-city-or-metropolitan-area'
       })
     ).toBeCloseTo(4002.878879)
   })
@@ -29,7 +29,7 @@ describe('train', () => {
   test('amount case A2', () => {
     expect(
       estimateTrainAnnualAmount({
-        mileageByAreaFirstKey: 'city-150k-more'
+        residentialAreaSize: 'city-150k-more'
       })
     ).toBeCloseTo(2831.211796)
   })
@@ -37,7 +37,7 @@ describe('train', () => {
   test('amount case A3', () => {
     expect(
       estimateTrainAnnualAmount({
-        mileageByAreaFirstKey: 'city-50k-150k'
+        residentialAreaSize: 'city-50k-150k'
       })
     ).toBeCloseTo(2506.637751)
   })
@@ -45,7 +45,7 @@ describe('train', () => {
   test('amount case A4', () => {
     expect(
       estimateTrainAnnualAmount({
-        mileageByAreaFirstKey: 'area-less-than-50k'
+        residentialAreaSize: 'area-less-than-50k'
       })
     ).toBeCloseTo(1544.263668)
   })
@@ -53,7 +53,7 @@ describe('train', () => {
   test('amount case A5', () => {
     expect(
       estimateTrainAnnualAmount({
-        mileageByAreaFirstKey: 'unknown'
+        residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(2883.143695)
   })
