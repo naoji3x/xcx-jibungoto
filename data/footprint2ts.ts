@@ -1,6 +1,6 @@
 import { parse } from 'csv-parse/sync'
 import * as fs from 'fs'
-import { Footprint } from '../src/ts/data/footprint'
+import { type Footprint } from '../src/ts/data/footprint'
 
 const toFootprint = (record: any): Footprint => ({
   subdomain: record.subdomain,
@@ -12,10 +12,12 @@ const toFootprint = (record: any): Footprint => ({
 const data = fs.readFileSync('data/footprint.csv')
 const records = parse(data, { columns: true })
 
-const footprints: { [key: string]: Footprint } = {}
+const footprints: Record<string, Footprint> = {}
 
 for (const record of records) {
-  footprints[record.dir_domain + '_' + record.item_type] = toFootprint(record)
+  const dirDomain = record.dir_domain as string
+  const itemType = record.item_type as string
+  footprints[dirDomain + '_' + itemType] = toFootprint(record)
 }
 
 const header = `import { Footprint } from './footprint'
