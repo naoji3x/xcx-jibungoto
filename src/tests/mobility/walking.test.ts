@@ -1,60 +1,60 @@
 import {
-  estimateBicycleMaintenanceAnnualAmount,
-  estimateBicycleMaintenanceIntensity,
-  estimateBicycleMaintenanceAnnualFootprint
-} from '../ts/mobility/bicycle-maintenance'
+  estimateWalkingAnnualAmount,
+  estimateWalkingIntensity,
+  estimateWalkingAnnualFootprint
+} from '../../ts/mobility/walking'
 
 describe('bicycle-maintenance', () => {
   test('amount case A1', () => {
     expect(
-      estimateBicycleMaintenanceAnnualAmount({
+      estimateWalkingAnnualAmount({
         residentialAreaSize: 'major-city-or-metropolitan-area'
       })
-    ).toBeCloseTo(0.482425985)
+    ).toBeCloseTo(168.9344406)
   })
 
   test('amount case A2', () => {
     expect(
-      estimateBicycleMaintenanceAnnualAmount({
+      estimateWalkingAnnualAmount({
         residentialAreaSize: 'city-150k-more'
       })
-    ).toBeCloseTo(0.399241827)
+    ).toBeCloseTo(168.9344406)
   })
 
   test('amount case A3', () => {
     expect(
-      estimateBicycleMaintenanceAnnualAmount({
+      estimateWalkingAnnualAmount({
         residentialAreaSize: 'city-50k-150k'
       })
-    ).toBeCloseTo(0.429252268)
+    ).toBeCloseTo(168.9344406)
   })
 
   test('amount case A4', () => {
     expect(
-      estimateBicycleMaintenanceAnnualAmount({
+      estimateWalkingAnnualAmount({
         residentialAreaSize: 'area-less-than-50k'
       })
-    ).toBeCloseTo(0.240751767)
+    ).toBeCloseTo(168.9344406)
   })
 
   test('amount case A5', () => {
     expect(
-      estimateBicycleMaintenanceAnnualAmount({
+      estimateWalkingAnnualAmount({
         residentialAreaSize: 'unknown'
       })
-    ).toBeCloseTo(0.406667749)
+    ).toBeCloseTo(168.9344406)
   })
 
   // case 01: gasoline, unknown, 1, unknown
   test('intensity case 01', () => {
-    expect(estimateBicycleMaintenanceIntensity()).toBeCloseTo(2.324385029)
+    expect(estimateWalkingIntensity()).toBeCloseTo(0)
   })
 
   test('footprint', () => {
     expect(
-      estimateBicycleMaintenanceAnnualFootprint({
+      estimateWalkingAnnualFootprint({
         residentialAreaSize: 'major-city-or-metropolitan-area'
       })
-    ).toBeCloseTo(0.482425985 * 2.324385029)
+    ).toBeCloseTo(168.9344406 * 0)
   })
 })

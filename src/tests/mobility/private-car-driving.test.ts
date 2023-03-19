@@ -2,7 +2,7 @@ import {
   estimatePrivateCarDrivingAmount,
   estimatePrivateCarDrivingFootprint,
   estimatePrivateCarDrivingIntensity
-} from '../ts/mobility/private-car-driving'
+} from '../../ts/mobility/private-car-driving'
 
 describe('private car driving', () => {
   test('amount', () => {

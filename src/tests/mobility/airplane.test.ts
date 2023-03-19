@@ -2,7 +2,7 @@ import {
   estimateAirplaneAnnualAmount,
   estimateAirplaneIntensity,
   estimateAirplaneAnnualFootprint
-} from '../ts/mobility/airplane'
+} from '../../ts/mobility/airplane'
 
 describe('airplane', () => {
   test('intensity', () => {

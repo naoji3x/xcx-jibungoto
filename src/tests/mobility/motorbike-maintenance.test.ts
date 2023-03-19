@@ -2,7 +2,7 @@ import {
   estimateMotorbikeMaintenanceAnnualAmount,
   estimateMotorbikeMaintenanceIntensity,
   estimateMotorbikeMaintenanceAnnualFootprint
-} from '../ts/mobility/motorbike-maintenance'
+} from '../../ts/mobility/motorbike-maintenance'
 
 describe('motorbike-maintenance', () => {
   test('intensity', () => {

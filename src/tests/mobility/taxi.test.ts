@@ -2,7 +2,7 @@ import {
   estimateTaxiAnnualAmount,
   estimateTaxiIntensity,
   estimateTaxiAnnualFootprint
-} from '../ts/mobility/taxi'
+} from '../../ts/mobility/taxi'
 
 describe('taxi', () => {
   test('intensity case 01', () => {

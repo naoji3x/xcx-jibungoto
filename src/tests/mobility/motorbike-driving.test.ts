@@ -2,7 +2,7 @@ import {
   estimateMotorbikeDrivingAnnualAmount,
   estimateMotorbikeDrivingIntensity,
   estimateMotorbikeDrivingAnnualFootprint
-} from '../ts/mobility/motorbike-driving'
+} from '../../ts/mobility/motorbike-driving'
 
 describe('motorbike-driving', () => {
   test('intensity', () => {

@@ -2,7 +2,7 @@ import {
   estimateBusAnnualAmount,
   estimateBusIntensity,
   estimateBusAnnualFootprint
-} from '../ts/mobility/bus'
+} from '../../ts/mobility/bus'
 
 describe('bus', () => {
   test('intensity', () => {

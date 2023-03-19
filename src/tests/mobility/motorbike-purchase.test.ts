@@ -2,7 +2,7 @@ import {
   estimateMotorbikePurchaseAnnualAmount,
   estimateMotorbikePurchaseIntensity,
   estimateMotorbikePurchaseAnnualFootprint
-} from '../ts/mobility/motorbike-purchase'
+} from '../../ts/mobility/motorbike-purchase'
 
 describe('motorbike-purchase', () => {
   test('intensity', () => {

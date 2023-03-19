@@ -2,7 +2,7 @@ import {
   estimateFerryAnnualAmount,
   estimateFerryIntensity,
   estimateFerryAnnualFootprint
-} from '../ts/mobility/ferry'
+} from '../../ts/mobility/ferry'
 
 describe('ferry', () => {
   test('intensity', () => {

@@ -2,7 +2,7 @@ import {
   estimateCarSharingRentalAnnualAmount,
   estimateCarSharingRentalIntensity,
   estimateCarSharingRentalAnnualFootprint
-} from '../ts/mobility/car-sharing-rental'
+} from '../../ts/mobility/car-sharing-rental'
 
 describe('car-sharing-rental', () => {
   test('amount case 01', () => {

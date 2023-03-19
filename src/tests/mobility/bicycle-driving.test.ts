@@ -2,7 +2,7 @@ import {
   estimateBicycleDrivingAnnualAmount,
   estimateBicycleDrivingIntensity,
   estimateBicycleDrivingAnnualFootprint
-} from '../ts/mobility/bicycle-driving'
+} from '../../ts/mobility/bicycle-driving'
 
 describe('bicycle-driving', () => {
   test('amount case A1', () => {

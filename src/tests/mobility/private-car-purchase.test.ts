@@ -1,7 +1,7 @@
 import {
   estimatePrivateCarPurchaseAmount,
   estimatePrivateCarPurchaseIntensity
-} from '../ts/mobility/private-car-Purchase'
+} from '../../ts/mobility/private-car-Purchase'
 
 describe('private car Purchase', () => {
   test('amount', () => {

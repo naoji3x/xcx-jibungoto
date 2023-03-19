@@ -2,7 +2,7 @@ import {
   estimatePrivateCarMaintenanceAmount,
   estimatePrivateCarMaintenanceIntensity,
   estimatePrivateCarMaintenanceFootprint
-} from '../ts/mobility/private-car-maintenance'
+} from '../../ts/mobility/private-car-maintenance'
 
 describe('PrivateCarMaintenance', () => {
   test('intensity', () => {
