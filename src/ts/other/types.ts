@@ -1,4 +1,55 @@
 // その他のitem
+export type DailyGoodsItem = 'sanitation' | 'kitchen-goods' | 'paper-stationery'
+
+export type CommunicationItem = 'communication' | 'broadcasting'
+
+export type ApplianceFurnitureItem =
+  | 'electrical-appliances-repair-rental'
+  | 'furniture-daily-goods-repair-rental'
+  | 'cooking-appliances'
+  | 'heating-cooling-appliances'
+  | 'other-appliances'
+  | 'electronics'
+  | 'furniture'
+  | 'covering'
+
+export type ServiceItem =
+  | 'medicine'
+  | 'housework'
+  | 'washing'
+  | 'medical-care'
+  | 'nursing'
+  | 'caring'
+  | 'formal-education'
+  | 'informal-education'
+
+export type HobbyGoodsItem =
+  | 'culture-goods'
+  | 'entertainment-goods'
+  | 'sports-goods'
+  | 'gardening-flower'
+  | 'pet'
+  | 'tobacco'
+  | 'books-magazines'
+  | 'sports-culture-repair-rental'
+  | 'sports-entertainment-repair-rental'
+
+export type ClothesBeautyItem =
+  | 'haircare'
+  | 'cosmetics'
+  | 'clothes-goods'
+  | 'bags-jewelries-goods'
+  | 'clothes-repair-rental'
+  | 'bags-jewelries-repair-rental'
+
+export type LeisureSportsItem =
+  | 'culture-leisure'
+  | 'entertainment-leisure'
+  | 'sports-leisure'
+  | 'bath-spa'
+
+export type TravelItem = 'hotel' | 'travel'
+
 export type Item =
   | 'sanitation'
   | 'kitchen-goods'

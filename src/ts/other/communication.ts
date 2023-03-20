@@ -1,29 +1,37 @@
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation'
-import { type CommunicationExpenses } from './types'
+import { type CommunicationItem, type CommunicationExpenses } from './types'
 
-interface CommunicationParam {
+interface CommunicationIntensityParam {
+  item: CommunicationItem
+}
+
+interface CommunicationAmountParam extends CommunicationIntensityParam {
   expenses: CommunicationExpenses
   residentCount: number
 }
 
 export const estimateCommunicationAnnualFootprint = ({
+  item,
   expenses,
   residentCount
-}: CommunicationParam): number =>
-  estimateCommunicationAnnualAmount({ expenses, residentCount }) *
-  estimateCommunicationIntensity()
+}: CommunicationAmountParam): number =>
+  estimateCommunicationAnnualAmount({ item, expenses, residentCount }) *
+  estimateCommunicationIntensity({ item })
 
 export const estimateCommunicationAnnualAmount = ({
+  item,
   expenses,
   residentCount
-}: CommunicationParam): number =>
+}: CommunicationAmountParam): number =>
   estimateAnnualAmountConsideringResidentCount(
-    'communication',
+    item,
     'communication-amount',
     expenses,
     residentCount
   )
 
-export const estimateCommunicationIntensity = (): number =>
-  getBaselineIntensity('other', 'communication').value
+export const estimateCommunicationIntensity = ({
+  item
+}: CommunicationIntensityParam): number =>
+  getBaselineIntensity('other', item).value
