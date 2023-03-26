@@ -10,7 +10,8 @@
     "format": "prettier --write 'src/**/*.ts' 'src/**/index.{js,jsx}'",
     "export:footprints": "ts-node ./data/footprint2ts.ts",
     "export:parameters": "ts-node ./data/parameter2ts.ts",
-    "export:all": "npm run export:footprints && npm run export:parameters",
+    "export:options": "ts-node ./data/option2ts.ts",
+    "export:all": "npm run export:footprints && npm run export:parameters && npm run export:options",
     "test": "jest",
     "prepare": "husky install",
     "commit-msg": "commitlint -e $GIT_PARAMS"

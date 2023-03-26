@@ -1,6 +1,6 @@
 import { parse } from 'csv-parse/sync'
 import * as fs from 'fs'
-import { Parameter } from '../src/ts/data/parameter'
+import { type Parameter } from '../src/ts/data/parameter'
 
 const toParameter = (record: any): Parameter => ({
   value: Number(record.value),
@@ -11,14 +11,16 @@ const toParameter = (record: any): Parameter => ({
 const data = fs.readFileSync('data/parameter.csv')
 const records = parse(data, { columns: true })
 
-const parameters: { [key: string]: Parameter } = {}
+const parameters: Record<string, Parameter> = {}
 
 for (const record of records) {
-  parameters[record.category + '_' + record.key] = toParameter(record)
+  const category = String(record.category)
+  const key = String(record.key)
+  parameters[category + '_' + key] = toParameter(record)
 }
 
-const header = `import { Parameter } from './parameter'
-export const parameters: { [key: string]: Parameter } = `
+const header = `import { type Parameter } from './parameter'
+export const parameters: Record<string, Parameter> = `
 const ts = header + JSON.stringify(parameters, null, 2)
 
 try {

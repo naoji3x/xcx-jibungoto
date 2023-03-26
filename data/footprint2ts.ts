@@ -15,13 +15,13 @@ const records = parse(data, { columns: true })
 const footprints: Record<string, Footprint> = {}
 
 for (const record of records) {
-  const dirDomain = record.dir_domain as string
-  const itemType = record.item_type as string
+  const dirDomain = String(record.dir_domain)
+  const itemType = String(record.item_type)
   footprints[dirDomain + '_' + itemType] = toFootprint(record)
 }
 
-const header = `import { Footprint } from './footprint'
-export const footprints: { [key: string]: Footprint } = `
+const header = `import { type Footprint } from './footprint'
+export const footprints: Record<string, Footprint> = `
 const ts = header + JSON.stringify(footprints, null, 2)
 
 try {
