@@ -1,5 +1,5 @@
 export interface Parameter {
-  value: number
-  unit: string
-  citation: string
+  readonly value: number
+  readonly unit: string
+  readonly citation: string
 }

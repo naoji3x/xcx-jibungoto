@@ -11,7 +11,10 @@ const toOption = (record: any): Option => {
     args.shift()
   }
 
+  const option = String(record.option)
+
   return {
+    option,
     values,
     args,
     operation: record.operation,

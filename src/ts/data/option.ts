@@ -1,6 +1,7 @@
 export interface Option {
-  values: number[]
-  args: string[]
-  operation: string
-  citation: string
+  readonly option: string
+  readonly values: readonly number[]
+  readonly args: readonly string[]
+  readonly operation: string
+  readonly citation: string
 }

@@ -1,6 +1,6 @@
 export interface Footprint {
-  subdomain: string
-  value: number
-  unit: string
-  citation: string
+  readonly subdomain: string
+  readonly value: number
+  readonly unit: string
+  readonly citation: string
 }
