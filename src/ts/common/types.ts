@@ -181,16 +181,15 @@ export type Month =
   | 'november'
   | 'december'
 
-// 使用しているガスの種類
-export type GasType = 'urban-gas' | 'lpg' | 'unknown'
+/** 使用しているガスの種類 */
+export type GasType = 'urban-gas' | 'lpg'
 
-// お住まいの地域（地方）
+/** お住まいの地域（地方） */
 export type LivingRegion = 'northeast' | 'middle' | 'southwest' | 'unknown'
 
 //
 // other
 //
-// その他のitem
 export type DailyGoodsItem = 'sanitation' | 'kitchen-goods' | 'paper-stationery'
 
 export type CommunicationItem = 'communication' | 'broadcasting'
@@ -288,7 +287,7 @@ export type OtherItem =
   | 'waste'
 
 // その他のカテゴリ
-export type Category =
+export type OtherCategory =
   | 'daily-goods-amount'
   | 'communication-amount'
   | 'appliance-furniture-amount'
@@ -325,8 +324,6 @@ export type ApplianceFurnitureExpenses =
   | '400k-more'
   | 'unknown'
   | 'average-per-capita'
-
-// service: String # 5k-less|5k-10k|10k-20k|20k-50k|50k-more|unknown
 
 export type ServiceExpenses =
   | '5k-less'
