@@ -4,7 +4,7 @@ import {
   type CarType,
   type CarCharging,
   type ElectricityType
-} from './types'
+} from '../common/types'
 import {
   getBaselineAmount,
   getBaselineIntensity,

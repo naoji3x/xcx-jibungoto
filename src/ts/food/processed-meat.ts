@@ -4,7 +4,7 @@ import {
   type FoodDirectWaste,
   type FoodLeftover,
   type DishFrequency
-} from './types'
+} from '../common/types'
 
 interface ProcessedMeatAmountParam {
   foodDirectWaste: FoodDirectWaste

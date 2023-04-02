@@ -6,7 +6,7 @@ import {
 import {
   type LeisureSportsItem,
   type LeisureSportsExpenses
-} from '../../ts/other/types'
+} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: LeisureSportsExpenses },

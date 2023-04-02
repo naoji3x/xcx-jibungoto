@@ -1,6 +1,6 @@
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmount } from './amount-calculation'
-import { type TravelItem, type TravelExpenses } from './types'
+import { type TravelItem, type TravelExpenses } from '../common/types'
 
 // clothes-beauty
 

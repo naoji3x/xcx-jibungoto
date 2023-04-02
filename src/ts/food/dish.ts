@@ -12,13 +12,13 @@ import {
   getBaselineIntensity,
   getParameter
 } from '../data/database'
-import { estimateFoodLossRatio } from './ratio-calculation'
+import { estimateFoodLossRate } from './rate-calculation'
 import {
   type FoodDirectWaste,
   type FoodLeftover,
   type DishFrequency,
   type DishItem
-} from './types'
+} from '../common/types'
 
 const getFactor = (item: DishItem): string => {
   switch (item) {
@@ -56,7 +56,7 @@ export const estimateDishAnnualAmount = (
   const baseline = getBaselineAmount('food', item).value
   const dishFactor = getParameter(getFactor(item), frequency).value
   return (
-    baseline * dishFactor * estimateFoodLossRatio(foodDirectWaste, foodLeftover)
+    baseline * dishFactor * estimateFoodLossRate(foodDirectWaste, foodLeftover)
   )
 }
 

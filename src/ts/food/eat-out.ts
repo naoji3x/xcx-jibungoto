@@ -45,7 +45,7 @@ import {
   type DairyFoodFrequency,
   type AlcoholFrequency,
   type SoftDrinkSnackExpenses
-} from './types'
+} from '../common/types'
 
 interface EatOutIntensityParam {
   foodDirectWaste: FoodDirectWaste

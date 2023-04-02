@@ -1,6 +1,6 @@
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation'
-import { type DailyGoodsItem, type DailyGoodsExpenses } from './types'
+import { type DailyGoodsItem, type DailyGoodsExpenses } from '../common/types'
 
 interface DailyGoodsIntensityParam {
   item: DailyGoodsItem

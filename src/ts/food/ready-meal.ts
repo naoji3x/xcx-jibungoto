@@ -22,7 +22,7 @@ import {
   estimateProcessedMeatAnnualAmount,
   estimateProcessedMeatIntensity
 } from './processed-meat'
-import { estimateFoodLossRatio } from './ratio-calculation'
+import { estimateFoodLossRate } from './rate-calculation'
 import {
   estimateSoftDrinkSnackAnnualAmount,
   estimateSoftDrinkSnackIntensity
@@ -34,7 +34,7 @@ import {
   type DishFrequency,
   type DairyFoodFrequency,
   type SoftDrinkSnackExpenses
-} from './types'
+} from '../common/types'
 
 interface ReadyMealIntensityParam extends ReadyMealAmountParam {
   beefDishFrequency: DishFrequency
@@ -85,9 +85,7 @@ export const estimateReadyMealAnnualAmount = ({
 }: ReadyMealAmountParam): number => {
   const baseline = getBaselineAmount('food', 'ready-meal').value
   const intake = getParameter('food-intake-factor', 'ready-meal').value
-  return (
-    baseline * intake * estimateFoodLossRatio(foodDirectWaste, foodLeftover)
-  )
+  return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover)
 }
 
 export const estimateReadyMealIntensity = ({

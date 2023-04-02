@@ -1,5 +1,5 @@
 import { getBaselineIntensity, getParameter } from '../data/database'
-import { type GasType, type Month } from './types'
+import { type GasType, type Month } from '../common/types'
 
 interface GasIntensityPram {
   gasType: GasType

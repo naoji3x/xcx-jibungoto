@@ -1,7 +1,7 @@
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateImputedRentAnnualAmount } from './imputed-rent'
 import { estimateRentAnnualAmount } from './rent'
-import { type HousingSize } from './types'
+import { type HousingSize } from '../common/types'
 
 interface HousingMaintenanceAmountParam {
   housingSize: HousingSize

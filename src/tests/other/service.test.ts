@@ -3,7 +3,7 @@ import {
   estimateServiceAnnualFootprint,
   estimateServiceIntensity
 } from '../../ts/other/service'
-import { type ServiceItem, type ServiceExpenses } from '../../ts/other/types'
+import { type ServiceItem, type ServiceExpenses } from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: ServiceExpenses },

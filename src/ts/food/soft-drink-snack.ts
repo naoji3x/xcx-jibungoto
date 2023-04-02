@@ -8,13 +8,13 @@ import {
   getBaselineIntensity,
   getParameter
 } from '../data/database'
-import { estimateFoodLossRatio } from './ratio-calculation'
+import { estimateFoodLossRate } from './rate-calculation'
 import {
   type FoodDirectWaste,
   type FoodLeftover,
   type SoftDrinkSnackExpenses,
   type SoftDrinkSnackItem
-} from './types'
+} from '../common/types'
 
 interface SoftDrinkSnackAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -39,7 +39,7 @@ export const estimateSoftDrinkSnackAnnualAmount = (
   const baseline = getBaselineAmount('food', item).value
   const dishFactor = getParameter('soft-drink-snack-factor', expenses).value
   return (
-    baseline * dishFactor * estimateFoodLossRatio(foodDirectWaste, foodLeftover)
+    baseline * dishFactor * estimateFoodLossRate(foodDirectWaste, foodLeftover)
   )
 }
 

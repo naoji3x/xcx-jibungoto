@@ -1,6 +1,9 @@
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation'
-import { type CommunicationItem, type CommunicationExpenses } from './types'
+import {
+  type CommunicationItem,
+  type CommunicationExpenses
+} from '../common/types'
 
 interface CommunicationIntensityParam {
   item: CommunicationItem

@@ -3,7 +3,7 @@ import {
   getBaselineIntensity,
   getParameter
 } from '../data/database'
-import { type HousingSize } from './types'
+import { type HousingSize } from '../common/types'
 
 interface RentAmountParam {
   housingSize: HousingSize

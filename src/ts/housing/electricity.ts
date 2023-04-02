@@ -1,9 +1,13 @@
+import {
+  type CarCharging,
+  type CarType,
+  type ElectricityType,
+  type Month
+} from '../common/types'
 import { getParameter } from '../data/database'
-import { type Electricity, type Month } from './types'
-import { type CarCharging, type CarType } from '../mobility/types'
 
 interface ElectricityIntensityParam {
-  electricity: Electricity
+  electricity: ElectricityType
 }
 
 interface ElectricityAmountParam {

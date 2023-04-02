@@ -3,12 +3,12 @@ import {
   getBaselineIntensity,
   getParameter
 } from '../data/database'
-import { estimateFoodLossRatio } from './ratio-calculation'
+import { estimateFoodLossRate } from './rate-calculation'
 import {
   type FoodDirectWaste,
   type FoodLeftover,
   type AlcoholFrequency
-} from './types'
+} from '../common/types'
 
 interface AlcoholAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -34,9 +34,7 @@ export const estimateAlcoholAnnualAmount = ({
 }: AlcoholAmountParam): number => {
   const baseline = getBaselineAmount('food', 'alcohol').value
   const factor = getParameter('alcohol-factor', frequency).value
-  return (
-    baseline * factor * estimateFoodLossRatio(foodDirectWaste, foodLeftover)
-  )
+  return baseline * factor * estimateFoodLossRate(foodDirectWaste, foodLeftover)
 }
 
 export const estimateAlcoholIntensity = (): number =>

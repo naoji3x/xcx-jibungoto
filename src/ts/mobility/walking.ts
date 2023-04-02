@@ -1,4 +1,4 @@
-import { type ResidentialAreaSize } from './types'
+import { type ResidentialAreaSize } from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountByArea } from './amount-calculation'
 

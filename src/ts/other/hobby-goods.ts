@@ -1,6 +1,6 @@
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmount } from './amount-calculation'
-import { type HobbyGoodsItem, type HobbyGoodsExpenses } from './types'
+import { type HobbyGoodsItem, type HobbyGoodsExpenses } from '../common/types'
 
 interface HobbyGoodsIntensityParam {
   item: HobbyGoodsItem

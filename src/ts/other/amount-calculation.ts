@@ -1,8 +1,8 @@
 import { getBaselineAmount, getParameter } from '../data/database'
-import { type Category, type Item } from './types'
+import { type Category, type OtherItem } from '../common/types'
 
 export const estimateAnnualAmountConsideringResidentCount = (
-  item: Item,
+  item: OtherItem,
   category: Category,
   key: string,
   residentCount: number
@@ -24,7 +24,7 @@ export const estimateAnnualAmountConsideringResidentCount = (
 }
 
 export const estimateAnnualAmount = (
-  item: Item,
+  item: OtherItem,
   category: Category,
   key: string
 ): number => {

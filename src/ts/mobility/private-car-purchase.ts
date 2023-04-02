@@ -1,4 +1,4 @@
-import { type CarType } from './types'
+import { type CarType } from '../common/types'
 import {
   getBaselineAmount,
   getBaselineIntensity,

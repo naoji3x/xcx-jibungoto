@@ -16,13 +16,13 @@ import {
   getBaselineIntensity,
   getParameter
 } from '../data/database'
-import { estimateFoodLossRatio } from './ratio-calculation'
+import { estimateFoodLossRate } from './rate-calculation'
 import {
   type FoodDirectWaste,
   type FoodLeftover,
   type FoodIntake,
   type FoodIntakeItem
-} from './types'
+} from '../common/types'
 
 interface FoodIntakeAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -46,9 +46,7 @@ export const estimateFoodIntakeAnnualAmount = (
 ): number => {
   const baseline = getBaselineAmount('food', item).value
   const intake = getParameter('food-intake-factor', foodIntake).value
-  return (
-    baseline * intake * estimateFoodLossRatio(foodDirectWaste, foodLeftover)
-  )
+  return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover)
 }
 
 const defaultItems: FoodIntakeItem[] = [

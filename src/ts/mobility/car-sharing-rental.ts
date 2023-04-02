@@ -1,4 +1,4 @@
-import { type ResidentialAreaSize, type CarType } from './types'
+import { type ResidentialAreaSize, type CarType } from '../common/types'
 import {
   getBaselineAmount,
   getBaselineIntensity,

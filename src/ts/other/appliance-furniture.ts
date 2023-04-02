@@ -3,7 +3,7 @@ import { estimateAnnualAmountConsideringResidentCount } from './amount-calculati
 import {
   type ApplianceFurnitureItem,
   type ApplianceFurnitureExpenses
-} from './types'
+} from '../common/types'
 
 interface ApplianceFurnitureIntensityParam {
   item: ApplianceFurnitureItem

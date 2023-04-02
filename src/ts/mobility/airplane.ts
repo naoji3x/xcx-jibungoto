@@ -3,7 +3,7 @@ import {
   estimateAnnualAmount,
   estimateAnnualAmountByArea
 } from './amount-calculation'
-import { type ResidentialAreaSize } from './types'
+import { type ResidentialAreaSize } from '../common/types'
 
 interface AirplaneAmountParam {
   annualTravelingTime?: number

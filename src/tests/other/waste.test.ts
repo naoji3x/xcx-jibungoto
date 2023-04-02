@@ -1,15 +1,15 @@
 import {
+  type ApplianceFurnitureExpenses,
+  type ClothesBeautyExpenses,
+  type DailyGoodsExpenses,
+  type HobbyGoodsExpenses,
+  type ServiceExpenses
+} from '../../ts/common/types'
+import {
   estimateWasteAnnualAmount,
   estimateWasteAnnualFootprint,
   estimateWasteIntensity
 } from '../../ts/other/waste'
-import {
-  type ServiceExpenses,
-  type ApplianceFurnitureExpenses,
-  type ClothesBeautyExpenses,
-  type HobbyGoodsExpenses,
-  type DailyGoodsExpenses
-} from '../../ts/other/types'
 
 const expectAmount = (
   param: {

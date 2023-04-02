@@ -3,7 +3,7 @@ import {
   estimateTravelAnnualFootprint,
   estimateTravelIntensity
 } from '../../ts/other/travel'
-import { type TravelItem, type TravelExpenses } from '../../ts/other/types'
+import { type TravelItem, type TravelExpenses } from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: TravelExpenses },

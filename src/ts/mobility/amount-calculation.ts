@@ -1,5 +1,5 @@
 import { getParameter } from '../data/database'
-import { type ResidentialAreaSize } from './types'
+import { type ResidentialAreaSize } from '../common/types'
 
 /**
  * 年間の移動距離を取得

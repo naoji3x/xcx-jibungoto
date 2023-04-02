@@ -1,7 +1,7 @@
-import { getParameter } from 'ts/data/database'
-import { type FoodDirectWaste, type FoodLeftover } from './types'
+import { type FoodDirectWaste, type FoodLeftover } from '../common/types'
+import { getParameter } from '../data/database'
 
-export const estimateFoodLossRatio = (
+export const estimateFoodLossRate = (
   foodDirectWaste: FoodDirectWaste,
   foodLeftover: FoodLeftover
 ): number => {
@@ -15,25 +15,24 @@ export const estimateFoodLossRatio = (
     foodLeftover
   ).value
 
-  const leftoverRatio = getParameter(
+  const leftoverRate = getParameter(
     'food-waste-share',
     'leftover-per-food-waste'
   ).value
-  const directWasteRatio = getParameter(
+  const directWasteRate = getParameter(
     'food-waste-share',
     'direct-waste-per-food-waste'
   ).value
 
-  const foodWasteRatio = getParameter(
+  const foodWasteRate = getParameter(
     'food-waste-share',
     'food-waste-per-food'
   ).value
 
-  const foodLossAverageRatio =
-    foodDirectWasteFactor * directWasteRatio +
-    foodLeftoverFactor * leftoverRatio
+  const foodLossAverageRate =
+    foodDirectWasteFactor * directWasteRate + foodLeftoverFactor * leftoverRate
 
   // 全体に影響する割合
   // 食品ロスを考慮した食材購入量の平均に対する比率
-  return (1 + foodLossAverageRatio * foodWasteRatio) / (1 + foodWasteRatio)
+  return (1 + foodLossAverageRate * foodWasteRate) / (1 + foodWasteRate)
 }

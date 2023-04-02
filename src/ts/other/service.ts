@@ -1,6 +1,6 @@
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmount } from './amount-calculation'
-import { type ServiceItem, type ServiceExpenses } from './types'
+import { type ServiceItem, type ServiceExpenses } from '../common/types'
 
 interface ServiceIntensityParam {
   item: ServiceItem

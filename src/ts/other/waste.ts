@@ -15,7 +15,7 @@ import {
   type HobbyGoodsItem,
   type ServiceItem,
   type DailyGoodsItem
-} from './types'
+} from '../common/types'
 
 /*
 wasteは以下のitemのestimation合計/baseline合計とwasteのbaseline値を掛け合わせて求める。
