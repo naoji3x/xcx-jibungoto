@@ -23,8 +23,7 @@ export const estimateKeroseneAnnualAmount = ({
   residentCount
 }: KeroseneAmountPram): number => {
   const keroseneFactor = getParameter('energy-heat-intensity', 'kerosene').value
-  const ratio = keroseneFactor / residentCount
-  return monthlyConsumption * monthCount * ratio
+  return (monthlyConsumption * monthCount * keroseneFactor) / residentCount
 }
 
 export const estimateKeroseneIntensity = (): number =>

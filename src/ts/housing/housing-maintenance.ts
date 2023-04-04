@@ -1,7 +1,7 @@
+import { type HousingSize } from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateImputedRentAnnualAmount } from './imputed-rent'
 import { estimateRentAnnualAmount } from './rent'
-import { type HousingSize } from '../common/types'
 
 interface HousingMaintenanceAmountParam {
   housingSize: HousingSize
@@ -31,9 +31,9 @@ export const estimateHousingMaintenanceAnnualAmount = ({
     housingSize
   })
 
-  const ratio = (imputedRentEstimation + rentEstimation) / (imputedRent + rent)
+  const rate = (imputedRentEstimation + rentEstimation) / (imputedRent + rent)
 
-  return baseline * ratio
+  return baseline * rate
 }
 
 export const estimateHousingMaintenanceIntensity = (): number =>
