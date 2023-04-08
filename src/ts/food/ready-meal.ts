@@ -1,4 +1,12 @@
 import {
+  type DairyFoodFrequency,
+  type DishFrequency,
+  type FoodDirectWaste,
+  type FoodIntake,
+  type FoodLeftover,
+  type SoftDrinkSnackExpenses
+} from '../common/types'
+import {
   getBaselineAmount,
   getBaselineIntensity,
   getParameter
@@ -27,16 +35,8 @@ import {
   estimateSoftDrinkSnackAnnualAmount,
   estimateSoftDrinkSnackIntensity
 } from './soft-drink-snack'
-import {
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type FoodIntake,
-  type DishFrequency,
-  type DairyFoodFrequency,
-  type SoftDrinkSnackExpenses
-} from '../common/types'
 
-interface ReadyMealIntensityParam extends ReadyMealAmountParam {
+export interface ReadyMealIntensityParam extends ReadyMealAmountParam {
   beefDishFrequency: DishFrequency
   porkDishFrequency: DishFrequency
   chickenDishFrequency: DishFrequency
@@ -45,7 +45,7 @@ interface ReadyMealIntensityParam extends ReadyMealAmountParam {
   softDrinkSnackExpenses: SoftDrinkSnackExpenses
 }
 
-interface ReadyMealAmountParam {
+export interface ReadyMealAmountParam {
   foodDirectWaste: FoodDirectWaste
   foodLeftover: FoodLeftover
   foodIntake: FoodIntake
@@ -81,10 +81,14 @@ export const estimateReadyMealAnnualFootprint = ({
 
 export const estimateReadyMealAnnualAmount = ({
   foodDirectWaste,
-  foodLeftover
+  foodLeftover,
+  foodIntake
 }: ReadyMealAmountParam): number => {
   const baseline = getBaselineAmount('food', 'ready-meal').value
-  const intake = getParameter('food-intake-factor', 'ready-meal').value
+  const intake = getParameter('food-intake-factor', foodIntake).value
+  console.log(baseline)
+  console.log(intake)
+
   return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover)
 }
 
@@ -174,5 +178,6 @@ export const estimateReadyMealIntensity = ({
   const weightedAvgBaseline = totalBaselineFootprint / totalBaselineAmount
 
   const intensity = getBaselineIntensity('food', 'ready-meal').value
+
   return (intensity * weightedAvgEstimation) / weightedAvgBaseline
 }

@@ -1,4 +1,4 @@
-import { type GasType, type Month } from '../../ts/common/types'
+import { type GasItem, type Month } from '../../ts/common/types'
 import {
   estimateGasAnnualAmount,
   estimateGasAnnualFootprint,
@@ -7,7 +7,7 @@ import {
 
 const testAmount = (
   title: string,
-  item: GasType,
+  item: GasItem,
   monthlyConsumption: number,
   month: Month,
   residentCount: number,
@@ -24,7 +24,7 @@ const testAmount = (
   })
 }
 
-const testIntensity = (title: string, item: GasType, value: number): void => {
+const testIntensity = (title: string, item: GasItem, value: number): void => {
   test(title, () => {
     expect(estimateGasIntensity(item)).toBeCloseTo(value)
   })
@@ -32,7 +32,7 @@ const testIntensity = (title: string, item: GasType, value: number): void => {
 
 const testFootprint = (
   title: string,
-  item: GasType,
+  item: GasItem,
   monthlyConsumption: number,
   month: Month,
   residentCount: number,

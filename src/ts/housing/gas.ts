@@ -1,4 +1,4 @@
-import { type GasType, type Month } from '../common/types'
+import { type GasItem, type Month } from '../common/types'
 import { getBaselineIntensity, getParameter } from '../data/database'
 
 /** estimateGasAnnualAmount の引数 */
@@ -17,7 +17,7 @@ export interface GasAmountPram {
  * @returns カーボンフットプリント[kgCO2e]
  */
 export const estimateGasAnnualFootprint = (
-  item: GasType,
+  item: GasItem,
   { monthlyConsumption, month, residentCount }: GasAmountPram
 ): number =>
   estimateGasAnnualAmount(item, {
@@ -32,7 +32,7 @@ export const estimateGasAnnualFootprint = (
  * @returns 活動量[m3]
  */
 export const estimateGasAnnualAmount = (
-  item: GasType,
+  item: GasItem,
   { monthlyConsumption, month, residentCount }: GasAmountPram
 ): number => {
   const gasSeason = getParameter('gas-season-factor', month).value
@@ -46,5 +46,5 @@ export const estimateGasAnnualAmount = (
  * @param param0 計算に必要なパラメータ
  * @returns GHG原単位[kgCO2e/m3]
  */
-export const estimateGasIntensity = (item: GasType): number =>
+export const estimateGasIntensity = (item: GasItem): number =>
   getBaselineIntensity('housing', item).value

@@ -140,7 +140,6 @@ export type FoodIntakeItem =
   | 'fruits'
   | 'oil'
   | 'seasoning'
-//   | 'ready-meal'
 
 export type DairyFoodItem = 'milk' | 'other-dairy' | 'eggs'
 export type EatOutItem = 'restaurant' | 'bar-cafe'
@@ -182,7 +181,7 @@ export type Month =
   | 'december'
 
 /** 使用しているガスの種類 */
-export type GasType = 'urban-gas' | 'lpg'
+export type GasItem = 'urban-gas' | 'lpg'
 
 /** お住まいの地域（地方） */
 export type LivingRegion = 'northeast' | 'middle' | 'southwest' | 'unknown'

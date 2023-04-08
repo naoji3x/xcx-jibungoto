@@ -8,17 +8,17 @@
  */
 
 import {
+  type DishFrequency,
+  type DishItem,
+  type FoodDirectWaste,
+  type FoodLeftover
+} from '../common/types'
+import {
   getBaselineAmount,
   getBaselineIntensity,
   getParameter
 } from '../data/database'
 import { estimateFoodLossRate } from './rate-calculation'
-import {
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type DishFrequency,
-  type DishItem
-} from '../common/types'
 
 const getFactor = (item: DishItem): string => {
   switch (item) {
@@ -162,7 +162,7 @@ export const getDishAnnualBaselineAmounts = (): Record<string, number> =>
   defaultItems.reduce(
     (acc, item): Record<string, number> => ({
       ...acc,
-      [item]: getBaselineAmount('food', item)
+      [item]: getBaselineAmount('food', item).value
     }),
     {}
   )

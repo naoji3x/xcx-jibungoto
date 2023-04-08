@@ -4,17 +4,17 @@
  * eggs
  */
 import {
+  type DairyFoodFrequency,
+  type DairyFoodItem,
+  type FoodDirectWaste,
+  type FoodLeftover
+} from '../common/types'
+import {
   getBaselineAmount,
   getBaselineIntensity,
   getParameter
 } from '../data/database'
 import { estimateFoodLossRate } from './rate-calculation'
-import {
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type DairyFoodItem,
-  type DairyFoodFrequency
-} from '../common/types'
 
 interface DairyFoodAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -86,7 +86,7 @@ export const getDairyFoodAnnualBaselineAmounts = (): Record<string, number> =>
   defaultItems.reduce(
     (acc, item): Record<string, number> => ({
       ...acc,
-      [item]: getBaselineAmount('food', item)
+      [item]: getBaselineAmount('food', item).value
     }),
     {}
   )

@@ -4,17 +4,17 @@
  * cold-drink
  */
 import {
-  getBaselineAmount,
-  getBaselineIntensity,
-  getParameter
-} from '../data/database'
-import { estimateFoodLossRate } from './rate-calculation'
-import {
   type FoodDirectWaste,
   type FoodLeftover,
   type SoftDrinkSnackExpenses,
   type SoftDrinkSnackItem
 } from '../common/types'
+import {
+  getBaselineAmount,
+  getBaselineIntensity,
+  getParameter
+} from '../data/database'
+import { estimateFoodLossRate } from './rate-calculation'
 
 interface SoftDrinkSnackAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -93,7 +93,7 @@ export const getSoftDrinkSnackAnnualBaselineAmounts = (): Record<
   defaultItems.reduce(
     (acc, item): Record<string, number> => ({
       ...acc,
-      [item]: getBaselineAmount('food', item)
+      [item]: getBaselineAmount('food', item).value
     }),
     {}
   )

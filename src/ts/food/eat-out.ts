@@ -1,4 +1,15 @@
 import {
+  type AlcoholFrequency,
+  type DairyFoodFrequency,
+  type DishFrequency,
+  type EatOutExpenses,
+  type EatOutItem,
+  type FoodDirectWaste,
+  type FoodIntake,
+  type FoodLeftover,
+  type SoftDrinkSnackExpenses
+} from '../common/types'
+import {
   getBaselineAmount,
   getBaselineIntensity,
   getParameter
@@ -35,17 +46,6 @@ import {
   estimateSoftDrinkSnackIntensities,
   getSoftDrinkSnackAnnualBaselineAmounts
 } from './soft-drink-snack'
-import {
-  type EatOutItem,
-  type EatOutExpenses,
-  type FoodIntake,
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type DishFrequency,
-  type DairyFoodFrequency,
-  type AlcoholFrequency,
-  type SoftDrinkSnackExpenses
-} from '../common/types'
 
 interface EatOutIntensityParam {
   foodDirectWaste: FoodDirectWaste
@@ -197,6 +197,9 @@ export const estimateEatOutIntensity = (
     'processed-meat': getBaselineAmount('food', 'processed-meat').value,
     'ready-meal': getBaselineAmount('food', 'ready-meal').value
   }
+
+  console.log(estimatedAmounts)
+  console.log(estimatedIntensities)
 
   const totalEstimatedAmount = Object.values(estimatedAmounts).reduce(
     (sum, value) => sum + value,

@@ -1,10 +1,10 @@
+import {
+  type DishFrequency,
+  type FoodDirectWaste,
+  type FoodLeftover
+} from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateDishAnnualAmount } from './dish'
-import {
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type DishFrequency
-} from '../common/types'
 
 interface ProcessedMeatAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -63,10 +63,11 @@ export const estimateProcessedMeatAnnualAmount = ({
   })
 
   return (
-    (beef + pork + chicken + otherMeat) /
+    (getBaselineAmount('food', 'processed-meat').value *
+      (beef + pork + chicken + otherMeat)) /
     (beefBaseline + porkBaseline + chickenBaseline + otherMeatBaseline)
   )
 }
 
 export const estimateProcessedMeatIntensity = (): number =>
-  getBaselineIntensity('food', 'chicken').value
+  getBaselineIntensity('food', 'processed-meat').value

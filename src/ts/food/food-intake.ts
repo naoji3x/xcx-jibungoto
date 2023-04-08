@@ -12,17 +12,17 @@
  * ready-meal
  */
 import {
+  type FoodDirectWaste,
+  type FoodIntake,
+  type FoodIntakeItem,
+  type FoodLeftover
+} from '../common/types'
+import {
   getBaselineAmount,
   getBaselineIntensity,
   getParameter
 } from '../data/database'
 import { estimateFoodLossRate } from './rate-calculation'
-import {
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type FoodIntake,
-  type FoodIntakeItem
-} from '../common/types'
 
 interface FoodIntakeAmountParam {
   foodDirectWaste: FoodDirectWaste
@@ -103,7 +103,7 @@ export const getFoodIntakeAnnualBaselineAmounts = (): Record<string, number> =>
   defaultItems.reduce(
     (acc, item): Record<string, number> => ({
       ...acc,
-      [item]: getBaselineAmount('food', item)
+      [item]: getBaselineAmount('food', item).value
     }),
     {}
   )
