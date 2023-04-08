@@ -86,9 +86,6 @@ export const estimateReadyMealAnnualAmount = ({
 }: ReadyMealAmountParam): number => {
   const baseline = getBaselineAmount('food', 'ready-meal').value
   const intake = getParameter('food-intake-factor', foodIntake).value
-  console.log(baseline)
-  console.log(intake)
-
   return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover)
 }
 

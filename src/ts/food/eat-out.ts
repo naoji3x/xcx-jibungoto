@@ -198,9 +198,6 @@ export const estimateEatOutIntensity = (
     'ready-meal': getBaselineAmount('food', 'ready-meal').value
   }
 
-  console.log(estimatedAmounts)
-  console.log(estimatedIntensities)
-
   const totalEstimatedAmount = Object.values(estimatedAmounts).reduce(
     (sum, value) => sum + value,
     0
