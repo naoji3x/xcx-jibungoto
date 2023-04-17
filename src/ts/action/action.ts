@@ -1,14 +1,14 @@
-import { getParameter } from '../data/database'
-import { estimateFoodLossRate } from '../food/rate-calculation'
 import {
-  type FoodDirectWaste,
-  type FoodLeftover,
-  type HousingInsulation,
-  type CarType,
   type CarCharging,
   type CarPassengers,
-  type ElectricityType
+  type CarType,
+  type ElectricityType,
+  type FoodDirectWaste,
+  type FoodLeftover,
+  type HousingInsulation
 } from '../common/types'
+import { getParameter } from '../data/database'
+import { estimateFoodLossRate } from '../food/rate-calculation'
 import { estimateCarDrivingIntensityFactor } from '../mobility/factor-calculation'
 
 /**
@@ -68,75 +68,126 @@ export const increaseRate = (base: number, rate: number): number =>
  * [削減後] = [削減前(base)] x ([推定値を算出した質問票回答の値]/[passengersAfterActionで指定した絶対値])
  * 例）ライドシェアリングにより自家用車の乗車人数が質問票で把握した人数から4人に増加した場合、
  * 原単位の変化としてはこれらの比率の逆数として計算される
- * ※ライドシェアリングに特化した実装
+ * option: rideshare
+ * operation: question-answer-to-target-inverse
+ * args: mobility_taxi-car-passengers
+ * に特化した実装
  * @param base 削減前の値
- * @param target 削減対象 mobility_taxi-car-passengers|mobility_private-car-passengers
+ * @param passengersAfterAction 削減後の乗車人数
+ * @param baseCarPassengers 削減前平均乗車人数
+ * @returns GHG原単位
+ */
+export const drivingIntensityToTaxiRideshare = (
+  base: number,
+  passengersAfterAction: number,
+  baseCarPassengers: CarPassengers
+): number =>
+  (base *
+    getParameter('car-passengers', baseCarPassengers + '_taxi-passengers')
+      .value) /
+  passengersAfterAction
+
+/**
+ * [削減後] = [削減前(base)] x ([推定値を算出した質問票回答の値]/[passengersAfterActionで指定した絶対値])
+ * 例）ライドシェアリングにより自家用車の乗車人数が質問票で把握した人数から4人に増加した場合、
+ * 原単位の変化としてはこれらの比率の逆数として計算される
+ * option: rideshare
+ * operation: question-answer-to-target-inverse
+ * args: private-car-driving
+ * に特化した実装
+ * @param base 削減前の値
  * @param baseCarPassengers 削減前平均乗車人数
  * @param passengersAfterAction 削減後の乗車人数
  * @returns 削減後の活動量もしくはGHG原単位
  */
-export const questionAnswerToTargetInverse = (
+export const drivingIntensityToPrivateCarRideshare = (
   base: number,
-  target: string,
-  baseCarPassengers: CarPassengers,
-  passengersAfterAction: number
-): number => {
-  if (target === 'mobility_taxi-car-passengers') {
-    const taxiPassengers = getParameter(
-      'car-passengers',
-      baseCarPassengers + '_taxi-passengers'
-    ).value
-    return (base * taxiPassengers) / passengersAfterAction
-  } else if (target === 'mobility_private-car-passengers') {
-    const privateCarPassengers = getParameter(
+  passengersAfterAction: number,
+  baseCarPassengers: CarPassengers
+): number =>
+  (base *
+    getParameter(
       'car-passengers',
       baseCarPassengers + '_private-car-passengers'
-    ).value
-    return (base * privateCarPassengers) / passengersAfterAction
-  }
-  return base
-}
+    ).value) /
+  passengersAfterAction
 
 /**
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
  * フットプリント推計に用いた質問票回答のパラメーターがある絶対値へ変化する
  * 例）EV・PHVの導入により自家用車の排出原単位が質問票で把握した値から約0.084に増加
- * car-ev-phv, car-ev-phv-re, lossで適用
+ * option: loss
+ * operation: question-answer-to-target
+ * args: food_food-amount-to-average
+ * に特化した実装
  * @param base 削減前の値
- * @param target 削減対象 mobility_driving-intensity|mobility_manufacturing-intensity|food_food-amount-to-average
- * @param carDrivingIntensity 自動車の運転時のGHG原単位
- * @param carManufacturingIntensity 自動車の製造時のGHG原単位
- * @param valueAfterAction 削減後のGHG原単位
+ * @param valueAfterAction 削減後の削減後の質問票の回答の値の絶対値
+ * @param foodDirectWaste
+ * @param foodLeftover
  * @returns 削減後の活動量もしくはGHG原単位
  */
-export const questionAnswerToTarget = (
+export const foodAmountToAverageWithoutFoodLoss = (
   base: number,
-  target: string,
-  carType: CarType,
-  carCharging: CarCharging,
-  electricityType: ElectricityType,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
-  valueAfterAction: number
+  valueAfterAction: number,
+  foodDirectWaste: FoodDirectWaste = 'unknown',
+  foodLeftover: FoodLeftover = 'unknown'
+): number =>
+  (base * valueAfterAction) /
+  estimateFoodLossRate(foodDirectWaste, foodLeftover)
+
+/**
+ * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
+ * フットプリント推計に用いた質問票回答のパラメーターがある絶対値へ変化する
+ * 例）EV・PHVの導入により自家用車の排出原単位が質問票で把握した値から約0.084に増加
+ * option: car-ev-phv, car-ev-phv-re
+ * operation: question-answer-to-target
+ * args: mobility_driving-intensity
+ * に特化した実装
+ * @param base 削減前の値
+ * @param valueAfterAction 削減後の削減後の質問票の回答の値の絶対値
+ * @param carType
+ * @param carCharging
+ * @param electricityType
+ * @returns 削減後のGHG原単位
+ */
+export const drivingIntensityToEvPhv = (
+  base: number,
+  valueAfterAction: number,
+  carType: CarType = 'unknown',
+  carCharging: CarCharging = 'unknown',
+  electricityType: ElectricityType = 'unknown'
+): number =>
+  (base * valueAfterAction) /
+  estimateCarDrivingIntensityFactor(
+    carType,
+    carCharging,
+    electricityType,
+    'intensity'
+  )
+
+/**
+ * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
+ * フットプリント推計に用いた質問票回答のパラメーターがある絶対値へ変化する
+ * 例）EV・PHVの導入により自家用車の排出原単位が質問票で把握した値から約0.084に増加
+ * option: car-ev-phv, car-ev-phv-re
+ * operation: question-answer-to-target
+ * args: mobility_manufacturing-intensity
+ * に特化した実装
+ * @param base 削減前の値
+ * @param valueAfterAction 削減後の削減後の質問票の回答の値の絶対値
+ * @param carType
+ * @returns 削減後のGHG原単位
+ */
+export const manufacturingIntensityToEvPhv = (
+  base: number,
+  valueAfterAction: number,
+  carType: CarType = 'unknown'
 ): number => {
-  if (target === 'mobility_driving-intensity') {
-    const factor = estimateCarDrivingIntensityFactor(
-      carType,
-      carCharging,
-      electricityType
-    )
-    return (base * valueAfterAction) / factor
-  } else if (target === 'mobility_manufacturing-intensity') {
-    const factor = getParameter(
-      'car-intensity-factor',
-      carType + '_manufacturing-intensity'
-    ).value
-    return (base * valueAfterAction) / factor
-  } else if (target === 'food_food-amount-to-average') {
-    const rate = estimateFoodLossRate(foodDirectWaste, foodLeftover)
-    return (base * valueAfterAction) / rate
-  }
-  return base
+  return (
+    (base * valueAfterAction) /
+    getParameter('car-intensity-factor', carType + '_manufacturing-intensity')
+      .value
+  )
 }
 
 /**

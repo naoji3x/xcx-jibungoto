@@ -1,9 +1,9 @@
 import {
-  type ResidentialAreaSize,
+  type CarCharging,
   type CarPassengers,
   type CarType,
-  type CarCharging,
-  type ElectricityType
+  type ElectricityType,
+  type ResidentialAreaSize
 } from '../common/types'
 import {
   getBaselineAmount,
@@ -14,6 +14,7 @@ import {
   estimateAnnualAmountAddingWeeklyTravel,
   estimateAnnualAmountByArea
 } from './amount-calculation'
+import { estimateCarDrivingIntensityFactor } from './factor-calculation'
 
 interface CarSharingDrivingIntensityParam {
   carType: CarType
@@ -116,35 +117,19 @@ export const estimateCarSharingDrivingIntensity = ({
   ).value
 
   // 自動車種類に応じて運転時GHG原単位の補正係数を取得
-  let ghgIntensityRatio = getParameter(
-    'car-intensity-factor',
-    carType + '_driving-factor'
+  const carDrivingIntensityFactor = estimateCarDrivingIntensityFactor(
+    carType,
+    carCharging,
+    electricityType
+  )
+
+  // 人数補正値
+  const passengerIntensityFactor = getParameter(
+    'car-passengers',
+    carPassengers + '_private-car-factor'
   ).value
 
-  // PHV, EVの補正
-  if (carType === 'phv' || carType === 'ev') {
-    // PHV, EVの場合は自宅での充電割合と再生エネルギー電力の割合で補正
-    const electricityIntensityFactor =
-      getParameter('electricity-intensity-factor', electricityType).value *
-      getParameter('car-charging', carCharging).value
-
-    // GHG原単位の補正係数を電力割合で補正
-    ghgIntensityRatio =
-      ghgIntensityRatio * (1 - electricityIntensityFactor) +
-      getParameter(
-        'renewable-car-intensity-factor',
-        carType + '_driving-factor'
-      ).value *
-        electricityIntensityFactor
-  }
-
-  let passengerIntensityRatio = 1
-  if (carPassengers !== undefined) {
-    // 人数補正値
-    passengerIntensityRatio = getParameter(
-      'car-passengers',
-      carPassengers + '_private-car-factor'
-    ).value
-  }
-  return baselineIntensity * ghgIntensityRatio * passengerIntensityRatio
+  return (
+    baselineIntensity * carDrivingIntensityFactor * passengerIntensityFactor
+  )
 }
