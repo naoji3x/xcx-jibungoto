@@ -72,6 +72,7 @@ export const increaseRate = (base: number, rate: number): number =>
  * operation: question-answer-to-target-inverse
  * args: mobility_taxi-car-passengers
  * に特化した実装
+ * 元々はquestionAnswerToTargetInverse
  * @param base 削減前の値
  * @param passengersAfterAction 削減後の乗車人数
  * @param baseCarPassengers 削減前平均乗車人数
@@ -81,11 +82,13 @@ export const drivingIntensityToTaxiRideshare = (
   base: number,
   passengersAfterAction: number,
   baseCarPassengers: CarPassengers
-): number =>
-  (base *
-    getParameter('car-passengers', baseCarPassengers + '_taxi-passengers')
-      .value) /
-  passengersAfterAction
+): number => {
+  const passengersBeforeAction = getParameter(
+    'car-passengers',
+    baseCarPassengers + '_taxi-passengers'
+  ).value
+  return (base * passengersBeforeAction) / passengersAfterAction
+}
 
 /**
  * [削減後] = [削減前(base)] x ([推定値を算出した質問票回答の値]/[passengersAfterActionで指定した絶対値])
@@ -95,6 +98,7 @@ export const drivingIntensityToTaxiRideshare = (
  * operation: question-answer-to-target-inverse
  * args: private-car-driving
  * に特化した実装
+ * 元々はquestionAnswerToTargetInverse
  * @param base 削減前の値
  * @param baseCarPassengers 削減前平均乗車人数
  * @param passengersAfterAction 削減後の乗車人数
@@ -104,13 +108,13 @@ export const drivingIntensityToPrivateCarRideshare = (
   base: number,
   passengersAfterAction: number,
   baseCarPassengers: CarPassengers
-): number =>
-  (base *
-    getParameter(
-      'car-passengers',
-      baseCarPassengers + '_private-car-passengers'
-    ).value) /
-  passengersAfterAction
+): number => {
+  const passengersBeforeAction = getParameter(
+    'car-passengers',
+    baseCarPassengers + '_private-car-passengers'
+  ).value
+  return (base * passengersBeforeAction) / passengersAfterAction
+}
 
 /**
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
@@ -120,6 +124,7 @@ export const drivingIntensityToPrivateCarRideshare = (
  * operation: question-answer-to-target
  * args: food_food-amount-to-average
  * に特化した実装
+ * 元々はquestionAnswerToTarget
  * @param base 削減前の値
  * @param valueAfterAction 削減後の削減後の質問票の回答の値の絶対値
  * @param foodDirectWaste
@@ -131,9 +136,10 @@ export const foodAmountToAverageWithoutFoodLoss = (
   valueAfterAction: number,
   foodDirectWaste: FoodDirectWaste = 'unknown',
   foodLeftover: FoodLeftover = 'unknown'
-): number =>
-  (base * valueAfterAction) /
-  estimateFoodLossRate(foodDirectWaste, foodLeftover)
+): number => {
+  const valueBeforeAction = estimateFoodLossRate(foodDirectWaste, foodLeftover)
+  return (base * valueAfterAction) / valueBeforeAction
+}
 
 /**
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
@@ -143,6 +149,7 @@ export const foodAmountToAverageWithoutFoodLoss = (
  * operation: question-answer-to-target
  * args: mobility_driving-intensity
  * に特化した実装
+ * 元々はquestionAnswerToTarget
  * @param base 削減前の値
  * @param valueAfterAction 削減後の削減後の質問票の回答の値の絶対値
  * @param carType
@@ -156,14 +163,15 @@ export const drivingIntensityToEvPhv = (
   carType: CarType = 'unknown',
   carCharging: CarCharging = 'unknown',
   electricityType: ElectricityType = 'unknown'
-): number =>
-  (base * valueAfterAction) /
-  estimateCarDrivingIntensityFactor(
+): number => {
+  const valueBeforeAction = estimateCarDrivingIntensityFactor(
     carType,
     carCharging,
     electricityType,
     'intensity'
   )
+  return (base * valueAfterAction) / valueBeforeAction
+}
 
 /**
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
@@ -173,6 +181,7 @@ export const drivingIntensityToEvPhv = (
  * operation: question-answer-to-target
  * args: mobility_manufacturing-intensity
  * に特化した実装
+ * 元々はquestionAnswerToTarget
  * @param base 削減前の値
  * @param valueAfterAction 削減後の削減後の質問票の回答の値の絶対値
  * @param carType
@@ -183,45 +192,59 @@ export const manufacturingIntensityToEvPhv = (
   valueAfterAction: number,
   carType: CarType = 'unknown'
 ): number => {
-  return (
-    (base * valueAfterAction) /
-    getParameter('car-intensity-factor', carType + '_manufacturing-intensity')
-      .value
-  )
+  const valueBeforeAction = getParameter(
+    'car-intensity-factor',
+    carType + '_manufacturing-intensity'
+  ).value
+  return (base * valueAfterAction) / valueBeforeAction
 }
 
 /**
  * [削減後] = [削減前] x (1+[推定値を算出した質問票回答からの削減率] x [reductionRateで指定した影響割合])
  * 削減効果推定用の追加質問回答から求めた削減率の分だけ、一部(reductionRate)が削減される
  * 例）現在の住居の断熱基準に依存する削減率の分だけ、電力のうち冷暖房分が削減される
- * insrenov, clothes-homeで適用
+ * insrenovのhousing_housing-insulation-renovationで適用
+ * 元々はquestionReductionRate
  * @param base 削減前の値
- * @param target 削減対象 housing_housing-insulation-renovation|housing_housing-insulation-clothing
  * @param reductionRate 削減の影響割合
- * @param renovationHousingInsulation リノベーションによる家の断熱
- * @param clothingHousingInsulation 厚着による家の断熱
+ * @param housingInsulation リノベーションによる家の断熱
  * @returns 削減後の活動量もしくはGHG原単位
+ *
  */
-export const questionReductionRate = (
+export const housingInsulationRenovation = (
   base: number,
-  target: string,
   reductionRate: number,
   housingInsulation: HousingInsulation
 ): number => {
-  if (target === 'housing_housing-insulation-renovation') {
-    const renovationHousingInsulation = getParameter(
-      'housing-insulation',
-      housingInsulation + '_renovation'
-    ).value
-    return base * (1 + reductionRate * renovationHousingInsulation)
-  } else if (target === 'housing_housing-insulation-clothing') {
-    const clothingHousingInsulation = getParameter(
-      'housing-insulation',
-      housingInsulation + '_clothing'
-    ).value
-    return base * (1 + reductionRate * clothingHousingInsulation)
-  }
-  return base
+  const renovationHousingInsulation = getParameter(
+    'housing-insulation',
+    housingInsulation + '_renovation'
+  ).value
+  return base * (1 + reductionRate * renovationHousingInsulation)
+}
+
+/**
+ * [削減後] = [削減前] x (1+[推定値を算出した質問票回答からの削減率] x [reductionRateで指定した影響割合])
+ * 削減効果推定用の追加質問回答から求めた削減率の分だけ、一部(reductionRate)が削減される
+ * 例）現在の住居の断熱基準に依存する削減率の分だけ、電力のうち冷暖房分が削減される
+ * clothes-homeのhousing_housing-insulation-clothingで適用
+ * 元々はquestionReductionRate
+ * @param base 削減前の値
+ * @param reductionRate 削減の影響割合
+ * @param housingInsulation 厚着による家の断熱
+ * @returns 削減後の活動量もしくはGHG原単位
+ *
+ */
+export const housingInsulationClothing = (
+  base: number,
+  reductionRate: number,
+  housingInsulation: HousingInsulation
+): number => {
+  const clothingHousingInsulation = getParameter(
+    'housing-insulation',
+    housingInsulation + '_clothing'
+  ).value
+  return base * (1 + reductionRate * clothingHousingInsulation)
 }
 
 //
