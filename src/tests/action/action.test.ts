@@ -8,7 +8,9 @@ import {
   housingInsulationClothing,
   housingInsulationRenovation,
   increaseRate,
-  manufacturingIntensityToEvPhv
+  manufacturingIntensityToEvPhv,
+  shiftFromOtherItems,
+  type Diagnoses
 } from '../../ts/action/action'
 import {
   type CarCharging,
@@ -24,10 +26,24 @@ import { estimateFoodIntakeAnnualAmount } from '../../ts/food/food-intake'
 import { estimateElectricityAnnualAmount } from '../../ts/housing/electricity'
 import { estimateGasAnnualAmount } from '../../ts/housing/gas'
 import { estimateKeroseneAnnualAmount } from '../../ts/housing/kerosene'
+import { estimateBicycleDrivingAnnualAmount } from '../../ts/mobility/bicycle-driving'
+import { estimateBusAnnualAmount } from '../../ts/mobility/bus'
 import { estimateCarSharingDrivingIntensity } from '../../ts/mobility/car-sharing-driving'
-import { estimatePrivateCarDrivingIntensity } from '../../ts/mobility/private-car-driving'
-import { estimatePrivateCarPurchaseIntensity } from '../../ts/mobility/private-car-purchase'
-import { estimateTaxiIntensity } from '../../ts/mobility/taxi'
+import { estimateCarSharingRentalAnnualAmount } from '../../ts/mobility/car-sharing-rental'
+import {
+  estimatePrivateCarDrivingAmount,
+  estimatePrivateCarDrivingIntensity
+} from '../../ts/mobility/private-car-driving'
+import { estimatePrivateCarMaintenanceAmount } from '../../ts/mobility/private-car-maintenance'
+import {
+  estimatePrivateCarPurchaseAmount,
+  estimatePrivateCarPurchaseIntensity
+} from '../../ts/mobility/private-car-purchase'
+import {
+  estimateTaxiAnnualAmount,
+  estimateTaxiIntensity
+} from '../../ts/mobility/taxi'
+import { estimateTrainAnnualAmount } from '../../ts/mobility/train'
 
 describe('absoluteTarget', () => {
   test('returns the target', () => {
@@ -225,5 +241,130 @@ describe('housingInsulationClothing', () => {
     expect(
       housingInsulationClothing(keroseneAmount, 0.771779141, insulation)
     ).toBeCloseTo(1881.53320256687)
+  })
+})
+
+// test the dailyshift01 case
+describe('dailyshift01', () => {
+  const privateCarAnnualMileage = 5000
+  const trainWeeklyTravelingTime = 5
+  const busWeeklyTravelingTime = 1
+  const otherCarWeeklyTravelingTime = 1
+  const otherCarAnnualTravelingTime = 20
+  const trainAnnualTravelingTime = 20
+  const busAnnualTravelingTime = 20
+
+  class DiagnosesImpl implements Diagnoses {
+    private readonly amounts: Record<string, number> = {}
+    private readonly actions: Record<string, number> = {}
+
+    constructor() {
+      this.amounts.mobility_train_amount = estimateTrainAnnualAmount({
+        weeklyTravelingTime: trainWeeklyTravelingTime,
+        annualTravelingTime: trainAnnualTravelingTime
+      })
+      this.amounts.mobility_bus_amount = estimateBusAnnualAmount({
+        weeklyTravelingTime: busWeeklyTravelingTime,
+        annualTravelingTime: busAnnualTravelingTime
+      })
+      this.amounts.mobility_taxi_amount = estimateTaxiAnnualAmount({
+        weeklyTravelingTime: otherCarWeeklyTravelingTime,
+        annualTravelingTime: otherCarAnnualTravelingTime
+      })
+      this.amounts['mobility_private-car-driving_amount'] =
+        estimatePrivateCarDrivingAmount({ mileage: privateCarAnnualMileage })
+      this.amounts['mobility_bicycle-driving_amount'] =
+        estimateBicycleDrivingAnnualAmount()
+      this.amounts['mobility_private-car-purchase_amount'] =
+        estimatePrivateCarPurchaseAmount({
+          annualMileage: privateCarAnnualMileage
+        })
+      this.amounts['mobility_car-sharing-rental_amount'] =
+        estimateCarSharingRentalAnnualAmount({
+          weeklyTravelingTime: otherCarWeeklyTravelingTime,
+          annualTravelingTime: otherCarAnnualTravelingTime
+        })
+
+      this.amounts['mobility_private-car-maintenance_amount'] =
+        estimatePrivateCarMaintenanceAmount({
+          annualMileage: privateCarAnnualMileage
+        })
+    }
+
+    addAction = (
+      domainItemType: string,
+      option: string,
+      value: number
+    ): void => {
+      this.actions[domainItemType + '_' + option] = value
+    }
+
+    findEstimation(domainItemType: string): number {
+      return this.amounts[domainItemType]
+    }
+
+    findAction(domainItemType: string, option: string): number {
+      return this.actions[domainItemType + '_' + option]
+    }
+  }
+
+  const diagnoses = new DiagnosesImpl()
+  const taxiAmount = increaseRate(
+    diagnoses.findEstimation('mobility_taxi_amount'),
+    -1
+  )
+  test('taxi_amount', () => {
+    expect(taxiAmount).toBeCloseTo(0)
+  })
+
+  const privateCarDrivingAmount = increaseRate(
+    diagnoses.findEstimation('mobility_private-car-driving_amount'),
+    -0.704901961
+  )
+  test('private-car-driving_amount', () => {
+    expect(privateCarDrivingAmount).toBeCloseTo(1475.49019607844)
+  })
+
+  diagnoses.addAction('mobility_taxi_amount', 'dailyshift', taxiAmount)
+  diagnoses.addAction(
+    'mobility_private-car-driving_amount',
+    'dailyshift',
+    privateCarDrivingAmount
+  )
+
+  test('mobility_train_amount', () => {
+    expect(
+      shiftFromOtherItems(
+        diagnoses.findEstimation('mobility_train_amount'),
+        'dailyshift',
+        ['mobility_private-car-driving_amount', 'mobility_taxi_amount'],
+        0.333333333,
+        diagnoses
+      )
+    ).toBeCloseTo(18232.1992366984)
+  })
+
+  test('mobility_bus_amount', () => {
+    expect(
+      shiftFromOtherItems(
+        diagnoses.findEstimation('mobility_bus_amount'),
+        'dailyshift',
+        ['mobility_private-car-driving_amount', 'mobility_taxi_amount'],
+        0.333333333,
+        diagnoses
+      )
+    ).toBeCloseTo(3022.19923669836)
+  })
+
+  test('mobility_bicycle-driving_amount', () => {
+    expect(
+      shiftFromOtherItems(
+        diagnoses.findEstimation('mobility_bicycle-driving_amount'),
+        'dailyshift',
+        ['mobility_private-car-driving_amount', 'mobility_taxi_amount'],
+        0.333333333,
+        diagnoses
+      )
+    ).toBeCloseTo(1796.21257212208)
   })
 })

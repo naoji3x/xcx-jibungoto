@@ -25,7 +25,7 @@ export const estimateBicycleDrivingAnnualFootprint = ({
  */
 export const estimateBicycleDrivingAnnualAmount = ({
   residentialAreaSize
-}: BicycleDrivingAmountParam): number =>
+}: BicycleDrivingAmountParam = {}): number =>
   residentialAreaSize === undefined
     ? getBaselineAmount('mobility', 'bicycle-driving').value
     : estimateAnnualAmountByArea('bicycle-driving', residentialAreaSize)

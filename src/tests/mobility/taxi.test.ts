@@ -1,7 +1,7 @@
 import {
   estimateTaxiAnnualAmount,
-  estimateTaxiIntensity,
-  estimateTaxiAnnualFootprint
+  estimateTaxiAnnualFootprint,
+  estimateTaxiIntensity
 } from '../../ts/mobility/taxi'
 
 describe('taxi', () => {
