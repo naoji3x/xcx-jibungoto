@@ -307,6 +307,10 @@ export const shiftFromOtherItemsThenReductionRate = (
   )
 }
 
+//
+// Phase 3
+//
+
 /**
  * [削減後] = [削減前(base)] x (1-[rateで指定した影響割合])
  * + [削減前(base)] x [rateで指定した影響割合] x (Σ[他の項目の削減後] /Σ[他の項目の削減前])
@@ -343,7 +347,7 @@ export const proportionalToOtherItems = (
 }
 
 //
-// Phase 3 他の項目のフットプリント（amount x intensity）の削減量を参照して削減量を計算する施策
+// Phase 4 他の項目のフットプリント（amount x intensity）の削減量を参照して削減量を計算する施策
 //
 
 // [削減後] = [削減前] x (1-[rateで指定した影響割合])

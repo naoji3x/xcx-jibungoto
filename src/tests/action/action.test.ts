@@ -9,7 +9,9 @@ import {
   housingInsulationRenovation,
   increaseRate,
   manufacturingIntensityToEvPhv,
+  proportionalToOtherItems,
   shiftFromOtherItems,
+  shiftFromOtherItemsThenReductionRate,
   type Diagnoses
 } from '../../ts/action/action'
 import {
@@ -20,15 +22,24 @@ import {
   type FoodDirectWaste,
   type FoodIntake,
   type FoodLeftover,
-  type HousingInsulation
+  type GasItem,
+  type HousingInsulation,
+  type HousingSize,
+  type Month
 } from '../../ts/common/types'
 import { estimateFoodIntakeAnnualAmount } from '../../ts/food/food-intake'
 import { estimateElectricityAnnualAmount } from '../../ts/housing/electricity'
 import { estimateGasAnnualAmount } from '../../ts/housing/gas'
+import { estimateHousingMaintenanceAnnualAmount } from '../../ts/housing/housing-maintenance'
 import { estimateKeroseneAnnualAmount } from '../../ts/housing/kerosene'
+import { estimateOtherEnergyAnnualAmount } from '../../ts/housing/other-energy'
 import { estimateBicycleDrivingAnnualAmount } from '../../ts/mobility/bicycle-driving'
+import { estimateBicycleMaintenanceAnnualAmount } from '../../ts/mobility/bicycle-maintenance'
 import { estimateBusAnnualAmount } from '../../ts/mobility/bus'
-import { estimateCarSharingDrivingIntensity } from '../../ts/mobility/car-sharing-driving'
+import {
+  estimateCarSharingDrivingAnnualAmount,
+  estimateCarSharingDrivingIntensity
+} from '../../ts/mobility/car-sharing-driving'
 import { estimateCarSharingRentalAnnualAmount } from '../../ts/mobility/car-sharing-rental'
 import {
   estimatePrivateCarDrivingAmount,
@@ -279,6 +290,11 @@ describe('dailyshift01', () => {
         estimatePrivateCarPurchaseAmount({
           annualMileage: privateCarAnnualMileage
         })
+      this.amounts['mobility_car-sharing-driving_amount'] =
+        estimateCarSharingDrivingAnnualAmount({
+          weeklyTravelingTime: otherCarWeeklyTravelingTime,
+          annualTravelingTime: otherCarAnnualTravelingTime
+        })
       this.amounts['mobility_car-sharing-rental_amount'] =
         estimateCarSharingRentalAnnualAmount({
           weeklyTravelingTime: otherCarWeeklyTravelingTime,
@@ -289,6 +305,9 @@ describe('dailyshift01', () => {
         estimatePrivateCarMaintenanceAmount({
           annualMileage: privateCarAnnualMileage
         })
+
+      this.amounts['mobility_bicycle-maintenance_amount'] =
+        estimateBicycleMaintenanceAnnualAmount()
     }
 
     addAction = (
@@ -304,7 +323,8 @@ describe('dailyshift01', () => {
     }
 
     findAction(domainItemType: string, option: string): number {
-      return this.actions[domainItemType + '_' + option]
+      const value = this.actions[domainItemType + '_' + option]
+      return isNaN(value) ? this.findEstimation(domainItemType) : value
     }
   }
 
@@ -357,14 +377,215 @@ describe('dailyshift01', () => {
   })
 
   test('mobility_bicycle-driving_amount', () => {
+    const bicycleDrivingAmount = shiftFromOtherItems(
+      diagnoses.findEstimation('mobility_bicycle-driving_amount'),
+      'dailyshift',
+      ['mobility_private-car-driving_amount', 'mobility_taxi_amount'],
+      0.333333333,
+      diagnoses
+    )
+    expect(bicycleDrivingAmount).toBeCloseTo(1796.21257212208)
+    diagnoses.addAction(
+      'mobility_bicycle-driving_amount',
+      'dailyshift',
+      bicycleDrivingAmount
+    )
+  })
+
+  // test mobility_private-car-purchase_amount
+  test('mobility_private-car-purchase_amount', () => {
     expect(
-      shiftFromOtherItems(
-        diagnoses.findEstimation('mobility_bicycle-driving_amount'),
+      proportionalToOtherItems(
+        diagnoses.findEstimation('mobility_private-car-purchase_amount'),
         'dailyshift',
-        ['mobility_private-car-driving_amount', 'mobility_taxi_amount'],
-        0.333333333,
+        ['mobility_private-car-driving_amount'],
+        1,
         diagnoses
       )
-    ).toBeCloseTo(1796.21257212208)
+    ).toBeCloseTo(0.014786433479391)
+  })
+
+  // test mobility_car-sharing-rental_amount
+  test('mobility_car-sharing-rental_amount', () => {
+    expect(
+      proportionalToOtherItems(
+        diagnoses.findEstimation('mobility_car-sharing-rental_amount'),
+        'dailyshift',
+        ['mobility_car-sharing-driving_amount'],
+        1,
+        diagnoses
+      )
+    ).toBeCloseTo(3.5897022020565)
+  })
+
+  // test mobility_private-car-maintenance_amount
+  test('mobility_private-car-maintenance_amount', () => {
+    expect(
+      proportionalToOtherItems(
+        diagnoses.findEstimation('mobility_private-car-maintenance_amount'),
+        'dailyshift',
+        ['mobility_private-car-driving_amount'],
+        1,
+        diagnoses
+      )
+    ).toBeCloseTo(18.9384233919727)
+  })
+
+  // test mobility_bicycle-maintenance_amount
+  test('mobility_bicycle-maintenance_amount', () => {
+    expect(
+      proportionalToOtherItems(
+        diagnoses.findEstimation('mobility_bicycle-maintenance_amount'),
+        'dailyshift',
+        ['mobility_bicycle-driving_amount'],
+        1,
+        diagnoses
+      )
+    ).toBeCloseTo(2.76676070917255)
+  })
+})
+
+// test zeh case
+describe('zeh', () => {
+  const residentCount = 2
+  const housingSize: HousingSize = '2-room'
+  const electricityMonthlyConsumption = 750
+  const electricityMonth: Month = 'january'
+  const gasItem: GasItem = 'urban-gas'
+  const gasMonth: Month = 'january'
+  const gasMonthlyConsumption = 15
+  const keroseneMonthlyConsumption = 200
+  const keroseneMonthCount = 2
+
+  class DiagnosesImpl implements Diagnoses {
+    private readonly amounts: Record<string, number> = {}
+    private readonly actions: Record<string, number> = {}
+
+    constructor() {
+      this.amounts['housing_housing-maintenance_amount'] =
+        estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize })
+      this.amounts.electricity = estimateElectricityAnnualAmount({
+        monthlyConsumption: electricityMonthlyConsumption,
+        month: electricityMonth,
+        residentCount
+      })
+
+      this.amounts.housing_electricity_amount = estimateElectricityAnnualAmount(
+        {
+          monthlyConsumption: electricityMonthlyConsumption,
+          month: electricityMonth,
+          residentCount
+        }
+      )
+
+      this.amounts['housing_urban-gas_amount'] = estimateGasAnnualAmount(
+        gasItem,
+        {
+          monthlyConsumption: gasMonthlyConsumption,
+          month: gasMonth,
+          residentCount
+        }
+      )
+
+      this.amounts.housing_lpg_amount = 0
+      this.amounts.housing_kerosene_amount = estimateKeroseneAnnualAmount({
+        monthlyConsumption: keroseneMonthlyConsumption,
+        monthCount: keroseneMonthCount,
+        residentCount
+      })
+      this.amounts['housing_other-energy_amount'] =
+        estimateOtherEnergyAnnualAmount()
+    }
+
+    addAction = (
+      domainItemType: string,
+      option: string,
+      value: number
+    ): void => {
+      this.actions[domainItemType + '_' + option] = value
+    }
+
+    findEstimation(domainItemType: string): number {
+      return this.amounts[domainItemType]
+    }
+
+    findAction(domainItemType: string, option: string): number {
+      const value = this.actions[domainItemType + '_' + option]
+      return isNaN(value) ? this.findEstimation(domainItemType) : value
+    }
+  }
+
+  const diagnoses = new DiagnosesImpl()
+
+  // test housing_housing-maintenance_amount
+  test('housing_housing-maintenance_amount', () => {
+    const housingMaintenanceAmount = increaseRate(
+      diagnoses.findEstimation('housing_housing-maintenance_amount'),
+      0.7449956
+    )
+    expect(housingMaintenanceAmount).toBeCloseTo(29.6565001221022)
+    diagnoses.addAction(
+      'housing_housing-maintenance_amount',
+      'zeh',
+      housingMaintenanceAmount
+    )
+  })
+
+  // test housing_urban-gas_amount
+  test('housing_urban-gas_amount', () => {
+    const urbanGasAmount = absoluteTarget(0)
+    expect(urbanGasAmount).toBeCloseTo(0.0)
+    diagnoses.addAction('housing_urban-gas_amount', 'zeh', urbanGasAmount)
+  })
+
+  // test housing_lpg_amount
+  test('housing_lpg_amount', () => {
+    const lpgAmount = absoluteTarget(0)
+    expect(lpgAmount).toBeCloseTo(0.0)
+    diagnoses.addAction('housing_lpg_amount', 'zeh', lpgAmount)
+  })
+
+  // test housing_kerosene_amount
+  test('housing_kerosene_amount', () => {
+    const keroseneAmount = absoluteTarget(0)
+    expect(keroseneAmount).toBeCloseTo(0.0)
+    diagnoses.addAction('housing_kerosene_amount', 'zeh', keroseneAmount)
+  })
+
+  // test housing_other-energy_amount
+  test('housing_other-energy_amount', () => {
+    const otherEnergyAmount = absoluteTarget(0)
+    expect(otherEnergyAmount).toBeCloseTo(0.0)
+    diagnoses.addAction('housing_other-energy_amount', 'zeh', otherEnergyAmount)
+  })
+
+  // test housing_electricity_intensity
+  test('housing_electricity_intensity', () => {
+    const electricityIntensity = absoluteTarget(0.042861845)
+    expect(electricityIntensity).toBeCloseTo(0.042861845)
+    diagnoses.addAction(
+      'housing_electricity_intensity',
+      'zeh',
+      electricityIntensity
+    )
+  })
+
+  // test housing_electricity_amount
+  test('housing_electricity_amount', () => {
+    expect(
+      shiftFromOtherItemsThenReductionRate(
+        diagnoses.findEstimation('housing_electricity_amount'),
+        'zeh',
+        [
+          'housing_urban-gas_amount',
+          'housing_lpg_amount',
+          'housing_kerosene_amount',
+          'housing_other-energy_amount'
+        ],
+        0.369,
+        -0.2,
+        diagnoses
+      )
+    ).toBeCloseTo(3533.7319988604)
   })
 })
