@@ -5,32 +5,62 @@ import {
   drivingIntensityToPrivateCarRideshare,
   drivingIntensityToTaxiRideshare,
   foodAmountToAverageWithoutFoodLoss,
+  furtherReductionFromOtherFootprints,
   housingInsulationClothing,
   housingInsulationRenovation,
   increaseRate,
   manufacturingIntensityToEvPhv,
+  proportionalToOtherFootprints,
   proportionalToOtherItems,
   shiftFromOtherItems,
   shiftFromOtherItemsThenReductionRate,
   type Diagnoses
 } from '../../ts/action/action'
 import {
+  type AlcoholFrequency,
   type CarCharging,
   type CarPassengers,
   type CarType,
+  type DairyFoodFrequency,
+  type DishFrequency,
   type ElectricityType,
   type FoodDirectWaste,
   type FoodIntake,
+  type FoodIntakeItem,
   type FoodLeftover,
   type GasItem,
   type HousingInsulation,
   type HousingSize,
-  type Month
+  type Month,
+  type SoftDrinkSnackExpenses
 } from '../../ts/common/types'
-import { estimateFoodIntakeAnnualAmount } from '../../ts/food/food-intake'
-import { estimateElectricityAnnualAmount } from '../../ts/housing/electricity'
+import {
+  estimateDairyFoodAnnualAmounts,
+  estimateDairyFoodIntensities
+} from '../../ts/food/dairy-food'
+import {
+  estimateDishAnnualAmounts,
+  estimateDishIntensities
+} from '../../ts/food/dish'
+import { estimateEatOutIntensity } from '../../ts/food/eat-out'
+import {
+  estimateFoodIntakeAnnualAmount,
+  estimateFoodIntakeIntensity
+} from '../../ts/food/food-intake'
+import {
+  estimateProcessedMeatAnnualAmount,
+  estimateProcessedMeatIntensity
+} from '../../ts/food/processed-meat'
+import { estimateReadyMealIntensity } from '../../ts/food/ready-meal'
+import {
+  estimateElectricityAnnualAmount,
+  estimateElectricityIntensity
+} from '../../ts/housing/electricity'
 import { estimateGasAnnualAmount } from '../../ts/housing/gas'
-import { estimateHousingMaintenanceAnnualAmount } from '../../ts/housing/housing-maintenance'
+import {
+  estimateHousingMaintenanceAnnualAmount,
+  estimateHousingMaintenanceIntensity
+} from '../../ts/housing/housing-maintenance'
 import { estimateKeroseneAnnualAmount } from '../../ts/housing/kerosene'
 import { estimateOtherEnergyAnnualAmount } from '../../ts/housing/other-energy'
 import { estimateBicycleDrivingAnnualAmount } from '../../ts/mobility/bicycle-driving'
@@ -55,6 +85,28 @@ import {
   estimateTaxiIntensity
 } from '../../ts/mobility/taxi'
 import { estimateTrainAnnualAmount } from '../../ts/mobility/train'
+
+class DiagnosesImpl implements Diagnoses {
+  private readonly items: Record<string, number> = {}
+  private readonly actions: Record<string, number> = {}
+
+  addItem = (domainItemType: string, value: number): void => {
+    this.items[domainItemType] = value
+  }
+
+  addAction = (domainItemType: string, option: string, value: number): void => {
+    this.actions[domainItemType + '_' + option] = value
+  }
+
+  findEstimation(domainItemType: string): number {
+    return this.items[domainItemType]
+  }
+
+  findAction(domainItemType: string, option: string): number {
+    const value = this.actions[domainItemType + '_' + option]
+    return isNaN(value) ? this.findEstimation(domainItemType) : value
+  }
+}
 
 describe('absoluteTarget', () => {
   test('returns the target', () => {
@@ -265,70 +317,67 @@ describe('dailyshift01', () => {
   const trainAnnualTravelingTime = 20
   const busAnnualTravelingTime = 20
 
-  class DiagnosesImpl implements Diagnoses {
-    private readonly amounts: Record<string, number> = {}
-    private readonly actions: Record<string, number> = {}
-
-    constructor() {
-      this.amounts.mobility_train_amount = estimateTrainAnnualAmount({
-        weeklyTravelingTime: trainWeeklyTravelingTime,
-        annualTravelingTime: trainAnnualTravelingTime
-      })
-      this.amounts.mobility_bus_amount = estimateBusAnnualAmount({
-        weeklyTravelingTime: busWeeklyTravelingTime,
-        annualTravelingTime: busAnnualTravelingTime
-      })
-      this.amounts.mobility_taxi_amount = estimateTaxiAnnualAmount({
-        weeklyTravelingTime: otherCarWeeklyTravelingTime,
-        annualTravelingTime: otherCarAnnualTravelingTime
-      })
-      this.amounts['mobility_private-car-driving_amount'] =
-        estimatePrivateCarDrivingAmount({ mileage: privateCarAnnualMileage })
-      this.amounts['mobility_bicycle-driving_amount'] =
-        estimateBicycleDrivingAnnualAmount()
-      this.amounts['mobility_private-car-purchase_amount'] =
-        estimatePrivateCarPurchaseAmount({
-          annualMileage: privateCarAnnualMileage
-        })
-      this.amounts['mobility_car-sharing-driving_amount'] =
-        estimateCarSharingDrivingAnnualAmount({
-          weeklyTravelingTime: otherCarWeeklyTravelingTime,
-          annualTravelingTime: otherCarAnnualTravelingTime
-        })
-      this.amounts['mobility_car-sharing-rental_amount'] =
-        estimateCarSharingRentalAnnualAmount({
-          weeklyTravelingTime: otherCarWeeklyTravelingTime,
-          annualTravelingTime: otherCarAnnualTravelingTime
-        })
-
-      this.amounts['mobility_private-car-maintenance_amount'] =
-        estimatePrivateCarMaintenanceAmount({
-          annualMileage: privateCarAnnualMileage
-        })
-
-      this.amounts['mobility_bicycle-maintenance_amount'] =
-        estimateBicycleMaintenanceAnnualAmount()
-    }
-
-    addAction = (
-      domainItemType: string,
-      option: string,
-      value: number
-    ): void => {
-      this.actions[domainItemType + '_' + option] = value
-    }
-
-    findEstimation(domainItemType: string): number {
-      return this.amounts[domainItemType]
-    }
-
-    findAction(domainItemType: string, option: string): number {
-      const value = this.actions[domainItemType + '_' + option]
-      return isNaN(value) ? this.findEstimation(domainItemType) : value
-    }
-  }
-
   const diagnoses = new DiagnosesImpl()
+  diagnoses.addItem(
+    'mobility_train_amount',
+    estimateTrainAnnualAmount({
+      weeklyTravelingTime: trainWeeklyTravelingTime,
+      annualTravelingTime: trainAnnualTravelingTime
+    })
+  )
+  diagnoses.addItem(
+    'mobility_bus_amount',
+    estimateBusAnnualAmount({
+      weeklyTravelingTime: busWeeklyTravelingTime,
+      annualTravelingTime: busAnnualTravelingTime
+    })
+  )
+  diagnoses.addItem(
+    'mobility_taxi_amount',
+    estimateTaxiAnnualAmount({
+      weeklyTravelingTime: otherCarWeeklyTravelingTime,
+      annualTravelingTime: otherCarAnnualTravelingTime
+    })
+  )
+  diagnoses.addItem(
+    'mobility_private-car-driving_amount',
+    estimatePrivateCarDrivingAmount({ mileage: privateCarAnnualMileage })
+  )
+  diagnoses.addItem(
+    'mobility_bicycle-driving_amount',
+    estimateBicycleDrivingAnnualAmount()
+  )
+  diagnoses.addItem(
+    'mobility_private-car-purchase_amount',
+    estimatePrivateCarPurchaseAmount({
+      annualMileage: privateCarAnnualMileage
+    })
+  )
+  diagnoses.addItem(
+    'mobility_car-sharing-driving_amount',
+    estimateCarSharingDrivingAnnualAmount({
+      weeklyTravelingTime: otherCarWeeklyTravelingTime,
+      annualTravelingTime: otherCarAnnualTravelingTime
+    })
+  )
+  diagnoses.addItem(
+    'mobility_car-sharing-rental_amount',
+    estimateCarSharingRentalAnnualAmount({
+      weeklyTravelingTime: otherCarWeeklyTravelingTime,
+      annualTravelingTime: otherCarAnnualTravelingTime
+    })
+  )
+  diagnoses.addItem(
+    'mobility_private-car-maintenance_amount',
+    estimatePrivateCarMaintenanceAmount({
+      annualMileage: privateCarAnnualMileage
+    })
+  )
+  diagnoses.addItem(
+    'mobility_bicycle-maintenance_amount',
+    estimateBicycleMaintenanceAnnualAmount()
+  )
+
   const taxiAmount = increaseRate(
     diagnoses.findEstimation('mobility_taxi_amount'),
     -1
@@ -445,8 +494,8 @@ describe('dailyshift01', () => {
   })
 })
 
-// test zeh case
-describe('zeh', () => {
+// test zeh01 case
+describe('zeh01', () => {
   const residentCount = 2
   const housingSize: HousingSize = '2-room'
   const electricityMonthlyConsumption = 750
@@ -457,65 +506,48 @@ describe('zeh', () => {
   const keroseneMonthlyConsumption = 200
   const keroseneMonthCount = 2
 
-  class DiagnosesImpl implements Diagnoses {
-    private readonly amounts: Record<string, number> = {}
-    private readonly actions: Record<string, number> = {}
-
-    constructor() {
-      this.amounts['housing_housing-maintenance_amount'] =
-        estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize })
-      this.amounts.electricity = estimateElectricityAnnualAmount({
-        monthlyConsumption: electricityMonthlyConsumption,
-        month: electricityMonth,
-        residentCount
-      })
-
-      this.amounts.housing_electricity_amount = estimateElectricityAnnualAmount(
-        {
-          monthlyConsumption: electricityMonthlyConsumption,
-          month: electricityMonth,
-          residentCount
-        }
-      )
-
-      this.amounts['housing_urban-gas_amount'] = estimateGasAnnualAmount(
-        gasItem,
-        {
-          monthlyConsumption: gasMonthlyConsumption,
-          month: gasMonth,
-          residentCount
-        }
-      )
-
-      this.amounts.housing_lpg_amount = 0
-      this.amounts.housing_kerosene_amount = estimateKeroseneAnnualAmount({
-        monthlyConsumption: keroseneMonthlyConsumption,
-        monthCount: keroseneMonthCount,
-        residentCount
-      })
-      this.amounts['housing_other-energy_amount'] =
-        estimateOtherEnergyAnnualAmount()
-    }
-
-    addAction = (
-      domainItemType: string,
-      option: string,
-      value: number
-    ): void => {
-      this.actions[domainItemType + '_' + option] = value
-    }
-
-    findEstimation(domainItemType: string): number {
-      return this.amounts[domainItemType]
-    }
-
-    findAction(domainItemType: string, option: string): number {
-      const value = this.actions[domainItemType + '_' + option]
-      return isNaN(value) ? this.findEstimation(domainItemType) : value
-    }
-  }
-
   const diagnoses = new DiagnosesImpl()
+  diagnoses.addItem(
+    'housing_housing-maintenance_amount',
+    estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize })
+  )
+  diagnoses.addItem(
+    'electricity',
+    estimateElectricityAnnualAmount({
+      monthlyConsumption: electricityMonthlyConsumption,
+      month: electricityMonth,
+      residentCount
+    })
+  )
+  diagnoses.addItem(
+    'housing_electricity_amount',
+    estimateElectricityAnnualAmount({
+      monthlyConsumption: electricityMonthlyConsumption,
+      month: electricityMonth,
+      residentCount
+    })
+  )
+  diagnoses.addItem(
+    'housing_urban-gas_amount',
+    estimateGasAnnualAmount(gasItem, {
+      monthlyConsumption: gasMonthlyConsumption,
+      month: gasMonth,
+      residentCount
+    })
+  )
+  diagnoses.addItem('housing_lpg_amount', 0)
+  diagnoses.addItem(
+    'housing_kerosene_amount',
+    estimateKeroseneAnnualAmount({
+      monthlyConsumption: keroseneMonthlyConsumption,
+      monthCount: keroseneMonthCount,
+      residentCount
+    })
+  )
+  diagnoses.addItem(
+    'housing_other-energy_amount',
+    estimateOtherEnergyAnnualAmount()
+  )
 
   // test housing_housing-maintenance_amount
   test('housing_housing-maintenance_amount', () => {
@@ -587,5 +619,332 @@ describe('zeh', () => {
         diagnoses
       )
     ).toBeCloseTo(3533.7319988604)
+  })
+})
+
+// test led01 case
+describe('led01', () => {
+  const residentCount = 2
+  const housingSize: HousingSize = '2-room'
+  const electricity: ElectricityType = 'conventional'
+  const electricityMonthlyConsumption = 750
+  const electricityMonth: Month = 'january'
+
+  const diagnoses = new DiagnosesImpl()
+  diagnoses.addItem(
+    'housing_electricity_amount',
+    estimateElectricityAnnualAmount({
+      monthlyConsumption: electricityMonthlyConsumption,
+      month: electricityMonth,
+      residentCount
+    })
+  )
+  diagnoses.addItem(
+    'housing_electricity_intensity',
+    estimateElectricityIntensity({ electricity })
+  )
+  diagnoses.addItem(
+    'housing_housing-maintenance_amount',
+    estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize })
+  )
+  diagnoses.addItem(
+    'housing_housing-maintenance_intensity',
+    estimateHousingMaintenanceIntensity()
+  )
+
+  // test housing_electricity_amount
+  test('housing_electricity_amount', () => {
+    const electricityAmount = increaseRate(
+      diagnoses.findEstimation('housing_electricity_amount'),
+      -0.0660406
+    )
+    expect(electricityAmount).toBeCloseTo(3206.52721639271)
+    diagnoses.addAction('housing_electricity_amount', 'led', electricityAmount)
+  })
+
+  // test housing_housing-maintenance_amount
+  test('housing_housing-maintenance_amount', () => {
+    expect(
+      furtherReductionFromOtherFootprints(
+        diagnoses.findEstimation('housing_housing-maintenance_amount'),
+        diagnoses.findEstimation('housing_housing-maintenance_intensity'),
+        'amount',
+        'led',
+        ['housing_electricity'],
+        0.020622194,
+        diagnoses
+      )
+    ).toBeCloseTo(19.1471336056997)
+  })
+})
+
+// test vegan01 case
+describe('vegan01', () => {
+  const foodIntake: FoodIntake = 'very-much'
+  const foodDirectWaste: FoodDirectWaste = '8-more-per-week'
+  const foodLeftover: FoodLeftover = '8-more-per-week'
+  const beefDishFrequency: DishFrequency = '2-3-per-month'
+  const porkDishFrequency: DishFrequency = '2-3-per-month'
+  const chickenDishFrequency: DishFrequency = '2-3-per-month'
+  const seafoodDishFrequency: DishFrequency = '2-3-per-month'
+  const dairyFoodFrequency: DairyFoodFrequency = '1-2-less-per-week'
+  const alcoholFrequency: AlcoholFrequency = '2-3-less-per-month'
+  const softDrinkSnackExpenses: SoftDrinkSnackExpenses = '15k-more'
+
+  const diagnoses = new DiagnosesImpl()
+
+  const foodIntakeItems: FoodIntakeItem[] = [
+    'rice',
+    'bread-flour',
+    'noodle',
+    'potatoes',
+    'vegetables',
+    'processed-vegetables',
+    'beans',
+    'fruits',
+    'oil',
+    'seasoning'
+  ]
+
+  // add items
+  for (const item of foodIntakeItems) {
+    diagnoses.addItem(
+      'food_' + item + '_amount',
+      estimateFoodIntakeAnnualAmount(item, {
+        foodIntake,
+        foodDirectWaste,
+        foodLeftover
+      })
+    )
+    diagnoses.addItem(
+      'food_' + item + '_intensity',
+      estimateFoodIntakeIntensity(item)
+    )
+  }
+
+  // beef, pork, chicken, other-meat, fish, processed-fish
+  const dishAmounts = estimateDishAnnualAmounts({
+    foodDirectWaste,
+    foodLeftover,
+    beefDishFrequency,
+    porkDishFrequency,
+    chickenDishFrequency,
+    seafoodDishFrequency
+  })
+  for (const item in dishAmounts) {
+    diagnoses.addItem('food_' + item + '_amount', dishAmounts[item])
+  }
+
+  const dishIntensities = estimateDishIntensities()
+  for (const item in dishIntensities) {
+    diagnoses.addItem('food_' + item + '_intensity', dishIntensities[item])
+  }
+
+  // milk, other-dairy, eggs
+  const dairyFoodAmounts = estimateDairyFoodAnnualAmounts({
+    foodDirectWaste,
+    foodLeftover,
+    frequency: dairyFoodFrequency
+  })
+  for (const item in dairyFoodAmounts) {
+    diagnoses.addItem('food_' + item + '_amount', dairyFoodAmounts[item])
+  }
+
+  const dairyFoodIntensities = estimateDairyFoodIntensities()
+  for (const item in dairyFoodIntensities) {
+    diagnoses.addItem('food_' + item + '_intensity', dairyFoodIntensities[item])
+  }
+
+  // processed-meat
+  diagnoses.addItem(
+    'food_processed-meat_amount',
+    estimateProcessedMeatAnnualAmount({
+      foodDirectWaste,
+      foodLeftover,
+      beefDishFrequency,
+      porkDishFrequency,
+      chickenDishFrequency
+    })
+  )
+  diagnoses.addItem(
+    'food_processed-meat_intensity',
+    estimateProcessedMeatIntensity()
+  )
+
+  // ready-meal
+  diagnoses.addItem(
+    'food_ready-meal_intensity',
+    estimateReadyMealIntensity({
+      foodDirectWaste,
+      foodLeftover,
+      foodIntake,
+      beefDishFrequency,
+      porkDishFrequency,
+      chickenDishFrequency,
+      seafoodDishFrequency,
+      dairyFoodFrequency,
+      softDrinkSnackExpenses
+    })
+  )
+
+  // restaurant
+  diagnoses.addItem(
+    'food_restaurant_intensity',
+    estimateEatOutIntensity('restaurant', {
+      foodDirectWaste,
+      foodLeftover,
+      foodIntake,
+      beefDishFrequency,
+      porkDishFrequency,
+      chickenDishFrequency,
+      seafoodDishFrequency,
+      dairyFoodFrequency,
+      alcoholFrequency,
+      softDrinkSnackExpenses
+    })
+  )
+
+  // bar-cafe
+  diagnoses.addItem(
+    'food_bar-cafe_intensity',
+    estimateEatOutIntensity('bar-cafe', {
+      foodDirectWaste,
+      foodLeftover,
+      foodIntake,
+      beefDishFrequency,
+      porkDishFrequency,
+      chickenDishFrequency,
+      seafoodDishFrequency,
+      dairyFoodFrequency,
+      alcoholFrequency,
+      softDrinkSnackExpenses
+    })
+  )
+
+  const addIncreaseRateAction = (
+    domainItemType: string,
+    rate: number
+  ): void => {
+    diagnoses.addAction(
+      domainItemType,
+      'vegan',
+      increaseRate(diagnoses.findEstimation(domainItemType), rate)
+    )
+  }
+
+  const addAbsoluteTargetAction = (
+    domainItemType: string,
+    target: number
+  ): void => {
+    diagnoses.addAction(domainItemType, 'vegan', absoluteTarget(target))
+  }
+
+  addIncreaseRateAction('food_rice_amount', -0.181818182)
+  addIncreaseRateAction('food_bread-flour_amount', -0.181818182)
+  addIncreaseRateAction('food_noodle_amount', -0.181818182)
+  addIncreaseRateAction('food_potatoes_amount', 0.363636364)
+  addIncreaseRateAction('food_vegetables_amount', 0.363636364)
+  addIncreaseRateAction('food_processed-vegetables_amount', 0.363636364)
+
+  addAbsoluteTargetAction('food_milk_amount', 0)
+  addAbsoluteTargetAction('food_other-dairy_amount', 0)
+  addAbsoluteTargetAction('food_eggs_amount', 0)
+  addAbsoluteTargetAction('food_beef_amount', 0)
+  addAbsoluteTargetAction('food_pork_amount', 0)
+  addAbsoluteTargetAction('food_chicken_amount', 0)
+  addAbsoluteTargetAction('food_other-meat_amount', 0)
+  addAbsoluteTargetAction('food_processed-meat_amount', 0)
+  addAbsoluteTargetAction('food_fish_amount', 0)
+  addAbsoluteTargetAction('food_processed-fish_amount', 0)
+
+  diagnoses.addAction(
+    'food_beans_amount',
+    'vegan',
+    shiftFromOtherItems(
+      diagnoses.findEstimation('food_beans_amount'),
+      'vegan',
+      [
+        'food_milk_amount',
+        'food_other-dairy_amount',
+        'food_eggs_amount',
+        'food_beef_amount',
+        'food_pork_amount',
+        'food_chicken_amount',
+        'food_other-meat_amount',
+        'food_processed-meat_amount',
+        'food_fish_amount',
+        'food_processed-fish_amount'
+      ],
+      1,
+      diagnoses
+    )
+  )
+
+  test('food_beans_amount', () => {
+    expect(diagnoses.findAction('food_beans_amount', 'vegan')).toBeCloseTo(
+      64.9510941476434
+    )
+  })
+
+  const domainItems = [
+    'food_rice',
+    'food_bread-flour',
+    'food_noodle',
+    'food_potatoes',
+    'food_vegetables',
+    'food_processed-vegetables',
+    'food_beans',
+    'food_milk',
+    'food_other-dairy',
+    'food_eggs',
+    'food_beef',
+    'food_pork',
+    'food_chicken',
+    'food_other-meat',
+    'food_processed-meat',
+    'food_fish',
+    'food_processed-fish',
+    'food_fruits',
+    'food_oil',
+    'food_seasoning'
+  ]
+
+  // test food_ready-meal_intensity
+  test('food_ready-meal_intensity', () => {
+    expect(
+      proportionalToOtherFootprints(
+        diagnoses.findEstimation('food_ready-meal_intensity'),
+        'vegan',
+        domainItems,
+        1,
+        diagnoses
+      )
+    ).toBeCloseTo(3.58274908840034)
+  })
+
+  // test food_restaurant_intensity
+  test('food_restaurant_intensity', () => {
+    expect(
+      proportionalToOtherFootprints(
+        diagnoses.findEstimation('food_restaurant_intensity'),
+        'vegan',
+        domainItems,
+        0.7157,
+        diagnoses
+      )
+    ).toBeCloseTo(2.24004125926062)
+  })
+
+  // test food_bar-cafe_intensity
+  test('food_bar-cafe_intensity', () => {
+    expect(
+      proportionalToOtherFootprints(
+        diagnoses.findEstimation('food_bar-cafe_intensity'),
+        'vegan',
+        domainItems,
+        0.7157,
+        diagnoses
+      )
+    ).toBeCloseTo(2.25462895912396)
   })
 })

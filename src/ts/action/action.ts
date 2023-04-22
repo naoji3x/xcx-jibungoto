@@ -386,7 +386,7 @@ export const proportionalToOtherFootprints = (
     sumAfter += aa * ia
   }
   return sumBefore !== 0
-    ? (base = base * (1 - rate) + base * rate * (sumAfter / sumBefore))
+    ? base * (1 - rate) + base * rate * (sumAfter / sumBefore)
     : base
 }
 
@@ -409,8 +409,7 @@ export const proportionalToOtherFootprints = (
 export const furtherReductionFromOtherFootprints = (
   baseAmount: number,
   baseIntensity: number,
-  type: string,
-  domainItemType: string,
+  type: 'amount' | 'intensity',
   option: string,
   domainItems: readonly string[],
   reboundRate: number,
@@ -453,8 +452,7 @@ export const furtherReductionFromOtherFootprints = (
 export const reboundFromOtherFootprints = (
   baseAmount: number,
   baseIntensity: number,
-  type: string,
-  domainItemType: string,
+  type: 'amount' | 'intensity',
   option: string,
   domainItems: string[],
   reboundRate: number,
@@ -464,7 +462,6 @@ export const reboundFromOtherFootprints = (
     baseAmount,
     baseIntensity,
     type,
-    domainItemType,
     option,
     domainItems,
     reboundRate,
