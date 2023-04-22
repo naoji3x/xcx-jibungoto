@@ -12,6 +12,7 @@ import {
   manufacturingIntensityToEvPhv,
   proportionalToOtherFootprints,
   proportionalToOtherItems,
+  reboundFromOtherFootprints,
   shiftFromOtherItems,
   shiftFromOtherItemsThenReductionRate,
   type Diagnoses
@@ -56,12 +57,18 @@ import {
   estimateElectricityAnnualAmount,
   estimateElectricityIntensity
 } from '../../ts/housing/electricity'
-import { estimateGasAnnualAmount } from '../../ts/housing/gas'
+import {
+  estimateGasAnnualAmount,
+  estimateGasIntensity
+} from '../../ts/housing/gas'
 import {
   estimateHousingMaintenanceAnnualAmount,
   estimateHousingMaintenanceIntensity
 } from '../../ts/housing/housing-maintenance'
-import { estimateKeroseneAnnualAmount } from '../../ts/housing/kerosene'
+import {
+  estimateKeroseneAnnualAmount,
+  estimateKeroseneIntensity
+} from '../../ts/housing/kerosene'
 import { estimateOtherEnergyAnnualAmount } from '../../ts/housing/other-energy'
 import { estimateBicycleDrivingAnnualAmount } from '../../ts/mobility/bicycle-driving'
 import { estimateBicycleMaintenanceAnnualAmount } from '../../ts/mobility/bicycle-maintenance'
@@ -512,14 +519,6 @@ describe('zeh01', () => {
     estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize })
   )
   diagnoses.addItem(
-    'electricity',
-    estimateElectricityAnnualAmount({
-      monthlyConsumption: electricityMonthlyConsumption,
-      month: electricityMonth,
-      residentCount
-    })
-  )
-  diagnoses.addItem(
     'housing_electricity_amount',
     estimateElectricityAnnualAmount({
       monthlyConsumption: electricityMonthlyConsumption,
@@ -946,5 +945,125 @@ describe('vegan01', () => {
         diagnoses
       )
     ).toBeCloseTo(2.25462895912396)
+  })
+})
+
+// test ac01 case
+describe('ac01', () => {
+  const residentCount = 2
+  const housingSize: HousingSize = '2-room'
+  const electricity: ElectricityType = 'conventional'
+  const electricityMonthlyConsumption = 750
+  const electricityMonth: Month = 'january'
+  const gasItem: GasItem = 'urban-gas'
+  const gasMonth: Month = 'january'
+  const gasMonthlyConsumption = 15
+  const keroseneMonthlyConsumption = 200
+  const keroseneMonthCount = 2
+
+  const diagnoses = new DiagnosesImpl()
+
+  diagnoses.addItem(
+    'housing_housing-maintenance_amount',
+    estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize })
+  )
+  diagnoses.addItem(
+    'housing_housing-maintenance_intensity',
+    estimateHousingMaintenanceIntensity()
+  )
+
+  diagnoses.addItem(
+    'housing_electricity_amount',
+    estimateElectricityAnnualAmount({
+      monthlyConsumption: electricityMonthlyConsumption,
+      month: electricityMonth,
+      residentCount
+    })
+  )
+  diagnoses.addItem(
+    'housing_electricity_intensity',
+    estimateElectricityIntensity({
+      electricity
+    })
+  )
+
+  diagnoses.addItem(
+    'housing_urban-gas_amount',
+    estimateGasAnnualAmount(gasItem, {
+      monthlyConsumption: gasMonthlyConsumption,
+      month: gasMonth,
+      residentCount
+    })
+  )
+  diagnoses.addItem(
+    'housing_urban-gas_intensity',
+    estimateGasIntensity(gasItem)
+  )
+
+  diagnoses.addItem('housing_lpg_amount', 0)
+  diagnoses.addItem('housing_lpg_intensity', estimateGasIntensity('lpg'))
+
+  diagnoses.addItem(
+    'housing_kerosene_amount',
+    estimateKeroseneAnnualAmount({
+      monthlyConsumption: keroseneMonthlyConsumption,
+      monthCount: keroseneMonthCount,
+      residentCount
+    })
+  )
+  diagnoses.addItem('housing_kerosene_intensity', estimateKeroseneIntensity())
+
+  const addIncreaseRateAction = (
+    domainItemType: string,
+    rate: number
+  ): void => {
+    diagnoses.addAction(
+      domainItemType,
+      'ac',
+      increaseRate(diagnoses.findEstimation(domainItemType), rate)
+    )
+  }
+
+  addIncreaseRateAction('housing_urban-gas_amount', -0.234432234)
+  addIncreaseRateAction('housing_lpg_amount', -0.082599119)
+  addIncreaseRateAction('housing_kerosene_amount', -0.771779141)
+
+  const electricityAmount = shiftFromOtherItems(
+    diagnoses.findEstimation('housing_electricity_amount'),
+    'ac',
+    [
+      'housing_urban-gas_amount',
+      'housing_lpg_amount',
+      'housing_kerosene_amount'
+    ],
+    0.2125,
+    diagnoses
+  )
+
+  // test electricity amount
+  test('housing_electricity_amount', () => {
+    expect(electricityAmount).toBeCloseTo(3796.17610953312)
+  })
+
+  diagnoses.addAction('housing_electricity_amount', 'ac', electricityAmount)
+
+  // test housing_housing-maintenance_amount
+  test('housing_housing-maintenance_amount', () => {
+    expect(
+      reboundFromOtherFootprints(
+        diagnoses.findEstimation('housing_housing-maintenance_amount'),
+        diagnoses.findEstimation('housing_housing-maintenance_intensity'),
+        'amount',
+        'ac',
+        [
+          'housing_electricity',
+          'housing_urban-gas',
+          'housing_lpg',
+          'housing_kerosene'
+        ],
+        -0.015345044,
+        diagnoses
+      )
+    ).toBeCloseTo(19.8033015569162)
   })
 })
