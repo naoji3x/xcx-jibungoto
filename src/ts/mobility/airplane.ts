@@ -1,25 +1,34 @@
-import { getBaselineIntensity, getBaselineAmount } from '../data/database'
+/**
+ * @file 飛行機の移動に関するカーボンフットプリント計算を行う
+ */
+import { type ResidentialAreaSize } from '../common/types'
+import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import {
   estimateAnnualAmount,
   estimateAnnualAmountByArea
 } from './amount-calculation'
-import { type ResidentialAreaSize } from '../common/types'
 
-interface AirplaneAmountParam {
+/**
+ * 飛行機の移動の活動量を計算するための引数
+ * @remarks
+ * 引数を両方指定した場合はannualTravelingTimeが優先され、両方省略した場合はベースライン値が返される
+ */
+export interface AirplaneAmountParam {
+  /** 年間の移動時間[hr] */
   annualTravelingTime?: number
+  /** 住んでいる地域の規模 */
   residentialAreaSize?: ResidentialAreaSize
 }
 
 /**
  * 飛行機の移動のフットプリントを計算
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
+ * @param param 活動量を計算するための引数
  * @returns 移動の年間のフットプリント[kgCO2e]
  */
 export const estimateAirplaneAnnualFootprint = ({
   annualTravelingTime,
   residentialAreaSize
-}: AirplaneAmountParam): number =>
+}: AirplaneAmountParam = {}): number =>
   estimateAirplaneAnnualAmount({
     annualTravelingTime,
     residentialAreaSize
@@ -27,7 +36,7 @@ export const estimateAirplaneAnnualFootprint = ({
 
 /**
  * 飛行機での移動時の年間の活動量を計算
- * @param annualTravelingTime 年間の移動時間[hr]
+ * @param param 活動量を計算するための引数
  * @param residentialAreaSize 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]
  */
@@ -39,9 +48,8 @@ export const estimateAirplaneAnnualAmount = ({
     return estimateAnnualAmount(annualTravelingTime, 'airplane-speed')
   } else if (residentialAreaSize !== undefined) {
     return estimateAnnualAmountByArea('airplane', residentialAreaSize)
-  } else {
-    return getBaselineAmount('mobility', 'airplane').value
   }
+  return getBaselineAmount('mobility', 'airplane').value
 }
 
 /**

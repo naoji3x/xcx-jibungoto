@@ -1,4 +1,5 @@
 import { getBaselineIntensity, getParameter } from '../data/database';
+import { estimateCarDrivingIntensityFactor } from './factor-calculation';
 /**
  * 自家用車の運転時のフットプリントを計算
  * @param mileage 自家用車の運転距離[km]
@@ -40,19 +41,8 @@ export var estimatePrivateCarDrivingIntensity = function (_a) {
     // ベースラインの運転時のGHG原単位を取得
     var baselineIntensity = getBaselineIntensity('mobility', 'private-car-driving').value;
     // 自家用車の場合は、自動車種類に応じて運転時GHG原単位の補正係数を取得
-    var ghgIntensityRatio = getParameter('car-intensity-factor', carType + '_driving-factor').value;
-    // PHV, EVの補正
-    if (carType === 'phv' || carType === 'ev') {
-        // PHV, EVの場合は自宅での充電割合と再生エネルギー電力の割合で補正
-        var electricityIntensityFactor = getParameter('electricity-intensity-factor', electricityType).value *
-            getParameter('car-charging', carCharging).value;
-        // GHG原単位の補正係数を電力割合で補正
-        ghgIntensityRatio =
-            ghgIntensityRatio * (1 - electricityIntensityFactor) +
-                getParameter('renewable-car-intensity-factor', carType + '_driving-factor').value *
-                    electricityIntensityFactor;
-    }
+    var carDrivingIntensityFactor = estimateCarDrivingIntensityFactor(carType, carCharging, electricityType);
     // 人数補正値
-    var passengerIntensityRatio = getParameter('car-passengers', carPassengers + '_private-car-factor').value;
-    return baselineIntensity * ghgIntensityRatio * passengerIntensityRatio;
+    var passengerIntensityFactor = getParameter('car-passengers', carPassengers + '_private-car-factor').value;
+    return (baselineIntensity * carDrivingIntensityFactor * passengerIntensityFactor);
 };

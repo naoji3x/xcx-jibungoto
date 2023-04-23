@@ -2,11 +2,11 @@ import { getBaselineAmount, getBaselineIntensity } from '../data/database';
 import { estimateAnnualAmountByArea } from './amount-calculation';
 /**
  * 自転車の使用時のフットプリントを計算
- * @param residentialAreaSize 住んでいる地域の規模
+ * @param param フットプリントを計算するための引数
  * @returns 自転車の使用時のフットプリント[kgCO2e]
  */
 export var estimateBicycleDrivingAnnualFootprint = function (_a) {
-    var residentialAreaSize = _a.residentialAreaSize;
+    var _b = _a === void 0 ? {} : _a, residentialAreaSize = _b.residentialAreaSize;
     return estimateBicycleDrivingAnnualAmount({
         residentialAreaSize: residentialAreaSize
     }) * estimateBicycleDrivingIntensity();
@@ -17,7 +17,7 @@ export var estimateBicycleDrivingAnnualFootprint = function (_a) {
  * @returns 年間の移動距離[km-passenger]
  */
 export var estimateBicycleDrivingAnnualAmount = function (_a) {
-    var residentialAreaSize = _a.residentialAreaSize;
+    var _b = _a === void 0 ? {} : _a, residentialAreaSize = _b.residentialAreaSize;
     return residentialAreaSize === undefined
         ? getBaselineAmount('mobility', 'bicycle-driving').value
         : estimateAnnualAmountByArea('bicycle-driving', residentialAreaSize);

@@ -1,5 +1,6 @@
 import { getBaselineAmount, getBaselineIntensity, getParameter } from '../data/database';
 import { estimateAnnualAmountAddingWeeklyTravel, estimateAnnualAmountByArea } from './amount-calculation';
+import { estimateCarDrivingIntensityFactor } from './factor-calculation';
 /**
  * カーシェアリングのフットプリントを計算
  * 自家用車以外の車（タクシーやカーシェアリンング）の移動時間を引数に設定
@@ -59,22 +60,8 @@ export var estimateCarSharingDrivingIntensity = function (_a) {
     // ベースラインの運転時のGHG原単位を取得
     var baselineIntensity = getBaselineIntensity('mobility', 'car-sharing-driving').value;
     // 自動車種類に応じて運転時GHG原単位の補正係数を取得
-    var ghgIntensityRatio = getParameter('car-intensity-factor', carType + '_driving-factor').value;
-    // PHV, EVの補正
-    if (carType === 'phv' || carType === 'ev') {
-        // PHV, EVの場合は自宅での充電割合と再生エネルギー電力の割合で補正
-        var electricityIntensityFactor = getParameter('electricity-intensity-factor', electricityType).value *
-            getParameter('car-charging', carCharging).value;
-        // GHG原単位の補正係数を電力割合で補正
-        ghgIntensityRatio =
-            ghgIntensityRatio * (1 - electricityIntensityFactor) +
-                getParameter('renewable-car-intensity-factor', carType + '_driving-factor').value *
-                    electricityIntensityFactor;
-    }
-    var passengerIntensityRatio = 1;
-    if (carPassengers !== undefined) {
-        // 人数補正値
-        passengerIntensityRatio = getParameter('car-passengers', carPassengers + '_private-car-factor').value;
-    }
-    return baselineIntensity * ghgIntensityRatio * passengerIntensityRatio;
+    var carDrivingIntensityFactor = estimateCarDrivingIntensityFactor(carType, carCharging, electricityType);
+    // 人数補正値
+    var passengerIntensityFactor = getParameter('car-passengers', carPassengers + '_private-car-factor').value;
+    return (baselineIntensity * carDrivingIntensityFactor * passengerIntensityFactor);
 };

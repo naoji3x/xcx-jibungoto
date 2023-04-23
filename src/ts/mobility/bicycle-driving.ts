@@ -2,18 +2,24 @@ import { type ResidentialAreaSize } from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountByArea } from './amount-calculation'
 
-interface BicycleDrivingAmountParam {
+/**
+ * 自転車の使用の活動量を計算するための引数
+ * @remarks
+ * 引数が省略された場合はベースライン値が返される
+ */
+export interface BicycleDrivingAmountParam {
+  /** 住んでいる地域の規模 */
   residentialAreaSize?: ResidentialAreaSize
 }
 
 /**
  * 自転車の使用時のフットプリントを計算
- * @param residentialAreaSize 住んでいる地域の規模
+ * @param param フットプリントを計算するための引数
  * @returns 自転車の使用時のフットプリント[kgCO2e]
  */
 export const estimateBicycleDrivingAnnualFootprint = ({
   residentialAreaSize
-}: BicycleDrivingAmountParam): number =>
+}: BicycleDrivingAmountParam = {}): number =>
   estimateBicycleDrivingAnnualAmount({
     residentialAreaSize
   }) * estimateBicycleDrivingIntensity()

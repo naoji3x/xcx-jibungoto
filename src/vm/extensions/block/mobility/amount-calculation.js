@@ -1,6 +1,7 @@
 import { getParameter } from '../data/database';
 /**
  * 年間の移動距離を取得
+ * @remarks mobility内で利用するユーティリティ関数
  * @param annualTravelingTime 年間の移動時間[hr]
  * @param speedType スピードの種類
  * @returns 年間の移動距離[km-passenger]
@@ -10,6 +11,7 @@ export var estimateAnnualAmount = function (annualTravelingTime, speedType) {
 };
 /**
  * 年間の移動距離を取得（週間の移動も考慮）
+ * @remarks mobility内で利用するユーティリティ関数
  * @param weeklyTravelingTime 週間の移動時間[hr]
  * @param weeklySpeedType 週間の移動のスピード種類
  * @param annualTravelingTime 年間の移動時間[hr]
@@ -29,6 +31,7 @@ export var estimateAnnualAmountAddingWeeklyTravel = function (weeklyTravelingTim
 };
 /**
  * 年間の移動距離を取得（住んでいる地域の規模での平均値を取得）
+ * @remarks mobility内で利用するユーティリティ関数
  * @param item 移動手段
  * @param residentialAreaSize 住んでいる地域の規模
  * @returns 年間の移動距離[km-passenger]

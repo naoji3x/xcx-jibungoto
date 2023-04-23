@@ -1,14 +1,15 @@
 import { getBaselineIntensity } from '../data/database';
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation';
 export var estimateCommunicationAnnualFootprint = function (_a) {
-    var expenses = _a.expenses, residentCount = _a.residentCount;
-    return estimateCommunicationAnnualAmount({ expenses: expenses, residentCount: residentCount }) *
-        estimateCommunicationIntensity();
+    var item = _a.item, expenses = _a.expenses, residentCount = _a.residentCount;
+    return estimateCommunicationAnnualAmount({ item: item, expenses: expenses, residentCount: residentCount }) *
+        estimateCommunicationIntensity({ item: item });
 };
 export var estimateCommunicationAnnualAmount = function (_a) {
-    var expenses = _a.expenses, residentCount = _a.residentCount;
-    return estimateAnnualAmountConsideringResidentCount('communication', 'communication-amount', expenses, residentCount);
+    var item = _a.item, expenses = _a.expenses, residentCount = _a.residentCount;
+    return estimateAnnualAmountConsideringResidentCount(item, 'communication-amount', expenses, residentCount);
 };
-export var estimateCommunicationIntensity = function () {
-    return getBaselineIntensity('other', 'communication').value;
+export var estimateCommunicationIntensity = function (_a) {
+    var item = _a.item;
+    return getBaselineIntensity('other', item).value;
 };

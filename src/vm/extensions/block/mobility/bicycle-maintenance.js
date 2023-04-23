@@ -17,7 +17,7 @@ export var estimateBicycleMaintenanceAnnualFootprint = function (_a) {
  * @returns 維持費[千円]
  */
 export var estimateBicycleMaintenanceAnnualAmount = function (_a) {
-    var residentialAreaSize = _a.residentialAreaSize;
+    var _b = _a === void 0 ? {} : _a, residentialAreaSize = _b.residentialAreaSize;
     return residentialAreaSize === undefined
         ? getBaselineAmount('mobility', 'bicycle-maintenance').value
         : estimateAnnualAmountByArea('bicycle-maintenance', residentialAreaSize);
