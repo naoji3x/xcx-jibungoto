@@ -17,27 +17,44 @@ import { estimateDailyGoodsAnnualAmount } from './daily-goods'
 import { estimateHobbyGoodsAnnualAmount } from './hobby-goods'
 import { estimateServiceAnnualAmount } from './service'
 
-/*
-wasteは以下のitemのestimation合計/baseline合計とwasteのbaseline値を掛け合わせて求める。
+/** 廃棄の活動量を計算するための引数 */
+interface WasteAmountParam {
+  /** 家電・家具の支出 */
+  applianceFurnitureExpenses: ApplianceFurnitureExpenses
+  /** 衣服・美容の支出 */
+  clothesBeautyExpenses: ClothesBeautyExpenses
+  /** 趣味・日用品の支出 */
+  hobbyGoodsExpenses: HobbyGoodsExpenses
+  /** サービスの支出 */
+  serviceExpenses: ServiceExpenses
+  /** 日用品の支出 */
+  dailyGoodsExpenses: DailyGoodsExpenses
+  /** 居住者数 */
+  residentCount: number
+}
 
-'appliance-furniture-amount'
-  'cooking-appliances'
-  'heating-cooling-appliances'
-  'other-appliances'
-  'electronics'
-  'furniture'
-  'covering'
-'clothes-beauty-factor'
-  'clothes-goods'
-  'bags-jewelries-goods'
-  'cosmetics'
-'hobby-goods-factor'  
-  'culture-goods'
-  'entertainment-goods'
-  'sports-goods'
-  'gardening-flower'
-  'pet'
-  'tobacco'
+/**
+ * 廃棄の活動量を計算する
+ * @remarks
+ * wasteは以下のitemのestimation合計/baseline合計とwasteのbaseline値を掛け合わせて求める。
+ * - appliance-furniture-amount
+ *   - cooking-appliances
+ *   - heating-cooling-appliances
+ *   - other-appliances
+ *   - electronics
+ *   - furniture
+ *   - covering
+ * - clothes-beauty-factor
+ *   - clothes-goods
+ * - bags-jewelries-goods
+ *   - cosmetics
+ * - hobby-goods-factor
+ *   - culture-goods
+ *   - entertainment-goods
+ *   - sports-goods
+ *   - gardening-flower
+ *   - pet
+ *   - tobacco
   'books-magazines'
 'service-factor'  
   'medicine'
@@ -45,34 +62,9 @@ wasteは以下のitemのestimation合計/baseline合計とwasteのbaseline値を
   'sanitation'
   'kitchen-goods'
   'paper-stationery'
-*/
-
-interface WasteAmountParam {
-  applianceFurnitureExpenses: ApplianceFurnitureExpenses
-  clothesBeautyExpenses: ClothesBeautyExpenses
-  hobbyGoodsExpenses: HobbyGoodsExpenses
-  serviceExpenses: ServiceExpenses
-  dailyGoodsExpenses: DailyGoodsExpenses
-  residentCount: number
-}
-
-export const estimateWasteAnnualFootprint = ({
-  applianceFurnitureExpenses,
-  clothesBeautyExpenses,
-  hobbyGoodsExpenses,
-  serviceExpenses,
-  dailyGoodsExpenses,
-  residentCount
-}: WasteAmountParam): number =>
-  estimateWasteAnnualAmount({
-    applianceFurnitureExpenses,
-    clothesBeautyExpenses,
-    hobbyGoodsExpenses,
-    serviceExpenses,
-    dailyGoodsExpenses,
-    residentCount
-  }) * estimateWasteIntensity()
-
+ * @param param 廃棄の活動量を計算するための引数
+ * @returns 廃棄の活動量[000JPY]
+ */
 export const estimateWasteAnnualAmount = ({
   applianceFurnitureExpenses,
   clothesBeautyExpenses,
@@ -135,8 +127,7 @@ export const estimateWasteAnnualAmount = ({
   const clothesBeautySum = clothesBeautyItems.reduce(
     (sum, item) =>
       sum +
-      estimateClothesBeautyAnnualAmount({
-        item,
+      estimateClothesBeautyAnnualAmount(item, {
         expenses: clothesBeautyExpenses
       }),
     0
@@ -145,8 +136,7 @@ export const estimateWasteAnnualAmount = ({
   const hobbyGoodsSum = hobbyGoodsItems.reduce(
     (sum, item) =>
       sum +
-      estimateHobbyGoodsAnnualAmount({
-        item,
+      estimateHobbyGoodsAnnualAmount(item, {
         expenses: hobbyGoodsExpenses
       }),
     0
@@ -155,8 +145,7 @@ export const estimateWasteAnnualAmount = ({
   const serviceSum = serviceItems.reduce(
     (sum, item) =>
       sum +
-      estimateServiceAnnualAmount({
-        item,
+      estimateServiceAnnualAmount(item, {
         expenses: serviceExpenses
       }),
     0
@@ -165,8 +154,7 @@ export const estimateWasteAnnualAmount = ({
   const dailyGoodsSum = dailyGoodsItems.reduce(
     (sum, item) =>
       sum +
-      estimateDailyGoodsAnnualAmount({
-        item,
+      estimateDailyGoodsAnnualAmount(item, {
         expenses: dailyGoodsExpenses,
         residentCount
       }),
@@ -188,5 +176,9 @@ export const estimateWasteAnnualAmount = ({
   return (getBaselineAmount('other', 'waste').value * numerator) / denominator
 }
 
+/**
+ * 廃棄のGHG原単位を計算する
+ * @returns 廃棄のGHG原単位[kgCO2e/000JPY]
+ */
 export const estimateWasteIntensity = (): number =>
   getBaselineIntensity('other', 'waste').value

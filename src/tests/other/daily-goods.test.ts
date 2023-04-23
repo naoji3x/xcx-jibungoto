@@ -1,32 +1,20 @@
 import {
+  type DailyGoodsExpenses,
+  type DailyGoodsItem
+} from '../../ts/common/types'
+import {
   estimateDailyGoodsAnnualAmount,
-  estimateDailyGoodsAnnualFootprint,
   estimateDailyGoodsIntensity
 } from '../../ts/other/daily-goods'
-import {
-  type DailyGoodsItem,
-  type DailyGoodsExpenses
-} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: DailyGoodsExpenses; residentCount: number },
   itemAndValues: Array<{ item: DailyGoodsItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateDailyGoodsAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: DailyGoodsExpenses; residentCount: number },
-  itemAndValues: Array<{ item: DailyGoodsItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateDailyGoodsAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateDailyGoodsAnnualAmount(inv.item, param)).toBeCloseTo(
+      inv.value
+    )
   }
 }
 
@@ -34,9 +22,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: DailyGoodsItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateDailyGoodsIntensity({ item: inv.item })).toBeCloseTo(
-      inv.value
-    )
+    expect(estimateDailyGoodsIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -110,14 +96,6 @@ describe('daily-goods', () => {
       { item: 'sanitation', value: 3.129136419 },
       { item: 'kitchen-goods', value: 3.23125458 },
       { item: 'paper-stationery', value: 3.056810847 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '5k-less', residentCount: 1 }, [
-      { item: 'sanitation', value: 26.60361457 * 3.129136419 },
-      { item: 'kitchen-goods', value: 7.208680982 * 3.23125458 },
-      { item: 'paper-stationery', value: 2.187704451 * 3.056810847 }
     ])
   })
 })

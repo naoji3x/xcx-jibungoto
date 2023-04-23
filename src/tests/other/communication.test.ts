@@ -1,32 +1,20 @@
 import {
+  type CommunicationExpenses,
+  type CommunicationItem
+} from '../../ts/common/types'
+import {
   estimateCommunicationAnnualAmount,
-  estimateCommunicationAnnualFootprint,
   estimateCommunicationIntensity
 } from '../../ts/other/communication'
-import {
-  type CommunicationItem,
-  type CommunicationExpenses
-} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: CommunicationExpenses; residentCount: number },
   itemAndValues: Array<{ item: CommunicationItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateCommunicationAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: CommunicationExpenses; residentCount: number },
-  itemAndValues: Array<{ item: CommunicationItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateCommunicationAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateCommunicationAnnualAmount(inv.item, param)).toBeCloseTo(
+      inv.value
+    )
   }
 }
 
@@ -34,9 +22,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: CommunicationItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateCommunicationIntensity({ item: inv.item })).toBeCloseTo(
-      inv.value
-    )
+    expect(estimateCommunicationIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -101,13 +87,6 @@ describe('communication', () => {
     expectIntensity([
       { item: 'communication', value: 1.02634832 },
       { item: 'broadcasting', value: 1.141584281 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '5k-less', residentCount: 1 }, [
-      { item: 'communication', value: 31.73762564 * 1.02634832 },
-      { item: 'broadcasting', value: 4.262374357 * 1.141584281 }
     ])
   })
 })

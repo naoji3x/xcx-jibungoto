@@ -1,32 +1,20 @@
 import {
+  type HobbyGoodsExpenses,
+  type HobbyGoodsItem
+} from '../../ts/common/types'
+import {
   estimateHobbyGoodsAnnualAmount,
-  estimateHobbyGoodsAnnualFootprint,
   estimateHobbyGoodsIntensity
 } from '../../ts/other/hobby-goods'
-import {
-  type HobbyGoodsItem,
-  type HobbyGoodsExpenses
-} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: HobbyGoodsExpenses },
   itemAndValues: Array<{ item: HobbyGoodsItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateHobbyGoodsAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: HobbyGoodsExpenses },
-  itemAndValues: Array<{ item: HobbyGoodsItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateHobbyGoodsAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateHobbyGoodsAnnualAmount(inv.item, param)).toBeCloseTo(
+      inv.value
+    )
   }
 }
 
@@ -34,9 +22,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: HobbyGoodsItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateHobbyGoodsIntensity({ item: inv.item })).toBeCloseTo(
-      inv.value
-    )
+    expect(estimateHobbyGoodsIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -136,26 +122,6 @@ describe('hobby-goods', () => {
       { item: 'books-magazines', value: 2.52738082 },
       { item: 'sports-culture-repair-rental', value: 1.953281338 },
       { item: 'sports-entertainment-repair-rental', value: 0.82229875 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '5k-less' }, [
-      { item: 'culture-goods', value: 2.39985402 * 5.212397128 },
-      { item: 'entertainment-goods', value: 1.570433632 * 0.706433648 },
-      { item: 'sports-goods', value: 2.497630942 * 4.412044588 },
-      { item: 'gardening-flower', value: 4.85232258 * 5.720752408 },
-      { item: 'pet', value: 2.103916343 * 5.620057096 },
-      { item: 'tobacco', value: 0.996872147 * 5.326343701 },
-      { item: 'books-magazines', value: 2.52738082 * 8.516147287 },
-      {
-        item: 'sports-culture-repair-rental',
-        value: 1.953281338 * 0.047052533
-      },
-      {
-        item: 'sports-entertainment-repair-rental',
-        value: 0.82229875 * 0.43877161
-      }
     ])
   })
 })

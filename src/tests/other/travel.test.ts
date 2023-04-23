@@ -1,29 +1,15 @@
+import { type TravelExpenses, type TravelItem } from '../../ts/common/types'
 import {
   estimateTravelAnnualAmount,
-  estimateTravelAnnualFootprint,
   estimateTravelIntensity
 } from '../../ts/other/travel'
-import { type TravelItem, type TravelExpenses } from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: TravelExpenses },
   itemAndValues: Array<{ item: TravelItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateTravelAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: TravelExpenses },
-  itemAndValues: Array<{ item: TravelItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateTravelAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateTravelAnnualAmount(inv.item, param)).toBeCloseTo(inv.value)
   }
 }
 
@@ -31,7 +17,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: TravelItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateTravelIntensity({ item: inv.item })).toBeCloseTo(inv.value)
+    expect(estimateTravelIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -88,13 +74,6 @@ describe('travel', () => {
     expectIntensity([
       { item: 'hotel', value: 3.770333888 },
       { item: 'travel', value: 0.653433284 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '10k-less' }, [
-      { item: 'hotel', value: 3.770333888 * 4.206479354 },
-      { item: 'travel', value: 0.653433284 * 0.793520646 }
     ])
   })
 })

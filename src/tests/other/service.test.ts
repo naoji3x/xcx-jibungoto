@@ -1,29 +1,15 @@
+import { type ServiceExpenses, type ServiceItem } from '../../ts/common/types'
 import {
   estimateServiceAnnualAmount,
-  estimateServiceAnnualFootprint,
   estimateServiceIntensity
 } from '../../ts/other/service'
-import { type ServiceItem, type ServiceExpenses } from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: ServiceExpenses },
   itemAndValues: Array<{ item: ServiceItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateServiceAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: ServiceExpenses },
-  itemAndValues: Array<{ item: ServiceItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateServiceAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateServiceAnnualAmount(inv.item, param)).toBeCloseTo(inv.value)
   }
 }
 
@@ -31,7 +17,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: ServiceItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateServiceIntensity({ item: inv.item })).toBeCloseTo(inv.value)
+    expect(estimateServiceIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -124,19 +110,6 @@ describe('service', () => {
       { item: 'caring', value: 1.283734545 },
       { item: 'formal-education', value: 1.074215614 },
       { item: 'informal-education', value: 1.21314144 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '5k-less' }, [
-      { item: 'medicine', value: 2.132542476 * 5.343035666 },
-      { item: 'housework', value: 1.215004276 * 0.194589204 },
-      { item: 'washing', value: 2.437149813 * 0.762378308 },
-      { item: 'medical-care', value: 1.169394129 * 20.7986888 },
-      { item: 'nursing', value: 1.209159482 * 1.196397185 },
-      { item: 'caring', value: 1.283734545 * 1.141364888 },
-      { item: 'formal-education', value: 1.074215614 * 8.60236983 },
-      { item: 'informal-education', value: 1.21314144 * 3.961176123 }
     ])
   })
 })

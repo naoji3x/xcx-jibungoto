@@ -1,28 +1,28 @@
+import { type ServiceExpenses, type ServiceItem } from '../common/types'
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmount } from './amount-calculation'
-import { type ServiceItem, type ServiceExpenses } from '../common/types'
 
-interface ServiceIntensityParam {
-  item: ServiceItem
-}
-
-interface ServiceAmountParam extends ServiceIntensityParam {
+/** サービスの活動量を計算するための引数 */
+interface ServiceAmountParam {
+  /** サービスに関わる支出 */
   expenses: ServiceExpenses
 }
 
-export const estimateServiceAnnualFootprint = ({
-  item,
-  expenses
-}: ServiceAmountParam): number =>
-  estimateServiceAnnualAmount({ item, expenses }) *
-  estimateServiceIntensity({ item })
+/**
+ * サービスの年間の活動量を計算
+ * @param item サービスのカーボンフットプリントアイテム名
+ * @param param サービスの活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export const estimateServiceAnnualAmount = (
+  item: ServiceItem,
+  { expenses }: ServiceAmountParam
+): number => estimateAnnualAmount(item, 'service-factor', expenses)
 
-export const estimateServiceAnnualAmount = ({
-  item,
-  expenses
-}: ServiceAmountParam): number =>
-  estimateAnnualAmount(item, 'service-factor', expenses)
-
-export const estimateServiceIntensity = ({
-  item
-}: ServiceIntensityParam): number => getBaselineIntensity('other', item).value
+/**
+ * サービスのGHG原単位を計算
+ * @param item サービスのカーボンフットプリントアイテム名
+ * @returns GHG原単位[kgCO2e/000JPY]
+ */
+export const estimateServiceIntensity = (item: ServiceItem): number =>
+  getBaselineIntensity('other', item).value

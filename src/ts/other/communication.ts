@@ -1,32 +1,28 @@
+import {
+  type CommunicationExpenses,
+  type CommunicationItem
+} from '../common/types'
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation'
-import {
-  type CommunicationItem,
-  type CommunicationExpenses
-} from '../common/types'
 
-interface CommunicationIntensityParam {
-  item: CommunicationItem
-}
-
-interface CommunicationAmountParam extends CommunicationIntensityParam {
+/** 通信の活動量を計算するための引数 */
+interface CommunicationAmountParam {
+  /** 通信に関わる支出 */
   expenses: CommunicationExpenses
+  /** 居住者数 */
   residentCount: number
 }
 
-export const estimateCommunicationAnnualFootprint = ({
-  item,
-  expenses,
-  residentCount
-}: CommunicationAmountParam): number =>
-  estimateCommunicationAnnualAmount({ item, expenses, residentCount }) *
-  estimateCommunicationIntensity({ item })
-
-export const estimateCommunicationAnnualAmount = ({
-  item,
-  expenses,
-  residentCount
-}: CommunicationAmountParam): number =>
+/**
+ * 通信の年間の活動量を計算
+ * @param item 通信のカーボンフットプリントアイテム名
+ * @param param 通信の活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export const estimateCommunicationAnnualAmount = (
+  item: CommunicationItem,
+  { expenses, residentCount }: CommunicationAmountParam
+): number =>
   estimateAnnualAmountConsideringResidentCount(
     item,
     'communication-amount',
@@ -34,7 +30,11 @@ export const estimateCommunicationAnnualAmount = ({
     residentCount
   )
 
-export const estimateCommunicationIntensity = ({
-  item
-}: CommunicationIntensityParam): number =>
-  getBaselineIntensity('other', item).value
+/**
+ * 通信のGHG原単位を計算
+ * @param item 通信のカーボンフットプリントアイテム名
+ * @returns GHG原単位[kgCO2e/000JPY]
+ */
+export const estimateCommunicationIntensity = (
+  item: CommunicationItem
+): number => getBaselineIntensity('other', item).value

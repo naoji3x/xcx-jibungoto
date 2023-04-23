@@ -1,32 +1,20 @@
 import {
+  type ClothesBeautyExpenses,
+  type ClothesBeautyItem
+} from '../../ts/common/types'
+import {
   estimateClothesBeautyAnnualAmount,
-  estimateClothesBeautyAnnualFootprint,
   estimateClothesBeautyIntensity
 } from '../../ts/other/clothes-beauty'
-import {
-  type ClothesBeautyItem,
-  type ClothesBeautyExpenses
-} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: ClothesBeautyExpenses },
   itemAndValues: Array<{ item: ClothesBeautyItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateClothesBeautyAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: ClothesBeautyExpenses },
-  itemAndValues: Array<{ item: ClothesBeautyItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateClothesBeautyAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateClothesBeautyAnnualAmount(inv.item, param)).toBeCloseTo(
+      inv.value
+    )
   }
 }
 
@@ -34,9 +22,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: ClothesBeautyItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateClothesBeautyIntensity({ item: inv.item })).toBeCloseTo(
-      inv.value
-    )
+    expect(estimateClothesBeautyIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -115,17 +101,6 @@ describe('clothes-beauty', () => {
       { item: 'bags-jewelries-goods', value: 2.558629508 },
       { item: 'clothes-repair-rental', value: 1.021369922 },
       { item: 'bags-jewelries-repair-rental', value: 1.106075818 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '5k-less' }, [
-      { item: 'haircare', value: 1.712161189 * 2.25947579 },
-      { item: 'cosmetics', value: 2.276312315 * 3.638798193 },
-      { item: 'clothes-goods', value: 2.670916765 * 24.64267084 },
-      { item: 'bags-jewelries-goods', value: 2.558629508 * 4.240625735 },
-      { item: 'clothes-repair-rental', value: 1.021369922 * 0.354123427 },
-      { item: 'bags-jewelries-repair-rental', value: 1.106075818 * 0.112857589 }
     ])
   })
 })

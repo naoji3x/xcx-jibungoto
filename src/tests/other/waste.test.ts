@@ -7,7 +7,6 @@ import {
 } from '../../ts/common/types'
 import {
   estimateWasteAnnualAmount,
-  estimateWasteAnnualFootprint,
   estimateWasteIntensity
 } from '../../ts/other/waste'
 
@@ -23,20 +22,6 @@ const expectAmount = (
   value: number
 ): void => {
   expect(estimateWasteAnnualAmount(param)).toBeCloseTo(value)
-}
-
-const expectFootprint = (
-  param: {
-    applianceFurnitureExpenses: ApplianceFurnitureExpenses
-    clothesBeautyExpenses: ClothesBeautyExpenses
-    hobbyGoodsExpenses: HobbyGoodsExpenses
-    serviceExpenses: ServiceExpenses
-    dailyGoodsExpenses: DailyGoodsExpenses
-    residentCount: number
-  },
-  value: number
-): void => {
-  expect(estimateWasteAnnualFootprint(param)).toBeCloseTo(value)
 }
 
 const expectIntensity = (value: number): void => {
@@ -88,19 +73,5 @@ describe('waste', () => {
 
   test('intensity case 01', () => {
     expectIntensity(8.586030351)
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint(
-      {
-        applianceFurnitureExpenses: '50k-less',
-        clothesBeautyExpenses: '5k-less',
-        hobbyGoodsExpenses: '5k-less',
-        serviceExpenses: '5k-less',
-        dailyGoodsExpenses: '5k-less',
-        residentCount: 1
-      },
-      1.216296495 * 8.586030351
-    )
   })
 })

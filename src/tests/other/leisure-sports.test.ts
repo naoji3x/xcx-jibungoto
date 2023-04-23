@@ -1,32 +1,20 @@
 import {
+  type LeisureSportsExpenses,
+  type LeisureSportsItem
+} from '../../ts/common/types'
+import {
   estimateLeisureSportsAnnualAmount,
-  estimateLeisureSportsAnnualFootprint,
   estimateLeisureSportsIntensity
 } from '../../ts/other/leisure-sports'
-import {
-  type LeisureSportsItem,
-  type LeisureSportsExpenses
-} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: LeisureSportsExpenses },
   itemAndValues: Array<{ item: LeisureSportsItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateLeisureSportsAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: LeisureSportsExpenses },
-  itemAndValues: Array<{ item: LeisureSportsItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateLeisureSportsAnnualFootprint({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateLeisureSportsAnnualAmount(inv.item, param)).toBeCloseTo(
+      inv.value
+    )
   }
 }
 
@@ -34,9 +22,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: LeisureSportsItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateLeisureSportsIntensity({ item: inv.item })).toBeCloseTo(
-      inv.value
-    )
+    expect(estimateLeisureSportsIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 
@@ -101,15 +87,6 @@ describe('leisure-sports', () => {
       { item: 'entertainment-leisure', value: 1.973982363 },
       { item: 'sports-leisure', value: 1.703889647 },
       { item: 'bath-spa', value: 5.754233873 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '5k-less' }, [
-      { item: 'culture-leisure', value: 2.189658709 * 7.476429256 },
-      { item: 'entertainment-leisure', value: 1.973982363 * 6.598602984 },
-      { item: 'sports-leisure', value: 1.703889647 * 12.39693054 },
-      { item: 'bath-spa', value: 5.754233873 * 3.528037218 }
     ])
   })
 })
