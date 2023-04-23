@@ -1,33 +1,42 @@
+import {
+  type ApplianceFurnitureExpenses,
+  type ApplianceFurnitureItem
+} from '../common/types'
 import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation'
-import {
-  type ApplianceFurnitureItem,
-  type ApplianceFurnitureExpenses
-} from '../common/types'
 
-interface ApplianceFurnitureIntensityParam {
-  item: ApplianceFurnitureItem
-}
+/** 家電・家具の活動量を計算するための引数 */
 
-interface ApplianceFurnitureAmountParam
-  extends ApplianceFurnitureIntensityParam {
+export interface ApplianceFurnitureAmountParam {
+  /** 家電・家具に関わる支出 */
   expenses: ApplianceFurnitureExpenses
+  /** 居住者数 */
   residentCount: number
 }
 
-export const estimateApplianceFurnitureAnnualFootprint = ({
-  item,
-  expenses,
-  residentCount
-}: ApplianceFurnitureAmountParam): number =>
-  estimateApplianceFurnitureAnnualAmount({ item, expenses, residentCount }) *
-  estimateApplianceFurnitureIntensity({ item })
+/**
+ * 家電・家具のカーボンフットプリントを計算
+ * @param item 家電・家具のカーボンフットプリントアイテム名
+ * @param amountParam 家電・家具の活動量を計算するための引数
+ * @returns カーボンフットプリント[kgCO2e]
+ */
+export const estimateApplianceFurnitureAnnualFootprint = (
+  item: ApplianceFurnitureItem,
+  amountParam: ApplianceFurnitureAmountParam
+): number =>
+  estimateApplianceFurnitureAnnualAmount(item, amountParam) *
+  estimateApplianceFurnitureIntensity(item)
 
-export const estimateApplianceFurnitureAnnualAmount = ({
-  item,
-  expenses,
-  residentCount
-}: ApplianceFurnitureAmountParam): number =>
+/**
+ * 家電・家具の年間の活動量を計算
+ * @param item 家電・家具のカーボンフットプリントアイテム名
+ * @param param 家電・家具の活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export const estimateApplianceFurnitureAnnualAmount = (
+  item: ApplianceFurnitureItem,
+  { expenses, residentCount }: ApplianceFurnitureAmountParam
+): number =>
   estimateAnnualAmountConsideringResidentCount(
     item,
     'appliance-furniture-amount',
@@ -35,7 +44,12 @@ export const estimateApplianceFurnitureAnnualAmount = ({
     residentCount
   )
 
-export const estimateApplianceFurnitureIntensity = ({
-  item
-}: ApplianceFurnitureIntensityParam): number =>
-  getBaselineIntensity('other', item).value
+/**
+ * 家電・家具のGHG原単位を計算
+ * @param item 家電・家具のカーボンフットプリントアイテム名
+ * @remarks ベースライン値を返す
+ * @returns GHG原単位[kgCO2e/000JPY]
+ */
+export const estimateApplianceFurnitureIntensity = (
+  item: ApplianceFurnitureItem
+): number => getBaselineIntensity('other', item).value

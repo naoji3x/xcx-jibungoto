@@ -194,8 +194,10 @@ export type LivingRegion = 'northeast' | 'middle' | 'southwest' | 'unknown'
 //
 export type DailyGoodsItem = 'sanitation' | 'kitchen-goods' | 'paper-stationery'
 
+/** コミュニケーションのカーボンフットプリントアイテム名 */
 export type CommunicationItem = 'communication' | 'broadcasting'
 
+/** 家電・家具のカーボンフットプリントアイテム名 */
 export type ApplianceFurnitureItem =
   | 'electrical-appliances-repair-rental'
   | 'furniture-daily-goods-repair-rental'

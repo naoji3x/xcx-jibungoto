@@ -1,6 +1,14 @@
 import { type OtherCategory, type OtherItem } from '../common/types'
 import { getBaselineAmount, getParameter } from '../data/database'
 
+/**
+ * 居住者の人数を考慮した活動量の補正計算
+ * @param item その他のアイテム名
+ * @param category パラメータテーブルを検索する際のカテゴリ
+ * @param key パラメータテーブルを検索する際のキー
+ * @param residentCount 居住者人数
+ * @returns 補正された活動量
+ */
 export const estimateAnnualAmountConsideringResidentCount = (
   item: OtherItem,
   category: OtherCategory,
@@ -23,6 +31,13 @@ export const estimateAnnualAmountConsideringResidentCount = (
   }
 }
 
+/**
+ * 活動量の補正計算
+ * @param item その他のアイテム名
+ * @param category パラメータテーブルを検索する際のカテゴリ
+ * @param key パラメータテーブルを検索する際のキー
+ * @returns 補正された活動量
+ */
 export const estimateAnnualAmount = (
   item: OtherItem,
   category: OtherCategory,

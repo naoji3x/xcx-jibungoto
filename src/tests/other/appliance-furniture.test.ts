@@ -1,21 +1,21 @@
 import {
+  type ApplianceFurnitureExpenses,
+  type ApplianceFurnitureItem
+} from '../../ts/common/types'
+import {
   estimateApplianceFurnitureAnnualAmount,
   estimateApplianceFurnitureAnnualFootprint,
   estimateApplianceFurnitureIntensity
 } from '../../ts/other/appliance-furniture'
-import {
-  type ApplianceFurnitureItem,
-  type ApplianceFurnitureExpenses
-} from '../../ts/common/types'
 
 const expectAmount = (
   param: { expenses: ApplianceFurnitureExpenses; residentCount: number },
   itemAndValues: Array<{ item: ApplianceFurnitureItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(
-      estimateApplianceFurnitureAnnualAmount({ ...param, item: inv.item })
-    ).toBeCloseTo(inv.value)
+    expect(estimateApplianceFurnitureAnnualAmount(inv.item, param)).toBeCloseTo(
+      inv.value
+    )
   }
 }
 
@@ -25,7 +25,7 @@ const expectFootprint = (
 ): void => {
   for (const inv of itemAndValues) {
     expect(
-      estimateApplianceFurnitureAnnualFootprint({ ...param, item: inv.item })
+      estimateApplianceFurnitureAnnualFootprint(inv.item, param)
     ).toBeCloseTo(inv.value)
   }
 }
@@ -34,9 +34,7 @@ const expectIntensity = (
   itemAndValues: Array<{ item: ApplianceFurnitureItem; value: number }>
 ): void => {
   for (const inv of itemAndValues) {
-    expect(estimateApplianceFurnitureIntensity({ item: inv.item })).toBeCloseTo(
-      inv.value
-    )
+    expect(estimateApplianceFurnitureIntensity(inv.item)).toBeCloseTo(inv.value)
   }
 }
 

@@ -1,21 +1,21 @@
+import {
+  type ApplianceFurnitureExpenses,
+  type ApplianceFurnitureItem,
+  type ClothesBeautyExpenses,
+  type ClothesBeautyItem,
+  type DailyGoodsExpenses,
+  type DailyGoodsItem,
+  type HobbyGoodsExpenses,
+  type HobbyGoodsItem,
+  type ServiceExpenses,
+  type ServiceItem
+} from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateApplianceFurnitureAnnualAmount } from './appliance-furniture'
 import { estimateClothesBeautyAnnualAmount } from './clothes-beauty'
 import { estimateDailyGoodsAnnualAmount } from './daily-goods'
 import { estimateHobbyGoodsAnnualAmount } from './hobby-goods'
 import { estimateServiceAnnualAmount } from './service'
-import {
-  type ApplianceFurnitureExpenses,
-  type ClothesBeautyExpenses,
-  type HobbyGoodsExpenses,
-  type ServiceExpenses,
-  type DailyGoodsExpenses,
-  type ApplianceFurnitureItem,
-  type ClothesBeautyItem,
-  type HobbyGoodsItem,
-  type ServiceItem,
-  type DailyGoodsItem
-} from '../common/types'
 
 /*
 wasteは以下のitemのestimation合計/baseline合計とwasteのbaseline値を掛け合わせて求める。
@@ -125,8 +125,7 @@ export const estimateWasteAnnualAmount = ({
   const applianceFurnitureSum = applianceFurnitureItems.reduce(
     (sum, item) =>
       sum +
-      estimateApplianceFurnitureAnnualAmount({
-        item,
+      estimateApplianceFurnitureAnnualAmount(item, {
         expenses: applianceFurnitureExpenses,
         residentCount
       }),
