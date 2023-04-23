@@ -1,7 +1,6 @@
 import {
   estimateTrainAnnualAmount,
-  estimateTrainIntensity,
-  estimateTrainAnnualFootprint
+  estimateTrainIntensity
 } from '../../ts/mobility/train'
 
 describe('train', () => {
@@ -56,14 +55,5 @@ describe('train', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(2883.143695)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateTrainAnnualFootprint({
-        annualTravelingTime: 20,
-        weeklyTravelingTime: 5
-      })
-    ).toBeCloseTo(0.031326557 * 16700)
   })
 })

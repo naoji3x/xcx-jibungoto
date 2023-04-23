@@ -73,11 +73,7 @@ import { estimateOtherEnergyAnnualAmount } from '../../ts/housing/other-energy'
 import { estimateBicycleDrivingAnnualAmount } from '../../ts/mobility/bicycle-driving'
 import { estimateBicycleMaintenanceAnnualAmount } from '../../ts/mobility/bicycle-maintenance'
 import { estimateBusAnnualAmount } from '../../ts/mobility/bus'
-import {
-  estimateCarSharingDrivingAnnualAmount,
-  estimateCarSharingDrivingIntensity
-} from '../../ts/mobility/car-sharing-driving'
-import { estimateCarSharingRentalAnnualAmount } from '../../ts/mobility/car-sharing-rental'
+import { estimateCarSharingDrivingIntensity } from '../../ts/mobility/car-sharing-driving'
 import { estimateOtherCarAnnualAmount } from '../../ts/mobility/other-car'
 import {
   estimatePrivateCarDrivingAmount,
@@ -350,7 +346,7 @@ describe('dailyshift01', () => {
   )
   diagnoses.addItem(
     'mobility_bicycle-driving_amount',
-    estimateBicycleDrivingAnnualAmount()
+    estimateBicycleDrivingAnnualAmount({ residentialAreaSize: 'unknown' })
   )
   diagnoses.addItem(
     'mobility_private-car-purchase_amount',
@@ -360,14 +356,14 @@ describe('dailyshift01', () => {
   )
   diagnoses.addItem(
     'mobility_car-sharing-driving_amount',
-    estimateCarSharingDrivingAnnualAmount({
+    estimateOtherCarAnnualAmount('car-sharing-driving', {
       weeklyTravelingTime: otherCarWeeklyTravelingTime,
       annualTravelingTime: otherCarAnnualTravelingTime
     })
   )
   diagnoses.addItem(
     'mobility_car-sharing-rental_amount',
-    estimateCarSharingRentalAnnualAmount({
+    estimateOtherCarAnnualAmount('car-sharing-rental', {
       weeklyTravelingTime: otherCarWeeklyTravelingTime,
       annualTravelingTime: otherCarAnnualTravelingTime
     })
@@ -380,7 +376,7 @@ describe('dailyshift01', () => {
   )
   diagnoses.addItem(
     'mobility_bicycle-maintenance_amount',
-    estimateBicycleMaintenanceAnnualAmount()
+    estimateBicycleMaintenanceAnnualAmount({ residentialAreaSize: 'unknown' })
   )
 
   const taxiAmount = increaseRate(

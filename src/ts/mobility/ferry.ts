@@ -1,48 +1,27 @@
-import { getBaselineIntensity, getBaselineAmount } from '../data/database'
+import { getBaselineIntensity } from '../data/database'
 import {
   estimateAnnualAmount,
   estimateAnnualAmountByArea
 } from './amount-calculation'
-import { type ResidentialAreaSize } from '../common/types'
+import {
+  type AnnualTravelingTimeParam,
+  type ResidentialAreaSizeParam
+} from './param'
 
-interface Param {
-  annualTravelingTime?: number
-  residentialAreaSize?: ResidentialAreaSize
-}
-
-/**
- * 飛行機の移動のフットプリントを計算
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
- * @returns 移動の年間のフットプリント[kgCO2e]
- */
-export const estimateFerryAnnualFootprint = ({
-  annualTravelingTime,
-  residentialAreaSize
-}: Param): number =>
-  estimateFerryAnnualAmount({
-    annualTravelingTime,
-    residentialAreaSize
-  }) * estimateFerryIntensity()
+/** 移動量を計算するための引数 */
+export type FerryAmountParam =
+  | AnnualTravelingTimeParam
+  | ResidentialAreaSizeParam
 
 /**
- * 飛行機での移動時の年間の活動量を計算
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
+ * フェリーでの移動時の年間の活動量を計算
+ * @param param 移動量を計算するための引数
  * @returns 年間の移動距離[km-passenger]
  */
-export const estimateFerryAnnualAmount = ({
-  annualTravelingTime,
-  residentialAreaSize
-}: Param): number => {
-  if (annualTravelingTime !== undefined) {
-    return estimateAnnualAmount(annualTravelingTime, 'ferry-speed')
-  } else if (residentialAreaSize !== undefined) {
-    return estimateAnnualAmountByArea('ferry', residentialAreaSize)
-  } else {
-    return getBaselineAmount('mobility', 'ferry').value
-  }
-}
+export const estimateFerryAnnualAmount = (param: FerryAmountParam): number =>
+  'residentialAreaSize' in param
+    ? estimateAnnualAmountByArea('ferry', param.residentialAreaSize)
+    : estimateAnnualAmount(param.annualTravelingTime, 'ferry-speed')
 
 /**
  * 飛行機での移動時のGHG原単位を計算

@@ -1,13 +1,10 @@
-import {
-  estimateCarSharingDrivingAnnualAmount,
-  estimateCarSharingDrivingAnnualFootprint,
-  estimateCarSharingDrivingIntensity
-} from '../../ts/mobility/car-sharing-driving'
+import { estimateCarSharingDrivingIntensity } from '../../ts/mobility/car-sharing-driving'
+import { estimateOtherCarAnnualAmount } from '../../ts/mobility/other-car'
 
 describe('car-sharing-driving', () => {
   test('amount case 01', () => {
     expect(
-      estimateCarSharingDrivingAnnualAmount({
+      estimateOtherCarAnnualAmount('car-sharing-driving', {
         annualTravelingTime: 20,
         weeklyTravelingTime: 1
       })
@@ -16,7 +13,7 @@ describe('car-sharing-driving', () => {
 
   test('amount case A1', () => {
     expect(
-      estimateCarSharingDrivingAnnualAmount({
+      estimateOtherCarAnnualAmount('car-sharing-driving', {
         residentialAreaSize: 'major-city-or-metropolitan-area'
       })
     ).toBeCloseTo(89.06216)
@@ -24,7 +21,7 @@ describe('car-sharing-driving', () => {
 
   test('amount case A2', () => {
     expect(
-      estimateCarSharingDrivingAnnualAmount({
+      estimateOtherCarAnnualAmount('car-sharing-driving', {
         residentialAreaSize: 'city-150k-more'
       })
     ).toBeCloseTo(51.30309174)
@@ -32,7 +29,7 @@ describe('car-sharing-driving', () => {
 
   test('amount case A3', () => {
     expect(
-      estimateCarSharingDrivingAnnualAmount({
+      estimateOtherCarAnnualAmount('car-sharing-driving', {
         residentialAreaSize: 'city-50k-150k'
       })
     ).toBeCloseTo(47.62176474)
@@ -40,7 +37,7 @@ describe('car-sharing-driving', () => {
 
   test('amount case A4', () => {
     expect(
-      estimateCarSharingDrivingAnnualAmount({
+      estimateOtherCarAnnualAmount('car-sharing-driving', {
         residentialAreaSize: 'area-less-than-50k'
       })
     ).toBeCloseTo(46.47394961)
@@ -48,7 +45,7 @@ describe('car-sharing-driving', () => {
 
   test('amount case A5', () => {
     expect(
-      estimateCarSharingDrivingAnnualAmount({
+      estimateOtherCarAnnualAmount('car-sharing-driving', {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(60.7815956)
@@ -298,16 +295,5 @@ describe('car-sharing-driving', () => {
         electricityType: 'conventional'
       })
     ).toBeCloseTo(0.096710852)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateCarSharingDrivingAnnualFootprint({
-        annualTravelingTime: 20,
-        weeklyTravelingTime: 1,
-        carType: 'gasoline',
-        carPassengers: '1'
-      })
-    ).toBeCloseTo(0.252186904 * 1352.912094)
   })
 })

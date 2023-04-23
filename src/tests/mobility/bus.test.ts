@@ -1,7 +1,6 @@
 import {
   estimateBusAnnualAmount,
-  estimateBusIntensity,
-  estimateBusAnnualFootprint
+  estimateBusIntensity
 } from '../../ts/mobility/bus'
 
 describe('bus', () => {
@@ -56,14 +55,5 @@ describe('bus', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(430.6177624)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateBusAnnualFootprint({
-        annualTravelingTime: 20,
-        weeklyTravelingTime: 1
-      })
-    ).toBeCloseTo(0.082993045 * 1490)
   })
 })

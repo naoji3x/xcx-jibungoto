@@ -1,9 +1,5 @@
-import {
-  estimateTaxiAnnualFootprint,
-  estimateTaxiIntensity
-} from '../../ts/mobility/taxi'
-
 import { estimateOtherCarAnnualAmount } from '../../ts/mobility/other-car'
+import { estimateTaxiIntensity } from '../../ts/mobility/taxi'
 
 describe('taxi', () => {
   test('intensity case 01', () => {
@@ -94,17 +90,5 @@ describe('taxi', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(48.16514973)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateTaxiAnnualFootprint(
-        {
-          annualTravelingTime: 20,
-          weeklyTravelingTime: 1
-        },
-        { carPassengers: '1' }
-      )
-    ).toBeCloseTo(0.708691554 * 1072.087906)
   })
 })

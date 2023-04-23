@@ -4,7 +4,6 @@ import {
 } from '../../ts/common/types'
 import {
   estimateApplianceFurnitureAnnualAmount,
-  estimateApplianceFurnitureAnnualFootprint,
   estimateApplianceFurnitureIntensity
 } from '../../ts/other/appliance-furniture'
 
@@ -16,17 +15,6 @@ const expectAmount = (
     expect(estimateApplianceFurnitureAnnualAmount(inv.item, param)).toBeCloseTo(
       inv.value
     )
-  }
-}
-
-const expectFootprint = (
-  param: { expenses: ApplianceFurnitureExpenses; residentCount: number },
-  itemAndValues: Array<{ item: ApplianceFurnitureItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(
-      estimateApplianceFurnitureAnnualFootprint(inv.item, param)
-    ).toBeCloseTo(inv.value)
   }
 }
 
@@ -166,25 +154,6 @@ describe('appliance-furniture', () => {
       { item: 'electronics', value: 2.274573158 },
       { item: 'furniture', value: 2.207048567 },
       { item: 'covering', value: 2.512668069 }
-    ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint({ expenses: '50k-less', residentCount: 1 }, [
-      {
-        item: 'electrical-appliances-repair-rental',
-        value: 0.273075511 * 1.953281338
-      },
-      {
-        item: 'furniture-daily-goods-repair-rental',
-        value: 0.879636251 * 1.799958663
-      },
-      { item: 'cooking-appliances', value: 3.378927229 * 2.852827088 },
-      { item: 'heating-cooling-appliances', value: 3.873104143 * 7.449174796 },
-      { item: 'other-appliances', value: 3.644563112 * 2.750735655 },
-      { item: 'electronics', value: 8.140149492 * 2.274573158 },
-      { item: 'furniture', value: 2.033537824 * 2.207048567 },
-      { item: 'covering', value: 2.777006438 * 2.512668069 }
     ])
   })
 })

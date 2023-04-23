@@ -1,61 +1,27 @@
-import { getBaselineIntensity, getBaselineAmount } from '../data/database'
+import { getBaselineIntensity } from '../data/database'
 import {
   estimateAnnualAmountAddingWeeklyTravel,
   estimateAnnualAmountByArea
 } from './amount-calculation'
-import { type ResidentialAreaSize } from '../common/types'
+import { type ResidentialAreaSizeParam, type TravelingTimeParam } from './param'
 
-interface Param {
-  weeklyTravelingTime?: number
-  annualTravelingTime?: number
-  residentialAreaSize?: ResidentialAreaSize
-}
-
-/**
- * 電車の移動のフットプリントを計算
- * @param weeklyTravelingTime 週間の移動時間[hr]
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
- * @returns 移動の年間のフットプリント[kgCO2e]
- */
-export const estimateTrainAnnualFootprint = ({
-  weeklyTravelingTime,
-  annualTravelingTime,
-  residentialAreaSize
-}: Param): number =>
-  estimateTrainAnnualAmount({
-    weeklyTravelingTime,
-    annualTravelingTime,
-    residentialAreaSize
-  }) * estimateTrainIntensity()
+/** 移動量を計算するための引数 */
+export type TrainAmountParam = TravelingTimeParam | ResidentialAreaSizeParam
 
 /**
  * 電車での移動時の年間の活動量を計算
- * @param weeklyTravelingTime 週間の移動時間[hr]
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
+ * @param param 移動量を計算するための引数
  * @returns 年間の移動距離[km-passenger]
  */
-export const estimateTrainAnnualAmount = ({
-  weeklyTravelingTime,
-  annualTravelingTime,
-  residentialAreaSize
-}: Param): number => {
-  if (weeklyTravelingTime !== undefined || annualTravelingTime !== undefined) {
-    weeklyTravelingTime = weeklyTravelingTime ?? 0
-    annualTravelingTime = annualTravelingTime ?? 0
-    return estimateAnnualAmountAddingWeeklyTravel(
-      weeklyTravelingTime,
-      'train-speed',
-      annualTravelingTime,
-      'long-distance-train-speed'
-    )
-  } else if (residentialAreaSize !== undefined) {
-    return estimateAnnualAmountByArea('train', residentialAreaSize)
-  } else {
-    return getBaselineAmount('mobility', 'train').value
-  }
-}
+export const estimateTrainAnnualAmount = (param: TrainAmountParam): number =>
+  'residentialAreaSize' in param
+    ? estimateAnnualAmountByArea('train', param.residentialAreaSize)
+    : estimateAnnualAmountAddingWeeklyTravel(
+        param.weeklyTravelingTime,
+        'train-speed',
+        param.annualTravelingTime,
+        'long-distance-train-speed'
+      )
 
 /**
  * 電車での移動時のGHG原単位を計算

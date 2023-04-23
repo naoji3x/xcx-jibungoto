@@ -1,39 +1,23 @@
-import { type ResidentialAreaSize } from '../common/types'
-import { getBaselineAmount, getBaselineIntensity } from '../data/database'
+import { getBaselineIntensity } from '../data/database'
 import { estimateAnnualAmountByArea } from './amount-calculation'
+import { type ResidentialAreaSizeParam } from './param'
 
-interface WalkingAmountParam {
-  residentialAreaSize?: ResidentialAreaSize
-}
-
-/**
- * 自転車の維持のフットプリントを計算
- * @param residentialAreaSize 住んでいる地域の規模
- * @returns 自転車の維持のフットプリント[kgCO2e]
- */
-
-export const estimateWalkingAnnualFootprint = ({
-  residentialAreaSize
-}: WalkingAmountParam): number =>
-  estimateWalkingAnnualAmount({
-    residentialAreaSize
-  }) * estimateWalkingIntensity()
+/** 移動量を計算するための引数 */
+export type WalkingAmountParam = ResidentialAreaSizeParam
 
 /**
- * 自転車の維持の活動量を計算
- * @param residentialAreaSize 住んでいる地域の規模
- * @returns 維持費[千円]
+ * 徒歩移動の活動量を計算
+ * @param param 移動量を計算するための引数
+ * @returns 年間の移動距離[km-passenger]
  */
 export const estimateWalkingAnnualAmount = ({
   residentialAreaSize
 }: WalkingAmountParam): number =>
-  residentialAreaSize === undefined
-    ? getBaselineAmount('mobility', 'walking').value
-    : estimateAnnualAmountByArea('walking', residentialAreaSize)
+  estimateAnnualAmountByArea('walking', residentialAreaSize)
 
 /**
- * 自転車の維持のGHG原単位を計算
- * @returns 自転車での移動時のGHG原単位[kgCO2e/千円]
+ * 徒歩移動のGHG原単位を計算
+ * @returns 自転車での移動時のGHG原単位[kgCO2e/km-passenger]
  */
 export const estimateWalkingIntensity = (): number =>
   getBaselineIntensity('mobility', 'walking').value

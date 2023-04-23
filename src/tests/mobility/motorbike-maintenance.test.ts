@@ -1,7 +1,6 @@
 import {
   estimateMotorbikeMaintenanceAnnualAmount,
-  estimateMotorbikeMaintenanceIntensity,
-  estimateMotorbikeMaintenanceAnnualFootprint
+  estimateMotorbikeMaintenanceIntensity
 } from '../../ts/mobility/motorbike-maintenance'
 
 describe('motorbike-maintenance', () => {
@@ -56,14 +55,5 @@ describe('motorbike-maintenance', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(0.446120353)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateMotorbikeMaintenanceAnnualFootprint({
-        annualTravelingTime: 2,
-        weeklyTravelingTime: 1
-      })
-    ).toBeCloseTo(1.965801837 * 2.35807591)
   })
 })

@@ -1,7 +1,6 @@
 import {
   estimateBicycleDrivingAnnualAmount,
-  estimateBicycleDrivingIntensity,
-  estimateBicycleDrivingAnnualFootprint
+  estimateBicycleDrivingIntensity
 } from '../../ts/mobility/bicycle-driving'
 
 describe('bicycle-driving', () => {
@@ -48,13 +47,5 @@ describe('bicycle-driving', () => {
   // case 01: gasoline, unknown, 1, unknown
   test('intensity case 01', () => {
     expect(estimateBicycleDrivingIntensity()).toBeCloseTo(0.013134541)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateBicycleDrivingAnnualFootprint({
-        residentialAreaSize: 'major-city-or-metropolitan-area'
-      })
-    ).toBeCloseTo(340.2621468 * 0.013134541)
   })
 })

@@ -1,7 +1,6 @@
 import {
   estimateAirplaneAnnualAmount,
-  estimateAirplaneIntensity,
-  estimateAirplaneAnnualFootprint
+  estimateAirplaneIntensity
 } from '../../ts/mobility/airplane'
 
 describe('airplane', () => {
@@ -53,11 +52,5 @@ describe('airplane', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(1161.463556)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateAirplaneAnnualFootprint({ annualTravelingTime: 20 })
-    ).toBeCloseTo(0.124064635 * 12000)
   })
 })

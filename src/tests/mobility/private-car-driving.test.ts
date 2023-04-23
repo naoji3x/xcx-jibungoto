@@ -1,6 +1,5 @@
 import {
   estimatePrivateCarDrivingAmount,
-  estimatePrivateCarDrivingFootprint,
   estimatePrivateCarDrivingIntensity
 } from '../../ts/mobility/private-car-driving'
 
@@ -253,15 +252,5 @@ describe('private car driving', () => {
         electricityType: 'conventional'
       })
     ).toBeCloseTo(0.09652501)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimatePrivateCarDrivingFootprint({
-        mileage: 5000,
-        carType: 'gasoline',
-        carPassengers: '1'
-      })
-    ).toBeCloseTo(5000 * 0.251702294)
   })
 })

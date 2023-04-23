@@ -1,7 +1,6 @@
 import {
   estimateMotorbikeDrivingAnnualAmount,
-  estimateMotorbikeDrivingIntensity,
-  estimateMotorbikeDrivingAnnualFootprint
+  estimateMotorbikeDrivingIntensity
 } from '../../ts/mobility/motorbike-driving'
 
 describe('motorbike-driving', () => {
@@ -56,14 +55,5 @@ describe('motorbike-driving', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(254.458252)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateMotorbikeDrivingAnnualFootprint({
-        annualTravelingTime: 2,
-        weeklyTravelingTime: 1
-      })
-    ).toBeCloseTo(0.057043135 * 1345)
   })
 })

@@ -1,49 +1,33 @@
 import {
-  type CarType,
   type CarCharging,
   type CarPassengers,
+  type CarType,
   type ElectricityType
 } from '../common/types'
 import { getBaselineIntensity, getParameter } from '../data/database'
 import { estimateCarDrivingIntensityFactor } from './factor-calculation'
 
+/** 自家用車の運転時のGHG原単位を計算するための引数 */
 interface PrivateCarDrivingIntensityParam {
+  /** 車の種類 */
   carType: CarType
+  /** 平均乗車人数 */
   carPassengers: CarPassengers
+  /** 充電方法 */
   carCharging?: CarCharging
+  /** 電力の種類 */
   electricityType?: ElectricityType
 }
+
+/** 自家用車の運転時の活動量を計算するための引数 */
 interface PrivateCarDrivingAmountParam {
+  /** 自家用車の運転距離[km] */
   mileage: number
 }
 
 /**
- * 自家用車の運転時のフットプリントを計算
- * @param mileage 自家用車の運転距離[km]
- * @param carType 自動車の種類
- * @param carPassengers 平均乗車人数
- * @param carCharging 自宅充電の割合
- * @param electricityType 家庭での電力の種類
- * @returns 自家用車の運転時のフットプリント[kgCO2e]
- */
-export const estimatePrivateCarDrivingFootprint = ({
-  mileage,
-  carType,
-  carPassengers,
-  carCharging = 'unknown',
-  electricityType = 'unknown'
-}: PrivateCarDrivingAmountParam & PrivateCarDrivingIntensityParam): number =>
-  estimatePrivateCarDrivingAmount({ mileage }) *
-  estimatePrivateCarDrivingIntensity({
-    carType,
-    carPassengers,
-    carCharging,
-    electricityType
-  })
-
-/**
  * 自家用車の運転時の活動量を計算
- * @param mileage 自家用車の運転距離[km]
+ * @param param 自家用車の運転時の活動量を計算するための引数
  * @returns 自家用車の運転時の活動量[km-passenger]
  */
 export const estimatePrivateCarDrivingAmount = ({
@@ -52,10 +36,7 @@ export const estimatePrivateCarDrivingAmount = ({
 
 /**
  * 自家用車の運転時のGHG原単位を計算
- * @param carType 自動車の種類
- * @param carPassengers 平均乗車人数
- * @param carCharging 自宅充電の割合
- * @param electricityType 家庭での電力の種類
+ * @param param 自家用車の運転時のGHG原単位を計算するための引数
  * @returns 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]
  */
 export const estimatePrivateCarDrivingIntensity = ({

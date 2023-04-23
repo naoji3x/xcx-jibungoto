@@ -1,7 +1,6 @@
 import {
   estimateBicycleMaintenanceAnnualAmount,
-  estimateBicycleMaintenanceIntensity,
-  estimateBicycleMaintenanceAnnualFootprint
+  estimateBicycleMaintenanceIntensity
 } from '../../ts/mobility/bicycle-maintenance'
 
 describe('bicycle-maintenance', () => {
@@ -48,13 +47,5 @@ describe('bicycle-maintenance', () => {
   // case 01: gasoline, unknown, 1, unknown
   test('intensity case 01', () => {
     expect(estimateBicycleMaintenanceIntensity()).toBeCloseTo(2.324385029)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateBicycleMaintenanceAnnualFootprint({
-        residentialAreaSize: 'major-city-or-metropolitan-area'
-      })
-    ).toBeCloseTo(0.482425985 * 2.324385029)
   })
 })

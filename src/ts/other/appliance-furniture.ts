@@ -15,19 +15,6 @@ export interface ApplianceFurnitureAmountParam {
 }
 
 /**
- * 家電・家具のカーボンフットプリントを計算
- * @param item 家電・家具のカーボンフットプリントアイテム名
- * @param amountParam 家電・家具の活動量を計算するための引数
- * @returns カーボンフットプリント[kgCO2e]
- */
-export const estimateApplianceFurnitureAnnualFootprint = (
-  item: ApplianceFurnitureItem,
-  amountParam: ApplianceFurnitureAmountParam
-): number =>
-  estimateApplianceFurnitureAnnualAmount(item, amountParam) *
-  estimateApplianceFurnitureIntensity(item)
-
-/**
  * 家電・家具の年間の活動量を計算
  * @param item 家電・家具のカーボンフットプリントアイテム名
  * @param param 家電・家具の活動量を計算するための引数

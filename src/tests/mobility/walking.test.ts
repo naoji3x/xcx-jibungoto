@@ -1,7 +1,6 @@
 import {
   estimateWalkingAnnualAmount,
-  estimateWalkingIntensity,
-  estimateWalkingAnnualFootprint
+  estimateWalkingIntensity
 } from '../../ts/mobility/walking'
 
 describe('bicycle-maintenance', () => {
@@ -48,13 +47,5 @@ describe('bicycle-maintenance', () => {
   // case 01: gasoline, unknown, 1, unknown
   test('intensity case 01', () => {
     expect(estimateWalkingIntensity()).toBeCloseTo(0)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateWalkingAnnualFootprint({
-        residentialAreaSize: 'major-city-or-metropolitan-area'
-      })
-    ).toBeCloseTo(168.9344406 * 0)
   })
 })

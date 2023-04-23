@@ -1,7 +1,6 @@
 import {
   estimatePrivateCarMaintenanceAmount,
-  estimatePrivateCarMaintenanceIntensity,
-  estimatePrivateCarMaintenanceFootprint
+  estimatePrivateCarMaintenanceIntensity
 } from '../../ts/mobility/private-car-maintenance'
 
 describe('PrivateCarMaintenance', () => {
@@ -15,13 +14,5 @@ describe('PrivateCarMaintenance', () => {
         annualMileage: 5000
       })
     ).toBeCloseTo(64.17671714)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimatePrivateCarMaintenanceFootprint({
-        annualMileage: 5000
-      })
-    ).toBeCloseTo(1.648088312 * 64.17671714)
   })
 })

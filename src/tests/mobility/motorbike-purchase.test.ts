@@ -1,7 +1,6 @@
 import {
   estimateMotorbikePurchaseAnnualAmount,
-  estimateMotorbikePurchaseIntensity,
-  estimateMotorbikePurchaseAnnualFootprint
+  estimateMotorbikePurchaseIntensity
 } from '../../ts/mobility/motorbike-purchase'
 
 describe('motorbike-purchase', () => {
@@ -56,14 +55,5 @@ describe('motorbike-purchase', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(0.002635317)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateMotorbikePurchaseAnnualFootprint({
-        annualTravelingTime: 2,
-        weeklyTravelingTime: 1
-      })
-    ).toBeCloseTo(979.6575783 * 0.013929601)
   })
 })

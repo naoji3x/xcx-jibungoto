@@ -1,61 +1,31 @@
-import { getBaselineIntensity, getBaselineAmount } from '../data/database'
+import { getBaselineIntensity } from '../data/database'
 import {
   estimateAnnualAmountAddingWeeklyTravel,
   estimateAnnualAmountByArea
 } from './amount-calculation'
-import { type ResidentialAreaSize } from '../common/types'
+import { type ResidentialAreaSizeParam, type TravelingTimeParam } from './param'
 
-interface MotorbikeDrivingAmountParam {
-  weeklyTravelingTime?: number
-  annualTravelingTime?: number
-  residentialAreaSize?: ResidentialAreaSize
-}
-
-/**
- * バイクの移動のフットプリントを計算
- * @param weeklyTravelingTime 週間の移動時間[hr]
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
- * @returns 移動の年間のフットプリント[kgCO2e]
- */
-export const estimateMotorbikeDrivingAnnualFootprint = ({
-  weeklyTravelingTime,
-  annualTravelingTime,
-  residentialAreaSize
-}: MotorbikeDrivingAmountParam): number =>
-  estimateMotorbikeDrivingAnnualAmount({
-    weeklyTravelingTime,
-    annualTravelingTime,
-    residentialAreaSize
-  }) * estimateMotorbikeDrivingIntensity()
+/** 移動量を計算するための引数 */
+export type MotorbikeDrivingAmountParam =
+  | TravelingTimeParam
+  | ResidentialAreaSizeParam
 
 /**
  * バイクでの移動時の年間の活動量を計算
- * @param weeklyTravelingTime 週間の移動時間[hr]
- * @param annualTravelingTime 年間の移動時間[hr]
- * @param residentialAreaSize 住んでいる地域の規模
+ * @param param 移動量を計算するための引数
  * @returns 年間の移動距離[km-passenger]
  */
-export const estimateMotorbikeDrivingAnnualAmount = ({
-  weeklyTravelingTime,
-  annualTravelingTime,
-  residentialAreaSize
-}: MotorbikeDrivingAmountParam): number => {
-  if (weeklyTravelingTime !== undefined || annualTravelingTime !== undefined) {
-    weeklyTravelingTime = weeklyTravelingTime ?? 0
-    annualTravelingTime = annualTravelingTime ?? 0
-    return estimateAnnualAmountAddingWeeklyTravel(
-      weeklyTravelingTime,
-      'motorbike-speed',
-      annualTravelingTime,
-      'long-distance-motorbike-speed'
-    )
-  } else if (residentialAreaSize !== undefined) {
-    return estimateAnnualAmountByArea('motorbike-driving', residentialAreaSize)
-  } else {
-    return getBaselineAmount('mobility', 'motorbike-driving').value
-  }
-}
+export const estimateMotorbikeDrivingAnnualAmount = (
+  param: MotorbikeDrivingAmountParam
+): number =>
+  'residentialAreaSize' in param
+    ? estimateAnnualAmountByArea('motorbike-driving', param.residentialAreaSize)
+    : estimateAnnualAmountAddingWeeklyTravel(
+        param.weeklyTravelingTime,
+        'motorbike-speed',
+        param.annualTravelingTime,
+        'long-distance-motorbike-speed'
+      )
 
 /**
  * バイクでの移動時のGHG原単位を計算

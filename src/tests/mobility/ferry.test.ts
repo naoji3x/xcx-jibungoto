@@ -1,7 +1,6 @@
 import {
   estimateFerryAnnualAmount,
-  estimateFerryIntensity,
-  estimateFerryAnnualFootprint
+  estimateFerryIntensity
 } from '../../ts/mobility/ferry'
 
 describe('ferry', () => {
@@ -55,13 +54,5 @@ describe('ferry', () => {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(20.10019321)
-  })
-
-  test('footprint', () => {
-    expect(
-      estimateFerryAnnualFootprint({
-        annualTravelingTime: 3
-      })
-    ).toBeCloseTo(0.424691332 * 120)
   })
 })
