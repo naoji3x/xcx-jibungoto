@@ -78,6 +78,7 @@ import {
   estimateCarSharingDrivingIntensity
 } from '../../ts/mobility/car-sharing-driving'
 import { estimateCarSharingRentalAnnualAmount } from '../../ts/mobility/car-sharing-rental'
+import { estimateOtherCarAnnualAmount } from '../../ts/mobility/other-car'
 import {
   estimatePrivateCarDrivingAmount,
   estimatePrivateCarDrivingIntensity
@@ -87,10 +88,7 @@ import {
   estimatePrivateCarPurchaseAmount,
   estimatePrivateCarPurchaseIntensity
 } from '../../ts/mobility/private-car-purchase'
-import {
-  estimateTaxiAnnualAmount,
-  estimateTaxiIntensity
-} from '../../ts/mobility/taxi'
+import { estimateTaxiIntensity } from '../../ts/mobility/taxi'
 import { estimateTrainAnnualAmount } from '../../ts/mobility/train'
 
 class DiagnosesImpl implements Diagnoses {
@@ -341,7 +339,7 @@ describe('dailyshift01', () => {
   )
   diagnoses.addItem(
     'mobility_taxi_amount',
-    estimateTaxiAnnualAmount({
+    estimateOtherCarAnnualAmount('taxi', {
       weeklyTravelingTime: otherCarWeeklyTravelingTime,
       annualTravelingTime: otherCarAnnualTravelingTime
     })

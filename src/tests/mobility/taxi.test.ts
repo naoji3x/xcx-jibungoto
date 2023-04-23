@@ -1,8 +1,9 @@
 import {
-  estimateTaxiAnnualAmount,
   estimateTaxiAnnualFootprint,
   estimateTaxiIntensity
 } from '../../ts/mobility/taxi'
+
+import { estimateOtherCarAnnualAmount } from '../../ts/mobility/other-car'
 
 describe('taxi', () => {
   test('intensity case 01', () => {
@@ -48,7 +49,7 @@ describe('taxi', () => {
 
   test('amount case 01', () => {
     expect(
-      estimateTaxiAnnualAmount({
+      estimateOtherCarAnnualAmount('taxi', {
         annualTravelingTime: 20,
         weeklyTravelingTime: 1
       })
@@ -57,7 +58,7 @@ describe('taxi', () => {
 
   test('amount case A1', () => {
     expect(
-      estimateTaxiAnnualAmount({
+      estimateOtherCarAnnualAmount('taxi', {
         residentialAreaSize: 'major-city-or-metropolitan-area'
       })
     ).toBeCloseTo(77.0691577)
@@ -65,7 +66,7 @@ describe('taxi', () => {
 
   test('amount case A2', () => {
     expect(
-      estimateTaxiAnnualAmount({
+      estimateOtherCarAnnualAmount('taxi', {
         residentialAreaSize: 'city-150k-more'
       })
     ).toBeCloseTo(44.27463)
@@ -73,7 +74,7 @@ describe('taxi', () => {
 
   test('amount case A3', () => {
     expect(
-      estimateTaxiAnnualAmount({
+      estimateOtherCarAnnualAmount('taxi', {
         residentialAreaSize: 'city-50k-150k'
       })
     ).toBeCloseTo(33.7682362)
@@ -81,7 +82,7 @@ describe('taxi', () => {
 
   test('amount case A4', () => {
     expect(
-      estimateTaxiAnnualAmount({
+      estimateOtherCarAnnualAmount('taxi', {
         residentialAreaSize: 'area-less-than-50k'
       })
     ).toBeCloseTo(24.05233786)
@@ -89,7 +90,7 @@ describe('taxi', () => {
 
   test('amount case A5', () => {
     expect(
-      estimateTaxiAnnualAmount({
+      estimateOtherCarAnnualAmount('taxi', {
         residentialAreaSize: 'unknown'
       })
     ).toBeCloseTo(48.16514973)
@@ -97,11 +98,13 @@ describe('taxi', () => {
 
   test('footprint', () => {
     expect(
-      estimateTaxiAnnualFootprint({
-        annualTravelingTime: 20,
-        weeklyTravelingTime: 1,
-        carPassengers: '1'
-      })
+      estimateTaxiAnnualFootprint(
+        {
+          annualTravelingTime: 20,
+          weeklyTravelingTime: 1
+        },
+        { carPassengers: '1' }
+      )
     ).toBeCloseTo(0.708691554 * 1072.087906)
   })
 })

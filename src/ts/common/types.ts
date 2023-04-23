@@ -41,6 +41,9 @@ export type ResidentialAreaSize =
   | 'area-less-than-50k'
   | 'unknown'
 
+/** その他の車のアイテム名称 */
+export type OtherCarItem = 'taxi' | 'car-sharing-driving' | 'car-sharing-rental'
+
 //
 // food
 //
