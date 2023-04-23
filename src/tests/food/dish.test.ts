@@ -1,6 +1,5 @@
 import {
   estimateDishAnnualAmount,
-  estimateDishAnnualFootprint,
   estimateDishIntensity
 } from '../../ts/food/dish'
 
@@ -21,19 +20,6 @@ const expectAmount = (
 ): void => {
   for (const inv of itemAndValues) {
     expect(estimateDishAnnualAmount(inv.item, param)).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    frequency: DishFrequency
-  },
-  itemAndValues: Array<{ item: DishItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(estimateDishAnnualFootprint(inv.item, param)).toBeCloseTo(inv.value)
   }
 }
 
@@ -198,23 +184,5 @@ describe('dish', () => {
       { item: 'fish', value: 5.528206567 },
       { item: 'processed-fish', value: 4.080158747 }
     ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint(
-      {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        frequency: '4-5-per-week'
-      },
-      [
-        { item: 'beef', value: 4.933340889 * 18.34219895 },
-        { item: 'pork', value: 10.91289976 * 8.051661719 },
-        { item: 'chicken', value: 9.065400445 * 5.250241141 },
-        { item: 'other-meat', value: 1.872112301 * 7.689625825 },
-        { item: 'fish', value: 31.11697413 * 5.528206567 },
-        { item: 'processed-fish', value: 11.61746172 * 4.080158747 }
-      ]
-    )
   })
 })

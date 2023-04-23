@@ -1,6 +1,5 @@
 import {
   estimateFoodIntakeAnnualAmount,
-  estimateFoodIntakeAnnualFootprint,
   estimateFoodIntakeIntensity
 } from '../../ts/food/food-intake'
 
@@ -21,21 +20,6 @@ const expectAmount = (
 ): void => {
   for (const inv of itemAndValues) {
     expect(estimateFoodIntakeAnnualAmount(inv.item, param)).toBeCloseTo(
-      inv.value
-    )
-  }
-}
-
-const expectFootprint = (
-  param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    foodIntake: FoodIntake
-  },
-  itemAndValues: Array<{ item: FoodIntakeItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(estimateFoodIntakeAnnualFootprint(inv.item, param)).toBeCloseTo(
       inv.value
     )
   }
@@ -195,27 +179,5 @@ describe('food-intake', () => {
       { item: 'oil', value: 2.404909632 },
       { item: 'seasoning', value: 1.897020567 }
     ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint(
-      {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        foodIntake: 'somewhat-little'
-      },
-      [
-        { item: 'rice', value: 38.59256623 * 2.852329875 },
-        { item: 'bread-flour', value: 27.0129929 * 2.655219688 },
-        { item: 'noodle', value: 18.14412988 * 2.03794552 },
-        { item: 'potatoes', value: 11.30555827 * 1.567735484 },
-        { item: 'vegetables', value: 89.63645312 * 1.281591651 },
-        { item: 'processed-vegetables', value: 9.937712305 * 3.390013568 },
-        { item: 'beans', value: 22.35957449 * 1.058728707 },
-        { item: 'fruits', value: 37.6311014 * 1.305111781 },
-        { item: 'oil', value: 4.499592271 * 2.404909632 },
-        { item: 'seasoning', value: 25.54379595 * 1.897020567 }
-      ]
-    )
   })
 })

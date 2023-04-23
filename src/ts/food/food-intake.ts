@@ -1,16 +1,3 @@
-/*
- * rice
- * bread-flour
- * noodle
- * potatoes
- * vegetables
- * processed-vegetables
- * beans
- * fruits
- * oil
- * seasoning
- * ready-meal
- */
 import {
   type FoodDirectWaste,
   type FoodIntake,
@@ -24,22 +11,24 @@ import {
 } from '../data/database'
 import { estimateFoodLossRate } from './rate-calculation'
 
-interface FoodIntakeAmountParam {
+/**
+ * 食料摂取量の活動量を計算するための引数
+ */
+export interface FoodIntakeAmountParam {
+  /** 食料の廃棄量 */
   foodDirectWaste: FoodDirectWaste
+  /** 食料の食べ残し量 */
   foodLeftover: FoodLeftover
+  /** 食料摂取量 */
   foodIntake: FoodIntake
 }
 
-export const estimateFoodIntakeAnnualFootprint = (
-  item: FoodIntakeItem,
-  { foodDirectWaste, foodLeftover, foodIntake }: FoodIntakeAmountParam
-): number =>
-  estimateFoodIntakeAnnualAmount(item, {
-    foodDirectWaste,
-    foodLeftover,
-    foodIntake
-  }) * estimateFoodIntakeIntensity(item)
-
+/**
+ * 食料摂取量の活動量を計算する
+ * @param item 食料の種類
+ * @param param 食料摂取量の活動量を計算するための引数
+ * @returns 食料摂取量の活動量[kg]
+ */
 export const estimateFoodIntakeAnnualAmount = (
   item: FoodIntakeItem,
   { foodDirectWaste, foodLeftover, foodIntake }: FoodIntakeAmountParam
@@ -62,6 +51,12 @@ const defaultItems: FoodIntakeItem[] = [
   'seasoning'
 ]
 
+/**
+ * 食料摂取量の活動量を計算する
+ * @param param 食料摂取量の活動量を計算するための引数
+ * @param items 食料の種類の配列
+ * @returns 食料摂取量の活動量のMap
+ */
 export const estimateFoodIntakeAnnualAmounts = (
   { foodDirectWaste, foodLeftover, foodIntake }: FoodIntakeAmountParam,
   items?: FoodIntakeItem[]
@@ -83,6 +78,11 @@ export const estimateFoodIntakeAnnualAmounts = (
   )
 }
 
+/**
+ * 食料摂取量のGHG原単位を計算する
+ * @param items 食料の種類の配列
+ * @returns 食料摂取量のGHG原単位のMap
+ */
 export const estimateFoodIntakeIntensities = (
   items?: FoodIntakeItem[]
 ): Record<string, number> => {
@@ -99,6 +99,10 @@ export const estimateFoodIntakeIntensities = (
   )
 }
 
+/**
+ * 食料摂取量の活動量のベースライン値を取得する
+ * @returns 食料摂取量の活動量のMap
+ */
 export const getFoodIntakeAnnualBaselineAmounts = (): Record<string, number> =>
   defaultItems.reduce(
     (acc, item): Record<string, number> => ({
@@ -108,5 +112,10 @@ export const getFoodIntakeAnnualBaselineAmounts = (): Record<string, number> =>
     {}
   )
 
+/**
+ *  食料摂取量のGHG原単位を取得する
+ * @param item 食料の種類
+ * @returns 食料摂取量のGHG原単位[kgCO2e/kg]
+ */
 export const estimateFoodIntakeIntensity = (item: FoodIntakeItem): number =>
   getBaselineIntensity('food', item).value

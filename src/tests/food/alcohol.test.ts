@@ -1,6 +1,5 @@
 import {
   estimateAlcoholAnnualAmount,
-  estimateAlcoholAnnualFootprint,
   estimateAlcoholIntensity
 } from '../../ts/food/alcohol'
 
@@ -34,24 +33,6 @@ const testIntensity = (id: string, value: number): void => {
   })
 }
 
-const testFootprint = (
-  id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
-  frequency: AlcoholFrequency,
-  value: number
-): void => {
-  test('footprint case ' + id, () => {
-    expect(
-      estimateAlcoholAnnualFootprint({
-        foodDirectWaste,
-        foodLeftover,
-        frequency
-      })
-    ).toBeCloseTo(value)
-  })
-}
-
 describe('alcohol', () => {
   testAmount('E6', 'seldom', 'seldom', 'everyday', 94.46344332)
   testAmount('01', '1-per-week', '1-per-week', '4-5-per-week', 62.63546353)
@@ -68,11 +49,4 @@ describe('alcohol', () => {
   testAmount('06', 'unknown', 'unknown', 'unknown', 53.83668469)
 
   testIntensity('01', 0.944414337)
-  testFootprint(
-    '01',
-    '1-per-week',
-    '1-per-week',
-    '4-5-per-week',
-    62.63546353 * 0.944414337
-  )
 })

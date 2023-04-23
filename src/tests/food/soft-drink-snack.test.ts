@@ -1,6 +1,5 @@
 import {
   estimateSoftDrinkSnackAnnualAmount,
-  estimateSoftDrinkSnackAnnualFootprint,
   estimateSoftDrinkSnackIntensity
 } from '../../ts/food/soft-drink-snack'
 
@@ -21,21 +20,6 @@ const expectAmount = (
 ): void => {
   for (const inv of itemAndValues) {
     expect(estimateSoftDrinkSnackAnnualAmount(inv.item, param)).toBeCloseTo(
-      inv.value
-    )
-  }
-}
-
-const expectFootprint = (
-  param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    expenses: SoftDrinkSnackExpenses
-  },
-  itemAndValues: Array<{ item: SoftDrinkSnackItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(estimateSoftDrinkSnackAnnualFootprint(inv.item, param)).toBeCloseTo(
       inv.value
     )
   }
@@ -160,20 +144,5 @@ describe('soft-drink-snack', () => {
       { item: 'coffee-tea', value: 0.465905509 },
       { item: 'cold-drink', value: 0.482549688 }
     ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint(
-      {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        expenses: '3k-5k'
-      },
-      [
-        { item: 'sweets-snack', value: 13.55393908 * 4.939585725 },
-        { item: 'coffee-tea', value: 89.3043125 * 0.465905509 },
-        { item: 'cold-drink', value: 85.05459603 * 0.482549688 }
-      ]
-    )
   })
 })

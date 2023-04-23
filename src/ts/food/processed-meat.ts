@@ -6,29 +6,25 @@ import {
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateDishAnnualAmount } from './dish'
 
+/** 加工肉の活動量を計算するための引数 */
 interface ProcessedMeatAmountParam {
+  /** 食料の廃棄量 */
   foodDirectWaste: FoodDirectWaste
+  /** 食料の食べ残し量 */
   foodLeftover: FoodLeftover
+  /** 牛肉料理の摂取頻度 */
   beefDishFrequency: DishFrequency
+  /** 豚肉料理の摂取頻度 */
   porkDishFrequency: DishFrequency
+  /** 鶏肉料理の摂取頻度 */
   chickenDishFrequency: DishFrequency
 }
 
-export const estimateProcessedMeatAnnualFootprint = ({
-  foodDirectWaste,
-  foodLeftover,
-  beefDishFrequency,
-  porkDishFrequency,
-  chickenDishFrequency
-}: ProcessedMeatAmountParam): number =>
-  estimateProcessedMeatAnnualAmount({
-    foodDirectWaste,
-    foodLeftover,
-    beefDishFrequency,
-    porkDishFrequency,
-    chickenDishFrequency
-  }) * estimateProcessedMeatIntensity()
-
+/**
+ * 加工肉の活動量を計算する
+ * @param param 加工肉の活動量を計算するための引数
+ * @returns 加工肉の活動量[kg]
+ */
 export const estimateProcessedMeatAnnualAmount = ({
   foodDirectWaste,
   foodLeftover,
@@ -69,5 +65,9 @@ export const estimateProcessedMeatAnnualAmount = ({
   )
 }
 
+/**
+ * 加工肉のGHG原単位を計算する
+ * @returns 加工肉のGHG原単位[kgCO2e/kg]
+ */
 export const estimateProcessedMeatIntensity = (): number =>
   getBaselineIntensity('food', 'processed-meat').value

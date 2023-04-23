@@ -1,6 +1,5 @@
 import {
   estimateDairyFoodAnnualAmount,
-  estimateDairyFoodAnnualFootprint,
   estimateDairyFoodIntensity
 } from '../../ts/food/dairy-food'
 
@@ -21,21 +20,6 @@ const expectAmount = (
 ): void => {
   for (const inv of itemAndValues) {
     expect(estimateDairyFoodAnnualAmount(inv.item, param)).toBeCloseTo(
-      inv.value
-    )
-  }
-}
-
-const expectFootprint = (
-  param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    frequency: DairyFoodFrequency
-  },
-  itemAndValues: Array<{ item: DairyFoodItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(estimateDairyFoodAnnualFootprint(inv.item, param)).toBeCloseTo(
       inv.value
     )
   }
@@ -160,20 +144,5 @@ describe('dairy-food', () => {
       { item: 'other-dairy', value: 2.204505819 },
       { item: 'eggs', value: 1.450456835 }
     ])
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint(
-      {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        frequency: '2-per-day'
-      },
-      [
-        { item: 'milk', value: 33.88958783 * 0.876594709 },
-        { item: 'other-dairy', value: 16.60607753 * 2.204505819 },
-        { item: 'eggs', value: 12.35986599 * 1.450456835 }
-      ]
-    )
   })
 })

@@ -47,57 +47,42 @@ import {
   getSoftDrinkSnackAnnualBaselineAmounts
 } from './soft-drink-snack'
 
-interface EatOutIntensityParam {
+/** 外食の活動量を計算するための引数 */
+export interface EatOutIntensityParam {
+  /** 食料の廃棄量 */
   foodDirectWaste: FoodDirectWaste
+  /** 食料の食べ残し量 */
   foodLeftover: FoodLeftover
+  /** 食事の摂取量 */
   foodIntake: FoodIntake
-
+  /** 牛肉料理の頻度 */
   beefDishFrequency: DishFrequency
+  /** 豚肉料理の頻度 */
   porkDishFrequency: DishFrequency
+  /** 鶏肉料理の頻度 */
   chickenDishFrequency: DishFrequency
+  /** 魚介料理の頻度 */
   seafoodDishFrequency: DishFrequency
-
+  /** 乳製品料理の頻度 */
   dairyFoodFrequency: DairyFoodFrequency
+  /** アルコールの頻度 */
   alcoholFrequency: AlcoholFrequency
+  /** ソフトドリンクとスナックの支出 */
   softDrinkSnackExpenses: SoftDrinkSnackExpenses
 }
 
+/** 外食の活動量を計算するための引数 */
 interface EatOutAmountParam {
+  /** 外食の支出 */
   eatOutExpenses: EatOutExpenses
 }
 
-export const estimateEatOutAnnualFootprint = (
-  item: EatOutItem,
-  {
-    eatOutExpenses,
-    foodDirectWaste,
-    foodLeftover,
-    foodIntake,
-    beefDishFrequency,
-    porkDishFrequency,
-    chickenDishFrequency,
-    seafoodDishFrequency,
-    dairyFoodFrequency,
-    alcoholFrequency,
-    softDrinkSnackExpenses
-  }: EatOutAmountParam & EatOutIntensityParam
-): number =>
-  estimateEatOutAnnualAmount(item, {
-    eatOutExpenses
-  }) *
-  estimateEatOutIntensity(item, {
-    foodDirectWaste,
-    foodLeftover,
-    foodIntake,
-    beefDishFrequency,
-    porkDishFrequency,
-    chickenDishFrequency,
-    seafoodDishFrequency,
-    dairyFoodFrequency,
-    alcoholFrequency,
-    softDrinkSnackExpenses
-  })
-
+/**
+ * 外食の活動量を計算する
+ * @param item 外食の種類
+ * @param param 外食の活動量を計算するための引数
+ * @returns 外食の活動量[000JPY]
+ */
 export const estimateEatOutAnnualAmount = (
   item: EatOutItem,
   { eatOutExpenses }: EatOutAmountParam
@@ -107,6 +92,12 @@ export const estimateEatOutAnnualAmount = (
   return baseline * factor
 }
 
+/**
+ * 外食のGHG原単位を計算する
+ * @param item 外食の種類
+ * @param param 外食のGHG原単位を計算するための引数
+ * @returns 外食のGHG原単位[kgCO2e/000JPY]
+ */
 export const estimateEatOutIntensity = (
   item: EatOutItem,
   {

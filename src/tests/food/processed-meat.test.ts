@@ -5,7 +5,6 @@ import {
 } from '../../ts/common/types'
 import {
   estimateProcessedMeatAnnualAmount,
-  estimateProcessedMeatAnnualFootprint,
   estimateProcessedMeatIntensity
 } from '../../ts/food/processed-meat'
 
@@ -34,28 +33,6 @@ const testAmount = (
 const testIntensity = (id: string, value: number): void => {
   test('intensity case ' + id, () => {
     expect(estimateProcessedMeatIntensity()).toBeCloseTo(value)
-  })
-}
-
-const testFootprint = (
-  id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
-  beefDishFrequency: DishFrequency,
-  porkDishFrequency: DishFrequency,
-  chickenDishFrequency: DishFrequency,
-  value: number
-): void => {
-  test('footprint case ' + id, () => {
-    expect(
-      estimateProcessedMeatAnnualFootprint({
-        foodDirectWaste,
-        foodLeftover,
-        beefDishFrequency,
-        porkDishFrequency,
-        chickenDishFrequency
-      })
-    ).toBeCloseTo(value)
   })
 }
 
@@ -139,17 +116,4 @@ describe('processed-meat', () => {
   // Intensity
   //
   testIntensity('01', 5.336739155)
-
-  //
-  // Footprint
-  //
-  testFootprint(
-    '01',
-    '1-per-week',
-    '1-per-week',
-    '4-5-per-week',
-    '4-5-per-week',
-    '4-5-per-week',
-    7.604431183 * 5.336739155
-  )
 })

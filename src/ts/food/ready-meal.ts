@@ -36,49 +36,37 @@ import {
   estimateSoftDrinkSnackIntensity
 } from './soft-drink-snack'
 
-export interface ReadyMealIntensityParam extends ReadyMealAmountParam {
-  beefDishFrequency: DishFrequency
-  porkDishFrequency: DishFrequency
-  chickenDishFrequency: DishFrequency
-  seafoodDishFrequency: DishFrequency
-  dairyFoodFrequency: DairyFoodFrequency
-  softDrinkSnackExpenses: SoftDrinkSnackExpenses
-}
-
+/** 加工食品の活動量を計算するための引数 */
 export interface ReadyMealAmountParam {
+  /** 食料の廃棄量 */
   foodDirectWaste: FoodDirectWaste
+  /** 食料の食べ残し量 */
   foodLeftover: FoodLeftover
+  /** 食事の摂取量 */
   foodIntake: FoodIntake
 }
 
-export const estimateReadyMealAnnualFootprint = ({
-  foodDirectWaste,
-  foodLeftover,
-  foodIntake,
-  beefDishFrequency,
-  porkDishFrequency,
-  chickenDishFrequency,
-  seafoodDishFrequency,
-  dairyFoodFrequency,
-  softDrinkSnackExpenses
-}: ReadyMealIntensityParam): number =>
-  estimateReadyMealAnnualAmount({
-    foodDirectWaste,
-    foodLeftover,
-    foodIntake
-  }) *
-  estimateReadyMealIntensity({
-    foodDirectWaste,
-    foodLeftover,
-    foodIntake,
-    beefDishFrequency,
-    porkDishFrequency,
-    chickenDishFrequency,
-    seafoodDishFrequency,
-    dairyFoodFrequency,
-    softDrinkSnackExpenses
-  })
+/** 加工食品のGHG原単位を計算するための引数 */
+export interface ReadyMealIntensityParam extends ReadyMealAmountParam {
+  /** 牛肉料理の頻度 */
+  beefDishFrequency: DishFrequency
+  /** 豚肉料理の頻度 */
+  porkDishFrequency: DishFrequency
+  /** 鶏肉料理の頻度 */
+  chickenDishFrequency: DishFrequency
+  /** 魚介料理の頻度 */
+  seafoodDishFrequency: DishFrequency
+  /** 乳製品料理の頻度 */
+  dairyFoodFrequency: DairyFoodFrequency
+  /** ソフトドリンク・スナックの支出 */
+  softDrinkSnackExpenses: SoftDrinkSnackExpenses
+}
 
+/**
+ * 加工食品の活動量を計算する
+ * @param param 加工食品の活動量を計算するための引数
+ * @returns 冷凍食品の活動量[kg]
+ */
 export const estimateReadyMealAnnualAmount = ({
   foodDirectWaste,
   foodLeftover,
@@ -89,6 +77,11 @@ export const estimateReadyMealAnnualAmount = ({
   return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover)
 }
 
+/**
+ * 加工食品のGHG原単位を計算する
+ * @param param 加工食品のGHG原単位を計算するための引数
+ * @returns 冷凍食品のGHG原単位[kgCO2/kg]
+ */
 export const estimateReadyMealIntensity = ({
   foodDirectWaste,
   foodLeftover,

@@ -1,6 +1,5 @@
 import {
   estimateEatOutAnnualAmount,
-  estimateEatOutAnnualFootprint,
   estimateEatOutIntensity
 } from '../../ts/food/eat-out'
 
@@ -24,32 +23,6 @@ const expectAmount = (
 ): void => {
   for (const inv of itemAndValues) {
     expect(estimateEatOutAnnualAmount(inv.item, param)).toBeCloseTo(inv.value)
-  }
-}
-
-const expectFootprint = (
-  param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    foodIntake: FoodIntake
-
-    beefDishFrequency: DishFrequency
-    porkDishFrequency: DishFrequency
-    chickenDishFrequency: DishFrequency
-    seafoodDishFrequency: DishFrequency
-
-    dairyFoodFrequency: DairyFoodFrequency
-    alcoholFrequency: AlcoholFrequency
-    softDrinkSnackExpenses: SoftDrinkSnackExpenses
-
-    eatOutExpenses: EatOutExpenses
-  },
-  itemAndValues: Array<{ item: EatOutItem; value: number }>
-): void => {
-  for (const inv of itemAndValues) {
-    expect(estimateEatOutAnnualFootprint(inv.item, param)).toBeCloseTo(
-      inv.value
-    )
   }
 }
 
@@ -330,30 +303,6 @@ describe('eat-out', () => {
       [
         { item: 'restaurant', value: 3.073475287 },
         { item: 'bar-cafe', value: 3.093490514 }
-      ]
-    )
-  })
-
-  test('footprint case 01', () => {
-    expectFootprint(
-      {
-        eatOutExpenses: '5k-10k',
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        foodIntake: 'somewhat-little',
-
-        beefDishFrequency: '4-5-per-week',
-        porkDishFrequency: '4-5-per-week',
-        chickenDishFrequency: '4-5-per-week',
-        seafoodDishFrequency: '4-5-per-week',
-
-        dairyFoodFrequency: '2-per-day',
-        alcoholFrequency: '4-5-per-week',
-        softDrinkSnackExpenses: '3k-5k'
-      },
-      [
-        { item: 'restaurant', value: 70.20672458 * 3.648206169 },
-        { item: 'bar-cafe', value: 19.79327542 * 3.671964185 }
       ]
     )
   })

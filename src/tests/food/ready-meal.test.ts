@@ -8,7 +8,6 @@ import {
 } from '../../ts/common/types'
 import {
   estimateReadyMealAnnualAmount,
-  estimateReadyMealAnnualFootprint,
   estimateReadyMealIntensity
 } from '../../ts/food/ready-meal'
 
@@ -46,36 +45,6 @@ const testIntensity = (
   test('intensity case ' + id, () => {
     expect(
       estimateReadyMealIntensity({
-        foodDirectWaste,
-        foodLeftover,
-        foodIntake,
-        beefDishFrequency,
-        porkDishFrequency,
-        chickenDishFrequency,
-        seafoodDishFrequency,
-        dairyFoodFrequency,
-        softDrinkSnackExpenses
-      })
-    ).toBeCloseTo(value)
-  })
-}
-
-const testFootprint = (
-  id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
-  foodIntake: FoodIntake,
-  beefDishFrequency: DishFrequency,
-  porkDishFrequency: DishFrequency,
-  chickenDishFrequency: DishFrequency,
-  seafoodDishFrequency: DishFrequency,
-  dairyFoodFrequency: DairyFoodFrequency,
-  softDrinkSnackExpenses: SoftDrinkSnackExpenses,
-  value: number
-): void => {
-  test('footprint case ' + id, () => {
-    expect(
-      estimateReadyMealAnnualFootprint({
         foodDirectWaste,
         foodLeftover,
         foodIntake,
@@ -219,23 +188,5 @@ describe('ready-meal', () => {
     'unknown',
     'unknown',
     3.65415704
-  )
-
-  //
-  // Footprint
-  //
-
-  testFootprint(
-    '01',
-    '1-per-week',
-    '1-per-week',
-    'somewhat-little',
-    '4-5-per-week',
-    '4-5-per-week',
-    '4-5-per-week',
-    '4-5-per-week',
-    '2-per-day',
-    '3k-5k',
-    42.62025883 * 4.343537625
   )
 })
