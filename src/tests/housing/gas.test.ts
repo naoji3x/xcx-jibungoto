@@ -1,7 +1,6 @@
 import { type GasItem, type Month } from '../../ts/common/types'
 import {
   estimateGasAnnualAmount,
-  estimateGasAnnualFootprint,
   estimateGasIntensity
 } from '../../ts/housing/gas'
 
@@ -30,25 +29,6 @@ const testIntensity = (title: string, item: GasItem, value: number): void => {
   })
 }
 
-const testFootprint = (
-  title: string,
-  item: GasItem,
-  monthlyConsumption: number,
-  month: Month,
-  residentCount: number,
-  value: number
-): void => {
-  test(title, () => {
-    expect(
-      estimateGasAnnualFootprint(item, {
-        monthlyConsumption,
-        month,
-        residentCount
-      })
-    ).toBeCloseTo(value)
-  })
-}
-
 describe('electricity', () => {
   testAmount('amount case 01', 'urban-gas', 15, 'january', 1, 1145.39227)
   testAmount('amount case 02', 'lpg', 15, 'february', 2, 1616.571061)
@@ -65,13 +45,4 @@ describe('electricity', () => {
 
   testIntensity('intensity case 01', 'urban-gas', 0.310544763)
   testIntensity('intensity case 02', 'lpg', 0.327564907)
-
-  testFootprint(
-    'footprint case 01',
-    'urban-gas',
-    15,
-    'january',
-    1,
-    1145.39227 * 0.310544763
-  )
 })

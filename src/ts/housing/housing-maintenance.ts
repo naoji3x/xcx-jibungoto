@@ -1,20 +1,16 @@
-import { type HousingSize } from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateImputedRentAnnualAmount } from './imputed-rent'
+import { type HousingParam } from './param'
 import { estimateRentAnnualAmount } from './rent'
 
-interface HousingMaintenanceAmountParam {
-  housingSize: HousingSize
-  residentCount: number
-}
+/** 家の維持の活動量を計算するための引数 */
+export type HousingMaintenanceAmountParam = HousingParam
 
-export const estimateHousingMaintenanceAnnualFootprint = ({
-  residentCount,
-  housingSize
-}: HousingMaintenanceAmountParam): number =>
-  estimateHousingMaintenanceAnnualAmount({ residentCount, housingSize }) *
-  estimateHousingMaintenanceIntensity()
-
+/**
+ * 家の維持の活動量を計算
+ * @param param 家の維持の活動量を計算するための引数
+ * @returns 家の維持の活動量[000JPY]
+ */
 export const estimateHousingMaintenanceAnnualAmount = ({
   residentCount,
   housingSize
@@ -32,9 +28,12 @@ export const estimateHousingMaintenanceAnnualAmount = ({
   })
 
   const rate = (imputedRentEstimation + rentEstimation) / (imputedRent + rent)
-
   return baseline * rate
 }
 
+/**
+ * 家の維持のGHG原単位を計算
+ * @returns 家の維持のGHG原単位[kgCO2e/000JPY]
+ */
 export const estimateHousingMaintenanceIntensity = (): number =>
   getBaselineIntensity('housing', 'housing-maintenance').value

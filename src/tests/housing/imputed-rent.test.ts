@@ -1,7 +1,6 @@
 import { type HousingSize } from '../../ts/common/types'
 import {
   estimateImputedRentAnnualAmount,
-  estimateImputedRentAnnualFootprint,
   estimateImputedRentIntensity
 } from '../../ts/housing/imputed-rent'
 
@@ -27,19 +26,6 @@ const testIntensity = (title: string, value: number): void => {
   })
 }
 
-const testFootprint = (
-  title: string,
-  housingSize: HousingSize,
-  residentCount: number,
-  value: number
-): void => {
-  test(title, () => {
-    expect(
-      estimateImputedRentAnnualFootprint({ housingSize, residentCount })
-    ).toBeCloseTo(value)
-  })
-}
-
 describe('imputed-rent', () => {
   testAmount('amount case 01', '1-room', 1, 16.44358036)
   testAmount('amount case 02', '2-room', 2, 12.33268527)
@@ -50,5 +36,4 @@ describe('imputed-rent', () => {
   testAmount('amount case 07', 'unknown', 4, 32.06179314)
 
   testIntensity('intensity case 01', 0.930699)
-  testFootprint('footprint case 01', '1-room', 1, 16.44358036 * 0.930699)
 })

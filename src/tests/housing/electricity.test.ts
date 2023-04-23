@@ -6,7 +6,6 @@ import {
 } from '../../ts/common/types'
 import {
   estimateElectricityAnnualAmount,
-  estimateElectricityAnnualFootprint,
   estimateElectricityIntensity
 } from '../../ts/housing/electricity'
 
@@ -36,31 +35,11 @@ const testAmount = (
 
 const testIntensity = (
   title: string,
-  electricity: ElectricityType,
+  electricityType: ElectricityType,
   value: number
 ): void => {
   test(title, () => {
-    expect(estimateElectricityIntensity({ electricity })).toBeCloseTo(value)
-  })
-}
-
-const testFootprint = (
-  title: string,
-  monthlyConsumption: number,
-  month: Month,
-  residentCount: number,
-  electricity: ElectricityType,
-  value: number
-): void => {
-  test(title, () => {
-    expect(
-      estimateElectricityAnnualFootprint({
-        monthlyConsumption,
-        month,
-        residentCount,
-        electricity
-      })
-    ).toBeCloseTo(value)
+    expect(estimateElectricityIntensity({ electricityType })).toBeCloseTo(value)
   })
 }
 
@@ -110,13 +89,4 @@ describe('electricity', () => {
   testIntensity('intensity case 04', '100-renewable', 0.062972926)
   testIntensity('intensity case 05', 'solar-panel', 0.042861845)
   testIntensity('intensity case 06', 'unknown', 0.634319811)
-
-  testFootprint(
-    'footprint case 01',
-    750,
-    'january',
-    1,
-    'conventional',
-    6866.523785 * 0.634319811
-  )
 })

@@ -6,13 +6,13 @@ import {
 } from '../common/types'
 import { getParameter } from '../data/database'
 
-/** estimateElectricityIntensity の引数 */
+/** 自宅の電力のGHG原単位を計算するための引数 */
 export interface ElectricityIntensityParam {
   /** 自宅での電力の種類 */
-  electricity: ElectricityType
+  electricityType: ElectricityType
 }
 
-/** estimateElectricityAnnualAmount の引数 */
+/** 自宅の電力の活動量を計算するための引数 */
 export interface ElectricityAmountParam {
   /** 1ヶ月の電力使用量[kWh] */
   monthlyConsumption: number
@@ -32,27 +32,8 @@ export interface ElectricityAmountParam {
 }
 
 /**
- * 自宅の電力の年間のカーボンフットプリントを計算
- * @param param0 計算に必要なパラメータ
- * @returns カーボンフットプリント[kgCO2e]
- */
-export const estimateElectricityAnnualFootprint = ({
-  electricity,
-  monthlyConsumption,
-  month,
-  residentCount,
-  privateCar
-}: ElectricityIntensityParam & ElectricityAmountParam): number =>
-  estimateElectricityAnnualAmount({
-    monthlyConsumption,
-    month,
-    residentCount,
-    privateCar
-  }) * estimateElectricityIntensity({ electricity })
-
-/**
  * 自宅の電力の年間の活動量を計算
- * @param param0 計算に必要なパラメータ
+ * @param param 自宅の電力の活動量を計算するための引数
  * @returns 活動量[kWh]
  */
 export const estimateElectricityAnnualAmount = ({
@@ -89,10 +70,10 @@ export const estimateElectricityAnnualAmount = ({
 
 /**
  * 自宅の電力のGHG原単位を計算
- * @param param0 計算に必要なパラメータ
+ * @param param 自宅の電力のGHG原単位を計算するための引数
  * @returns GHG原単位[kgCO2e/kWh]
  */
 export const estimateElectricityIntensity = ({
-  electricity
+  electricityType: electricity
 }: ElectricityIntensityParam): number =>
   getParameter('electricity-intensity', electricity).value

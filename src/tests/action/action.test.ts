@@ -634,7 +634,7 @@ describe('led01', () => {
   )
   diagnoses.addItem(
     'housing_electricity_intensity',
-    estimateElectricityIntensity({ electricity })
+    estimateElectricityIntensity({ electricityType: electricity })
   )
   diagnoses.addItem(
     'housing_housing-maintenance_amount',
@@ -977,7 +977,7 @@ describe('ac01', () => {
   diagnoses.addItem(
     'housing_electricity_intensity',
     estimateElectricityIntensity({
-      electricity
+      electricityType: electricity
     })
   )
 
