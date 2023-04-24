@@ -2,10 +2,10 @@
 // mobility
 //
 
-// 自動車の種類(v1ではCarIntensityFactorFirstKey)
+/** 自動車の種類(v1ではCarIntensityFactorFirstKey) */
 export type CarType = 'gasoline' | 'light' | 'hv' | 'phv' | 'ev' | 'unknown'
 
-// 自宅充電の割合 ※v1ではCarChargingKey
+/** 自宅充電の割合 ※v1ではCarChargingKey */
 export type CarCharging =
   | 'charge-almost-at-home'
   | 'use-charging-spots-occasionally'
@@ -13,7 +13,7 @@ export type CarCharging =
   | 'use-charging-spots-usually'
   | 'unknown'
 
-// 平均乗車人数(v1ではCarPassengersFirstKey)
+/** 平均乗車人数(v1ではCarPassengersFirstKey) */
 export type CarPassengers =
   | '1'
   | '1-2'
@@ -24,7 +24,7 @@ export type CarPassengers =
   | '4-more'
   | 'unknown'
 
-// 自宅での電力の種類(v1ではElectricityIntensityKey)
+/** 自宅での電力の種類(v1ではElectricityIntensityKey) */
 export type ElectricityType =
   | 'conventional'
   | '30-renewable'
@@ -33,7 +33,7 @@ export type ElectricityType =
   | 'solar-panel'
   | 'unknown'
 
-// 住んでいる地域の規模(v1ではMileageByAreaFirstKey)
+/** 住んでいる地域の規模(v1ではMileageByAreaFirstKey) */
 export type ResidentialAreaSize =
   | 'major-city-or-metropolitan-area'
   | 'city-150k-more'
@@ -48,7 +48,7 @@ export type OtherCarItem = 'taxi' | 'car-sharing-driving' | 'car-sharing-rental'
 // food
 //
 
-// 1日の活動量（摂取カロリー量）はどのくらいですか？
+/** 1日の活動量（摂取カロリー量）はどのくらいですか？ */
 export type FoodIntake =
   | 'very-little'
   | 'somewhat-little'
@@ -57,7 +57,7 @@ export type FoodIntake =
   | 'very-much'
   | 'unknown'
 
-// 食材を捨てたり食べ残し（食品ロス）が生じる頻度はどのくらいですか？
+/* 食料の破棄の頻度 */
 export type FoodDirectWaste =
   | 'seldom'
   | '1-per-week'
@@ -66,6 +66,7 @@ export type FoodDirectWaste =
   | '8-more-per-week'
   | 'unknown'
 
+/** 食べ残しの頻度 */
 export type FoodLeftover =
   | 'seldom'
   | '1-per-week'
@@ -74,7 +75,7 @@ export type FoodLeftover =
   | '8-more-per-week'
   | 'unknown'
 
-// 普段の食生活を教えてください
+/** 料理の頻度 */
 export type DishFrequency =
   | 'everyday'
   | '4-5-per-week'
@@ -85,6 +86,7 @@ export type DishFrequency =
   | 'never'
   | 'unknown'
 
+/** 乳製品の頻度 */
 export type DairyFoodFrequency =
   | '3-more-per-day'
   | '2-per-day'
@@ -94,7 +96,7 @@ export type DairyFoodFrequency =
   | 'never'
   | 'unknown'
 
-// １週間にどのくらいの頻度でお酒を飲みますか？
+/** お酒の頻度 */
 export type AlcoholFrequency =
   | 'everyday'
   | '4-5-per-week'
@@ -104,7 +106,7 @@ export type AlcoholFrequency =
   | 'never'
   | 'unknown'
 
-// お酒以外の飲み物、お菓子類の1ヶ月の支出はどのくらいですか？
+/** お酒以外の飲み物、お菓子類の頻度 */
 export type SoftDrinkSnackExpenses =
   | '3k-less'
   | '3k-5k'
@@ -113,7 +115,7 @@ export type SoftDrinkSnackExpenses =
   | '15k-more'
   | 'unknown'
 
-// 1ヶ月の外食費はどのくらいですか？
+/** 外食費 */
 export type EatOutExpenses =
   | '5k-less'
   | '5k-10k'
@@ -122,6 +124,7 @@ export type EatOutExpenses =
   | '50k-more'
   | 'unknown'
 
+/** 料理の種類 */
 export type DishItem =
   | 'beef'
   | 'pork'
@@ -130,8 +133,10 @@ export type DishItem =
   | 'fish'
   | 'processed-fish'
 
+/** 飲み物、お菓子の種類 */
 export type SoftDrinkSnackItem = 'sweets-snack' | 'coffee-tea' | 'cold-drink'
 
+/** 摂取カロリーの種類 */
 export type FoodIntakeItem =
   | 'rice'
   | 'bread-flour'
@@ -144,14 +149,16 @@ export type FoodIntakeItem =
   | 'oil'
   | 'seasoning'
 
+/** 乳製品の種類 */
 export type DairyFoodItem = 'milk' | 'other-dairy' | 'eggs'
+/** 外食の種類 */
 export type EatOutItem = 'restaurant' | 'bar-cafe'
 
 //
 // housing
 //
 
-// 家の部屋数
+/** 家の部屋数 */
 export type HousingSize =
   | '1-room'
   | '2-room'
@@ -161,7 +168,7 @@ export type HousingSize =
   | '7-more-room'
   | 'unknown'
 
-// 家の断熱
+/** 家の断熱 */
 export type HousingInsulation =
   | 'no-insulation'
   | '2-level'
@@ -169,6 +176,7 @@ export type HousingInsulation =
   | '4-level'
   | 'unknown'
 
+/** 月 */
 export type Month =
   | 'january'
   | 'february'
@@ -192,12 +200,14 @@ export type LivingRegion = 'northeast' | 'middle' | 'southwest' | 'unknown'
 //
 // other
 //
+
+/** 日常品の種類 */
 export type DailyGoodsItem = 'sanitation' | 'kitchen-goods' | 'paper-stationery'
 
-/** コミュニケーションのカーボンフットプリントアイテム名 */
+/** 通信費、放送受信料の種類 */
 export type CommunicationItem = 'communication' | 'broadcasting'
 
-/** 家電・家具のカーボンフットプリントアイテム名 */
+/** 家電・家具の種類 */
 export type ApplianceFurnitureItem =
   | 'electrical-appliances-repair-rental'
   | 'furniture-daily-goods-repair-rental'
@@ -208,6 +218,7 @@ export type ApplianceFurnitureItem =
   | 'furniture'
   | 'covering'
 
+/** サービスrの種類 */
 export type ServiceItem =
   | 'medicine'
   | 'housework'
@@ -218,6 +229,7 @@ export type ServiceItem =
   | 'formal-education'
   | 'informal-education'
 
+/** 趣味の支出の種類 */
 export type HobbyGoodsItem =
   | 'culture-goods'
   | 'entertainment-goods'
@@ -229,6 +241,7 @@ export type HobbyGoodsItem =
   | 'sports-culture-repair-rental'
   | 'sports-entertainment-repair-rental'
 
+/** 衣類、かばん、宝飾品、美容関連などの支出の種類 */
 export type ClothesBeautyItem =
   | 'haircare'
   | 'cosmetics'
@@ -237,60 +250,29 @@ export type ClothesBeautyItem =
   | 'clothes-repair-rental'
   | 'bags-jewelries-repair-rental'
 
+/** レジャー、スポーツへの支出の種類 */
 export type LeisureSportsItem =
   | 'culture-leisure'
   | 'entertainment-leisure'
   | 'sports-leisure'
   | 'bath-spa'
 
+/** 旅行の種類 */
 export type TravelItem = 'hotel' | 'travel'
 
+/** モノとサービスに関するアイテムの種類 */
 export type OtherItem =
-  | 'sanitation'
-  | 'kitchen-goods'
-  | 'paper-stationery'
-  | 'communication'
-  | 'broadcasting'
-  | 'electrical-appliances-repair-rental'
-  | 'furniture-daily-goods-repair-rental'
-  | 'cooking-appliances'
-  | 'heating-cooling-appliances'
-  | 'other-appliances'
-  | 'electronics'
-  | 'furniture'
-  | 'covering'
-  | 'medicine'
-  | 'housework'
-  | 'washing'
-  | 'medical-care'
-  | 'nursing'
-  | 'caring'
-  | 'formal-education'
-  | 'informal-education'
-  | 'culture-goods'
-  | 'entertainment-goods'
-  | 'sports-goods'
-  | 'gardening-flower'
-  | 'pet'
-  | 'tobacco'
-  | 'books-magazines'
-  | 'sports-culture-repair-rental'
-  | 'sports-entertainment-repair-rental'
-  | 'haircare'
-  | 'cosmetics'
-  | 'clothes-goods'
-  | 'bags-jewelries-goods'
-  | 'clothes-repair-rental'
-  | 'bags-jewelries-repair-rental'
-  | 'culture-leisure'
-  | 'entertainment-leisure'
-  | 'sports-leisure'
-  | 'bath-spa'
-  | 'hotel'
-  | 'travel'
+  | DailyGoodsItem
+  | CommunicationItem
+  | ApplianceFurnitureItem
+  | ServiceItem
+  | HobbyGoodsItem
+  | ClothesBeautyItem
+  | LeisureSportsItem
+  | TravelItem
   | 'waste'
 
-// その他のカテゴリ
+/** その他のカテゴリ  */
 export type OtherCategory =
   | 'daily-goods-amount'
   | 'communication-amount'
@@ -301,6 +283,7 @@ export type OtherCategory =
   | 'leisure-sports-factor'
   | 'travel-factor'
 
+/** 日常品の支出 */
 export type DailyGoodsExpenses =
   | '5k-less'
   | '5k-10k'
@@ -310,6 +293,7 @@ export type DailyGoodsExpenses =
   | 'unknown'
   | 'average-per-capita'
 
+/** 通信費、放送受信料の支出 */
 export type CommunicationExpenses =
   | '5k-less'
   | '5k-10k'
@@ -319,6 +303,7 @@ export type CommunicationExpenses =
   | 'unknown'
   | 'average-per-capita'
 
+/** 家電・家具の支出 */
 export type ApplianceFurnitureExpenses =
   | '50k-less'
   | '50k-100k'
@@ -329,6 +314,7 @@ export type ApplianceFurnitureExpenses =
   | 'unknown'
   | 'average-per-capita'
 
+/** サービスの支出 */
 export type ServiceExpenses =
   | '5k-less'
   | '5k-10k'
@@ -337,6 +323,7 @@ export type ServiceExpenses =
   | '50k-more'
   | 'unknown'
 
+/** 趣味の支出 */
 export type HobbyGoodsExpenses =
   | '5k-less'
   | '5k-10k'
@@ -345,6 +332,7 @@ export type HobbyGoodsExpenses =
   | '50k-more'
   | 'unknown'
 
+/** 衣類、かばん、宝飾品、美容関連などの支出 */
 export type ClothesBeautyExpenses =
   | '5k-less'
   | '5k-10k'
@@ -353,6 +341,7 @@ export type ClothesBeautyExpenses =
   | '50k-more'
   | 'unknown'
 
+/** レジャー、スポーツへの支出 */
 export type LeisureSportsExpenses =
   | '5k-less'
   | '5k-10k'
@@ -361,6 +350,7 @@ export type LeisureSportsExpenses =
   | '50k-more'
   | 'unknown'
 
+/** 旅行の支出 */
 export type TravelExpenses =
   | '10k-less'
   | '10k-30k'

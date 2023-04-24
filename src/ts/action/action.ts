@@ -38,7 +38,7 @@ export interface Diagnoses {
 /**
  * [削減後] = [target] 選択肢を最大限採用した場合に理論的に到達できる絶対値を指定
  * 例）テレワークを最大限実施した場合、通勤分のみ削減される
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * @param target 削減後の絶対値を指定
  * @returns 削減後の活動量もしくはGHG原単位
  */
@@ -47,7 +47,7 @@ export const absoluteTarget = (target: number): number => target
 /**
  * [削減後] = [削減前(base)] + [addition] あらかじめ定めたの値(addition)を増加する
  * 例）ゼロエネルギー住宅の設備費増加分
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * @param base 削減前の値
  * @param addition 増加分の値
  * @returns 削減後の活動量もしくはGHG原単位
@@ -59,7 +59,7 @@ export const addAmount = (base: number, addition: number): number =>
  * [削減後] = [削減前(base)] x (1+[rate])
  * 例）テレワークを最大限実施した場合、通勤分のみ削減される
  * その選択肢を最大限採用した場合に削減が可能な割合を指定（rate < 0で削減、rate > 0で増加）
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * @param base 削減前の値
  * @param rate 削減比率
  * @returns 削減後の活動量もしくはGHG原単位
@@ -70,7 +70,7 @@ export const increaseRate = (base: number, rate: number): number =>
 /**
  * [削減後] = [削減前(base)] x ([推定値を算出した質問票回答の値]/[passengersAfterActionで指定した絶対値])
  * 例）ライドシェアリングにより自家用車の乗車人数が質問票で把握した人数から4人に増加した場合、
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * option: rideshare, operation: question-answer-to-target-inverse,
  * args: mobility_taxi-car-passengers に特化した実装
  * @privateRemarks JibungotoPlanet-Backendの初期バージョンではquestionAnswerToTargetInverse
@@ -95,7 +95,7 @@ export const drivingIntensityToTaxiRideshare = (
 /**
  * [削減後] = [削減前(base)] x ([推定値を算出した質問票回答の値]/[passengersAfterActionで指定した絶対値])
  * 例）ライドシェアリングにより自家用車の乗車人数が質問票で把握した人数から4人に増加した場合、
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * option: rideshare, operation: question-answer-to-target-inverse,
  * args: private-car-driving に特化した実装
  * 原単位の変化としてはこれらの比率の逆数として計算される
@@ -121,7 +121,7 @@ export const drivingIntensityToPrivateCarRideshare = (
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
  * フットプリント推計に用いた質問票回答のパラメーターがある絶対値へ変化する
  * 例）EV・PHVの導入により自家用車の排出原単位が質問票で把握した値から約0.084に増加
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * option: loss, operation: question-answer-to-target,
  * args: food_food-amount-to-average に特化した実装
  * @privateRemarks JibungotoPlanet-Backendの初期バージョンではquestionAnswerToTarget
@@ -145,7 +145,7 @@ export const foodAmountToAverageWithoutFoodLoss = (
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
  * フットプリント推計に用いた質問票回答のパラメーターがある絶対値へ変化する
  * 例）EV・PHVの導入により自家用車の排出原単位が質問票で把握した値から約0.084に増加
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * option: car-ev-phv, car-ev-phv-re, operation: question-answer-to-target,
  * args: mobility_driving-intensity に特化した実装
  * @privateRemarks JibungotoPlanet-Backendの初期バージョンではquestionAnswerToTarget
@@ -176,7 +176,7 @@ export const drivingIntensityToEvPhv = (
  * [削減後] = [削減前(base)] x ([valueAfterActionで指定した絶対値]/[推定値を算出した質問票回答の値])
  * フットプリント推計に用いた質問票回答のパラメーターがある絶対値へ変化する
  * 例）EV・PHVの導入により自家用車の排出原単位が質問票で把握した値から約0.084に増加
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * option: car-ev-phv, car-ev-phv-re, operation: question-answer-to-target,
  * args: mobility_manufacturing-intensity に特化した実装
  * @privateRemarks JibungotoPlanet-Backendの初期バージョンではquestionAnswerToTarget
@@ -201,7 +201,7 @@ export const manufacturingIntensityToEvPhv = (
  * [削減後] = [削減前] x (1+[推定値を算出した質問票回答からの削減率] x [reductionRateで指定した影響割合])
  * 削減効果推定用の追加質問回答から求めた削減率の分だけ、一部(reductionRate)が削減される
  * 例）現在の住居の断熱基準に依存する削減率の分だけ、電力のうち冷暖房分が削減される
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * insrenovのhousing_housing-insulation-renovationで適用
  * @privateRemarks JibungotoPlanet-Backendの初期バージョンではquestionReductionRate
  * @param base 削減前の値
@@ -225,7 +225,7 @@ export const housingInsulationRenovation = (
  * [削減後] = [削減前] x (1+[推定値を算出した質問票回答からの削減率] x [reductionRateで指定した影響割合])
  * 削減効果推定用の追加質問回答から求めた削減率の分だけ、一部(reductionRate)が削減される
  * 例）現在の住居の断熱基準に依存する削減率の分だけ、電力のうち冷暖房分が削減される
- * @remarks 推定値があれば計算可能な削減施策（Phase 1: 他の削減施策に依存しないので最初に計算可能）
+ * @remarks Phase1: 推定値があれば計算可能な削減施策（他の削減施策に依存しないので最初に計算可能）
  * clothes-homeのhousing_housing-insulation-clothingで適用
  * @privateRemarks JibungotoPlanet-Backendの初期バージョンではquestionReductionRate
  * @param base 削減前の値
