@@ -1,15 +1,10 @@
 import { getBaselineAmount, getBaselineIntensity } from '../data/database';
 import { estimateDishAnnualAmount } from './dish';
-export var estimateProcessedMeatAnnualFootprint = function (_a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency;
-    return estimateProcessedMeatAnnualAmount({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        beefDishFrequency: beefDishFrequency,
-        porkDishFrequency: porkDishFrequency,
-        chickenDishFrequency: chickenDishFrequency
-    }) * estimateProcessedMeatIntensity();
-};
+/**
+ * 加工肉の活動量を計算する
+ * @param param 加工肉の活動量を計算するための引数
+ * @returns 加工肉の活動量[kg]
+ */
 export var estimateProcessedMeatAnnualAmount = function (_a) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency;
     var beefBaseline = getBaselineAmount('food', 'beef').value;
@@ -40,6 +35,10 @@ export var estimateProcessedMeatAnnualAmount = function (_a) {
         (beef + pork + chicken + otherMeat)) /
         (beefBaseline + porkBaseline + chickenBaseline + otherMeatBaseline));
 };
+/**
+ * 加工肉のGHG原単位を計算する
+ * @returns 加工肉のGHG原単位[kgCO2e/kg]
+ */
 export var estimateProcessedMeatIntensity = function () {
     return getBaselineIntensity('food', 'processed-meat').value;
 };

@@ -1,19 +1,7 @@
 import { getBaselineAmount, getBaselineIntensity } from '../data/database';
 /**
- * 自家用車の維持のフットプリントを計算
- * @param annualMileage 自家用車の年間運転距離[km]
- * @param carType 自動車の種類
- * @returns 自家用車の維持のフットプリント[kgCO2e]
- */
-export var estimatePrivateCarMaintenanceFootprint = function (_a) {
-    var annualMileage = _a.annualMileage;
-    return estimatePrivateCarMaintenanceAmount({ annualMileage: annualMileage }) *
-        estimatePrivateCarMaintenanceIntensity();
-};
-/**
  * 自家用車の維持の活動量を計算
- * @param annualMileage 自家用車の年間運転距離[km]
- * @param residentialAreaSize 住んでいる地域の規模
+ * @param param 自家用車の維持の活動量を計算するための引数
  * @returns 自家用車の維持の活動量[000JPY]
  */
 export var estimatePrivateCarMaintenanceAmount = function (_a) {

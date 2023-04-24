@@ -1,15 +1,20 @@
 import { getBaselineIntensity } from '../data/database';
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation';
-export var estimateDailyGoodsAnnualFootprint = function (_a) {
-    var item = _a.item, expenses = _a.expenses, residentCount = _a.residentCount;
-    return estimateDailyGoodsAnnualAmount({ item: item, expenses: expenses, residentCount: residentCount }) *
-        estimateDailyGoodsIntensity({ item: item });
-};
-export var estimateDailyGoodsAnnualAmount = function (_a) {
-    var item = _a.item, expenses = _a.expenses, residentCount = _a.residentCount;
+/**
+ * 日常品の年間の活動量を計算
+ * @param item 日常品のカーボンフットプリントアイテム名
+ * @param param 日常品の活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export var estimateDailyGoodsAnnualAmount = function (item, _a) {
+    var expenses = _a.expenses, residentCount = _a.residentCount;
     return estimateAnnualAmountConsideringResidentCount(item, 'daily-goods-amount', expenses, residentCount);
 };
-export var estimateDailyGoodsIntensity = function (_a) {
-    var item = _a.item;
+/**
+ * 日常品のGHG原単位を計算
+ * @param item 日常品のカーボンフットプリントアイテム名
+ * @returns   GHG原単位[kgCO2e/000JPY]
+ */
+export var estimateDailyGoodsIntensity = function (item) {
     return getBaselineIntensity('other', item).value;
 };

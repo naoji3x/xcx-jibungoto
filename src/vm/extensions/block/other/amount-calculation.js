@@ -1,4 +1,12 @@
 import { getBaselineAmount, getParameter } from '../data/database';
+/**
+ * 居住者の人数を考慮した活動量の補正計算
+ * @param item その他のアイテム名
+ * @param category パラメータテーブルを検索する際のカテゴリ
+ * @param key パラメータテーブルを検索する際のキー
+ * @param residentCount 居住者人数
+ * @returns 補正された活動量
+ */
 export var estimateAnnualAmountConsideringResidentCount = function (item, category, key, residentCount) {
     var amount = getBaselineAmount('other', item).value;
     if (key === 'unknown') {
@@ -16,6 +24,13 @@ export var estimateAnnualAmountConsideringResidentCount = function (item, catego
         return (amount * numerator) / denominator;
     }
 };
+/**
+ * 活動量の補正計算
+ * @param item その他のアイテム名
+ * @param category パラメータテーブルを検索する際のカテゴリ
+ * @param key パラメータテーブルを検索する際のキー
+ * @returns 補正された活動量
+ */
 export var estimateAnnualAmount = function (item, category, key) {
     var amount = getBaselineAmount('other', item).value;
     var coefficient = getParameter(category, key).value;

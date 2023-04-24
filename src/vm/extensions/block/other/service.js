@@ -1,15 +1,20 @@
 import { getBaselineIntensity } from '../data/database';
 import { estimateAnnualAmount } from './amount-calculation';
-export var estimateServiceAnnualFootprint = function (_a) {
-    var item = _a.item, expenses = _a.expenses;
-    return estimateServiceAnnualAmount({ item: item, expenses: expenses }) *
-        estimateServiceIntensity({ item: item });
-};
-export var estimateServiceAnnualAmount = function (_a) {
-    var item = _a.item, expenses = _a.expenses;
+/**
+ * サービスの年間の活動量を計算
+ * @param item サービスのカーボンフットプリントアイテム名
+ * @param param サービスの活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export var estimateServiceAnnualAmount = function (item, _a) {
+    var expenses = _a.expenses;
     return estimateAnnualAmount(item, 'service-factor', expenses);
 };
-export var estimateServiceIntensity = function (_a) {
-    var item = _a.item;
+/**
+ * サービスのGHG原単位を計算
+ * @param item サービスのカーボンフットプリントアイテム名
+ * @returns GHG原単位[kgCO2e/000JPY]
+ */
+export var estimateServiceIntensity = function (item) {
     return getBaselineIntensity('other', item).value;
 };

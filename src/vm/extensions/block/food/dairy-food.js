@@ -11,14 +11,12 @@ var __assign = (this && this.__assign) || function () {
 };
 import { getBaselineAmount, getBaselineIntensity, getParameter } from '../data/database';
 import { estimateFoodLossRate } from './rate-calculation';
-export var estimateDairyFoodAnnualFootprint = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
-    return estimateDairyFoodAnnualAmount(item, {
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: frequency
-    }) * estimateDairyFoodIntensity(item);
-};
+/**
+ * 乳製品の活動量を計算する
+ * @param item 乳製品の種類
+ * @param param 乳製品の活動量を計算するための引数
+ * @returns 乳製品の活動量[kg]
+ */
 export var estimateDairyFoodAnnualAmount = function (item, _a) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
     var baseline = getBaselineAmount('food', item).value;
@@ -26,6 +24,12 @@ export var estimateDairyFoodAnnualAmount = function (item, _a) {
     return (baseline * foodIntake * estimateFoodLossRate(foodDirectWaste, foodLeftover));
 };
 var defaultItems = ['milk', 'other-dairy', 'eggs'];
+/**
+ * 乳製品の活動量を計算する
+ * @param param 乳製品の活動量を計算するための引数
+ * @param items 乳製品の種類の配列
+ * @returns 乳製品の活動量のMap
+ */
 export var estimateDairyFoodAnnualAmounts = function (_a, items) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
     if (items === undefined) {
@@ -40,6 +44,11 @@ export var estimateDairyFoodAnnualAmounts = function (_a, items) {
         }), _a)));
     }, {});
 };
+/**
+ * 乳製品のGHG原単位の強度を計算する
+ * @param items 乳製品の種類の配列
+ * @returns 乳製品のGHG原単位の強度のMap
+ */
 export var estimateDairyFoodIntensities = function (items) {
     if (items === undefined) {
         items = defaultItems;
@@ -49,12 +58,21 @@ export var estimateDairyFoodIntensities = function (items) {
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = estimateDairyFoodIntensity(item), _a)));
     }, {});
 };
+/**
+ * 乳製品のGHG原単位を計算する
+ * @returns 乳製品のGHG原単位のMap
+ */
 export var getDairyFoodAnnualBaselineAmounts = function () {
     return defaultItems.reduce(function (acc, item) {
         var _a;
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = getBaselineAmount('food', item).value, _a)));
     }, {});
 };
+/**
+ * 乳製品のGHG原単位を計算する
+ * @param item 乳製品の種類
+ * @returns 乳製品のGHG原単位[kgCO2e/kg]
+ */
 export var estimateDairyFoodIntensity = function (item) {
     return getBaselineIntensity('food', item).value;
 };

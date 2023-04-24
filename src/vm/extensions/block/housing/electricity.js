@@ -1,21 +1,7 @@
 import { getParameter } from '../data/database';
 /**
- * 自宅の電力の年間のカーボンフットプリントを計算
- * @param param0 計算に必要なパラメータ
- * @returns カーボンフットプリント[kgCO2e]
- */
-export var estimateElectricityAnnualFootprint = function (_a) {
-    var electricity = _a.electricity, monthlyConsumption = _a.monthlyConsumption, month = _a.month, residentCount = _a.residentCount, privateCar = _a.privateCar;
-    return estimateElectricityAnnualAmount({
-        monthlyConsumption: monthlyConsumption,
-        month: month,
-        residentCount: residentCount,
-        privateCar: privateCar
-    }) * estimateElectricityIntensity({ electricity: electricity });
-};
-/**
  * 自宅の電力の年間の活動量を計算
- * @param param0 計算に必要なパラメータ
+ * @param param 自宅の電力の活動量を計算するための引数
  * @returns 活動量[kWh]
  */
 export var estimateElectricityAnnualAmount = function (_a) {
@@ -36,10 +22,10 @@ export var estimateElectricityAnnualAmount = function (_a) {
 };
 /**
  * 自宅の電力のGHG原単位を計算
- * @param param0 計算に必要なパラメータ
+ * @param param 自宅の電力のGHG原単位を計算するための引数
  * @returns GHG原単位[kgCO2e/kWh]
  */
 export var estimateElectricityIntensity = function (_a) {
-    var electricity = _a.electricity;
+    var electricity = _a.electricityType;
     return getParameter('electricity-intensity', electricity).value;
 };

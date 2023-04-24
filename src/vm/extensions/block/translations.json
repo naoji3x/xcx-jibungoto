@@ -1,7 +1,7 @@
 {
   "en": {
     "jibungotoPlanet.name": "Jibungoto Planet",
-    "jibungotoPlanet.privateCarDriving": "private car driving: car type[carIntensityFactorFirstKey] car passengers[carPassengersFirstKey] annual mileage(km)[privateCarAnnualMileage] car charging[carChargingKey] car charging type[electricityIntensityKey]",
+    "jibungotoPlanet.privateCarDriving": "private car driving: car type[carType] car passengers[carPassengers] annual mileage(km)[mileage] car charging[carCharging] car charging type[electricityType]",
     "jibungotoPlanet.train": "train traveling: weekly time[weeklyTravelingTime] annual traveling time[annualTravelingTime] living area size[mileageByAreaFirstKey]",
     "jibungotoPlanet.bus": "bus traveling: weekly time[weeklyTravelingTime] annual traveling time[annualTravelingTime] living area size[mileageByAreaFirstKey]",
     "jibungotoPlanet.airplane": "airplane traveling: annual traveling time[annualTravelingTime] living area size[mileageByAreaFirstKey]",
@@ -36,7 +36,7 @@
   },
   "ja": {
     "jibungotoPlanet.name": "じぶんごとプラネット",
-    "jibungotoPlanet.privateCarDriving": "自家用車の運転: 車の種類[carIntensityFactorFirstKey]乗車人数[carPassengersFirstKey]年間走行距離(km)[privateCarAnnualMileage]自宅充電の割合[carChargingKey]家庭の電力[electricityIntensityKey]",
+    "jibungotoPlanet.privateCarDriving": "自家用車の運転: 車の種類[carType]乗車人数[carPassengers]年間走行距離(km)[mileage]自宅充電の割合[carCharging]家庭の電力[electricityType]",
     "jibungotoPlanet.train": "電車の移動: 週間移動時間[weeklyTravelingTime] 年間移動時間[annualTravelingTime] 住んでいる地域の規模[mileageByAreaFirstKey]",
     "jibungotoPlanet.bus": "バスの移動: 週間移動時間[weeklyTravelingTime] 年間移動時間[annualTravelingTime] 住んでいる地域の規模[mileageByAreaFirstKey]",
     "jibungotoPlanet.airplane": "飛行機の移動: 年間移動時間[annualTravelingTime] 住んでいる地域の規模[mileageByAreaFirstKey]",
@@ -71,7 +71,7 @@
   },
   "ja-Hira": {
     "jibungotoPlanet.name": "じぶんごとプラネット",
-    "jibungotoPlanet.privateCarDriving": "じかようしゃのうんてん: くるまのしゅるい[carIntensityFactorFirstKey]じょうしゃにんずう[carPassengersFirstKey]ねんかんそうこうきょり(km)[privateCarAnnualMileage]じたくじゅうでんのわりあい[carChargingKey]かていのでんりょく[electricityIntensityKey]",
+    "jibungotoPlanet.privateCarDriving": "じかようしゃのうんてん: くるまのしゅるい[carType]じょうしゃにんずう[carPassengers]ねんかんそうこうきょり(km)[mileage]じたくじゅうでんのわりあい[carCharging]かていのでんりょく[electricityType]",
     "jibungotoPlanet.train": "でんしゃのいどう: しゅうかんいどうじかん[weeklyTravelingTime] ねんかんいどうじかん[annualTravelingTime] すんでいるちいきのきぼ[mileageByAreaFirstKey]",
     "jibungotoPlanet.bus": "バスのいどう: しゅうかんいどうじかん[weeklyTravelingTime] 年間移動時間[annualTravelingTime] 住んでいる地域の規模[mileageByAreaFirstKey]",
     "jibungotoPlanet.airplane": "ひこうきのいどう: ねんかんいどうじかん[annualTravelingTime] すんでいるちいきのきぼ[mileageByAreaFirstKey]",

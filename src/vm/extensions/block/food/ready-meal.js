@@ -16,31 +16,22 @@ import { estimateFoodIntakeAnnualAmounts, estimateFoodIntakeIntensities, getFood
 import { estimateProcessedMeatAnnualAmount, estimateProcessedMeatIntensity } from './processed-meat';
 import { estimateFoodLossRate } from './rate-calculation';
 import { estimateSoftDrinkSnackAnnualAmount, estimateSoftDrinkSnackIntensity } from './soft-drink-snack';
-export var estimateReadyMealAnnualFootprint = function (_a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
-    return estimateReadyMealAnnualAmount({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        foodIntake: foodIntake
-    }) *
-        estimateReadyMealIntensity({
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            foodIntake: foodIntake,
-            beefDishFrequency: beefDishFrequency,
-            porkDishFrequency: porkDishFrequency,
-            chickenDishFrequency: chickenDishFrequency,
-            seafoodDishFrequency: seafoodDishFrequency,
-            dairyFoodFrequency: dairyFoodFrequency,
-            softDrinkSnackExpenses: softDrinkSnackExpenses
-        });
-};
+/**
+ * 加工食品の活動量を計算する
+ * @param param 加工食品の活動量を計算するための引数
+ * @returns 冷凍食品の活動量[kg]
+ */
 export var estimateReadyMealAnnualAmount = function (_a) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake;
     var baseline = getBaselineAmount('food', 'ready-meal').value;
     var intake = getParameter('food-intake-factor', foodIntake).value;
     return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover);
 };
+/**
+ * 加工食品のGHG原単位を計算する
+ * @param param 加工食品のGHG原単位を計算するための引数
+ * @returns 冷凍食品のGHG原単位[kgCO2/kg]
+ */
 export var estimateReadyMealIntensity = function (_a) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
     // 活動量推定値

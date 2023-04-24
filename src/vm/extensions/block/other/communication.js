@@ -1,15 +1,18 @@
 import { getBaselineIntensity } from '../data/database';
 import { estimateAnnualAmountConsideringResidentCount } from './amount-calculation';
-export var estimateCommunicationAnnualFootprint = function (_a) {
-    var item = _a.item, expenses = _a.expenses, residentCount = _a.residentCount;
-    return estimateCommunicationAnnualAmount({ item: item, expenses: expenses, residentCount: residentCount }) *
-        estimateCommunicationIntensity({ item: item });
-};
-export var estimateCommunicationAnnualAmount = function (_a) {
-    var item = _a.item, expenses = _a.expenses, residentCount = _a.residentCount;
+/**
+ * 通信の年間の活動量を計算
+ * @param item 通信のカーボンフットプリントアイテム名
+ * @param param 通信の活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export var estimateCommunicationAnnualAmount = function (item, _a) {
+    var expenses = _a.expenses, residentCount = _a.residentCount;
     return estimateAnnualAmountConsideringResidentCount(item, 'communication-amount', expenses, residentCount);
 };
-export var estimateCommunicationIntensity = function (_a) {
-    var item = _a.item;
-    return getBaselineIntensity('other', item).value;
-};
+/**
+ * 通信のGHG原単位を計算
+ * @param item 通信のカーボンフットプリントアイテム名
+ * @returns GHG原単位[kgCO2e/000JPY]
+ */
+export var estimateCommunicationIntensity = function (item) { return getBaselineIntensity('other', item).value; };

@@ -1,21 +1,9 @@
 import { getBaselineIntensity, getParameter } from '../data/database';
 /**
- * 自宅のガスの年間のカーボンフットプリントを計算
- * @param param0 計算に必要なパラメータ
- * @returns カーボンフットプリント[kgCO2e]
- */
-export var estimateGasAnnualFootprint = function (item, _a) {
-    var monthlyConsumption = _a.monthlyConsumption, month = _a.month, residentCount = _a.residentCount;
-    return estimateGasAnnualAmount(item, {
-        monthlyConsumption: monthlyConsumption,
-        month: month,
-        residentCount: residentCount
-    }) * estimateGasIntensity(item);
-};
-/**
  * 自宅のガスの年間の活動量を計算
- * @param param0 計算に必要なパラメータ
- * @returns 活動量[m3]
+ * @param item 自宅のガスの種類
+ * @param param 自宅のガスの活動量を計算するための引数
+ * @returns 活動量[kWh]
  */
 export var estimateGasAnnualAmount = function (item, _a) {
     var monthlyConsumption = _a.monthlyConsumption, month = _a.month, residentCount = _a.residentCount;
@@ -26,8 +14,8 @@ export var estimateGasAnnualAmount = function (item, _a) {
 };
 /**
  * 自宅のガスのGHG原単位を計算
- * @param param0 計算に必要なパラメータ
- * @returns GHG原単位[kgCO2e/m3]
+ * @param item 自宅のガスの種類
+ * @returns GHG原単位[kgCO2e/kWh]
  */
 export var estimateGasIntensity = function (item) {
     return getBaselineIntensity('housing', item).value;

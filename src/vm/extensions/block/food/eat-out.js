@@ -17,30 +17,24 @@ import { estimateFoodIntakeAnnualAmounts, estimateFoodIntakeIntensities, getFood
 import { estimateProcessedMeatAnnualAmount, estimateProcessedMeatIntensity } from './processed-meat';
 import { estimateReadyMealAnnualAmount, estimateReadyMealIntensity } from './ready-meal';
 import { estimateSoftDrinkSnackAnnualAmounts, estimateSoftDrinkSnackIntensities, getSoftDrinkSnackAnnualBaselineAmounts } from './soft-drink-snack';
-export var estimateEatOutAnnualFootprint = function (item, _a) {
-    var eatOutExpenses = _a.eatOutExpenses, foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, alcoholFrequency = _a.alcoholFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
-    return estimateEatOutAnnualAmount(item, {
-        eatOutExpenses: eatOutExpenses
-    }) *
-        estimateEatOutIntensity(item, {
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            foodIntake: foodIntake,
-            beefDishFrequency: beefDishFrequency,
-            porkDishFrequency: porkDishFrequency,
-            chickenDishFrequency: chickenDishFrequency,
-            seafoodDishFrequency: seafoodDishFrequency,
-            dairyFoodFrequency: dairyFoodFrequency,
-            alcoholFrequency: alcoholFrequency,
-            softDrinkSnackExpenses: softDrinkSnackExpenses
-        });
-};
+/**
+ * 外食の活動量を計算する
+ * @param item 外食の種類
+ * @param param 外食の活動量を計算するための引数
+ * @returns 外食の活動量[000JPY]
+ */
 export var estimateEatOutAnnualAmount = function (item, _a) {
     var eatOutExpenses = _a.eatOutExpenses;
     var baseline = getBaselineAmount('food', item).value;
     var factor = getParameter('eat-out-factor', eatOutExpenses).value;
     return baseline * factor;
 };
+/**
+ * 外食のGHG原単位を計算する
+ * @param item 外食の種類
+ * @param param 外食のGHG原単位を計算するための引数
+ * @returns 外食のGHG原単位[kgCO2e/000JPY]
+ */
 export var estimateEatOutIntensity = function (item, _a) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, alcoholFrequency = _a.alcoholFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
     // 活動量推定値

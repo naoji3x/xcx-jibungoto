@@ -1,9 +1,9 @@
 import { getBaselineAmount, getBaselineIntensity, getParameter } from '../data/database';
-export var estimateImputedRentAnnualFootprint = function (_a) {
-    var residentCount = _a.residentCount, housingSize = _a.housingSize;
-    return estimateImputedRentAnnualAmount({ residentCount: residentCount, housingSize: housingSize }) *
-        estimateImputedRentIntensity();
-};
+/**
+ * 帰属家賃の活動量を計算
+ * @param param 帰属家賃の活動量を計算するための引数
+ * @returns 帰属家賃の活動量[000JPY]
+ */
 export var estimateImputedRentAnnualAmount = function (_a) {
     var residentCount = _a.residentCount, housingSize = _a.housingSize;
     var housingSizeValue = getParameter('housing-size', housingSize).value;
@@ -14,6 +14,10 @@ export var estimateImputedRentAnnualAmount = function (_a) {
     var rent = getBaselineAmount('housing', 'rent').value;
     return (housingSizePerResident * imputedRent) / (imputedRent + rent);
 };
+/**
+ * 帰属家賃のGHG原単位を計算
+ * @returns 帰属家賃のGHG原単位[kgCO2e/000JPY]
+ */
 export var estimateImputedRentIntensity = function () {
     return getBaselineIntensity('housing', 'imputed-rent').value;
 };

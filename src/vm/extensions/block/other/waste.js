@@ -13,17 +13,38 @@ import { estimateClothesBeautyAnnualAmount } from './clothes-beauty';
 import { estimateDailyGoodsAnnualAmount } from './daily-goods';
 import { estimateHobbyGoodsAnnualAmount } from './hobby-goods';
 import { estimateServiceAnnualAmount } from './service';
-export var estimateWasteAnnualFootprint = function (_a) {
-    var applianceFurnitureExpenses = _a.applianceFurnitureExpenses, clothesBeautyExpenses = _a.clothesBeautyExpenses, hobbyGoodsExpenses = _a.hobbyGoodsExpenses, serviceExpenses = _a.serviceExpenses, dailyGoodsExpenses = _a.dailyGoodsExpenses, residentCount = _a.residentCount;
-    return estimateWasteAnnualAmount({
-        applianceFurnitureExpenses: applianceFurnitureExpenses,
-        clothesBeautyExpenses: clothesBeautyExpenses,
-        hobbyGoodsExpenses: hobbyGoodsExpenses,
-        serviceExpenses: serviceExpenses,
-        dailyGoodsExpenses: dailyGoodsExpenses,
-        residentCount: residentCount
-    }) * estimateWasteIntensity();
-};
+/**
+ * 廃棄の活動量を計算する
+ * @remarks
+ * wasteは以下のitemのestimation合計/baseline合計とwasteのbaseline値を掛け合わせて求める。
+ * - appliance-furniture-amount
+ *   - cooking-appliances
+ *   - heating-cooling-appliances
+ *   - other-appliances
+ *   - electronics
+ *   - furniture
+ *   - covering
+ * - clothes-beauty-factor
+ *   - clothes-goods
+ * - bags-jewelries-goods
+ *   - cosmetics
+ * - hobby-goods-factor
+ *   - culture-goods
+ *   - entertainment-goods
+ *   - sports-goods
+ *   - gardening-flower
+ *   - pet
+ *   - tobacco
+  'books-magazines'
+'service-factor'
+  'medicine'
+'daily-goods-amount'
+  'sanitation'
+  'kitchen-goods'
+  'paper-stationery'
+ * @param param 廃棄の活動量を計算するための引数
+ * @returns 廃棄の活動量[000JPY]
+ */
 export var estimateWasteAnnualAmount = function (_a) {
     var applianceFurnitureExpenses = _a.applianceFurnitureExpenses, clothesBeautyExpenses = _a.clothesBeautyExpenses, hobbyGoodsExpenses = _a.hobbyGoodsExpenses, serviceExpenses = _a.serviceExpenses, dailyGoodsExpenses = _a.dailyGoodsExpenses, residentCount = _a.residentCount;
     var applianceFurnitureItems = [
@@ -58,37 +79,32 @@ export var estimateWasteAnnualAmount = function (_a) {
     // 分子の計算
     var applianceFurnitureSum = applianceFurnitureItems.reduce(function (sum, item) {
         return sum +
-            estimateApplianceFurnitureAnnualAmount({
-                item: item,
+            estimateApplianceFurnitureAnnualAmount(item, {
                 expenses: applianceFurnitureExpenses,
                 residentCount: residentCount
             });
     }, 0);
     var clothesBeautySum = clothesBeautyItems.reduce(function (sum, item) {
         return sum +
-            estimateClothesBeautyAnnualAmount({
-                item: item,
+            estimateClothesBeautyAnnualAmount(item, {
                 expenses: clothesBeautyExpenses
             });
     }, 0);
     var hobbyGoodsSum = hobbyGoodsItems.reduce(function (sum, item) {
         return sum +
-            estimateHobbyGoodsAnnualAmount({
-                item: item,
+            estimateHobbyGoodsAnnualAmount(item, {
                 expenses: hobbyGoodsExpenses
             });
     }, 0);
     var serviceSum = serviceItems.reduce(function (sum, item) {
         return sum +
-            estimateServiceAnnualAmount({
-                item: item,
+            estimateServiceAnnualAmount(item, {
                 expenses: serviceExpenses
             });
     }, 0);
     var dailyGoodsSum = dailyGoodsItems.reduce(function (sum, item) {
         return sum +
-            estimateDailyGoodsAnnualAmount({
-                item: item,
+            estimateDailyGoodsAnnualAmount(item, {
                 expenses: dailyGoodsExpenses,
                 residentCount: residentCount
             });
@@ -102,6 +118,10 @@ export var estimateWasteAnnualAmount = function (_a) {
     var denominator = allItems.reduce(function (sum, item) { return sum + getBaselineAmount('other', item).value; }, 0);
     return (getBaselineAmount('other', 'waste').value * numerator) / denominator;
 };
+/**
+ * 廃棄のGHG原単位を計算する
+ * @returns 廃棄のGHG原単位[kgCO2e/000JPY]
+ */
 export var estimateWasteIntensity = function () {
     return getBaselineIntensity('other', 'waste').value;
 };

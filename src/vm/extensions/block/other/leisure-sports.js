@@ -1,15 +1,18 @@
 import { getBaselineIntensity } from '../data/database';
 import { estimateAnnualAmount } from './amount-calculation';
-export var estimateLeisureSportsAnnualFootprint = function (_a) {
-    var item = _a.item, expenses = _a.expenses;
-    return estimateLeisureSportsAnnualAmount({ item: item, expenses: expenses }) *
-        estimateLeisureSportsIntensity({ item: item });
-};
-export var estimateLeisureSportsAnnualAmount = function (_a) {
-    var item = _a.item, expenses = _a.expenses;
+/**
+ * レジャー・スポーツの年間の活動量を計算
+ * @param item レジャー・スポーツのカーボンフットプリントアイテム名
+ * @param param レジャー・スポーツの活動量を計算するための引数
+ * @returns 活動量[000JPY]
+ */
+export var estimateLeisureSportsAnnualAmount = function (item, _a) {
+    var expenses = _a.expenses;
     return estimateAnnualAmount(item, 'leisure-sports-factor', expenses);
 };
-export var estimateLeisureSportsIntensity = function (_a) {
-    var item = _a.item;
-    return getBaselineIntensity('other', item).value;
-};
+/**
+ * レジャー・スポーツのGHG原単位を計算
+ * @param item レジャー・スポーツのカーボンフットプリントアイテム名
+ * @returns GHG原単位[kgCO2e/000JPY]
+ */
+export var estimateLeisureSportsIntensity = function (item) { return getBaselineIntensity('other', item).value; };

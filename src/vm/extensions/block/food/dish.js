@@ -1,11 +1,3 @@
-/*
- * beef
- * pork
- * chicken
- * other-meat
- * fish
- * processed-fish
- */
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -31,14 +23,12 @@ var getFactor = function (item) {
             return 'dish-' + item + '-factor';
     }
 };
-export var estimateDishAnnualFootprint = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
-    return estimateDishAnnualAmount(item, {
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: frequency
-    }) * estimateDishIntensity(item);
-};
+/**
+ * 料理の活動量を計算する
+ * @param item 料理の種類
+ * @param param 料理の活動量を計算するための引数
+ * @returns 料理の活動量[kg]
+ */
 export var estimateDishAnnualAmount = function (item, _a) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
     var baseline = getBaselineAmount('food', item).value;
@@ -75,6 +65,12 @@ var getDishItems = function (items, beefDishFrequency, porkDishFrequency, chicke
     }
     return dishItems;
 };
+/**
+ * 料理の活動量を計算する
+ * @param param 料理の活動量を計算するための引数
+ * @param items 料理の種類
+ * @returns 料理の活動量のMap
+ */
 export var estimateDishAnnualAmounts = function (_a, items) {
     var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency;
     if (items === undefined) {
@@ -90,6 +86,11 @@ export var estimateDishAnnualAmounts = function (_a, items) {
         }), _a)));
     }, {});
 };
+/**
+ * 料理のGHG原単位を計算する
+ * @param items 料理の種類
+ * @returns  料理のGHG原単位のMap
+ */
 export var estimateDishIntensities = function (items) {
     if (items === undefined) {
         items = defaultItems;
@@ -99,12 +100,21 @@ export var estimateDishIntensities = function (items) {
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = estimateDishIntensity(item), _a)));
     }, {});
 };
+/**
+ * 料理の活動量のベースライン値を取得する
+ * @returns 料理の活動量のベースライン値のMap
+ */
 export var getDishAnnualBaselineAmounts = function () {
     return defaultItems.reduce(function (acc, item) {
         var _a;
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = getBaselineAmount('food', item).value, _a)));
     }, {});
 };
+/**
+ * 料理のGHG原単位を計算する
+ * @param item 料理の種類
+ * @returns 料理のGHG原単位[kgCO2e/kg]
+ */
 export var estimateDishIntensity = function (item) {
     return getBaselineIntensity('food', item).value;
 };
