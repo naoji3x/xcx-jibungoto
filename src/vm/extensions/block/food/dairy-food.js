@@ -18,7 +18,7 @@ import { estimateFoodLossRate } from './rate-calculation';
  * @returns 乳製品の活動量[kg]
  */
 export var estimateDairyFoodAnnualAmount = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, frequency = _a.dairyFoodFrequency;
     var baseline = getBaselineAmount('food', item).value;
     var foodIntake = getParameter('dairy-food-factor', frequency).value;
     return (baseline * foodIntake * estimateFoodLossRate(foodDirectWaste, foodLeftover));
@@ -31,16 +31,16 @@ var defaultItems = ['milk', 'other-dairy', 'eggs'];
  * @returns 乳製品の活動量のMap
  */
 export var estimateDairyFoodAnnualAmounts = function (_a, items) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, frequency = _a.dairyFoodFrequency;
     if (items === undefined) {
         items = defaultItems;
     }
     return items.reduce(function (acc, item) {
         var _a;
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = estimateDairyFoodAnnualAmount(item, {
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            frequency: frequency
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
+            dairyFoodFrequency: frequency
         }), _a)));
     }, {});
 };

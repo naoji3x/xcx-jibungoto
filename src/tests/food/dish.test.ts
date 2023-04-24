@@ -6,15 +6,15 @@ import {
 import {
   type DishFrequency,
   type DishItem,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../../ts/common/types'
 
 const expectAmount = (
   param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    frequency: DishFrequency
+    foodDirectWasteFrequency: FoodDirectWasteFrequency
+    foodLeftoverFrequency: FoodLeftoverFrequency
+    dishFrequency: DishFrequency
   },
   itemAndValues: Array<{ item: DishItem; value: number }>
 ): void => {
@@ -35,9 +35,9 @@ describe('dish', () => {
   test('amount case E6', () => {
     expectAmount(
       {
-        foodDirectWaste: 'seldom',
-        foodLeftover: 'seldom',
-        frequency: 'everyday'
+        foodDirectWasteFrequency: 'seldom',
+        foodLeftoverFrequency: 'seldom',
+        dishFrequency: 'everyday'
       },
       [
         { item: 'beef', value: 7.440199867 },
@@ -52,9 +52,9 @@ describe('dish', () => {
   test('amount case 01', () => {
     expectAmount(
       {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        frequency: '4-5-per-week'
+        foodDirectWasteFrequency: '1-per-week',
+        foodLeftoverFrequency: '1-per-week',
+        dishFrequency: '4-5-per-week'
       },
       [
         { item: 'beef', value: 4.933340889 },
@@ -70,9 +70,9 @@ describe('dish', () => {
   test('amount case 02', () => {
     expectAmount(
       {
-        foodDirectWaste: '2-3-per-week',
-        foodLeftover: '2-3-per-week',
-        frequency: '2-3-per-week'
+        foodDirectWasteFrequency: '2-3-per-week',
+        foodLeftoverFrequency: '2-3-per-week',
+        dishFrequency: '2-3-per-week'
       },
       [
         { item: 'beef', value: 2.901616841 },
@@ -88,9 +88,9 @@ describe('dish', () => {
   test('amount case 03', () => {
     expectAmount(
       {
-        foodDirectWaste: '4-7-per-week',
-        foodLeftover: '4-7-per-week',
-        frequency: '1-per-week'
+        foodDirectWasteFrequency: '4-7-per-week',
+        foodLeftoverFrequency: '4-7-per-week',
+        dishFrequency: '1-per-week'
       },
       [
         { item: 'beef', value: 1.289344259 },
@@ -106,9 +106,9 @@ describe('dish', () => {
   test('amount case 04', () => {
     expectAmount(
       {
-        foodDirectWaste: '8-more-per-week',
-        foodLeftover: '8-more-per-week',
-        frequency: '2-3-per-month'
+        foodDirectWasteFrequency: '8-more-per-week',
+        foodLeftoverFrequency: '8-more-per-week',
+        dishFrequency: '2-3-per-month'
       },
       [
         { item: 'beef', value: 0.872870121 },
@@ -124,9 +124,9 @@ describe('dish', () => {
   test('amount case 05', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        frequency: '1-less-per-month'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        dishFrequency: '1-less-per-month'
       },
       [
         { item: 'beef', value: 0.273093639 },
@@ -142,9 +142,9 @@ describe('dish', () => {
   test('amount case 06', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        frequency: 'never'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        dishFrequency: 'never'
       },
       [
         { item: 'beef', value: 0 },
@@ -160,9 +160,9 @@ describe('dish', () => {
   test('amount case 07', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        frequency: 'unknown'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        dishFrequency: 'unknown'
       },
       [
         { item: 'beef', value: 2.047383013 },

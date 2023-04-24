@@ -1,7 +1,7 @@
 import {
   type DishFrequency,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../../ts/common/types'
 import {
   estimateProcessedMeatAnnualAmount,
@@ -10,8 +10,8 @@ import {
 
 const testAmount = (
   id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
+  foodDirectWaste: FoodDirectWasteFrequency,
+  foodLeftover: FoodLeftoverFrequency,
   beefDishFrequency: DishFrequency,
   porkDishFrequency: DishFrequency,
   chickenDishFrequency: DishFrequency,
@@ -20,8 +20,8 @@ const testAmount = (
   test('amount case ' + id, () => {
     expect(
       estimateProcessedMeatAnnualAmount({
-        foodDirectWaste,
-        foodLeftover,
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
         beefDishFrequency,
         porkDishFrequency,
         chickenDishFrequency

@@ -18,7 +18,7 @@ import { estimateFoodLossRate } from './rate-calculation';
  * @returns ソフトドリンク・スナックの活動量[kg]
  */
 export var estimateSoftDrinkSnackAnnualAmount = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, expenses = _a.expenses;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, expenses = _a.softDrinkSnackExpenses;
     var baseline = getBaselineAmount('food', item).value;
     var dishFactor = getParameter('soft-drink-snack-factor', expenses).value;
     return (baseline * dishFactor * estimateFoodLossRate(foodDirectWaste, foodLeftover));
@@ -35,16 +35,16 @@ var defaultItems = [
  * @returns ソフトドリンク・スナックの活動量のMap
  */
 export var estimateSoftDrinkSnackAnnualAmounts = function (_a, items) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, expenses = _a.expenses;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, expenses = _a.softDrinkSnackExpenses;
     if (items === undefined) {
         items = defaultItems;
     }
     return items.reduce(function (acc, item) {
         var _a;
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = estimateSoftDrinkSnackAnnualAmount(item, {
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            expenses: expenses
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
+            softDrinkSnackExpenses: expenses
         }), _a)));
     }, {});
 };

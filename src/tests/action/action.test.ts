@@ -25,10 +25,10 @@ import {
   type DairyFoodFrequency,
   type DishFrequency,
   type ElectricityType,
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
   type FoodIntakeItem,
-  type FoodLeftover,
+  type FoodLeftoverFrequency,
   type GasItem,
   type HousingInsulation,
   type HousingSize,
@@ -171,12 +171,12 @@ describe('manufacturingIntensityToEvPhv', () => {
 
 // test the foodAmountToAverageWithoutFoodLoss function
 describe('foodAmountToAverageWithoutFoodLoss', () => {
-  const foodDirectWaste: FoodDirectWaste = '8-more-per-week'
-  const foodLeftover: FoodLeftover = '8-more-per-week'
+  const foodDirectWaste: FoodDirectWasteFrequency = '8-more-per-week'
+  const foodLeftover: FoodLeftoverFrequency = '8-more-per-week'
   const foodIntake: FoodIntake = 'very-much'
   const base = estimateFoodIntakeAnnualAmount('rice', {
-    foodDirectWaste,
-    foodLeftover,
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
     foodIntake
   })
 
@@ -674,8 +674,8 @@ describe('led01', () => {
 // test vegan01 case
 describe('vegan01', () => {
   const foodIntake: FoodIntake = 'very-much'
-  const foodDirectWaste: FoodDirectWaste = '8-more-per-week'
-  const foodLeftover: FoodLeftover = '8-more-per-week'
+  const foodDirectWaste: FoodDirectWasteFrequency = '8-more-per-week'
+  const foodLeftover: FoodLeftoverFrequency = '8-more-per-week'
   const beefDishFrequency: DishFrequency = '2-3-per-month'
   const porkDishFrequency: DishFrequency = '2-3-per-month'
   const chickenDishFrequency: DishFrequency = '2-3-per-month'
@@ -705,8 +705,8 @@ describe('vegan01', () => {
       'food_' + item + '_amount',
       estimateFoodIntakeAnnualAmount(item, {
         foodIntake,
-        foodDirectWaste,
-        foodLeftover
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover
       })
     )
     diagnoses.addItem(
@@ -735,9 +735,9 @@ describe('vegan01', () => {
 
   // milk, other-dairy, eggs
   const dairyFoodAmounts = estimateDairyFoodAnnualAmounts({
-    foodDirectWaste,
-    foodLeftover,
-    frequency: dairyFoodFrequency
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dairyFoodFrequency
   })
   for (const item in dairyFoodAmounts) {
     diagnoses.addItem('food_' + item + '_amount', dairyFoodAmounts[item])
@@ -752,8 +752,8 @@ describe('vegan01', () => {
   diagnoses.addItem(
     'food_processed-meat_amount',
     estimateProcessedMeatAnnualAmount({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       beefDishFrequency,
       porkDishFrequency,
       chickenDishFrequency
@@ -768,8 +768,8 @@ describe('vegan01', () => {
   diagnoses.addItem(
     'food_ready-meal_intensity',
     estimateReadyMealIntensity({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake,
       beefDishFrequency,
       porkDishFrequency,
@@ -784,8 +784,8 @@ describe('vegan01', () => {
   diagnoses.addItem(
     'food_restaurant_intensity',
     estimateEatOutIntensity('restaurant', {
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake,
       beefDishFrequency,
       porkDishFrequency,
@@ -801,8 +801,8 @@ describe('vegan01', () => {
   diagnoses.addItem(
     'food_bar-cafe_intensity',
     estimateEatOutIntensity('bar-cafe', {
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake,
       beefDishFrequency,
       porkDishFrequency,

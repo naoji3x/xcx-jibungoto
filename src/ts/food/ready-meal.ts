@@ -1,9 +1,9 @@
 import {
   type DairyFoodFrequency,
   type DishFrequency,
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
-  type FoodLeftover,
+  type FoodLeftoverFrequency,
   type SoftDrinkSnackExpenses
 } from '../common/types'
 import {
@@ -39,9 +39,9 @@ import {
 /** 加工食品の活動量を計算するための引数 */
 export interface ReadyMealAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** 食事の摂取量 */
   foodIntake: FoodIntake
 }
@@ -68,8 +68,8 @@ export interface ReadyMealIntensityParam extends ReadyMealAmountParam {
  * @returns 冷凍食品の活動量[kg]
  */
 export const estimateReadyMealAnnualAmount = ({
-  foodDirectWaste,
-  foodLeftover,
+  foodDirectWasteFrequency: foodDirectWaste,
+  foodLeftoverFrequency: foodLeftover,
   foodIntake
 }: ReadyMealAmountParam): number => {
   const baseline = getBaselineAmount('food', 'ready-meal').value
@@ -83,8 +83,8 @@ export const estimateReadyMealAnnualAmount = ({
  * @returns 冷凍食品のGHG原単位[kgCO2/kg]
  */
 export const estimateReadyMealIntensity = ({
-  foodDirectWaste,
-  foodLeftover,
+  foodDirectWasteFrequency: foodDirectWaste,
+  foodLeftoverFrequency: foodLeftover,
   foodIntake,
   beefDishFrequency,
   porkDishFrequency,
@@ -96,8 +96,8 @@ export const estimateReadyMealIntensity = ({
   // 活動量推定値
   const estimatedAmounts: Record<string, number> = {
     ...estimateFoodIntakeAnnualAmounts({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake
     }),
     ...estimateDishAnnualAmounts({
@@ -109,18 +109,18 @@ export const estimateReadyMealIntensity = ({
       seafoodDishFrequency
     }),
     ...estimateDairyFoodAnnualAmounts({
-      foodDirectWaste,
-      foodLeftover,
-      frequency: dairyFoodFrequency
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
+      dairyFoodFrequency
     }),
     'sweets-snack': estimateSoftDrinkSnackAnnualAmount('sweets-snack', {
-      foodDirectWaste,
-      foodLeftover,
-      expenses: softDrinkSnackExpenses
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
+      softDrinkSnackExpenses
     }),
     'processed-meat': estimateProcessedMeatAnnualAmount({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       beefDishFrequency,
       porkDishFrequency,
       chickenDishFrequency

@@ -1,8 +1,8 @@
 import {
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
   type FoodIntakeItem,
-  type FoodLeftover
+  type FoodLeftoverFrequency
 } from '../common/types'
 import {
   getBaselineAmount,
@@ -16,9 +16,9 @@ import { estimateFoodLossRate } from './rate-calculation'
  */
 export interface FoodIntakeAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** 食料摂取量 */
   foodIntake: FoodIntake
 }
@@ -31,7 +31,11 @@ export interface FoodIntakeAmountParam {
  */
 export const estimateFoodIntakeAnnualAmount = (
   item: FoodIntakeItem,
-  { foodDirectWaste, foodLeftover, foodIntake }: FoodIntakeAmountParam
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    foodIntake
+  }: FoodIntakeAmountParam
 ): number => {
   const baseline = getBaselineAmount('food', item).value
   const intake = getParameter('food-intake-factor', foodIntake).value
@@ -58,7 +62,11 @@ const defaultItems: FoodIntakeItem[] = [
  * @returns 食料摂取量の活動量のMap
  */
 export const estimateFoodIntakeAnnualAmounts = (
-  { foodDirectWaste, foodLeftover, foodIntake }: FoodIntakeAmountParam,
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    foodIntake
+  }: FoodIntakeAmountParam,
   items?: FoodIntakeItem[]
 ): Record<string, number> => {
   if (items === undefined) {
@@ -69,8 +77,8 @@ export const estimateFoodIntakeAnnualAmounts = (
     (acc, item): Record<string, number> => ({
       ...acc,
       [item]: estimateFoodIntakeAnnualAmount(item, {
-        foodDirectWaste,
-        foodLeftover,
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
         foodIntake
       })
     }),

@@ -22,7 +22,7 @@ import { estimateSoftDrinkSnackAnnualAmount, estimateSoftDrinkSnackIntensity } f
  * @returns 冷凍食品の活動量[kg]
  */
 export var estimateReadyMealAnnualAmount = function (_a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, foodIntake = _a.foodIntake;
     var baseline = getBaselineAmount('food', 'ready-meal').value;
     var intake = getParameter('food-intake-factor', foodIntake).value;
     return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover);
@@ -33,11 +33,11 @@ export var estimateReadyMealAnnualAmount = function (_a) {
  * @returns 冷凍食品のGHG原単位[kgCO2/kg]
  */
 export var estimateReadyMealIntensity = function (_a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
     // 活動量推定値
     var estimatedAmounts = __assign(__assign(__assign(__assign({}, estimateFoodIntakeAnnualAmounts({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
         foodIntake: foodIntake
     })), estimateDishAnnualAmounts({
         foodDirectWaste: foodDirectWaste,
@@ -47,16 +47,16 @@ export var estimateReadyMealIntensity = function (_a) {
         chickenDishFrequency: chickenDishFrequency,
         seafoodDishFrequency: seafoodDishFrequency
     })), estimateDairyFoodAnnualAmounts({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: dairyFoodFrequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dairyFoodFrequency: dairyFoodFrequency
     })), { 'sweets-snack': estimateSoftDrinkSnackAnnualAmount('sweets-snack', {
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            expenses: softDrinkSnackExpenses
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
+            softDrinkSnackExpenses: softDrinkSnackExpenses
         }), 'processed-meat': estimateProcessedMeatAnnualAmount({
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
             beefDishFrequency: beefDishFrequency,
             porkDishFrequency: porkDishFrequency,
             chickenDishFrequency: chickenDishFrequency

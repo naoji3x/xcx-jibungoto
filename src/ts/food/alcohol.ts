@@ -1,7 +1,7 @@
 import {
   type AlcoholFrequency,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../common/types'
 import {
   getBaselineAmount,
@@ -13,11 +13,11 @@ import { estimateFoodLossRate } from './rate-calculation'
 /** アルコールの活動量を計算するための引数 */
 export interface AlcoholAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** アルコールの摂取頻度 */
-  frequency: AlcoholFrequency
+  alcoholFrequency: AlcoholFrequency
 }
 
 /**
@@ -26,9 +26,9 @@ export interface AlcoholAmountParam {
  * @returns アルコールの活動量[kg]
  */
 export const estimateAlcoholAnnualAmount = ({
-  foodDirectWaste,
-  foodLeftover,
-  frequency
+  foodDirectWasteFrequency: foodDirectWaste,
+  foodLeftoverFrequency: foodLeftover,
+  alcoholFrequency: frequency
 }: AlcoholAmountParam): number => {
   const baseline = getBaselineAmount('food', 'alcohol').value
   const factor = getParameter('alcohol-factor', frequency).value

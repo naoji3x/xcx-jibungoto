@@ -1,8 +1,8 @@
 import {
   type DishFrequency,
   type DishItem,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../common/types'
 import {
   getBaselineAmount,
@@ -27,19 +27,19 @@ const getFactor = (item: DishItem): string => {
 /** 料理の活動量を計算するための引数 */
 export interface DishAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** 料理の摂取頻度 */
-  frequency: DishFrequency
+  dishFrequency: DishFrequency
 }
 
 /** 料理の活動量を計算するための引数 */
 export interface AllDishAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWaste: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftover: FoodLeftoverFrequency
   /** 牛肉料理の摂取頻度 */
   beefDishFrequency: DishFrequency
   /** 豚肉料理の摂取頻度 */
@@ -58,7 +58,11 @@ export interface AllDishAmountParam {
  */
 export const estimateDishAnnualAmount = (
   item: DishItem,
-  { foodDirectWaste, foodLeftover, frequency }: DishAmountParam
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dishFrequency: frequency
+  }: DishAmountParam
 ): number => {
   const baseline = getBaselineAmount('food', item).value
   const dishFactor = getParameter(getFactor(item), frequency).value
@@ -139,9 +143,9 @@ export const estimateDishAnnualAmounts = (
     (acc, pair): Record<string, number> => ({
       ...acc,
       [pair.item]: estimateDishAnnualAmount(pair.item, {
-        foodDirectWaste,
-        foodLeftover,
-        frequency: pair.frequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dishFrequency: pair.frequency
       })
     }),
     {}

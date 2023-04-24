@@ -1,9 +1,9 @@
 import {
   type DairyFoodFrequency,
   type DishFrequency,
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
-  type FoodLeftover,
+  type FoodLeftoverFrequency,
   type SoftDrinkSnackExpenses
 } from '../../ts/common/types'
 import {
@@ -13,8 +13,8 @@ import {
 
 const testAmount = (
   id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
+  foodDirectWaste: FoodDirectWasteFrequency,
+  foodLeftover: FoodLeftoverFrequency,
   foodIntake: FoodIntake,
   value: number
 ): void => {
@@ -22,8 +22,8 @@ const testAmount = (
     expect(
       estimateReadyMealAnnualAmount({
         foodIntake,
-        foodDirectWaste,
-        foodLeftover
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover
       })
     ).toBeCloseTo(value)
   })
@@ -31,8 +31,8 @@ const testAmount = (
 
 const testIntensity = (
   id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
+  foodDirectWaste: FoodDirectWasteFrequency,
+  foodLeftover: FoodLeftoverFrequency,
   foodIntake: FoodIntake,
   beefDishFrequency: DishFrequency,
   porkDishFrequency: DishFrequency,
@@ -45,8 +45,8 @@ const testIntensity = (
   test('intensity case ' + id, () => {
     expect(
       estimateReadyMealIntensity({
-        foodDirectWaste,
-        foodLeftover,
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
         foodIntake,
         beefDishFrequency,
         porkDishFrequency,

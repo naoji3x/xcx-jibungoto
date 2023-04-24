@@ -1,9 +1,12 @@
-import { type FoodDirectWaste, type FoodLeftover } from '../common/types'
+import {
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
+} from '../common/types'
 import { getParameter } from '../data/database'
 
 export const estimateFoodLossRate = (
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover
+  foodDirectWaste: FoodDirectWasteFrequency,
+  foodLeftover: FoodLeftoverFrequency
 ): number => {
   const foodDirectWasteFactor = getParameter(
     'food-direct-waste-factor',

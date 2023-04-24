@@ -6,15 +6,15 @@ import {
 import {
   type DairyFoodFrequency,
   type DairyFoodItem,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../../ts/common/types'
 
 const expectAmount = (
   param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    frequency: DairyFoodFrequency
+    foodDirectWasteFrequency: FoodDirectWasteFrequency
+    foodLeftoverFrequency: FoodLeftoverFrequency
+    dairyFoodFrequency: DairyFoodFrequency
   },
   itemAndValues: Array<{ item: DairyFoodItem; value: number }>
 ): void => {
@@ -37,9 +37,9 @@ describe('dairy-food', () => {
   test('amount case E6', () => {
     expectAmount(
       {
-        foodDirectWaste: 'seldom',
-        foodLeftover: 'seldom',
-        frequency: '3-more-per-day'
+        foodDirectWasteFrequency: 'seldom',
+        foodLeftoverFrequency: 'seldom',
+        dairyFoodFrequency: '3-more-per-day'
       },
       [
         { item: 'milk', value: 49.28508344 },
@@ -51,9 +51,9 @@ describe('dairy-food', () => {
   test('amount case 01', () => {
     expectAmount(
       {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        frequency: '2-per-day'
+        foodDirectWasteFrequency: '1-per-week',
+        foodLeftoverFrequency: '1-per-week',
+        dairyFoodFrequency: '2-per-day'
       },
       [
         { item: 'milk', value: 33.88958783 },
@@ -66,9 +66,9 @@ describe('dairy-food', () => {
   test('amount case 02', () => {
     expectAmount(
       {
-        foodDirectWaste: '2-3-per-week',
-        foodLeftover: '2-3-per-week',
-        frequency: '1-per-day'
+        foodDirectWasteFrequency: '2-3-per-week',
+        foodLeftoverFrequency: '2-3-per-week',
+        dairyFoodFrequency: '1-per-day'
       },
       [
         { item: 'milk', value: 17.93939257 },
@@ -81,9 +81,9 @@ describe('dairy-food', () => {
   test('amount case 03', () => {
     expectAmount(
       {
-        foodDirectWaste: '4-7-per-week',
-        foodLeftover: '4-7-per-week',
-        frequency: 'half-of-week'
+        foodDirectWasteFrequency: '4-7-per-week',
+        foodLeftoverFrequency: '4-7-per-week',
+        dairyFoodFrequency: 'half-of-week'
       },
       [
         { item: 'milk', value: 9.964294945 },
@@ -96,9 +96,9 @@ describe('dairy-food', () => {
   test('amount case 04', () => {
     expectAmount(
       {
-        foodDirectWaste: '8-more-per-week',
-        foodLeftover: '8-more-per-week',
-        frequency: '1-2-less-per-week'
+        foodDirectWasteFrequency: '8-more-per-week',
+        foodLeftoverFrequency: '8-more-per-week',
+        dairyFoodFrequency: '1-2-less-per-week'
       },
       [
         { item: 'milk', value: 4.625625926 },
@@ -111,9 +111,9 @@ describe('dairy-food', () => {
   test('amount case 05', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        frequency: 'never'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        dairyFoodFrequency: 'never'
       },
       [
         { item: 'milk', value: 0 },
@@ -126,9 +126,9 @@ describe('dairy-food', () => {
   test('amount case 06', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        frequency: 'unknown'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        dairyFoodFrequency: 'unknown'
       },
       [
         { item: 'milk', value: 27.99026002 },

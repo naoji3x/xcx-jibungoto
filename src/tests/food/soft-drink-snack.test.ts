@@ -4,17 +4,17 @@ import {
 } from '../../ts/food/soft-drink-snack'
 
 import {
-  type FoodDirectWaste,
-  type FoodLeftover,
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency,
   type SoftDrinkSnackExpenses,
   type SoftDrinkSnackItem
 } from '../../ts/common/types'
 
 const expectAmount = (
   param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
-    expenses: SoftDrinkSnackExpenses
+    foodDirectWasteFrequency: FoodDirectWasteFrequency
+    foodLeftoverFrequency: FoodLeftoverFrequency
+    softDrinkSnackExpenses: SoftDrinkSnackExpenses
   },
   itemAndValues: Array<{ item: SoftDrinkSnackItem; value: number }>
 ): void => {
@@ -37,9 +37,9 @@ describe('soft-drink-snack', () => {
   test('amount case E6', () => {
     expectAmount(
       {
-        foodDirectWaste: 'seldom',
-        foodLeftover: 'seldom',
-        expenses: '3k-less'
+        foodDirectWasteFrequency: 'seldom',
+        foodLeftoverFrequency: 'seldom',
+        softDrinkSnackExpenses: '3k-less'
       },
       [
         { item: 'sweets-snack', value: 6.570425326 },
@@ -51,9 +51,9 @@ describe('soft-drink-snack', () => {
   test('amount case 01', () => {
     expectAmount(
       {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
-        expenses: '3k-5k'
+        foodDirectWasteFrequency: '1-per-week',
+        foodLeftoverFrequency: '1-per-week',
+        softDrinkSnackExpenses: '3k-5k'
       },
       [
         { item: 'sweets-snack', value: 13.55393908 },
@@ -66,9 +66,9 @@ describe('soft-drink-snack', () => {
   test('amount case 02', () => {
     expectAmount(
       {
-        foodDirectWaste: '2-3-per-week',
-        foodLeftover: '2-3-per-week',
-        expenses: '5k-10k'
+        foodDirectWasteFrequency: '2-3-per-week',
+        foodLeftoverFrequency: '2-3-per-week',
+        softDrinkSnackExpenses: '5k-10k'
       },
       [
         { item: 'sweets-snack', value: 26.90532509 },
@@ -81,9 +81,9 @@ describe('soft-drink-snack', () => {
   test('amount case 03', () => {
     expectAmount(
       {
-        foodDirectWaste: '4-7-per-week',
-        foodLeftover: '4-7-per-week',
-        expenses: '10k-15k'
+        foodDirectWasteFrequency: '4-7-per-week',
+        foodLeftoverFrequency: '4-7-per-week',
+        softDrinkSnackExpenses: '10k-15k'
       },
       [
         { item: 'sweets-snack', value: 49.81450621 },
@@ -96,9 +96,9 @@ describe('soft-drink-snack', () => {
   test('amount case 04', () => {
     expectAmount(
       {
-        foodDirectWaste: '8-more-per-week',
-        foodLeftover: '8-more-per-week',
-        expenses: '15k-more'
+        foodDirectWasteFrequency: '8-more-per-week',
+        foodLeftoverFrequency: '8-more-per-week',
+        softDrinkSnackExpenses: '15k-more'
       },
       [
         { item: 'sweets-snack', value: 75.5413227 },
@@ -111,9 +111,9 @@ describe('soft-drink-snack', () => {
   test('amount case 05', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        expenses: 'unknown'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        softDrinkSnackExpenses: 'unknown'
       },
       [
         { item: 'sweets-snack', value: 20.70887802 },
@@ -126,9 +126,9 @@ describe('soft-drink-snack', () => {
   test('amount case 06', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
-        expenses: 'unknown'
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
+        softDrinkSnackExpenses: 'unknown'
       },
       [
         { item: 'sweets-snack', value: 20.70887802 },

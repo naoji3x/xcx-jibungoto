@@ -1,8 +1,8 @@
 import {
   type DairyFoodFrequency,
   type DairyFoodItem,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../common/types'
 import {
   getBaselineAmount,
@@ -14,11 +14,11 @@ import { estimateFoodLossRate } from './rate-calculation'
 /** 乳製品の活動量を計算するための引数 */
 export interface DairyFoodAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** 乳製品の摂取頻度 */
-  frequency: DairyFoodFrequency
+  dairyFoodFrequency: DairyFoodFrequency
 }
 
 /**
@@ -29,7 +29,11 @@ export interface DairyFoodAmountParam {
  */
 export const estimateDairyFoodAnnualAmount = (
   item: DairyFoodItem,
-  { foodDirectWaste, foodLeftover, frequency }: DairyFoodAmountParam
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dairyFoodFrequency: frequency
+  }: DairyFoodAmountParam
 ): number => {
   const baseline = getBaselineAmount('food', item).value
   const foodIntake = getParameter('dairy-food-factor', frequency).value
@@ -47,7 +51,11 @@ const defaultItems: DairyFoodItem[] = ['milk', 'other-dairy', 'eggs']
  * @returns 乳製品の活動量のMap
  */
 export const estimateDairyFoodAnnualAmounts = (
-  { foodDirectWaste, foodLeftover, frequency }: DairyFoodAmountParam,
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dairyFoodFrequency: frequency
+  }: DairyFoodAmountParam,
   items?: DairyFoodItem[]
 ): Record<string, number> => {
   if (items === undefined) {
@@ -58,9 +66,9 @@ export const estimateDairyFoodAnnualAmounts = (
     (acc, item): Record<string, number> => ({
       ...acc,
       [item]: estimateDairyFoodAnnualAmount(item, {
-        foodDirectWaste,
-        foodLeftover,
-        frequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dairyFoodFrequency: frequency
       })
     }),
     {}

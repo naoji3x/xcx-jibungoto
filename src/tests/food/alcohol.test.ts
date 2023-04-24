@@ -5,23 +5,23 @@ import {
 
 import {
   type AlcoholFrequency,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../../ts/common/types'
 
 const testAmount = (
   id: string,
-  foodDirectWaste: FoodDirectWaste,
-  foodLeftover: FoodLeftover,
-  frequency: AlcoholFrequency,
+  foodDirectWasteFrequency: FoodDirectWasteFrequency,
+  foodLeftoverFrequency: FoodLeftoverFrequency,
+  alcoholFrequency: AlcoholFrequency,
   value: number
 ): void => {
   test('amount case ' + id, () => {
     expect(
       estimateAlcoholAnnualAmount({
-        foodDirectWaste,
-        foodLeftover,
-        frequency
+        foodDirectWasteFrequency,
+        foodLeftoverFrequency,
+        alcoholFrequency
       })
     ).toBeCloseTo(value)
   })

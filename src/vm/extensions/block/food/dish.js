@@ -30,7 +30,7 @@ var getFactor = function (item) {
  * @returns 料理の活動量[kg]
  */
 export var estimateDishAnnualAmount = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, frequency = _a.dishFrequency;
     var baseline = getBaselineAmount('food', item).value;
     var dishFactor = getParameter(getFactor(item), frequency).value;
     return (baseline * dishFactor * estimateFoodLossRate(foodDirectWaste, foodLeftover));
@@ -80,9 +80,9 @@ export var estimateDishAnnualAmounts = function (_a, items) {
     return dishItems.reduce(function (acc, pair) {
         var _a;
         return (__assign(__assign({}, acc), (_a = {}, _a[pair.item] = estimateDishAnnualAmount(pair.item, {
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            frequency: pair.frequency
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
+            dishFrequency: pair.frequency
         }), _a)));
     }, {});
 };

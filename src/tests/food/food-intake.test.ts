@@ -4,16 +4,16 @@ import {
 } from '../../ts/food/food-intake'
 
 import {
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
   type FoodIntakeItem,
-  type FoodLeftover
+  type FoodLeftoverFrequency
 } from '../../ts/common/types'
 
 const expectAmount = (
   param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
+    foodDirectWasteFrequency: FoodDirectWasteFrequency
+    foodLeftoverFrequency: FoodLeftoverFrequency
     foodIntake: FoodIntake
   },
   itemAndValues: Array<{ item: FoodIntakeItem; value: number }>
@@ -37,8 +37,8 @@ describe('food-intake', () => {
   test('amount case E6', () => {
     expectAmount(
       {
-        foodDirectWaste: 'seldom',
-        foodLeftover: 'seldom',
+        foodDirectWasteFrequency: 'seldom',
+        foodLeftoverFrequency: 'seldom',
         foodIntake: 'very-little'
       },
       [
@@ -59,8 +59,8 @@ describe('food-intake', () => {
   test('amount case 01', () => {
     expectAmount(
       {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
+        foodDirectWasteFrequency: '1-per-week',
+        foodLeftoverFrequency: '1-per-week',
         foodIntake: 'somewhat-little'
       },
       [
@@ -81,8 +81,8 @@ describe('food-intake', () => {
   test('amount case 02', () => {
     expectAmount(
       {
-        foodDirectWaste: '2-3-per-week',
-        foodLeftover: '2-3-per-week',
+        foodDirectWasteFrequency: '2-3-per-week',
+        foodLeftoverFrequency: '2-3-per-week',
         foodIntake: 'moderate'
       },
       [
@@ -103,8 +103,8 @@ describe('food-intake', () => {
   test('amount case 03', () => {
     expectAmount(
       {
-        foodDirectWaste: '4-7-per-week',
-        foodLeftover: '4-7-per-week',
+        foodDirectWasteFrequency: '4-7-per-week',
+        foodLeftoverFrequency: '4-7-per-week',
         foodIntake: 'somewhat-much'
       },
       [
@@ -125,8 +125,8 @@ describe('food-intake', () => {
   test('amount case 04', () => {
     expectAmount(
       {
-        foodDirectWaste: '8-more-per-week',
-        foodLeftover: '8-more-per-week',
+        foodDirectWasteFrequency: '8-more-per-week',
+        foodLeftoverFrequency: '8-more-per-week',
         foodIntake: 'very-much'
       },
       [
@@ -147,8 +147,8 @@ describe('food-intake', () => {
   test('amount case 05', () => {
     expectAmount(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
         foodIntake: 'unknown'
       },
       [

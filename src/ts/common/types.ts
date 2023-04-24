@@ -48,7 +48,7 @@ export type OtherCarItem = 'taxi' | 'car-sharing-driving' | 'car-sharing-rental'
 // food
 //
 
-/** 1日の活動量（摂取カロリー量）はどのくらいですか？ */
+/** 摂取カロリー量 */
 export type FoodIntake =
   | 'very-little'
   | 'somewhat-little'
@@ -58,7 +58,7 @@ export type FoodIntake =
   | 'unknown'
 
 /* 食料の破棄の頻度 */
-export type FoodDirectWaste =
+export type FoodDirectWasteFrequency =
   | 'seldom'
   | '1-per-week'
   | '2-3-per-week'
@@ -67,7 +67,7 @@ export type FoodDirectWaste =
   | 'unknown'
 
 /** 食べ残しの頻度 */
-export type FoodLeftover =
+export type FoodLeftoverFrequency =
   | 'seldom'
   | '1-per-week'
   | '2-3-per-week'

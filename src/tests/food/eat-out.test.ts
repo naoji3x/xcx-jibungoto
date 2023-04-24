@@ -9,9 +9,9 @@ import {
   type DishFrequency,
   type EatOutExpenses,
   type EatOutItem,
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
-  type FoodLeftover,
+  type FoodLeftoverFrequency,
   type SoftDrinkSnackExpenses
 } from '../../ts/common/types'
 
@@ -28,8 +28,8 @@ const expectAmount = (
 
 const expectIntensity = (
   param: {
-    foodDirectWaste: FoodDirectWaste
-    foodLeftover: FoodLeftover
+    foodDirectWasteFrequency: FoodDirectWasteFrequency
+    foodLeftoverFrequency: FoodLeftoverFrequency
     foodIntake: FoodIntake
 
     beefDishFrequency: DishFrequency
@@ -126,8 +126,8 @@ describe('eat-out', () => {
   test('intensity case E6', () => {
     expectIntensity(
       {
-        foodDirectWaste: 'seldom',
-        foodLeftover: 'seldom',
+        foodDirectWasteFrequency: 'seldom',
+        foodLeftoverFrequency: 'seldom',
         foodIntake: 'very-little',
 
         beefDishFrequency: 'everyday',
@@ -149,8 +149,8 @@ describe('eat-out', () => {
   test('intensity case 01', () => {
     expectIntensity(
       {
-        foodDirectWaste: '1-per-week',
-        foodLeftover: '1-per-week',
+        foodDirectWasteFrequency: '1-per-week',
+        foodLeftoverFrequency: '1-per-week',
         foodIntake: 'somewhat-little',
 
         beefDishFrequency: '4-5-per-week',
@@ -172,8 +172,8 @@ describe('eat-out', () => {
   test('intensity case 02', () => {
     expectIntensity(
       {
-        foodDirectWaste: '2-3-per-week',
-        foodLeftover: '2-3-per-week',
+        foodDirectWasteFrequency: '2-3-per-week',
+        foodLeftoverFrequency: '2-3-per-week',
         foodIntake: 'moderate',
 
         beefDishFrequency: '2-3-per-week',
@@ -195,8 +195,8 @@ describe('eat-out', () => {
   test('intensity case 03', () => {
     expectIntensity(
       {
-        foodDirectWaste: '4-7-per-week',
-        foodLeftover: '4-7-per-week',
+        foodDirectWasteFrequency: '4-7-per-week',
+        foodLeftoverFrequency: '4-7-per-week',
         foodIntake: 'somewhat-much',
 
         beefDishFrequency: '1-per-week',
@@ -218,8 +218,8 @@ describe('eat-out', () => {
   test('intensity case 04', () => {
     expectIntensity(
       {
-        foodDirectWaste: '8-more-per-week',
-        foodLeftover: '8-more-per-week',
+        foodDirectWasteFrequency: '8-more-per-week',
+        foodLeftoverFrequency: '8-more-per-week',
         foodIntake: 'very-much',
 
         beefDishFrequency: '2-3-per-month',
@@ -241,8 +241,8 @@ describe('eat-out', () => {
   test('intensity case 05', () => {
     expectIntensity(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
         foodIntake: 'unknown',
 
         beefDishFrequency: '1-less-per-month',
@@ -264,8 +264,8 @@ describe('eat-out', () => {
   test('intensity case 06', () => {
     expectIntensity(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
         foodIntake: 'very-much',
 
         beefDishFrequency: 'never',
@@ -287,8 +287,8 @@ describe('eat-out', () => {
   test('intensity case 07', () => {
     expectIntensity(
       {
-        foodDirectWaste: 'unknown',
-        foodLeftover: 'unknown',
+        foodDirectWasteFrequency: 'unknown',
+        foodLeftoverFrequency: 'unknown',
         foodIntake: 'very-much',
 
         beefDishFrequency: 'unknown',

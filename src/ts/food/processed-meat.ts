@@ -1,7 +1,7 @@
 import {
   type DishFrequency,
-  type FoodDirectWaste,
-  type FoodLeftover
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency
 } from '../common/types'
 import { getBaselineAmount, getBaselineIntensity } from '../data/database'
 import { estimateDishAnnualAmount } from './dish'
@@ -9,9 +9,9 @@ import { estimateDishAnnualAmount } from './dish'
 /** 加工肉の活動量を計算するための引数 */
 interface ProcessedMeatAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** 牛肉料理の摂取頻度 */
   beefDishFrequency: DishFrequency
   /** 豚肉料理の摂取頻度 */
@@ -26,8 +26,8 @@ interface ProcessedMeatAmountParam {
  * @returns 加工肉の活動量[kg]
  */
 export const estimateProcessedMeatAnnualAmount = ({
-  foodDirectWaste,
-  foodLeftover,
+  foodDirectWasteFrequency: foodDirectWaste,
+  foodLeftoverFrequency: foodLeftover,
   beefDishFrequency,
   porkDishFrequency,
   chickenDishFrequency
@@ -38,24 +38,24 @@ export const estimateProcessedMeatAnnualAmount = ({
   const otherMeatBaseline = getBaselineAmount('food', 'other-meat').value
 
   const beef = estimateDishAnnualAmount('beef', {
-    foodDirectWaste,
-    foodLeftover,
-    frequency: beefDishFrequency
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dishFrequency: beefDishFrequency
   })
   const pork = estimateDishAnnualAmount('pork', {
-    foodDirectWaste,
-    foodLeftover,
-    frequency: porkDishFrequency
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dishFrequency: porkDishFrequency
   })
   const chicken = estimateDishAnnualAmount('chicken', {
-    foodDirectWaste,
-    foodLeftover,
-    frequency: chickenDishFrequency
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dishFrequency: chickenDishFrequency
   })
   const otherMeat = estimateDishAnnualAmount('other-meat', {
-    foodDirectWaste,
-    foodLeftover,
-    frequency: porkDishFrequency
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    dishFrequency: porkDishFrequency
   })
 
   return (

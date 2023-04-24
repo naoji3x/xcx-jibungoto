@@ -36,16 +36,16 @@ export var estimateEatOutAnnualAmount = function (item, _a) {
  * @returns 外食のGHG原単位[kgCO2e/000JPY]
  */
 export var estimateEatOutIntensity = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, alcoholFrequency = _a.alcoholFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, foodIntake = _a.foodIntake, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency, seafoodDishFrequency = _a.seafoodDishFrequency, dairyFoodFrequency = _a.dairyFoodFrequency, alcoholFrequency = _a.alcoholFrequency, softDrinkSnackExpenses = _a.softDrinkSnackExpenses;
     // 活動量推定値
     var estimatedAmounts = __assign(__assign(__assign(__assign(__assign({}, estimateFoodIntakeAnnualAmounts({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
         foodIntake: foodIntake
     })), estimateSoftDrinkSnackAnnualAmounts({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        expenses: softDrinkSnackExpenses
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        softDrinkSnackExpenses: softDrinkSnackExpenses
     })), estimateDishAnnualAmounts({
         foodDirectWaste: foodDirectWaste,
         foodLeftover: foodLeftover,
@@ -54,28 +54,28 @@ export var estimateEatOutIntensity = function (item, _a) {
         chickenDishFrequency: chickenDishFrequency,
         seafoodDishFrequency: seafoodDishFrequency
     })), estimateDairyFoodAnnualAmounts({
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: dairyFoodFrequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dairyFoodFrequency: dairyFoodFrequency
     })), { alcohol: estimateAlcoholAnnualAmount({
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
-            frequency: alcoholFrequency
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
+            alcoholFrequency: alcoholFrequency
         }), 'processed-meat': estimateProcessedMeatAnnualAmount({
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
             beefDishFrequency: beefDishFrequency,
             porkDishFrequency: porkDishFrequency,
             chickenDishFrequency: chickenDishFrequency
         }), 'ready-meal': estimateReadyMealAnnualAmount({
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
             foodIntake: foodIntake
         }) });
     // GHG原単位推定値
     var estimatedIntensities = __assign(__assign(__assign(__assign(__assign({}, estimateFoodIntakeIntensities()), estimateSoftDrinkSnackIntensities()), estimateDishIntensities()), estimateDairyFoodIntensities()), { alcohol: estimateAlcoholIntensity(), 'processed-meat': estimateProcessedMeatIntensity(), 'ready-meal': estimateReadyMealIntensity({
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
             foodIntake: foodIntake,
             beefDishFrequency: beefDishFrequency,
             porkDishFrequency: porkDishFrequency,

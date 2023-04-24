@@ -6,30 +6,30 @@ import { estimateDishAnnualAmount } from './dish';
  * @returns 加工肉の活動量[kg]
  */
 export var estimateProcessedMeatAnnualAmount = function (_a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, beefDishFrequency = _a.beefDishFrequency, porkDishFrequency = _a.porkDishFrequency, chickenDishFrequency = _a.chickenDishFrequency;
     var beefBaseline = getBaselineAmount('food', 'beef').value;
     var porkBaseline = getBaselineAmount('food', 'pork').value;
     var chickenBaseline = getBaselineAmount('food', 'chicken').value;
     var otherMeatBaseline = getBaselineAmount('food', 'other-meat').value;
     var beef = estimateDishAnnualAmount('beef', {
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: beefDishFrequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dishFrequency: beefDishFrequency
     });
     var pork = estimateDishAnnualAmount('pork', {
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: porkDishFrequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dishFrequency: porkDishFrequency
     });
     var chicken = estimateDishAnnualAmount('chicken', {
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: chickenDishFrequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dishFrequency: chickenDishFrequency
     });
     var otherMeat = estimateDishAnnualAmount('other-meat', {
-        foodDirectWaste: foodDirectWaste,
-        foodLeftover: foodLeftover,
-        frequency: porkDishFrequency
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        dishFrequency: porkDishFrequency
     });
     return ((getBaselineAmount('food', 'processed-meat').value *
         (beef + pork + chicken + otherMeat)) /

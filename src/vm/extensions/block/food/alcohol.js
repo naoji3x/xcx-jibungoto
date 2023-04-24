@@ -6,7 +6,7 @@ import { estimateFoodLossRate } from './rate-calculation';
  * @returns アルコールの活動量[kg]
  */
 export var estimateAlcoholAnnualAmount = function (_a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, frequency = _a.frequency;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, frequency = _a.alcoholFrequency;
     var baseline = getBaselineAmount('food', 'alcohol').value;
     var factor = getParameter('alcohol-factor', frequency).value;
     return baseline * factor * estimateFoodLossRate(foodDirectWaste, foodLeftover);

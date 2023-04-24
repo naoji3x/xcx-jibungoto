@@ -18,7 +18,7 @@ import { estimateFoodLossRate } from './rate-calculation';
  * @returns 食料摂取量の活動量[kg]
  */
 export var estimateFoodIntakeAnnualAmount = function (item, _a) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, foodIntake = _a.foodIntake;
     var baseline = getBaselineAmount('food', item).value;
     var intake = getParameter('food-intake-factor', foodIntake).value;
     return baseline * intake * estimateFoodLossRate(foodDirectWaste, foodLeftover);
@@ -42,15 +42,15 @@ var defaultItems = [
  * @returns 食料摂取量の活動量のMap
  */
 export var estimateFoodIntakeAnnualAmounts = function (_a, items) {
-    var foodDirectWaste = _a.foodDirectWaste, foodLeftover = _a.foodLeftover, foodIntake = _a.foodIntake;
+    var foodDirectWaste = _a.foodDirectWasteFrequency, foodLeftover = _a.foodLeftoverFrequency, foodIntake = _a.foodIntake;
     if (items === undefined) {
         items = defaultItems;
     }
     return items.reduce(function (acc, item) {
         var _a;
         return (__assign(__assign({}, acc), (_a = {}, _a[item] = estimateFoodIntakeAnnualAmount(item, {
-            foodDirectWaste: foodDirectWaste,
-            foodLeftover: foodLeftover,
+            foodDirectWasteFrequency: foodDirectWaste,
+            foodLeftoverFrequency: foodLeftover,
             foodIntake: foodIntake
         }), _a)));
     }, {});

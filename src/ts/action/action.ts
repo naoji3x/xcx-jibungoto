@@ -3,8 +3,8 @@ import {
   type CarPassengers,
   type CarType,
   type ElectricityType,
-  type FoodDirectWaste,
-  type FoodLeftover,
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency,
   type HousingInsulation
 } from '../common/types'
 import { getParameter } from '../data/database'
@@ -134,8 +134,8 @@ export const drivingIntensityToPrivateCarRideshare = (
 export const foodAmountToAverageWithoutFoodLoss = (
   base: number,
   valueAfterAction: number,
-  foodDirectWaste: FoodDirectWaste = 'unknown',
-  foodLeftover: FoodLeftover = 'unknown'
+  foodDirectWaste: FoodDirectWasteFrequency = 'unknown',
+  foodLeftover: FoodLeftoverFrequency = 'unknown'
 ): number => {
   const valueBeforeAction = estimateFoodLossRate(foodDirectWaste, foodLeftover)
   return (base * valueAfterAction) / valueBeforeAction

@@ -1,6 +1,6 @@
 import {
-  type FoodDirectWaste,
-  type FoodLeftover,
+  type FoodDirectWasteFrequency,
+  type FoodLeftoverFrequency,
   type SoftDrinkSnackExpenses,
   type SoftDrinkSnackItem
 } from '../common/types'
@@ -14,11 +14,11 @@ import { estimateFoodLossRate } from './rate-calculation'
 /** ソフトドリンク・スナックの活動量を計算するための引数 */
 interface SoftDrinkSnackAmountParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** ソフトドリンク・スナックの支出 */
-  expenses: SoftDrinkSnackExpenses
+  softDrinkSnackExpenses: SoftDrinkSnackExpenses
 }
 
 /**
@@ -29,7 +29,11 @@ interface SoftDrinkSnackAmountParam {
  */
 export const estimateSoftDrinkSnackAnnualAmount = (
   item: SoftDrinkSnackItem,
-  { foodDirectWaste, foodLeftover, expenses }: SoftDrinkSnackAmountParam
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    softDrinkSnackExpenses: expenses
+  }: SoftDrinkSnackAmountParam
 ): number => {
   const baseline = getBaselineAmount('food', item).value
   const dishFactor = getParameter('soft-drink-snack-factor', expenses).value
@@ -51,7 +55,11 @@ const defaultItems: SoftDrinkSnackItem[] = [
  * @returns ソフトドリンク・スナックの活動量のMap
  */
 export const estimateSoftDrinkSnackAnnualAmounts = (
-  { foodDirectWaste, foodLeftover, expenses }: SoftDrinkSnackAmountParam,
+  {
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
+    softDrinkSnackExpenses: expenses
+  }: SoftDrinkSnackAmountParam,
   items?: SoftDrinkSnackItem[]
 ): Record<string, number> => {
   if (items === undefined) {
@@ -62,9 +70,9 @@ export const estimateSoftDrinkSnackAnnualAmounts = (
     (acc, item): Record<string, number> => ({
       ...acc,
       [item]: estimateSoftDrinkSnackAnnualAmount(item, {
-        foodDirectWaste,
-        foodLeftover,
-        expenses
+        foodDirectWasteFrequency: foodDirectWaste,
+        foodLeftoverFrequency: foodLeftover,
+        softDrinkSnackExpenses: expenses
       })
     }),
     {}

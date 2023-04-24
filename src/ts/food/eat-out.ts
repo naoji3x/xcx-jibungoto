@@ -4,9 +4,9 @@ import {
   type DishFrequency,
   type EatOutExpenses,
   type EatOutItem,
-  type FoodDirectWaste,
+  type FoodDirectWasteFrequency,
   type FoodIntake,
-  type FoodLeftover,
+  type FoodLeftoverFrequency,
   type SoftDrinkSnackExpenses
 } from '../common/types'
 import {
@@ -50,9 +50,9 @@ import {
 /** 外食の活動量を計算するための引数 */
 export interface EatOutIntensityParam {
   /** 食料の廃棄量 */
-  foodDirectWaste: FoodDirectWaste
+  foodDirectWasteFrequency: FoodDirectWasteFrequency
   /** 食料の食べ残し量 */
-  foodLeftover: FoodLeftover
+  foodLeftoverFrequency: FoodLeftoverFrequency
   /** 食事の摂取量 */
   foodIntake: FoodIntake
   /** 牛肉料理の頻度 */
@@ -101,8 +101,8 @@ export const estimateEatOutAnnualAmount = (
 export const estimateEatOutIntensity = (
   item: EatOutItem,
   {
-    foodDirectWaste,
-    foodLeftover,
+    foodDirectWasteFrequency: foodDirectWaste,
+    foodLeftoverFrequency: foodLeftover,
     foodIntake,
     beefDishFrequency,
     porkDishFrequency,
@@ -116,14 +116,14 @@ export const estimateEatOutIntensity = (
   // 活動量推定値
   const estimatedAmounts: Record<string, number> = {
     ...estimateFoodIntakeAnnualAmounts({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake
     }),
     ...estimateSoftDrinkSnackAnnualAmounts({
-      foodDirectWaste,
-      foodLeftover,
-      expenses: softDrinkSnackExpenses
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
+      softDrinkSnackExpenses
     }),
     ...estimateDishAnnualAmounts({
       foodDirectWaste,
@@ -134,25 +134,25 @@ export const estimateEatOutIntensity = (
       seafoodDishFrequency
     }),
     ...estimateDairyFoodAnnualAmounts({
-      foodDirectWaste,
-      foodLeftover,
-      frequency: dairyFoodFrequency
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
+      dairyFoodFrequency
     }),
     alcohol: estimateAlcoholAnnualAmount({
-      foodDirectWaste,
-      foodLeftover,
-      frequency: alcoholFrequency
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
+      alcoholFrequency
     }),
     'processed-meat': estimateProcessedMeatAnnualAmount({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       beefDishFrequency,
       porkDishFrequency,
       chickenDishFrequency
     }),
     'ready-meal': estimateReadyMealAnnualAmount({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake
     })
   }
@@ -166,8 +166,8 @@ export const estimateEatOutIntensity = (
     alcohol: estimateAlcoholIntensity(),
     'processed-meat': estimateProcessedMeatIntensity(),
     'ready-meal': estimateReadyMealIntensity({
-      foodDirectWaste,
-      foodLeftover,
+      foodDirectWasteFrequency: foodDirectWaste,
+      foodLeftoverFrequency: foodLeftover,
       foodIntake,
       beefDishFrequency,
       porkDishFrequency,
