@@ -1,23 +1,21 @@
 {
   "name": "xcx-jibungoto",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "register": "npx xcratch-register --id=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util",
-    "build": "npx xcratch-build --module=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry",
-    "watch": "tsc -w",
-    "lint": "eslint 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "lint:fix": "eslint --fix 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "format": "prettier --write 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "export:footprints": "ts-node ./data/footprint2ts.ts",
-    "export:parameters": "ts-node ./data/parameter2ts.ts",
-    "export:all": "npm run export:footprints && npm run export:parameters",
-    "test": "jest",
+    "build": "xcratch-build --module=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry",
+    "lint": "eslint 'src/**/index.{js,jsx}'",
+    "lint:fix": "eslint --fix 'src/**/index.{js,jsx}'",
+    "format": "prettier --write 'src/**/index.{js,jsx}'",
+    "test": "echo nothing",
     "prepare": "husky install",
-    "commit-msg": "commitlint -e $GIT_PARAMS"
+    "commit-msg": "commitlint -e $GIT_PARAMS",
+    "doc": "typedoc"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
+    "@microsoft/tsdoc": "^0.14.2",
     "@types/jest": "^29.4.0",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "csv-parse": "^5.3.4",
@@ -33,8 +31,14 @@
     "prettier": "^2.8.3",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.23.28",
+    "typedoc-theme-hierarchy": "^3.1.0",
     "typescript": "^4.9.5",
-    "xcratch-build": "^0.4.0",
+    "xcratch-build": "github:xcratch/xcratch-build",
     "xcratch-register": "^0.4.2"
+  },
+  "dependencies": {
+    "cfp-calc": "^0.1.0",
+    "moment": "^2.29.4"
   }
 }

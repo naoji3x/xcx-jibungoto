@@ -1,13 +1,14 @@
-import BlockType from '../../extension-support/block-type'
+import {
+  mobility
+  // estimatePrivateCarDrivingAmount,
+  // estimatePrivateCarDrivingIntensity
+} from 'cfp-calc'
+import moment from 'moment'
 import ArgumentType from '../../extension-support/argument-type'
+import BlockType from '../../extension-support/block-type'
 import Cast from '../../util/cast'
-import translations from './translations.json'
 import blockIcon from './block-icon.png'
-import { estimatePrivateCarDrivingFootprint } from './mobility/private-car-driving'
-import { estimateAirplaneAnnualFootprint } from './mobility/airplane'
-import { estimateFerryAnnualFootprint } from './mobility/ferry'
-import { estimateTrainAnnualFootprint } from './mobility/train'
-import { estimateBusAnnualFootprint } from './mobility/bus'
+import translations from './translations.json'
 
 /**
  * Formatter which is used for translation.
@@ -97,23 +98,30 @@ class ExtensionBlocks {
   }
 
   privateCarDriving(args) {
-    const carIntensityFactorFirstKey = Cast.toString(
-      args.carIntensityFactorFirstKey
-    )
-    const carChargingKey = Cast.toString(args.carChargingKey)
-    const electricityIntensityKey = Cast.toString(args.electricityIntensityKey)
-    const carPassengersFirstKey = Cast.toString(args.carPassengersFirstKey)
-    const mileage = Cast.toNumber(args.privateCarAnnualMileage)
+    const carType = Cast.toString(args.carType)
+    const carCharging = Cast.toString(args.carCharging)
+    const electricityType = Cast.toString(args.electricityType)
+    const carPassengers = Cast.toString(args.carPassengers)
+    const mileage = Cast.toNumber(args.mileage)
 
-    return estimatePrivateCarDrivingFootprint({
-      mileage,
-      carIntensityFactorFirstKey,
-      carPassengersFirstKey,
-      carChargingKey,
-      electricityIntensityKey
-    })
+    return (
+      mobility.estimatePrivateCarDrivingAmount({
+        mileage
+      }) *
+      mobility.estimatePrivateCarDrivingIntensity({
+        carType,
+        carPassengers,
+        carCharging,
+        electricityType
+      })
+    )
   }
 
+  dateTime(args) {
+    return moment().format('YYYY-MM-DD HH:mm:ss')
+  }
+
+  /*
   airplaneTraveling(args) {
     const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
     const annualTravelingTime = Cast.toNumber(args.annualTravelingTime)
@@ -161,6 +169,7 @@ class ExtensionBlocks {
       return estimateBusAnnualFootprint({ mileageByAreaFirstKey })
     }
   }
+  */
 
   menuItems(items) {
     return items.map((item) => {
@@ -187,6 +196,15 @@ class ExtensionBlocks {
       blockIconURI: blockIcon,
       showStatusButton: false,
       blocks: [
+        // Moment
+        {
+          opcode: 'dateTime',
+          blockType: BlockType.REPORTER,
+          blockAllThreads: false,
+          text: 'Now',
+          func: 'dateTime'
+        },
+
         // 自家用車の運転
         {
           opcode: 'private-car-driving',
@@ -199,32 +217,33 @@ class ExtensionBlocks {
           }),
           func: 'privateCarDriving',
           arguments: {
-            carIntensityFactorFirstKey: {
+            carType: {
               type: ArgumentType.STRING,
-              menu: 'carIntensityFactorFirstKey',
+              menu: 'carType',
               defaultValue: 'gasoline'
             },
-            carPassengersFirstKey: {
+            carPassengers: {
               type: ArgumentType.STRING,
-              menu: 'carPassengersFirstKey',
+              menu: 'carPassengers',
               defaultValue: '1'
             },
-            carChargingKey: {
+            carCharging: {
               type: ArgumentType.STRING,
-              menu: 'carChargingKey',
+              menu: 'carCharging',
               defaultValue: 'unknown'
             },
-            electricityIntensityKey: {
+            electricityType: {
               type: ArgumentType.STRING,
-              menu: 'electricityIntensityKey',
+              menu: 'electricityType',
               defaultValue: 'unknown'
             },
-            privateCarAnnualMileage: {
+            mileage: {
               type: ArgumentType.NUMBER,
               defaultValue: 0
             }
           }
-        },
+        }
+        /*
         // 電車の移動
         {
           opcode: 'train',
@@ -325,9 +344,10 @@ class ExtensionBlocks {
             }
           }
         }
+        */
       ],
       menus: {
-        carIntensityFactorFirstKey: {
+        carType: {
           acceptReporters: false,
           items: this.menuItems([
             'gasoline',
@@ -338,7 +358,7 @@ class ExtensionBlocks {
             'unknown'
           ])
         },
-        carChargingKey: {
+        carCharging: {
           acceptReporters: false,
           items: this.menuItems([
             'charge-almost-at-home',
@@ -348,7 +368,7 @@ class ExtensionBlocks {
             'unknown'
           ])
         },
-        electricityIntensityKey: {
+        electricityType: {
           acceptReporters: false,
           items: this.menuItems([
             'conventional',
@@ -359,7 +379,7 @@ class ExtensionBlocks {
             'unknown'
           ])
         },
-        carPassengersFirstKey: {
+        carPassengers: {
           acceptReporters: false,
           items: this.menuItems([
             '1',
@@ -371,7 +391,8 @@ class ExtensionBlocks {
             '4-more',
             'unknown'
           ])
-        },
+        }
+        /*
         mileageByAreaFirstKey: {
           acceptReporters: false,
           items: this.menuItems([
@@ -383,6 +404,7 @@ class ExtensionBlocks {
             'unknown'
           ])
         }
+        */
       }
     }
   }
