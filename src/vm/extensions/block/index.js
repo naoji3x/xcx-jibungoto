@@ -1,12 +1,13 @@
+import {
+  mobility
+  // estimatePrivateCarDrivingAmount,
+  // estimatePrivateCarDrivingIntensity
+} from 'cfp-calc'
 import moment from 'moment'
 import ArgumentType from '../../extension-support/argument-type'
 import BlockType from '../../extension-support/block-type'
 import Cast from '../../util/cast'
 import blockIcon from './block-icon.png'
-import {
-  estimatePrivateCarDrivingAmount,
-  estimatePrivateCarDrivingIntensity
-} from './mobility/private-car-driving'
 import translations from './translations.json'
 
 /**
@@ -104,10 +105,10 @@ class ExtensionBlocks {
     const mileage = Cast.toNumber(args.mileage)
 
     return (
-      estimatePrivateCarDrivingAmount({
+      mobility.estimatePrivateCarDrivingAmount({
         mileage
       }) *
-      estimatePrivateCarDrivingIntensity({
+      mobility.estimatePrivateCarDrivingIntensity({
         carType,
         carPassengers,
         carCharging,

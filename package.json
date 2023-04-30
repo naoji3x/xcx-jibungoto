@@ -1,18 +1,13 @@
 {
   "name": "xcx-jibungoto",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "register": "npx xcratch-register --id=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util",
     "build": "xcratch-build --module=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry",
-    "watch": "tsc -w",
-    "lint": "eslint 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "lint:fix": "eslint --fix 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "format": "prettier --write 'src/**/*.ts' 'src/**/index.{js,jsx}'",
-    "export:footprints": "ts-node ./data/footprint2ts.ts",
-    "export:parameters": "ts-node ./data/parameter2ts.ts",
-    "export:options": "ts-node ./data/option2ts.ts",
-    "export:all": "npm run export:footprints && npm run export:parameters && npm run export:options",
-    "test": "jest",
+    "lint": "eslint 'src/**/index.{js,jsx}'",
+    "lint:fix": "eslint --fix 'src/**/index.{js,jsx}'",
+    "format": "prettier --write 'src/**/index.{js,jsx}'",
+    "test": "echo nothing",
     "prepare": "husky install",
     "commit-msg": "commitlint -e $GIT_PARAMS",
     "doc": "typedoc"
@@ -43,6 +38,7 @@
     "xcratch-register": "^0.4.2"
   },
   "dependencies": {
+    "cfp-calc": "^0.1.0",
     "moment": "^2.29.4"
   }
 }

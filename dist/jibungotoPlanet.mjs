@@ -113,6 +113,3329 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
+var footprints = {
+  'baseline_housing_imputed-rent_amount': {
+    subdomain: 'construction-maintenance',
+    value: 32.06179314,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_rent_amount: {
+    subdomain: 'construction-maintenance',
+    value: 6.934328682,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_land-rent_amount': {
+    subdomain: 'construction-maintenance',
+    value: 1.96142204,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_housing-maintenance_amount': {
+    subdomain: 'construction-maintenance',
+    value: 44.18305217,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_electricity_amount: {
+    subdomain: 'electricity',
+    value: 2156.268842,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_urban-gas_amount': {
+    subdomain: 'other-energy',
+    value: 886.8038344,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_lpg_amount: {
+    subdomain: 'other-energy',
+    value: 438.7575348,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_kerosene_amount: {
+    subdomain: 'other-energy',
+    value: 650.7599302,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_other-energy_amount': {
+    subdomain: 'other-energy',
+    value: 54.81742592,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_water_amount: {
+    subdomain: 'water',
+    value: 103.5505,
+    unit: 'm3',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_airplane_amount: {
+    subdomain: 'airplane',
+    value: 1161.463556,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_train_amount: {
+    subdomain: 'train',
+    value: 2883.143695,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_bus_amount: {
+    subdomain: 'bus',
+    value: 430.6177624,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_ferry_amount: {
+    subdomain: 'ferry',
+    value: 20.10019321,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_taxi_amount: {
+    subdomain: 'car-sharing-taxi',
+    value: 48.16514973,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_private-car-driving_amount': {
+    subdomain: 'private-car',
+    value: 4341.744284,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_car-sharing-driving_amount': {
+    subdomain: 'car-sharing-taxi',
+    value: 60.7815956,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_motorbike-driving_amount': {
+    subdomain: 'motorbike',
+    value: 254.458252,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_bicycle-driving_amount': {
+    subdomain: 'bicycle',
+    value: 264.0133354,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_walking_amount: {
+    subdomain: 'walking',
+    value: 168.9344406,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_private-car-purchase_amount': {
+    subdomain: 'private-car',
+    value: 0.043510227,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_motorbike-purchase_amount': {
+    subdomain: 'motorbike',
+    value: 0.002635317,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_car-sharing-rental_amount': {
+    subdomain: 'car-sharing-taxi',
+    value: 0.161272731,
+    unit: 'use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_private-car-maintenance_amount': {
+    subdomain: 'private-car',
+    value: 55.72777896,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_motorbike-maintenance_amount': {
+    subdomain: 'motorbike',
+    value: 0.446120353,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_bicycle-maintenance_amount': {
+    subdomain: 'bicycle',
+    value: 0.406667749,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_rice_amount: {
+    subdomain: 'cereals',
+    value: 36.32022954,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_bread-flour_amount': {
+    subdomain: 'cereals',
+    value: 25.42246341,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_noodle_amount: {
+    subdomain: 'cereals',
+    value: 17.07580051,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_potatoes_amount: {
+    subdomain: 'vegetables',
+    value: 10.63988512,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_vegetables_amount: {
+    subdomain: 'vegetables',
+    value: 84.35864392,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_processed-vegetables_amount': {
+    subdomain: 'vegetables',
+    value: 9.352578159,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_beans_amount: {
+    subdomain: 'beans-nuts',
+    value: 21.04303905,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_milk_amount: {
+    subdomain: 'dairy',
+    value: 27.99026002,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_other-dairy_amount': {
+    subdomain: 'dairy',
+    value: 13.71537565,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_eggs_amount: {
+    subdomain: 'eggs',
+    value: 10.20832311,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_beef_amount: {
+    subdomain: 'meat',
+    value: 2.047383013,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_pork_amount: {
+    subdomain: 'meat',
+    value: 6.375758077,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_chicken_amount: {
+    subdomain: 'meat',
+    value: 5.066184282,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_other-meat_amount': {
+    subdomain: 'meat',
+    value: 1.093763838,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_processed-meat_amount': {
+    subdomain: 'meat',
+    value: 4.140424111,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_fish_amount: {
+    subdomain: 'fish',
+    value: 17.32938165,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_processed-fish_amount': {
+    subdomain: 'fish',
+    value: 6.469890905,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_fruits_amount: {
+    subdomain: 'fruits',
+    value: 35.41537591,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_oil_amount: {
+    subdomain: 'other-food',
+    value: 4.234655533,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_seasoning_amount: {
+    subdomain: 'other-food',
+    value: 24.03977302,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_sweets-snack_amount': {
+    subdomain: 'other-food',
+    value: 20.70887802,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_ready-meal_amount': {
+    subdomain: 'other-food',
+    value: 40.11077093,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_alcohol_amount: {
+    subdomain: 'beverages',
+    value: 53.83668469,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_coffee-tea_amount': {
+    subdomain: 'beverages',
+    value: 136.4468369,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_cold-drink_amount': {
+    subdomain: 'beverages',
+    value: 129.9537532,
+    unit: 'kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_cooking-appliances_amount': {
+    subdomain: 'appliance-furniture',
+    value: 10.80871722,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_heating-cooling-appliances_amount': {
+    subdomain: 'appliance-furniture',
+    value: 12.38952029,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_other-appliances_amount': {
+    subdomain: 'appliance-furniture',
+    value: 11.65844939,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_electronics_amount: {
+    subdomain: 'appliance-furniture',
+    value: 26.03920359,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_clothes-goods_amount': {
+    subdomain: 'clothes',
+    value: 95.18375535,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_bags-jewelries-goods_amount': {
+    subdomain: 'clothes',
+    value: 16.37966457,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_culture-goods_amount': {
+    subdomain: 'hobby-books-magazines',
+    value: 11.26338699,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_entertainment-goods_amount': {
+    subdomain: 'hobby-books-magazines',
+    value: 1.526521363,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-goods_amount': {
+    subdomain: 'hobby-books-magazines',
+    value: 9.533917775,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_gardening-flower_amount': {
+    subdomain: 'hobby-books-magazines',
+    value: 12.36188393,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_pet_amount: {
+    subdomain: 'hobby-books-magazines',
+    value: 12.14429301,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_tobacco_amount: {
+    subdomain: 'hobby-books-magazines',
+    value: 11.50961235,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_furniture_amount: {
+    subdomain: 'appliance-furniture',
+    value: 6.50500405,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_covering_amount: {
+    subdomain: 'appliance-furniture',
+    value: 8.883256514,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_cosmetics_amount: {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 14.05507054,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_sanitation_amount: {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 31.8821673,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_medicine_amount: {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 20.34191228,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_kitchen-goods_amount': {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 8.638990484,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_paper-stationery_amount': {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 2.621777546,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_books-magazines_amount': {
+    subdomain: 'hobby-books-magazines',
+    value: 18.40240876,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_waste_amount: {
+    subdomain: 'waste-repair-rental',
+    value: 3.123482434,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_restaurant_amount: {
+    subdomain: 'restaurant',
+    value: 122.1836001,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_bar-cafe_amount': {
+    subdomain: 'restaurant',
+    value: 34.44703713,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_hotel_amount: {
+    subdomain: 'hotel-travel',
+    value: 23.67949431,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_travel_amount: {
+    subdomain: 'hotel-travel',
+    value: 4.466958243,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_culture-leisure_amount': {
+    subdomain: 'leisure-sports',
+    value: 26.18197893,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_entertainment-leisure_amount': {
+    subdomain: 'leisure-sports',
+    value: 23.10788725,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-leisure_amount': {
+    subdomain: 'leisure-sports',
+    value: 43.41326095,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_furniture-daily-goods-repair-rental_amount': {
+    subdomain: 'waste-repair-rental',
+    value: 2.813833758,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_clothes-repair-rental_amount': {
+    subdomain: 'waste-repair-rental',
+    value: 1.367822419,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_bags-jewelries-repair-rental_amount': {
+    subdomain: 'waste-repair-rental',
+    value: 0.43591903,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_electrical-appliances-repair-rental_amount': {
+    subdomain: 'waste-repair-rental',
+    value: 0.873530497,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-culture-repair-rental_amount': {
+    subdomain: 'waste-repair-rental',
+    value: 0.101675079,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-entertainment-repair-rental_amount': {
+    subdomain: 'waste-repair-rental',
+    value: 0.948134674,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_housework_amount: {
+    subdomain: 'other-services',
+    value: 0.740836626,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_washing_amount: {
+    subdomain: 'other-services',
+    value: 2.902513411,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_haircare_amount: {
+    subdomain: 'other-services',
+    value: 8.727357202,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_bath-spa_amount': {
+    subdomain: 'other-services',
+    value: 12.35496157,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_postal-delivery_amount': {
+    subdomain: 'communication-delivery-broadcasting',
+    value: 5.98733909,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_communication_amount: {
+    subdomain: 'communication-delivery-broadcasting',
+    value: 130.4760614,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_broadcasting_amount: {
+    subdomain: 'communication-delivery-broadcasting',
+    value: 17.52298123,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_ceremony_amount: {
+    subdomain: 'ceremony',
+    value: 32.64805709,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_medical-care_amount': {
+    subdomain: 'medical-welfare-education',
+    value: 79.18440556,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_nursing_amount: {
+    subdomain: 'medical-welfare-education',
+    value: 4.554902514,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_caring_amount: {
+    subdomain: 'medical-welfare-education',
+    value: 4.345384515,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_formal-education_amount': {
+    subdomain: 'medical-welfare-education',
+    value: 32.75079252,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_informal-education_amount': {
+    subdomain: 'medical-welfare-education',
+    value: 15.08092071,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_finance-insurance_amount': {
+    subdomain: 'other-services',
+    value: 111.1827326,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_other-services_amount': {
+    subdomain: 'other-services',
+    value: 20.40058961,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_imputed-rent_intensity': {
+    subdomain: 'construction-maintenance',
+    value: 0.930699,
+    unit: 'kgCO2e/m2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_rent_intensity: {
+    subdomain: 'construction-maintenance',
+    value: 3.418080692,
+    unit: 'kgCO2e/m2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_land-rent_intensity': {
+    subdomain: 'construction-maintenance',
+    value: 0.542386441,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_housing-maintenance_intensity': {
+    subdomain: 'construction-maintenance',
+    value: 1.378245204,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_electricity_intensity: {
+    subdomain: 'electricity',
+    value: 0.634319811,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_urban-gas_intensity': {
+    subdomain: 'other-energy',
+    value: 0.310544763,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_lpg_intensity: {
+    subdomain: 'other-energy',
+    value: 0.327564907,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_kerosene_intensity: {
+    subdomain: 'other-energy',
+    value: 0.280081108,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_housing_other-energy_intensity': {
+    subdomain: 'other-energy',
+    value: 0.037319212,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_housing_water_intensity: {
+    subdomain: 'water',
+    value: 0.584462203,
+    unit: 'kgCO2e/m3',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_airplane_intensity: {
+    subdomain: 'airplane',
+    value: 0.124064635,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_train_intensity: {
+    subdomain: 'train',
+    value: 0.031326557,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_bus_intensity: {
+    subdomain: 'bus',
+    value: 0.082993045,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_ferry_intensity: {
+    subdomain: 'ferry',
+    value: 0.424691332,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_taxi_intensity: {
+    subdomain: 'car-sharing-taxi',
+    value: 0.429510033,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_private-car-driving_intensity': {
+    subdomain: 'private-car',
+    value: 0.168396977,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_car-sharing-driving_intensity': {
+    subdomain: 'car-sharing-taxi',
+    value: 0.168721197,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_motorbike-driving_intensity': {
+    subdomain: 'motorbike',
+    value: 0.057043135,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_bicycle-driving_intensity': {
+    subdomain: 'bicycle',
+    value: 0.013134541,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_mobility_walking_intensity: {
+    subdomain: 'walking',
+    value: 0,
+    unit: 'kgCO2e/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_private-car-purchase_intensity': {
+    subdomain: 'private-car',
+    value: 5112.506479,
+    unit: 'kgCO2e/vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_motorbike-purchase_intensity': {
+    subdomain: 'motorbike',
+    value: 979.6575783,
+    unit: 'kgCO2e/vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_car-sharing-rental_intensity': {
+    subdomain: 'car-sharing-taxi',
+    value: 8.698477742,
+    unit: 'kgCO2e/use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_private-car-maintenance_intensity': {
+    subdomain: 'private-car',
+    value: 1.648088312,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_motorbike-maintenance_intensity': {
+    subdomain: 'motorbike',
+    value: 1.965801837,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_mobility_bicycle-maintenance_intensity': {
+    subdomain: 'bicycle',
+    value: 2.324385029,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_rice_intensity: {
+    subdomain: 'cereals',
+    value: 2.852329875,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_bread-flour_intensity': {
+    subdomain: 'cereals',
+    value: 2.655219688,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_noodle_intensity: {
+    subdomain: 'cereals',
+    value: 2.03794552,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_potatoes_intensity: {
+    subdomain: 'vegetables',
+    value: 1.567735484,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_vegetables_intensity: {
+    subdomain: 'vegetables',
+    value: 1.281591651,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_processed-vegetables_intensity': {
+    subdomain: 'vegetables',
+    value: 3.390013568,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_beans_intensity: {
+    subdomain: 'beans-nuts',
+    value: 1.058728707,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_milk_intensity: {
+    subdomain: 'dairy',
+    value: 0.876594709,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_other-dairy_intensity': {
+    subdomain: 'dairy',
+    value: 2.204505819,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_eggs_intensity: {
+    subdomain: 'eggs',
+    value: 1.450456835,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_beef_intensity: {
+    subdomain: 'meat',
+    value: 18.34219895,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_pork_intensity: {
+    subdomain: 'meat',
+    value: 8.051661719,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_chicken_intensity: {
+    subdomain: 'meat',
+    value: 5.250241141,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_other-meat_intensity': {
+    subdomain: 'meat',
+    value: 7.689625825,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_processed-meat_intensity': {
+    subdomain: 'meat',
+    value: 5.336739155,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_fish_intensity: {
+    subdomain: 'fish',
+    value: 5.528206567,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_processed-fish_intensity': {
+    subdomain: 'fish',
+    value: 4.080158747,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_fruits_intensity: {
+    subdomain: 'fruits',
+    value: 1.305111781,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_oil_intensity: {
+    subdomain: 'other-food',
+    value: 2.404909632,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_seasoning_intensity: {
+    subdomain: 'other-food',
+    value: 1.897020567,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_sweets-snack_intensity': {
+    subdomain: 'other-food',
+    value: 4.939585725,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_ready-meal_intensity': {
+    subdomain: 'other-food',
+    value: 3.940265729,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_alcohol_intensity: {
+    subdomain: 'beverages',
+    value: 0.944414337,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_coffee-tea_intensity': {
+    subdomain: 'beverages',
+    value: 0.465905509,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_cold-drink_intensity': {
+    subdomain: 'beverages',
+    value: 0.482549688,
+    unit: 'kgCO2e/kg',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_cooking-appliances_intensity': {
+    subdomain: 'appliance-furniture',
+    value: 2.852827088,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_heating-cooling-appliances_intensity': {
+    subdomain: 'appliance-furniture',
+    value: 7.449174796,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_other-appliances_intensity': {
+    subdomain: 'appliance-furniture',
+    value: 2.750735655,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_electronics_intensity: {
+    subdomain: 'appliance-furniture',
+    value: 2.274573158,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_clothes-goods_intensity': {
+    subdomain: 'clothes',
+    value: 2.670916765,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_bags-jewelries-goods_intensity': {
+    subdomain: 'clothes',
+    value: 2.558629508,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_culture-goods_intensity': {
+    subdomain: 'hobby-books-magazines',
+    value: 2.39985402,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_entertainment-goods_intensity': {
+    subdomain: 'hobby-books-magazines',
+    value: 1.570433632,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-goods_intensity': {
+    subdomain: 'hobby-books-magazines',
+    value: 2.497630942,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_gardening-flower_intensity': {
+    subdomain: 'hobby-books-magazines',
+    value: 4.85232258,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_pet_intensity: {
+    subdomain: 'hobby-books-magazines',
+    value: 2.103916343,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_tobacco_intensity: {
+    subdomain: 'hobby-books-magazines',
+    value: 0.996872147,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_furniture_intensity: {
+    subdomain: 'appliance-furniture',
+    value: 2.207048567,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_covering_intensity: {
+    subdomain: 'appliance-furniture',
+    value: 2.512668069,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_cosmetics_intensity: {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 2.276312315,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_sanitation_intensity: {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 3.129136419,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_medicine_intensity: {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 2.132542476,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_kitchen-goods_intensity': {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 3.23125458,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_paper-stationery_intensity': {
+    subdomain: 'daily-goods-cosmetics-medicine',
+    value: 3.056810847,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_books-magazines_intensity': {
+    subdomain: 'hobby-books-magazines',
+    value: 2.52738082,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_waste_intensity: {
+    subdomain: 'waste-repair-rental',
+    value: 8.586030351,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_food_restaurant_intensity: {
+    subdomain: 'restaurant',
+    value: 2.972239521,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_food_bar-cafe_intensity': {
+    subdomain: 'restaurant',
+    value: 2.991595476,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_hotel_intensity: {
+    subdomain: 'hotel-travel',
+    value: 3.770333888,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_travel_intensity: {
+    subdomain: 'hotel-travel',
+    value: 0.653433284,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_culture-leisure_intensity': {
+    subdomain: 'leisure-sports',
+    value: 2.189658709,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_entertainment-leisure_intensity': {
+    subdomain: 'leisure-sports',
+    value: 1.973982363,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-leisure_intensity': {
+    subdomain: 'leisure-sports',
+    value: 1.703889647,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_furniture-daily-goods-repair-rental_intensity': {
+    subdomain: 'waste-repair-rental',
+    value: 1.799958663,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_clothes-repair-rental_intensity': {
+    subdomain: 'waste-repair-rental',
+    value: 1.021369922,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_bags-jewelries-repair-rental_intensity': {
+    subdomain: 'waste-repair-rental',
+    value: 1.106075818,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_electrical-appliances-repair-rental_intensity': {
+    subdomain: 'waste-repair-rental',
+    value: 1.953281338,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-culture-repair-rental_intensity': {
+    subdomain: 'waste-repair-rental',
+    value: 1.953281338,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_sports-entertainment-repair-rental_intensity': {
+    subdomain: 'waste-repair-rental',
+    value: 0.82229875,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_housework_intensity: {
+    subdomain: 'other-services',
+    value: 1.215004276,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_washing_intensity: {
+    subdomain: 'other-services',
+    value: 2.437149813,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_haircare_intensity: {
+    subdomain: 'other-services',
+    value: 1.712161189,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_bath-spa_intensity': {
+    subdomain: 'other-services',
+    value: 5.754233873,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_postal-delivery_intensity': {
+    subdomain: 'communication-delivery-broadcasting',
+    value: 3.81741193,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_communication_intensity: {
+    subdomain: 'communication-delivery-broadcasting',
+    value: 1.02634832,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_broadcasting_intensity: {
+    subdomain: 'communication-delivery-broadcasting',
+    value: 1.141584281,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_ceremony_intensity: {
+    subdomain: 'ceremony',
+    value: 2.31786394,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_medical-care_intensity': {
+    subdomain: 'medical-welfare-education',
+    value: 1.169394129,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_nursing_intensity: {
+    subdomain: 'medical-welfare-education',
+    value: 1.209159482,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  baseline_other_caring_intensity: {
+    subdomain: 'medical-welfare-education',
+    value: 1.283734545,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_formal-education_intensity': {
+    subdomain: 'medical-welfare-education',
+    value: 1.074215614,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_informal-education_intensity': {
+    subdomain: 'medical-welfare-education',
+    value: 1.21314144,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_finance-insurance_intensity': {
+    subdomain: 'other-services',
+    value: 0.707292151,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'baseline_other_other-services_intensity': {
+    subdomain: 'other-services',
+    value: 0.949580643,
+    unit: 'kgCO2e/000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  }
+};
+
+var parameters = {
+  'family-size_unknown': {
+    value: 2.33,
+    unit: 'person',
+    citation: '総務省統計局. 2015. 国勢調査'
+  },
+  'housing-size_1-room': {
+    value: 20,
+    unit: 'm2',
+    citation: 'Assumption'
+  },
+  'housing-size_2-room': {
+    value: 30,
+    unit: 'm2',
+    citation: 'Assumption'
+  },
+  'housing-size_3-room': {
+    value: 40,
+    unit: 'm2',
+    citation: 'Assumption'
+  },
+  'housing-size_4-room': {
+    value: 60,
+    unit: 'm2',
+    citation: 'Assumption'
+  },
+  'housing-size_5-6-room': {
+    value: 80,
+    unit: 'm2',
+    citation: 'Assumption'
+  },
+  'housing-size_7-more-room': {
+    value: 120,
+    unit: 'm2',
+    citation: 'Assumption'
+  },
+  'housing-size_unknown': {
+    value: 38.99612182,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity_conventional': {
+    value: 0.634319811,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity_30-renewable': {
+    value: 0.53349389,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity_50-renewable': {
+    value: 0.399059329,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity_100-renewable': {
+    value: 0.062972926,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity_solar-panel': {
+    value: 0.042861845,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity_unknown': {
+    value: 0.634319811,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity-factor_conventional': {
+    value: 0,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity-factor_30-renewable': {
+    value: 0.176470588,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity-factor_50-renewable': {
+    value: 0.411764706,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity-factor_100-renewable': {
+    value: 1,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity-factor_solar-panel': {
+    value: 1,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'electricity-intensity-factor_unknown': {
+    value: 0,
+    unit: 'kgCO2e/kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'energy-amount-unknown_electricity': {
+    value: 2156.268842,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'energy-amount-unknown_gas': {
+    value: 1325.561369,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'energy-amount-unknown_kerosene': {
+    value: 650.7599302,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'energy-heat-intensity_urban-gas': {
+    value: 11.0399255,
+    unit: 'kWh/m3',
+    citation: '資源エネルギー庁. 2006. 市町村別エネルギー消費統計作成のためのガイドライン'
+  },
+  'energy-heat-intensity_lpg': {
+    value: 27.916689,
+    unit: 'kWh/m3',
+    citation: '資源エネルギー庁. 2006. 市町村別エネルギー消費統計作成のためのガイドライン'
+  },
+  'energy-heat-intensity_kerosene': {
+    value: 10.1944526,
+    unit: 'kWh/L',
+    citation: '資源エネルギー庁. 2006. 市町村別エネルギー消費統計作成のためのガイドライン'
+  },
+  'electricity-season-factor_january': {
+    value: 9.155365047,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_february': {
+    value: 8.92083057,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_march': {
+    value: 9.165491073,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_april': {
+    value: 10.81397346,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_may': {
+    value: 12.9543285,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_june': {
+    value: 14.98864011,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_july': {
+    value: 15.46045726,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_august': {
+    value: 13.1065718,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_september': {
+    value: 13.1141993,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_october': {
+    value: 14.58262306,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_november': {
+    value: 14.71506023,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'electricity-season-factor_december': {
+    value: 12.59071628,
+    unit: 'times',
+    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
+  },
+  'gas-season-factor_january': {
+    value: 6.916666667,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_february': {
+    value: 7.720930233,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_march': {
+    value: 8.512820513,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_april': {
+    value: 9.485714286,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_may': {
+    value: 12.76923077,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_june': {
+    value: 16.6,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_july': {
+    value: 18.44444444,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_august': {
+    value: 23.71428571,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_september': {
+    value: 23.71428571,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_october': {
+    value: 18.44444444,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_november': {
+    value: 13.83333333,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'gas-season-factor_december': {
+    value: 10.06060606,
+    unit: 'times',
+    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
+  },
+  'housing-amount-by-region_northeast_imputed-rent-amount': {
+    value: 38.98080772,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_rent-amount': {
+    value: 8.518158765,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_land-rent-amount': {
+    value: 0.428215789,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_housing-maintenance-amount': {
+    value: 42.19606566,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_electricity-amount': {
+    value: 2429.879348,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_urban-gas-amount': {
+    value: 483.3918243,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_lpg-amount': {
+    value: 449.045623,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_kerosene-amount': {
+    value: 2171.346349,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_other-energy-amount': {
+    value: 57.80704881,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_northeast_water-amount': {
+    value: 96.53645058,
+    unit: 'm3',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_imputed-rent-amount': {
+    value: 32.00344548,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_rent-amount': {
+    value: 6.063525186,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_land-rent-amount': {
+    value: 1.7464516,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_housing-maintenance-amount': {
+    value: 41.78341404,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_electricity-amount': {
+    value: 2249.623235,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_urban-gas-amount': {
+    value: 839.5280673,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_lpg-amount': {
+    value: 468.1377938,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_kerosene-amount': {
+    value: 418.9412402,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_other-energy-amount': {
+    value: 59.5350204,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_middle_water-amount': {
+    value: 103.1075979,
+    unit: 'm3',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_imputed-rent-amount': {
+    value: 23.4960231,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_rent-amount': {
+    value: 11.67527498,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_land-rent-amount': {
+    value: 1.364856292,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_housing-maintenance-amount': {
+    value: 36.20086626,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_electricity-amount': {
+    value: 2000.687747,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_urban-gas-amount': {
+    value: 278.4233619,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_lpg-amount': {
+    value: 722.6599564,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_kerosene-amount': {
+    value: 338.5522031,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_other-energy-amount': {
+    value: 51.57550805,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_southwest_water-amount': {
+    value: 89.94119651,
+    unit: 'm3',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_imputed-rent-amount': {
+    value: 32.06179314,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_rent-amount': {
+    value: 6.934328682,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_land-rent-amount': {
+    value: 1.96142204,
+    unit: 'm2',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_housing-maintenance-amount': {
+    value: 44.18305217,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_electricity-amount': {
+    value: 2156.268842,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_urban-gas-amount': {
+    value: 886.8038344,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_lpg-amount': {
+    value: 438.7575348,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_kerosene-amount': {
+    value: 650.7599302,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_other-energy-amount': {
+    value: 54.81742592,
+    unit: 'kWh',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-amount-by-region_unknown_water-amount': {
+    value: 103.5505,
+    unit: 'm3',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_no-insulation_clothing': {
+    value: -0.4,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_2-level_clothing': {
+    value: -0.4,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_3-level_clothing': {
+    value: -0.2,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_4-level_clothing': {
+    value: -0.1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_unknown_clothing': {
+    value: -0.4,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_no-insulation_renovation': {
+    value: -0.607142857,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_2-level_renovation': {
+    value: -0.435897436,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_3-level_renovation': {
+    value: -0.3125,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_4-level_renovation': {
+    value: 0,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'housing-insulation_unknown_renovation': {
+    value: -0.478549419,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_gasoline_driving-factor': {
+    value: 1.140989342,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_light_driving-factor': {
+    value: 0.847680722,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_hv_driving-factor': {
+    value: 0.731232701,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_phv_driving-factor': {
+    value: 0.656334942,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_ev_driving-factor': {
+    value: 0.606403103,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_unknown_driving-factor': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_gasoline_manufacturing-factor': {
+    value: 0.986856847,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_light_manufacturing-factor': {
+    value: 0.986856847,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_hv_manufacturing-factor': {
+    value: 1.085542532,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_phv_manufacturing-factor': {
+    value: 1.649976509,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_ev_manufacturing-factor': {
+    value: 2.214410486,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_unknown_manufacturing-factor': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_gasoline_driving-intensity': {
+    value: 0.150984647,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_light_driving-intensity': {
+    value: 0.112171753,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_hv_driving-intensity': {
+    value: 0.096762438,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_phv_driving-intensity': {
+    value: 0.08685138,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_ev_driving-intensity': {
+    value: 0.080244008,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_unknown_driving-intensity': {
+    value: 0.132327833,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_gasoline_manufacturing-intensity': {
+    value: 4100,
+    unit: 'kgCO2/car',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_light_manufacturing-intensity': {
+    value: 4100,
+    unit: 'kgCO2/car',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_hv_manufacturing-intensity': {
+    value: 4510,
+    unit: 'kgCO2/car',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_phv_manufacturing-intensity': {
+    value: 6855,
+    unit: 'kgCO2/car',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_ev_manufacturing-intensity': {
+    value: 9200,
+    unit: 'kgCO2/car',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_unknown_manufacturing-intensity': {
+    value: 4154.604604,
+    unit: 'kgCO2/car',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_gasoline_electricity-intensity': {
+    value: 0,
+    unit: 'kWh/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_light_electricity-intensity': {
+    value: 0,
+    unit: 'kWh/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_hv_electricity-intensity': {
+    value: 0,
+    unit: 'kWh/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_phv_electricity-intensity': {
+    value: 0.05129771,
+    unit: 'kWh/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_ev_electricity-intensity': {
+    value: 0.085496183,
+    unit: 'kWh/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-intensity-factor_unknown_electricity-intensity': {
+    value: 0,
+    unit: 'kWh/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-charging_charge-almost-at-home': {
+    value: 0.9,
+    unit: 'times',
+    citation: 'Assumption'
+  },
+  'car-charging_use-charging-spots-occasionally': {
+    value: 0.7,
+    unit: 'times',
+    citation: 'Assumption'
+  },
+  'car-charging_use-charging-spots-sometimes': {
+    value: 0.5,
+    unit: 'times',
+    citation: 'Assumption'
+  },
+  'car-charging_use-charging-spots-usually': {
+    value: 0.1,
+    unit: 'times',
+    citation: 'Assumption'
+  },
+  'car-charging_unknown': {
+    value: 0.7,
+    unit: 'times',
+    citation: 'Assumption'
+  },
+  'renewable-car-intensity-factor_phv_driving-factor': {
+    value: 0.328206127,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'renewable-car-intensity-factor_ev_driving-factor': {
+    value: 0.059521744,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'renewable-car-intensity-factor_phv_driving-intensity': {
+    value: 0.043430805,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'renewable-car-intensity-factor_ev_driving-intensity': {
+    value: 0.007876383,
+    unit: 'kgCO2eq/km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'car-passengers_1_private-car-factor': {
+    value: 1.31,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1-2_private-car-factor': {
+    value: 0.873333333,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2_private-car-factor': {
+    value: 0.655,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2-3_private-car-factor': {
+    value: 0.524,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3_private-car-factor': {
+    value: 0.436666667,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3-4_private-car-factor': {
+    value: 0.374285714,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_4-more_private-car-factor': {
+    value: 0.3275,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_unknown_private-car-factor': {
+    value: 1,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1_taxi-factor': {
+    value: 1.65,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1-2_taxi-factor': {
+    value: 1.1,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2_taxi-factor': {
+    value: 0.825,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2-3_taxi-factor': {
+    value: 0.66,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3_taxi-factor': {
+    value: 0.55,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3-4_taxi-factor': {
+    value: 0.471428571,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_4-more_taxi-factor': {
+    value: 0.4125,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_unknown_taxi-factor': {
+    value: 1,
+    unit: 'times',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1_private-car-passengers': {
+    value: 1,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1-2_private-car-passengers': {
+    value: 1.5,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2_private-car-passengers': {
+    value: 2,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2-3_private-car-passengers': {
+    value: 2.5,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3_private-car-passengers': {
+    value: 3,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3-4_private-car-passengers': {
+    value: 3.5,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_4-more_private-car-passengers': {
+    value: 4,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_unknown_private-car-passengers': {
+    value: 1.31,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1_taxi-passengers': {
+    value: 1,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_1-2_taxi-passengers': {
+    value: 1.5,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2_taxi-passengers': {
+    value: 2,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_2-3_taxi-passengers': {
+    value: 2.5,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3_taxi-passengers': {
+    value: 3,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_3-4_taxi-passengers': {
+    value: 3.5,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_4-more_taxi-passengers': {
+    value: 4,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'car-passengers_unknown_taxi-passengers': {
+    value: 1.65,
+    unit: 'person',
+    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
+  },
+  'transportation-speed_car-speed': {
+    value: 25,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_train-speed': {
+    value: 60,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_bus-speed': {
+    value: 10,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_motorbike-speed': {
+    value: 25,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_long-distance-car-speed': {
+    value: 60,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_long-distance-train-speed': {
+    value: 100,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_express-bus-speed': {
+    value: 50,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_long-distance-motorbike-speed': {
+    value: 60,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_airplane-speed': {
+    value: 600,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'transportation-speed_ferry-speed': {
+    value: 40,
+    unit: 'km/hour',
+    citation: 'Assumption'
+  },
+  'misc_weeks-per-year-excluding-long-vacations': {
+    value: 49,
+    unit: 'week',
+    citation: 'Assumption'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_airplane': {
+    value: 1507.345223,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_airplane': {
+    value: 1144.893404,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_airplane': {
+    value: 1016.677146,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_airplane': {
+    value: 775.2649318,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_airplane': {
+    value: 1161.463556,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_train': {
+    value: 4002.878879,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_train': {
+    value: 2831.211796,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_train': {
+    value: 2506.637751,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_train': {
+    value: 1544.263668,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_train': {
+    value: 2883.143695,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_bus': {
+    value: 698.5895508,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_bus': {
+    value: 388.0210822,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_bus': {
+    value: 310.4002107,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_bus': {
+    value: 304.4881964,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_bus': {
+    value: 430.6177624,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_ferry': {
+    value: 20.16526175,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_ferry': {
+    value: 20.85237234,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_ferry': {
+    value: 20.92105917,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_ferry': {
+    value: 17.30611523,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_ferry': {
+    value: 20.10019321,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_taxi': {
+    value: 77.0691577,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_taxi': {
+    value: 44.27463,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_taxi': {
+    value: 33.7682362,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_taxi': {
+    value: 24.05233786,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_taxi': {
+    value: 48.16514973,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_private-car-driving': {
+    value: 2844.387081,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_private-car-driving': {
+    value: 4392.707122,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_private-car-driving': {
+    value: 5114.65296,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_private-car-driving': {
+    value: 6002.11848,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_private-car-driving': {
+    value: 4341.744284,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_car-sharing-driving': {
+    value: 89.06216,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_car-sharing-driving': {
+    value: 51.30309174,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_car-sharing-driving': {
+    value: 47.62176474,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_car-sharing-driving': {
+    value: 46.47394961,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_car-sharing-driving': {
+    value: 60.7815956,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_motorbike-driving': {
+    value: 169.5552676,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_motorbike-driving': {
+    value: 256.8545121,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_motorbike-driving': {
+    value: 298.3669602,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_motorbike-driving': {
+    value: 349.5926185,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_motorbike-driving': {
+    value: 254.458252,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_bicycle-driving': {
+    value: 340.2621468,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_bicycle-driving': {
+    value: 249.8138366,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_bicycle-driving': {
+    value: 272.4527352,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_bicycle-driving': {
+    value: 139.4906834,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_bicycle-driving': {
+    value: 264.0133354,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_walking': {
+    value: 168.9344406,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_walking': {
+    value: 168.9344406,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_walking': {
+    value: 168.9344406,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_walking': {
+    value: 168.9344406,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_walking': {
+    value: 168.9344406,
+    unit: 'km-passenger',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_private-car-purchase': {
+    value: 0.027547541,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_private-car-purchase': {
+    value: 0.03698957,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_private-car-purchase': {
+    value: 0.058101776,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_private-car-purchase': {
+    value: 0.063023882,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_private-car-purchase': {
+    value: 0.043510227,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_motorbike-purchase': {
+    value: 0.001481261,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_motorbike-purchase': {
+    value: 0.003256596,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_motorbike-purchase': {
+    value: 0.003018645,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_motorbike-purchase': {
+    value: 0.002882468,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_motorbike-purchase': {
+    value: 0.002635317,
+    unit: 'vehicle',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_car-sharing-rental': {
+    value: 0.236309982,
+    unit: 'use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_car-sharing-rental': {
+    value: 0.136123272,
+    unit: 'use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_car-sharing-rental': {
+    value: 0.126355552,
+    unit: 'use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_car-sharing-rental': {
+    value: 0.123310036,
+    unit: 'use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_car-sharing-rental': {
+    value: 0.161272731,
+    unit: 'use',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_private-car-maintenance': {
+    value: 47.41693663,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_private-car-maintenance': {
+    value: 57.62349476,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_private-car-maintenance': {
+    value: 59.64400728,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_private-car-maintenance': {
+    value: 62.14332377,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_private-car-maintenance': {
+    value: 55.72777896,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_motorbike-maintenance': {
+    value: 0.297496117,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_motorbike-maintenance': {
+    value: 0.568630562,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_motorbike-maintenance': {
+    value: 0.464008876,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_motorbike-maintenance': {
+    value: 0.475465667,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_motorbike-maintenance': {
+    value: 0.446120353,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_major-city-or-metropolitan-area_bicycle-maintenance': {
+    value: 0.482425985,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-150k-more_bicycle-maintenance': {
+    value: 0.399241827,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_city-50k-150k_bicycle-maintenance': {
+    value: 0.429252268,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_area-less-than-50k_bicycle-maintenance': {
+    value: 0.240751767,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'mileage-by-area_unknown_bicycle-maintenance': {
+    value: 0.406667749,
+    unit: '000JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'food-intake-factor_very-little': {
+    value: 0.741132875,
+    unit: 'times',
+    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
+  },
+  'food-intake-factor_somewhat-little': {
+    value: 1.058761249,
+    unit: 'times',
+    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
+  },
+  'food-intake-factor_moderate': {
+    value: 1.164637374,
+    unit: 'times',
+    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
+  },
+  'food-intake-factor_somewhat-much': {
+    value: 1.270513499,
+    unit: 'times',
+    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
+  },
+  'food-intake-factor_very-much': {
+    value: 1.588141874,
+    unit: 'times',
+    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
+  },
+  'food-intake-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
+  },
+  'food-direct-waste-factor_seldom': {
+    value: 0.275165763,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-direct-waste-factor_1-per-week': {
+    value: 1.10066305,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-direct-waste-factor_2-3-per-week': {
+    value: 2.751657625,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-direct-waste-factor_4-7-per-week': {
+    value: 6.053646775,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-direct-waste-factor_8-more-per-week': {
+    value: 8.8053044,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-direct-waste-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-leftover-factor_seldom': {
+    value: 0.221172481,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-leftover-factor_1-per-week': {
+    value: 1.10066305,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-leftover-factor_2-3-per-week': {
+    value: 2.751657625,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-leftover-factor_4-7-per-week': {
+    value: 6.053646775,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-leftover-factor_8-more-per-week': {
+    value: 8.8053044,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-leftover-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
+  },
+  'food-waste-share_direct-waste-per-food-waste': {
+    value: 0.411764706,
+    unit: 'times',
+    citation: '農林水産省. 2016. 食品ロス統計調査報告（世帯調査）より算出\t'
+  },
+  'food-waste-share_leftover-per-food-waste': {
+    value: 0.588235294,
+    unit: 'times',
+    citation: '農林水産省. 2016. 食品ロス統計調査報告（世帯調査）より算出\t'
+  },
+  'food-waste-share_food-waste-per-food': {
+    value: 0.037,
+    unit: 'times',
+    citation: '農林水産省. 2016. 食品ロス統計調査報告（世帯調査）より算出\t'
+  },
+  'dish-beef-factor_everyday': {
+    value: 3.734827264,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_4-5-per-week': {
+    value: 2.400960384,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_2-3-per-week': {
+    value: 1.33386688,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_1-per-week': {
+    value: 0.533546752,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_2-3-per-month': {
+    value: 0.33346672,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_1-less-per-month': {
+    value: 0.133386688,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_never': {
+    value: 0,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-beef-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_everyday': {
+    value: 2.652997413,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_4-5-per-week': {
+    value: 1.705498337,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_2-3-per-week': {
+    value: 0.947499076,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_1-per-week': {
+    value: 0.37899963,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_2-3-per-month': {
+    value: 0.236874769,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_1-less-per-month': {
+    value: 0.094749908,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_never': {
+    value: 0,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-pork-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_everyday': {
+    value: 2.773540424,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_4-5-per-week': {
+    value: 1.782990273,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_2-3-per-week': {
+    value: 0.990550152,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_1-per-week': {
+    value: 0.396220061,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_2-3-per-month': {
+    value: 0.247637538,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_1-less-per-month': {
+    value: 0.099055015,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_never': {
+    value: 0,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-chicken-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_everyday': {
+    value: 2.783189535,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_4-5-per-week': {
+    value: 1.789193273,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_2-3-per-week': {
+    value: 0.993996263,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_1-per-week': {
+    value: 0.397598505,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_2-3-per-month': {
+    value: 0.248499066,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_1-less-per-month': {
+    value: 0.099399626,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_never': {
+    value: 0,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dish-seafood-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
+  },
+  'dairy-food-factor_3-more-per-day': {
+    value: 1.809645792,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'dairy-food-factor_2-per-day': {
+    value: 1.206430528,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'dairy-food-factor_1-per-day': {
+    value: 0.603215264,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'dairy-food-factor_half-of-week': {
+    value: 0.301607632,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'dairy-food-factor_1-2-less-per-week': {
+    value: 0.129260414,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'dairy-food-factor_never': {
+    value: 0,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'dairy-food-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
+  },
+  'alcohol-factor_everyday': {
+    value: 1.803310363,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'alcohol-factor_4-5-per-week': {
+    value: 1.159270947,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'alcohol-factor_2-3-per-week': {
+    value: 0.644039415,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'alcohol-factor_1-per-week': {
+    value: 0.257615766,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'alcohol-factor_2-3-less-per-month': {
+    value: 0.064403942,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'alcohol-factor_never': {
+    value: 0,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'alcohol-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
+  },
+  'soft-drink-snack-factor_3k-less': {
+    value: 0.326078322,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'soft-drink-snack-factor_3k-5k': {
+    value: 0.652156644,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'soft-drink-snack-factor_5k-10k': {
+    value: 1.222793708,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'soft-drink-snack-factor_10k-15k': {
+    value: 2.037989514,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'soft-drink-snack-factor_15k-more': {
+    value: 2.853185319,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'soft-drink-snack-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'eat-out-factor_5k-less': {
+    value: 0.19153341,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'eat-out-factor_5k-10k': {
+    value: 0.574600229,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'eat-out-factor_10k-20k': {
+    value: 1.149200457,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'eat-out-factor_20k-50k': {
+    value: 3.064534553,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'eat-out-factor_50k-more': {
+    value: 5.746002287,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'eat-out-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'clothes-beauty-factor_5k-less': {
+    value: 0.258895762,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'clothes-beauty-factor_5k-10k': {
+    value: 0.647239404,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'clothes-beauty-factor_10k-20k': {
+    value: 1.294478809,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'clothes-beauty-factor_20k-50k': {
+    value: 3.020450553,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'clothes-beauty-factor_50k-more': {
+    value: 5.177915234,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'clothes-beauty-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'hobby-goods-factor_5k-less': {
+    value: 0.46277351,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'hobby-goods-factor_5k-10k': {
+    value: 1.156933774,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'hobby-goods-factor_10k-20k': {
+    value: 2.313867548,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'hobby-goods-factor_20k-50k': {
+    value: 5.399024278,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'hobby-goods-factor_50k-more': {
+    value: 9.25547019,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'hobby-goods-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'daily-goods-amount_5k-less': {
+    value: 3000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'daily-goods-amount_5k-10k': {
+    value: 7500,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'daily-goods-amount_10k-20k': {
+    value: 15000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'daily-goods-amount_20k-30k': {
+    value: 25000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'daily-goods-amount_30k-more': {
+    value: 40000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'daily-goods-amount_unknown': {
+    value: 8376.919944,
+    unit: 'JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'daily-goods-amount_average-per-capita': {
+    value: 3595.244611,
+    unit: 'JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'communication-amount_5k-less': {
+    value: 3000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'communication-amount_5k-10k': {
+    value: 7500,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'communication-amount_10k-20k': {
+    value: 15000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'communication-amount_20k-30k': {
+    value: 25000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'communication-amount_30k-more': {
+    value: 40000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'communication-amount_unknown': {
+    value: 28736.48078,
+    unit: 'JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'communication-amount_average-per-capita': {
+    value: 12333.25355,
+    unit: 'JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'service-factor_5k-less': {
+    value: 0.262661425,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'service-factor_5k-10k': {
+    value: 0.562845911,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'service-factor_10k-20k': {
+    value: 1.125691821,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'service-factor_20k-50k': {
+    value: 2.626614249,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'service-factor_50k-more': {
+    value: 5.628459105,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'service-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'appliance-furniture-amount_50k-less': {
+    value: 25000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'appliance-furniture-amount_50k-100k': {
+    value: 75000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'appliance-furniture-amount_100k-200k': {
+    value: 150000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'appliance-furniture-amount_200k-300k': {
+    value: 250000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'appliance-furniture-amount_300k-400k': {
+    value: 350000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'appliance-furniture-amount_400k-more': {
+    value: 500000,
+    unit: 'JPY',
+    citation: 'Assumption'
+  },
+  'appliance-furniture-amount_unknown': {
+    value: 186333.6307,
+    unit: 'JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'appliance-furniture-amount_average-per-capita': {
+    value: 79971.51531,
+    unit: 'JPY',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'leisure-sports-factor_5k-less': {
+    value: 0.285556309,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'leisure-sports-factor_5k-10k': {
+    value: 0.856668926,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'leisure-sports-factor_10k-20k': {
+    value: 1.713337852,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'leisure-sports-factor_20k-50k': {
+    value: 3.99778832,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'leisure-sports-factor_50k-more': {
+    value: 8.566689258,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'leisure-sports-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_10k-less': {
+    value: 0.17764228,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_10k-30k': {
+    value: 0.710569119,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_30k-50k': {
+    value: 1.421138239,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_50k-100k': {
+    value: 2.664634197,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_100k-200k': {
+    value: 5.329268395,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_200k-more': {
+    value: 10.65853679,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  },
+  'travel-factor_unknown': {
+    value: 1,
+    unit: 'times',
+    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
+  }
+};
+
+var __assign$6 = undefined && undefined.__assign || function () {
+  __assign$6 = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign$6.apply(this, arguments);
+};
+var getBaselineIntensity = function getBaselineIntensity(domain, item) {
+  return __assign$6({}, footprints['baseline_' + domain + '_' + item + '_intensity']);
+};
+var getParameter = function getParameter(category, key) {
+  return __assign$6({}, parameters[category + '_' + key]);
+};
+
+/**
+ * 自動車種類に応じて運転時GHG原単位の補正係数を取得
+ * @param carType 自動車の種類
+ * @param carCharging 自宅充電の割合
+ * @param electricityType 家庭での電力の種類
+ * @param suffix 削減量計算の時はfactor, 削減施策計算の時はintensityを使う
+ * @returns 運転時GHG原単位の補正係数
+ */
+var estimateCarDrivingIntensityFactor = function estimateCarDrivingIntensityFactor(carType, carCharging, electricityType, suffix) {
+  if (suffix === void 0) {
+    suffix = 'factor';
+  }
+  // 自家用車の場合は、自動車種類に応じて運転時GHG原単位の補正係数を取得
+  var factor = getParameter('car-intensity-factor', carType + '_driving-' + suffix).value;
+  // PHV, EVの補正
+  if (carType === 'phv' || carType === 'ev') {
+    // PHV, EVの場合は自宅での充電割合と再生エネルギー電力の割合で補正
+    var electricityIntensityFactor = getParameter('electricity-intensity-factor', electricityType).value * getParameter('car-charging', carCharging).value;
+    // GHG原単位の補正係数を電力割合で補正
+    factor = factor * (1 - electricityIntensityFactor) + getParameter('renewable-car-intensity-factor', carType + '_driving-factor').value * electricityIntensityFactor;
+  }
+  return factor;
+};
+
+var __assign$5 = undefined && undefined.__assign || function () {
+  __assign$5 = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign$5.apply(this, arguments);
+};
+
+var __assign$4 = undefined && undefined.__assign || function () {
+  __assign$4 = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign$4.apply(this, arguments);
+};
+
+var __assign$3 = undefined && undefined.__assign || function () {
+  __assign$3 = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign$3.apply(this, arguments);
+};
+
+var __assign$2 = undefined && undefined.__assign || function () {
+  __assign$2 = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign$2.apply(this, arguments);
+};
+
+var __assign$1 = undefined && undefined.__assign || function () {
+  __assign$1 = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign$1.apply(this, arguments);
+};
+
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+
+/**
+ * 自家用車の運転時の活動量を計算
+ * @param param 自家用車の運転時の活動量を計算するための引数
+ * @returns 自家用車の運転時の活動量[km-passenger]
+ */
+var estimatePrivateCarDrivingAmount = function estimatePrivateCarDrivingAmount(_a) {
+  var mileage = _a.mileage;
+  return mileage;
+};
+/**
+ * 自家用車の運転時のGHG原単位を計算
+ * @param param 自家用車の運転時のGHG原単位を計算するための引数
+ * @returns 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]
+ */
+var estimatePrivateCarDrivingIntensity = function estimatePrivateCarDrivingIntensity(_a) {
+  var carType = _a.carType,
+    carPassengers = _a.carPassengers,
+    _b = _a.carCharging,
+    carCharging = _b === void 0 ? 'unknown' : _b,
+    _c = _a.electricityType,
+    electricityType = _c === void 0 ? 'unknown' : _c;
+  // ベースラインの運転時のGHG原単位を取得
+  var baselineIntensity = getBaselineIntensity('mobility', 'private-car-driving').value;
+  // 自家用車の場合は、自動車種類に応じて運転時GHG原単位の補正係数を取得
+  var carDrivingIntensityFactor = estimateCarDrivingIntensityFactor(carType, carCharging, electricityType);
+  // 人数補正値
+  var passengerIntensityFactor = getParameter('car-passengers', carPassengers + '_private-car-factor').value;
+  return baselineIntensity * carDrivingIntensityFactor * passengerIntensityFactor;
+};
+
+undefined && undefined.__spreadArray || function (to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function commonjsRequire (path) {
@@ -5216,3253 +8539,6 @@ var Cast = /*#__PURE__*/function () {
 var cast = Cast;
 
 var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABgWlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kctLQkEUh7+0MHpgUESLFhLWSsMKpDZBRlggEWbQa6PXV6B2ufdGRNugrVAQtem1qL+gtkHrICiKINoFrYvalNzOVUGJPMOZ881v5hxmzoAtklGyer0PsjlDCwcDrvmFRZfjFTsObHTiiSq6OjYzE6KmfT1QZ8U7r1Wr9rl/rTme0BWoaxQeVVTNEJ4UDq0bqsW7wh1KOhoXPhf2aHJB4XtLj5X4zeJUiX8s1iLhcbC1CbtSVRyrYiWtZYXl5bizmTWlfB/rJS2J3NysxB7xbnTCBAngYooJxvEzwIjMfrwM0i8rauT7ivnTrEquIrPKBhorpEhj4BF1TaonJCZFT8jIsGH1/29f9eTQYKl6SwAaXkzzoxccO1DIm+b3sWkWTsD+DFe5Sv7qEQx/ip6vaO5DcG7BxXVFi+3B5TZ0PalRLVqU7OK2ZBLez6B1AdpvoWmp1LPyPqePENmUr7qB/QPok/PO5V8gz2fGkateTgAAAAlwSFlzAAALEwAACxMBAJqcGAAACQxJREFUWIXtmGt0VdURx39zzrkX8oLwSIhY3iAokYURsBBsQCO2aitraavL1mWF2pZVUFFpfdtWHtaqYMUlaGm11epCq/XRWqmIAUHDS40QgzwUECQYSCCQ1z3nTD/sc869NwkBvrD6obPW+bBnz+z579lnZs9s+B8nOdUGVfV04GLgwoB1APgAeFFEEqcaTyowR1XvVVVX26fdqnpta72T8qCq5gNXAP0AF9gHLBWR/cfRiwNvAhdEvMYD4DUh8RyId0kVv0lE/nAyuFDVXFV9UVW9dnaeUNXnVTX3GLqWqj4QCvs1mzWxYoY2vzDOfEtLNLF2rvoNX6eu+d1Q/7geVNUzgDeAIRHTbQSxwO6UKloJXCIiO1N0beAR4BeArXXbSLx9A3gtbexI7mBiFy4CJwNgPTBGRLRDgKrqAOuAkQD+npV4lc+gtZ8BguQOxi78CVbvcaHKF8AoETmgqt2B54FJAHpoB+67N6FNBw2gnD5ITl/8mk3QcggAe+hV2CNvDNcqFpE1VkcAgZ+H4Lyq53DfuwM9WAXqg3po7RbcVbPwPv1rKN8fWKqqhUB5BK5uG+7KWyNwVsFoYhctwTn/QWITH41Owv+qPNX2EIDjAZwKoA3VeBWLI6ZkFSA5faKxV7EIf+eycHgBsBEYDODvfofE2z9DG0wcSe5gnOJ5EMsKxkOQWDYAeuRLs3lDvQGcYyFT1U5AIYC//TVQz+x+0GScUbNAfbzKp/E2LQHAXTePWE5fpPswgBjq4236I17lM8mN5Q7BOf/B8D8zdup3oy2HzXzXQebfNlQNHXuwT7SBRH3EtAdcElizsIdPwer/bTP2WkiU3YIe2g5uI+7qu9LAWX1LiZUuRjLzkxZa6nFXzQLf5GfrtLGp9ldABx4EdgM+YKXu2K9ej91jeDR2Rt9Oon4XeqASWg6ReGc60ikXrd+V3MjZP8U+s1UOVh93zV1o/W4j1qUf9pk/Cmc/FJHPoQMPikgzsB3AGnBZ5HoTxVuSglaMWMl8pNvQwCuHk+CcTJzieW3BtRzGLZuJX73BjONdUo9eMcFJhwADWgwmJVgDLjMcrxn3vTuguS4pFcsmNmEBkjs4ucGs04iVLsI6fXzaglq3jcSyKfjV66MNOsVzkexvhCL3iMjaaJ2O0AWBUgX0x2smsXxa5D3pcRaxCY+Ck5lUaD5EYsV0iOcQK54Hnbqmred/+S5u+f3gNhlGvCtO8Rys/HNCkeeAa0VETwhgALIEWA7Y2rAf9z9T0KZao9xzBLGSR9KiErfB5DWx09bxNv8Zb/OfojQiuUNwxs9Dsk4LRZYBl4tIU6reCRULqjodeAxAa7eQWHEjJI6YBfJGEit5GOzO7St7LbhrZ+PvWh6xrD4X4Jx3V6rOs8ANrcGdDEDBeHEigNZUkFgxA3zXGOxVhFOyoI3XtLnO3CAHqyKePXwKduGU0LQCvwQeTj3WVDpekIQ0LQSH12TyWwAOywmi3G6jJLHsZHQH5Fevj668AOU1wMBjGT6Rf/AmYAEAiSMkVs5CayrMpB3HGXt/m0htTf72V3E3zo8SsmT0xBl3P9JzRChyGLheRF4+KYCqeiXwIoA21eKWzUTrtppJJxNn/ANYvc5NB7N/I5LTH8nonr7WgU24q+80hSqYBD5iGvbQq1OvtwXAr0QkqseOCVBVv4m5bjqTOGJSzKEdZjLehVjJw0j3s9LBff4G7rrfIZ274xTPQXoUpq/ZeAB3zd3JEwCs3sU4592dWlWXA5eJSM0xAarqQEwjk4efwF15a5T1JaMHTskCpGv6b+NteQHvo4WY/x6TgItmYg26vNXiPl7FE3hVz0eyktkLZ9xspEe04feAUhFpbgNQVbsBa4BhoLhrH8D//I2k50oXIzl908F98lRQGLQNRGvQZJyimWClX/v+3tW45bMhqGSwHJzRt2P1/04o8riITE8DGDQ3bwETALzKv+B9sjjySGzCAiRvZDq4jfPxtr4Uje1hP0QTR/G3/yPiSc+zTVBk5KU74+g+3DX3oAcrkzYufALpfiZAA1AQ5YYg1y0BJgP4u97G2/BQaAJnzJ2tolVxy+fg73gtCW7ENOzCqVi9i5HMPPx95ebmaNiP/8W/TXGafXoSeDwbe8AlaFONaSPUR+t3Yg+4FCAGbEnNg3cD14FJxG757KTh4dcn677Qcx89hv/Fm8kNjJqVWi5hDfwesYkLkYyehhEkbe+Tp1KrZnO0594Wede0FF44O9AKvHcR8FswZXdi1e3JIrLfxdiFU9PA+dtextuyNMBm4Yy9D2vQ5HB6B7ABgqOd9DRWwejA6aYKd8tuTk3WYMXAjgeLJ8BrjpxsB63hS0ABLfW4K2ZAY9A/5I0kVjw3NU/hf/V+4F3jBbvoZuyBURtbgfl/Hwd6AqPFycDqNwnERvd/aHAe/QrduQzpnAvxrvifLcX/sszY7HYG9pArw/VeEVWdDLwCpvkJOzTJ6Uus9EmI50TgtG4bieXTTMUC2Gd8H/ucm8Ppj4GJIlIbyateAzwJZIG55rwPfh1VQ+2RM+aOsPZUoI8FFAHgNuJt/buRsjvhfOuhdHCNNaZ/CMBZvYtTe9g9wKWp4ABE5G/AKGAzgNVrFM6kZ7AKxrQLzh56dbIwhrdEZI8DDANMZxUazz8nLdpwG3FXzUq2jt2G4oz9TXj0RwJwe9ozKiJVqjoGc+w/Nol+Pv7+jfg7XjfFazwbe/AVYUcYbngqmKYpaNmSKVGP7DGRJLZpbt6/L3hNAMnMT+0ffOAqEfm4XZckQTYA16tqGTAfyLXyi7Dyi9oT34spXPeCKbdMxGXmRXer1u/GLZuJ9+mzJN66Dn/vaqPqZOKc//tk6oAZIvKvjsC1Avo0pqFfCBxtNV0LzAGGisiGSCd4HKoEbH9fOe7K29LzVEh23FQvBeeFnPkicsuJgmtNqmphnvH6A1uBPe0VrRIIPwLMBPCr1+GuuTd5RxJc5uPnpRafrwJXiIjHqSBVzVHVj6PXOa9F/a8r1Nv+uvoHq1S9ROrb3T9VNeuUAGsFMktVXzjG82xIi4MnuVNGrasZAcYCPwBKA3YLpmFaIiJV/J/S6b82VDQYGIn3DAAAAABJRU5ErkJggg==";
-
-var footprints = {
-  'baseline_housing_imputed-rent_amount': {
-    subdomain: 'construction-maintenance',
-    value: 32.06179314,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_rent_amount: {
-    subdomain: 'construction-maintenance',
-    value: 6.934328682,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_land-rent_amount': {
-    subdomain: 'construction-maintenance',
-    value: 1.96142204,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_housing-maintenance_amount': {
-    subdomain: 'construction-maintenance',
-    value: 44.18305217,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_electricity_amount: {
-    subdomain: 'electricity',
-    value: 2156.268842,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_urban-gas_amount': {
-    subdomain: 'other-energy',
-    value: 886.8038344,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_lpg_amount: {
-    subdomain: 'other-energy',
-    value: 438.7575348,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_kerosene_amount: {
-    subdomain: 'other-energy',
-    value: 650.7599302,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_other-energy_amount': {
-    subdomain: 'other-energy',
-    value: 54.81742592,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_water_amount: {
-    subdomain: 'water',
-    value: 103.5505,
-    unit: 'm3',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_airplane_amount: {
-    subdomain: 'airplane',
-    value: 1161.463556,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_train_amount: {
-    subdomain: 'train',
-    value: 2883.143695,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_bus_amount: {
-    subdomain: 'bus',
-    value: 430.6177624,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_ferry_amount: {
-    subdomain: 'ferry',
-    value: 20.10019321,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_taxi_amount: {
-    subdomain: 'car-sharing-taxi',
-    value: 48.16514973,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_private-car-driving_amount': {
-    subdomain: 'private-car',
-    value: 4341.744284,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_car-sharing-driving_amount': {
-    subdomain: 'car-sharing-taxi',
-    value: 60.7815956,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_motorbike-driving_amount': {
-    subdomain: 'motorbike',
-    value: 254.458252,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_bicycle-driving_amount': {
-    subdomain: 'bicycle',
-    value: 264.0133354,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_walking_amount: {
-    subdomain: 'walking',
-    value: 168.9344406,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_private-car-purchase_amount': {
-    subdomain: 'private-car',
-    value: 0.043510227,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_motorbike-purchase_amount': {
-    subdomain: 'motorbike',
-    value: 0.002635317,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_car-sharing-rental_amount': {
-    subdomain: 'car-sharing-taxi',
-    value: 0.161272731,
-    unit: 'use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_private-car-maintenance_amount': {
-    subdomain: 'private-car',
-    value: 55.72777896,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_motorbike-maintenance_amount': {
-    subdomain: 'motorbike',
-    value: 0.446120353,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_bicycle-maintenance_amount': {
-    subdomain: 'bicycle',
-    value: 0.406667749,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_rice_amount: {
-    subdomain: 'cereals',
-    value: 36.32022954,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_bread-flour_amount': {
-    subdomain: 'cereals',
-    value: 25.42246341,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_noodle_amount: {
-    subdomain: 'cereals',
-    value: 17.07580051,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_potatoes_amount: {
-    subdomain: 'vegetables',
-    value: 10.63988512,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_vegetables_amount: {
-    subdomain: 'vegetables',
-    value: 84.35864392,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_processed-vegetables_amount': {
-    subdomain: 'vegetables',
-    value: 9.352578159,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_beans_amount: {
-    subdomain: 'beans-nuts',
-    value: 21.04303905,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_milk_amount: {
-    subdomain: 'dairy',
-    value: 27.99026002,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_other-dairy_amount': {
-    subdomain: 'dairy',
-    value: 13.71537565,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_eggs_amount: {
-    subdomain: 'eggs',
-    value: 10.20832311,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_beef_amount: {
-    subdomain: 'meat',
-    value: 2.047383013,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_pork_amount: {
-    subdomain: 'meat',
-    value: 6.375758077,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_chicken_amount: {
-    subdomain: 'meat',
-    value: 5.066184282,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_other-meat_amount': {
-    subdomain: 'meat',
-    value: 1.093763838,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_processed-meat_amount': {
-    subdomain: 'meat',
-    value: 4.140424111,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_fish_amount: {
-    subdomain: 'fish',
-    value: 17.32938165,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_processed-fish_amount': {
-    subdomain: 'fish',
-    value: 6.469890905,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_fruits_amount: {
-    subdomain: 'fruits',
-    value: 35.41537591,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_oil_amount: {
-    subdomain: 'other-food',
-    value: 4.234655533,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_seasoning_amount: {
-    subdomain: 'other-food',
-    value: 24.03977302,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_sweets-snack_amount': {
-    subdomain: 'other-food',
-    value: 20.70887802,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_ready-meal_amount': {
-    subdomain: 'other-food',
-    value: 40.11077093,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_alcohol_amount: {
-    subdomain: 'beverages',
-    value: 53.83668469,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_coffee-tea_amount': {
-    subdomain: 'beverages',
-    value: 136.4468369,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_cold-drink_amount': {
-    subdomain: 'beverages',
-    value: 129.9537532,
-    unit: 'kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_cooking-appliances_amount': {
-    subdomain: 'appliance-furniture',
-    value: 10.80871722,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_heating-cooling-appliances_amount': {
-    subdomain: 'appliance-furniture',
-    value: 12.38952029,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_other-appliances_amount': {
-    subdomain: 'appliance-furniture',
-    value: 11.65844939,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_electronics_amount: {
-    subdomain: 'appliance-furniture',
-    value: 26.03920359,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_clothes-goods_amount': {
-    subdomain: 'clothes',
-    value: 95.18375535,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_bags-jewelries-goods_amount': {
-    subdomain: 'clothes',
-    value: 16.37966457,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_culture-goods_amount': {
-    subdomain: 'hobby-books-magazines',
-    value: 11.26338699,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_entertainment-goods_amount': {
-    subdomain: 'hobby-books-magazines',
-    value: 1.526521363,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-goods_amount': {
-    subdomain: 'hobby-books-magazines',
-    value: 9.533917775,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_gardening-flower_amount': {
-    subdomain: 'hobby-books-magazines',
-    value: 12.36188393,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_pet_amount: {
-    subdomain: 'hobby-books-magazines',
-    value: 12.14429301,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_tobacco_amount: {
-    subdomain: 'hobby-books-magazines',
-    value: 11.50961235,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_furniture_amount: {
-    subdomain: 'appliance-furniture',
-    value: 6.50500405,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_covering_amount: {
-    subdomain: 'appliance-furniture',
-    value: 8.883256514,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_cosmetics_amount: {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 14.05507054,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_sanitation_amount: {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 31.8821673,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_medicine_amount: {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 20.34191228,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_kitchen-goods_amount': {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 8.638990484,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_paper-stationery_amount': {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 2.621777546,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_books-magazines_amount': {
-    subdomain: 'hobby-books-magazines',
-    value: 18.40240876,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_waste_amount: {
-    subdomain: 'waste-repair-rental',
-    value: 3.123482434,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_restaurant_amount: {
-    subdomain: 'restaurant',
-    value: 122.1836001,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_bar-cafe_amount': {
-    subdomain: 'restaurant',
-    value: 34.44703713,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_hotel_amount: {
-    subdomain: 'hotel-travel',
-    value: 23.67949431,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_travel_amount: {
-    subdomain: 'hotel-travel',
-    value: 4.466958243,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_culture-leisure_amount': {
-    subdomain: 'leisure-sports',
-    value: 26.18197893,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_entertainment-leisure_amount': {
-    subdomain: 'leisure-sports',
-    value: 23.10788725,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-leisure_amount': {
-    subdomain: 'leisure-sports',
-    value: 43.41326095,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_furniture-daily-goods-repair-rental_amount': {
-    subdomain: 'waste-repair-rental',
-    value: 2.813833758,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_clothes-repair-rental_amount': {
-    subdomain: 'waste-repair-rental',
-    value: 1.367822419,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_bags-jewelries-repair-rental_amount': {
-    subdomain: 'waste-repair-rental',
-    value: 0.43591903,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_electrical-appliances-repair-rental_amount': {
-    subdomain: 'waste-repair-rental',
-    value: 0.873530497,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-culture-repair-rental_amount': {
-    subdomain: 'waste-repair-rental',
-    value: 0.101675079,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-entertainment-repair-rental_amount': {
-    subdomain: 'waste-repair-rental',
-    value: 0.948134674,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_housework_amount: {
-    subdomain: 'other-services',
-    value: 0.740836626,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_washing_amount: {
-    subdomain: 'other-services',
-    value: 2.902513411,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_haircare_amount: {
-    subdomain: 'other-services',
-    value: 8.727357202,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_bath-spa_amount': {
-    subdomain: 'other-services',
-    value: 12.35496157,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_postal-delivery_amount': {
-    subdomain: 'communication-delivery-broadcasting',
-    value: 5.98733909,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_communication_amount: {
-    subdomain: 'communication-delivery-broadcasting',
-    value: 130.4760614,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_broadcasting_amount: {
-    subdomain: 'communication-delivery-broadcasting',
-    value: 17.52298123,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_ceremony_amount: {
-    subdomain: 'ceremony',
-    value: 32.64805709,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_medical-care_amount': {
-    subdomain: 'medical-welfare-education',
-    value: 79.18440556,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_nursing_amount: {
-    subdomain: 'medical-welfare-education',
-    value: 4.554902514,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_caring_amount: {
-    subdomain: 'medical-welfare-education',
-    value: 4.345384515,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_formal-education_amount': {
-    subdomain: 'medical-welfare-education',
-    value: 32.75079252,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_informal-education_amount': {
-    subdomain: 'medical-welfare-education',
-    value: 15.08092071,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_finance-insurance_amount': {
-    subdomain: 'other-services',
-    value: 111.1827326,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_other-services_amount': {
-    subdomain: 'other-services',
-    value: 20.40058961,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_imputed-rent_intensity': {
-    subdomain: 'construction-maintenance',
-    value: 0.930699,
-    unit: 'kgCO2e/m2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_rent_intensity: {
-    subdomain: 'construction-maintenance',
-    value: 3.418080692,
-    unit: 'kgCO2e/m2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_land-rent_intensity': {
-    subdomain: 'construction-maintenance',
-    value: 0.542386441,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_housing-maintenance_intensity': {
-    subdomain: 'construction-maintenance',
-    value: 1.378245204,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_electricity_intensity: {
-    subdomain: 'electricity',
-    value: 0.634319811,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_urban-gas_intensity': {
-    subdomain: 'other-energy',
-    value: 0.310544763,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_lpg_intensity: {
-    subdomain: 'other-energy',
-    value: 0.327564907,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_kerosene_intensity: {
-    subdomain: 'other-energy',
-    value: 0.280081108,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_housing_other-energy_intensity': {
-    subdomain: 'other-energy',
-    value: 0.037319212,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_housing_water_intensity: {
-    subdomain: 'water',
-    value: 0.584462203,
-    unit: 'kgCO2e/m3',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_airplane_intensity: {
-    subdomain: 'airplane',
-    value: 0.124064635,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_train_intensity: {
-    subdomain: 'train',
-    value: 0.031326557,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_bus_intensity: {
-    subdomain: 'bus',
-    value: 0.082993045,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_ferry_intensity: {
-    subdomain: 'ferry',
-    value: 0.424691332,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_taxi_intensity: {
-    subdomain: 'car-sharing-taxi',
-    value: 0.429510033,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_private-car-driving_intensity': {
-    subdomain: 'private-car',
-    value: 0.168396977,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_car-sharing-driving_intensity': {
-    subdomain: 'car-sharing-taxi',
-    value: 0.168721197,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_motorbike-driving_intensity': {
-    subdomain: 'motorbike',
-    value: 0.057043135,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_bicycle-driving_intensity': {
-    subdomain: 'bicycle',
-    value: 0.013134541,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_mobility_walking_intensity: {
-    subdomain: 'walking',
-    value: 0,
-    unit: 'kgCO2e/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_private-car-purchase_intensity': {
-    subdomain: 'private-car',
-    value: 5112.506479,
-    unit: 'kgCO2e/vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_motorbike-purchase_intensity': {
-    subdomain: 'motorbike',
-    value: 979.6575783,
-    unit: 'kgCO2e/vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_car-sharing-rental_intensity': {
-    subdomain: 'car-sharing-taxi',
-    value: 8.698477742,
-    unit: 'kgCO2e/use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_private-car-maintenance_intensity': {
-    subdomain: 'private-car',
-    value: 1.648088312,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_motorbike-maintenance_intensity': {
-    subdomain: 'motorbike',
-    value: 1.965801837,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_mobility_bicycle-maintenance_intensity': {
-    subdomain: 'bicycle',
-    value: 2.324385029,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_rice_intensity: {
-    subdomain: 'cereals',
-    value: 2.852329875,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_bread-flour_intensity': {
-    subdomain: 'cereals',
-    value: 2.655219688,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_noodle_intensity: {
-    subdomain: 'cereals',
-    value: 2.03794552,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_potatoes_intensity: {
-    subdomain: 'vegetables',
-    value: 1.567735484,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_vegetables_intensity: {
-    subdomain: 'vegetables',
-    value: 1.281591651,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_processed-vegetables_intensity': {
-    subdomain: 'vegetables',
-    value: 3.390013568,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_beans_intensity: {
-    subdomain: 'beans-nuts',
-    value: 1.058728707,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_milk_intensity: {
-    subdomain: 'dairy',
-    value: 0.876594709,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_other-dairy_intensity': {
-    subdomain: 'dairy',
-    value: 2.204505819,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_eggs_intensity: {
-    subdomain: 'eggs',
-    value: 1.450456835,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_beef_intensity: {
-    subdomain: 'meat',
-    value: 18.34219895,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_pork_intensity: {
-    subdomain: 'meat',
-    value: 8.051661719,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_chicken_intensity: {
-    subdomain: 'meat',
-    value: 5.250241141,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_other-meat_intensity': {
-    subdomain: 'meat',
-    value: 7.689625825,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_processed-meat_intensity': {
-    subdomain: 'meat',
-    value: 5.336739155,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_fish_intensity: {
-    subdomain: 'fish',
-    value: 5.528206567,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_processed-fish_intensity': {
-    subdomain: 'fish',
-    value: 4.080158747,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_fruits_intensity: {
-    subdomain: 'fruits',
-    value: 1.305111781,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_oil_intensity: {
-    subdomain: 'other-food',
-    value: 2.404909632,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_seasoning_intensity: {
-    subdomain: 'other-food',
-    value: 1.897020567,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_sweets-snack_intensity': {
-    subdomain: 'other-food',
-    value: 4.939585725,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_ready-meal_intensity': {
-    subdomain: 'other-food',
-    value: 3.940265729,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_alcohol_intensity: {
-    subdomain: 'beverages',
-    value: 0.944414337,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_coffee-tea_intensity': {
-    subdomain: 'beverages',
-    value: 0.465905509,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_cold-drink_intensity': {
-    subdomain: 'beverages',
-    value: 0.482549688,
-    unit: 'kgCO2e/kg',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_cooking-appliances_intensity': {
-    subdomain: 'appliance-furniture',
-    value: 2.852827088,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_heating-cooling-appliances_intensity': {
-    subdomain: 'appliance-furniture',
-    value: 7.449174796,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_other-appliances_intensity': {
-    subdomain: 'appliance-furniture',
-    value: 2.750735655,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_electronics_intensity: {
-    subdomain: 'appliance-furniture',
-    value: 2.274573158,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_clothes-goods_intensity': {
-    subdomain: 'clothes',
-    value: 2.670916765,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_bags-jewelries-goods_intensity': {
-    subdomain: 'clothes',
-    value: 2.558629508,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_culture-goods_intensity': {
-    subdomain: 'hobby-books-magazines',
-    value: 2.39985402,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_entertainment-goods_intensity': {
-    subdomain: 'hobby-books-magazines',
-    value: 1.570433632,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-goods_intensity': {
-    subdomain: 'hobby-books-magazines',
-    value: 2.497630942,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_gardening-flower_intensity': {
-    subdomain: 'hobby-books-magazines',
-    value: 4.85232258,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_pet_intensity: {
-    subdomain: 'hobby-books-magazines',
-    value: 2.103916343,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_tobacco_intensity: {
-    subdomain: 'hobby-books-magazines',
-    value: 0.996872147,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_furniture_intensity: {
-    subdomain: 'appliance-furniture',
-    value: 2.207048567,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_covering_intensity: {
-    subdomain: 'appliance-furniture',
-    value: 2.512668069,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_cosmetics_intensity: {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 2.276312315,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_sanitation_intensity: {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 3.129136419,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_medicine_intensity: {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 2.132542476,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_kitchen-goods_intensity': {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 3.23125458,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_paper-stationery_intensity': {
-    subdomain: 'daily-goods-cosmetics-medicine',
-    value: 3.056810847,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_books-magazines_intensity': {
-    subdomain: 'hobby-books-magazines',
-    value: 2.52738082,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_waste_intensity: {
-    subdomain: 'waste-repair-rental',
-    value: 8.586030351,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_food_restaurant_intensity: {
-    subdomain: 'restaurant',
-    value: 2.972239521,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_food_bar-cafe_intensity': {
-    subdomain: 'restaurant',
-    value: 2.991595476,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_hotel_intensity: {
-    subdomain: 'hotel-travel',
-    value: 3.770333888,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_travel_intensity: {
-    subdomain: 'hotel-travel',
-    value: 0.653433284,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_culture-leisure_intensity': {
-    subdomain: 'leisure-sports',
-    value: 2.189658709,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_entertainment-leisure_intensity': {
-    subdomain: 'leisure-sports',
-    value: 1.973982363,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-leisure_intensity': {
-    subdomain: 'leisure-sports',
-    value: 1.703889647,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_furniture-daily-goods-repair-rental_intensity': {
-    subdomain: 'waste-repair-rental',
-    value: 1.799958663,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_clothes-repair-rental_intensity': {
-    subdomain: 'waste-repair-rental',
-    value: 1.021369922,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_bags-jewelries-repair-rental_intensity': {
-    subdomain: 'waste-repair-rental',
-    value: 1.106075818,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_electrical-appliances-repair-rental_intensity': {
-    subdomain: 'waste-repair-rental',
-    value: 1.953281338,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-culture-repair-rental_intensity': {
-    subdomain: 'waste-repair-rental',
-    value: 1.953281338,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_sports-entertainment-repair-rental_intensity': {
-    subdomain: 'waste-repair-rental',
-    value: 0.82229875,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_housework_intensity: {
-    subdomain: 'other-services',
-    value: 1.215004276,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_washing_intensity: {
-    subdomain: 'other-services',
-    value: 2.437149813,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_haircare_intensity: {
-    subdomain: 'other-services',
-    value: 1.712161189,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_bath-spa_intensity': {
-    subdomain: 'other-services',
-    value: 5.754233873,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_postal-delivery_intensity': {
-    subdomain: 'communication-delivery-broadcasting',
-    value: 3.81741193,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_communication_intensity: {
-    subdomain: 'communication-delivery-broadcasting',
-    value: 1.02634832,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_broadcasting_intensity: {
-    subdomain: 'communication-delivery-broadcasting',
-    value: 1.141584281,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_ceremony_intensity: {
-    subdomain: 'ceremony',
-    value: 2.31786394,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_medical-care_intensity': {
-    subdomain: 'medical-welfare-education',
-    value: 1.169394129,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_nursing_intensity: {
-    subdomain: 'medical-welfare-education',
-    value: 1.209159482,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  baseline_other_caring_intensity: {
-    subdomain: 'medical-welfare-education',
-    value: 1.283734545,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_formal-education_intensity': {
-    subdomain: 'medical-welfare-education',
-    value: 1.074215614,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_informal-education_intensity': {
-    subdomain: 'medical-welfare-education',
-    value: 1.21314144,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_finance-insurance_intensity': {
-    subdomain: 'other-services',
-    value: 0.707292151,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'baseline_other_other-services_intensity': {
-    subdomain: 'other-services',
-    value: 0.949580643,
-    unit: 'kgCO2e/000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  }
-};
-
-var parameters = {
-  'family-size_unknown': {
-    value: 2.33,
-    unit: 'person',
-    citation: '総務省統計局. 2015. 国勢調査'
-  },
-  'housing-size_1-room': {
-    value: 20,
-    unit: 'm2',
-    citation: 'Assumption'
-  },
-  'housing-size_2-room': {
-    value: 30,
-    unit: 'm2',
-    citation: 'Assumption'
-  },
-  'housing-size_3-room': {
-    value: 40,
-    unit: 'm2',
-    citation: 'Assumption'
-  },
-  'housing-size_4-room': {
-    value: 60,
-    unit: 'm2',
-    citation: 'Assumption'
-  },
-  'housing-size_5-6-room': {
-    value: 80,
-    unit: 'm2',
-    citation: 'Assumption'
-  },
-  'housing-size_7-more-room': {
-    value: 120,
-    unit: 'm2',
-    citation: 'Assumption'
-  },
-  'housing-size_unknown': {
-    value: 38.99612182,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity_conventional': {
-    value: 0.634319811,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity_30-renewable': {
-    value: 0.53349389,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity_50-renewable': {
-    value: 0.399059329,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity_100-renewable': {
-    value: 0.062972926,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity_solar-panel': {
-    value: 0.042861845,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity_unknown': {
-    value: 0.634319811,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity-factor_conventional': {
-    value: 0,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity-factor_30-renewable': {
-    value: 0.176470588,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity-factor_50-renewable': {
-    value: 0.411764706,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity-factor_100-renewable': {
-    value: 1,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity-factor_solar-panel': {
-    value: 1,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'electricity-intensity-factor_unknown': {
-    value: 0,
-    unit: 'kgCO2e/kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'energy-amount-unknown_electricity': {
-    value: 2156.268842,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'energy-amount-unknown_gas': {
-    value: 1325.561369,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'energy-amount-unknown_kerosene': {
-    value: 650.7599302,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'energy-heat-intensity_urban-gas': {
-    value: 11.0399255,
-    unit: 'kWh/m3',
-    citation: '資源エネルギー庁. 2006. 市町村別エネルギー消費統計作成のためのガイドライン'
-  },
-  'energy-heat-intensity_lpg': {
-    value: 27.916689,
-    unit: 'kWh/m3',
-    citation: '資源エネルギー庁. 2006. 市町村別エネルギー消費統計作成のためのガイドライン'
-  },
-  'energy-heat-intensity_kerosene': {
-    value: 10.1944526,
-    unit: 'kWh/L',
-    citation: '資源エネルギー庁. 2006. 市町村別エネルギー消費統計作成のためのガイドライン'
-  },
-  'electricity-season-factor_january': {
-    value: 9.155365047,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_february': {
-    value: 8.92083057,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_march': {
-    value: 9.165491073,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_april': {
-    value: 10.81397346,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_may': {
-    value: 12.9543285,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_june': {
-    value: 14.98864011,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_july': {
-    value: 15.46045726,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_august': {
-    value: 13.1065718,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_september': {
-    value: 13.1141993,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_october': {
-    value: 14.58262306,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_november': {
-    value: 14.71506023,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'electricity-season-factor_december': {
-    value: 12.59071628,
-    unit: 'times',
-    citation: '総務省統計局. 2015. 電気使用量の推移 平成27年２月27日より算出'
-  },
-  'gas-season-factor_january': {
-    value: 6.916666667,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_february': {
-    value: 7.720930233,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_march': {
-    value: 8.512820513,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_april': {
-    value: 9.485714286,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_may': {
-    value: 12.76923077,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_june': {
-    value: 16.6,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_july': {
-    value: 18.44444444,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_august': {
-    value: 23.71428571,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_september': {
-    value: 23.71428571,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_october': {
-    value: 18.44444444,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_november': {
-    value: 13.83333333,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'gas-season-factor_december': {
-    value: 10.06060606,
-    unit: 'times',
-    citation: '環境省. 2015. 家庭からの二酸化炭素排出量の推計に係る実態調査 全国試験調査 平成26年10月～平成27年9月より算出 '
-  },
-  'housing-amount-by-region_northeast_imputed-rent-amount': {
-    value: 38.98080772,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_rent-amount': {
-    value: 8.518158765,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_land-rent-amount': {
-    value: 0.428215789,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_housing-maintenance-amount': {
-    value: 42.19606566,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_electricity-amount': {
-    value: 2429.879348,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_urban-gas-amount': {
-    value: 483.3918243,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_lpg-amount': {
-    value: 449.045623,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_kerosene-amount': {
-    value: 2171.346349,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_other-energy-amount': {
-    value: 57.80704881,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_northeast_water-amount': {
-    value: 96.53645058,
-    unit: 'm3',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_imputed-rent-amount': {
-    value: 32.00344548,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_rent-amount': {
-    value: 6.063525186,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_land-rent-amount': {
-    value: 1.7464516,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_housing-maintenance-amount': {
-    value: 41.78341404,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_electricity-amount': {
-    value: 2249.623235,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_urban-gas-amount': {
-    value: 839.5280673,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_lpg-amount': {
-    value: 468.1377938,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_kerosene-amount': {
-    value: 418.9412402,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_other-energy-amount': {
-    value: 59.5350204,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_middle_water-amount': {
-    value: 103.1075979,
-    unit: 'm3',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_imputed-rent-amount': {
-    value: 23.4960231,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_rent-amount': {
-    value: 11.67527498,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_land-rent-amount': {
-    value: 1.364856292,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_housing-maintenance-amount': {
-    value: 36.20086626,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_electricity-amount': {
-    value: 2000.687747,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_urban-gas-amount': {
-    value: 278.4233619,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_lpg-amount': {
-    value: 722.6599564,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_kerosene-amount': {
-    value: 338.5522031,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_other-energy-amount': {
-    value: 51.57550805,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_southwest_water-amount': {
-    value: 89.94119651,
-    unit: 'm3',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_imputed-rent-amount': {
-    value: 32.06179314,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_rent-amount': {
-    value: 6.934328682,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_land-rent-amount': {
-    value: 1.96142204,
-    unit: 'm2',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_housing-maintenance-amount': {
-    value: 44.18305217,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_electricity-amount': {
-    value: 2156.268842,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_urban-gas-amount': {
-    value: 886.8038344,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_lpg-amount': {
-    value: 438.7575348,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_kerosene-amount': {
-    value: 650.7599302,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_other-energy-amount': {
-    value: 54.81742592,
-    unit: 'kWh',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-amount-by-region_unknown_water-amount': {
-    value: 103.5505,
-    unit: 'm3',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_no-insulation_clothing': {
-    value: -0.4,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_2-level_clothing': {
-    value: -0.4,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_3-level_clothing': {
-    value: -0.2,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_4-level_clothing': {
-    value: -0.1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_unknown_clothing': {
-    value: -0.4,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_no-insulation_renovation': {
-    value: -0.607142857,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_2-level_renovation': {
-    value: -0.435897436,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_3-level_renovation': {
-    value: -0.3125,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_4-level_renovation': {
-    value: 0,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'housing-insulation_unknown_renovation': {
-    value: -0.478549419,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_gasoline_driving-factor': {
-    value: 1.140989342,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_light_driving-factor': {
-    value: 0.847680722,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_hv_driving-factor': {
-    value: 0.731232701,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_phv_driving-factor': {
-    value: 0.656334942,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_ev_driving-factor': {
-    value: 0.606403103,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_unknown_driving-factor': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_gasoline_manufacturing-factor': {
-    value: 0.986856847,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_light_manufacturing-factor': {
-    value: 0.986856847,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_hv_manufacturing-factor': {
-    value: 1.085542532,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_phv_manufacturing-factor': {
-    value: 1.649976509,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_ev_manufacturing-factor': {
-    value: 2.214410486,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_unknown_manufacturing-factor': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_gasoline_driving-intensity': {
-    value: 0.150984647,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_light_driving-intensity': {
-    value: 0.112171753,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_hv_driving-intensity': {
-    value: 0.096762438,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_phv_driving-intensity': {
-    value: 0.08685138,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_ev_driving-intensity': {
-    value: 0.080244008,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_unknown_driving-intensity': {
-    value: 0.132327833,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_gasoline_manufacturing-intensity': {
-    value: 4100,
-    unit: 'kgCO2/car',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_light_manufacturing-intensity': {
-    value: 4100,
-    unit: 'kgCO2/car',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_hv_manufacturing-intensity': {
-    value: 4510,
-    unit: 'kgCO2/car',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_phv_manufacturing-intensity': {
-    value: 6855,
-    unit: 'kgCO2/car',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_ev_manufacturing-intensity': {
-    value: 9200,
-    unit: 'kgCO2/car',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_unknown_manufacturing-intensity': {
-    value: 4154.604604,
-    unit: 'kgCO2/car',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_gasoline_electricity-intensity': {
-    value: 0,
-    unit: 'kWh/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_light_electricity-intensity': {
-    value: 0,
-    unit: 'kWh/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_hv_electricity-intensity': {
-    value: 0,
-    unit: 'kWh/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_phv_electricity-intensity': {
-    value: 0.05129771,
-    unit: 'kWh/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_ev_electricity-intensity': {
-    value: 0.085496183,
-    unit: 'kWh/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-intensity-factor_unknown_electricity-intensity': {
-    value: 0,
-    unit: 'kWh/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-charging_charge-almost-at-home': {
-    value: 0.9,
-    unit: 'times',
-    citation: 'Assumption'
-  },
-  'car-charging_use-charging-spots-occasionally': {
-    value: 0.7,
-    unit: 'times',
-    citation: 'Assumption'
-  },
-  'car-charging_use-charging-spots-sometimes': {
-    value: 0.5,
-    unit: 'times',
-    citation: 'Assumption'
-  },
-  'car-charging_use-charging-spots-usually': {
-    value: 0.1,
-    unit: 'times',
-    citation: 'Assumption'
-  },
-  'car-charging_unknown': {
-    value: 0.7,
-    unit: 'times',
-    citation: 'Assumption'
-  },
-  'renewable-car-intensity-factor_phv_driving-factor': {
-    value: 0.328206127,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'renewable-car-intensity-factor_ev_driving-factor': {
-    value: 0.059521744,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'renewable-car-intensity-factor_phv_driving-intensity': {
-    value: 0.043430805,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'renewable-car-intensity-factor_ev_driving-intensity': {
-    value: 0.007876383,
-    unit: 'kgCO2eq/km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'car-passengers_1_private-car-factor': {
-    value: 1.31,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1-2_private-car-factor': {
-    value: 0.873333333,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2_private-car-factor': {
-    value: 0.655,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2-3_private-car-factor': {
-    value: 0.524,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3_private-car-factor': {
-    value: 0.436666667,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3-4_private-car-factor': {
-    value: 0.374285714,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_4-more_private-car-factor': {
-    value: 0.3275,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_unknown_private-car-factor': {
-    value: 1,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1_taxi-factor': {
-    value: 1.65,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1-2_taxi-factor': {
-    value: 1.1,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2_taxi-factor': {
-    value: 0.825,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2-3_taxi-factor': {
-    value: 0.66,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3_taxi-factor': {
-    value: 0.55,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3-4_taxi-factor': {
-    value: 0.471428571,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_4-more_taxi-factor': {
-    value: 0.4125,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_unknown_taxi-factor': {
-    value: 1,
-    unit: 'times',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1_private-car-passengers': {
-    value: 1,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1-2_private-car-passengers': {
-    value: 1.5,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2_private-car-passengers': {
-    value: 2,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2-3_private-car-passengers': {
-    value: 2.5,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3_private-car-passengers': {
-    value: 3,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3-4_private-car-passengers': {
-    value: 3.5,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_4-more_private-car-passengers': {
-    value: 4,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_unknown_private-car-passengers': {
-    value: 1.31,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1_taxi-passengers': {
-    value: 1,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_1-2_taxi-passengers': {
-    value: 1.5,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2_taxi-passengers': {
-    value: 2,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_2-3_taxi-passengers': {
-    value: 2.5,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3_taxi-passengers': {
-    value: 3,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_3-4_taxi-passengers': {
-    value: 3.5,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_4-more_taxi-passengers': {
-    value: 4,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'car-passengers_unknown_taxi-passengers': {
-    value: 1.65,
-    unit: 'person',
-    citation: '国土交通省. 2015. 全国道路・街路交通情勢調査 自動車起終点調査（OD調査）結果より算出 '
-  },
-  'transportation-speed_car-speed': {
-    value: 25,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_train-speed': {
-    value: 60,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_bus-speed': {
-    value: 10,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_motorbike-speed': {
-    value: 25,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_long-distance-car-speed': {
-    value: 60,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_long-distance-train-speed': {
-    value: 100,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_express-bus-speed': {
-    value: 50,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_long-distance-motorbike-speed': {
-    value: 60,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_airplane-speed': {
-    value: 600,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'transportation-speed_ferry-speed': {
-    value: 40,
-    unit: 'km/hour',
-    citation: 'Assumption'
-  },
-  'misc_weeks-per-year-excluding-long-vacations': {
-    value: 49,
-    unit: 'week',
-    citation: 'Assumption'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_airplane': {
-    value: 1507.345223,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_airplane': {
-    value: 1144.893404,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_airplane': {
-    value: 1016.677146,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_airplane': {
-    value: 775.2649318,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_airplane': {
-    value: 1161.463556,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_train': {
-    value: 4002.878879,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_train': {
-    value: 2831.211796,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_train': {
-    value: 2506.637751,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_train': {
-    value: 1544.263668,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_train': {
-    value: 2883.143695,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_bus': {
-    value: 698.5895508,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_bus': {
-    value: 388.0210822,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_bus': {
-    value: 310.4002107,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_bus': {
-    value: 304.4881964,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_bus': {
-    value: 430.6177624,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_ferry': {
-    value: 20.16526175,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_ferry': {
-    value: 20.85237234,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_ferry': {
-    value: 20.92105917,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_ferry': {
-    value: 17.30611523,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_ferry': {
-    value: 20.10019321,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_taxi': {
-    value: 77.0691577,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_taxi': {
-    value: 44.27463,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_taxi': {
-    value: 33.7682362,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_taxi': {
-    value: 24.05233786,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_taxi': {
-    value: 48.16514973,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_private-car-driving': {
-    value: 2844.387081,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_private-car-driving': {
-    value: 4392.707122,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_private-car-driving': {
-    value: 5114.65296,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_private-car-driving': {
-    value: 6002.11848,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_private-car-driving': {
-    value: 4341.744284,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_car-sharing-driving': {
-    value: 89.06216,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_car-sharing-driving': {
-    value: 51.30309174,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_car-sharing-driving': {
-    value: 47.62176474,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_car-sharing-driving': {
-    value: 46.47394961,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_car-sharing-driving': {
-    value: 60.7815956,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_motorbike-driving': {
-    value: 169.5552676,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_motorbike-driving': {
-    value: 256.8545121,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_motorbike-driving': {
-    value: 298.3669602,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_motorbike-driving': {
-    value: 349.5926185,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_motorbike-driving': {
-    value: 254.458252,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_bicycle-driving': {
-    value: 340.2621468,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_bicycle-driving': {
-    value: 249.8138366,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_bicycle-driving': {
-    value: 272.4527352,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_bicycle-driving': {
-    value: 139.4906834,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_bicycle-driving': {
-    value: 264.0133354,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_walking': {
-    value: 168.9344406,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_walking': {
-    value: 168.9344406,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_walking': {
-    value: 168.9344406,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_walking': {
-    value: 168.9344406,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_walking': {
-    value: 168.9344406,
-    unit: 'km-passenger',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_private-car-purchase': {
-    value: 0.027547541,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_private-car-purchase': {
-    value: 0.03698957,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_private-car-purchase': {
-    value: 0.058101776,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_private-car-purchase': {
-    value: 0.063023882,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_private-car-purchase': {
-    value: 0.043510227,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_motorbike-purchase': {
-    value: 0.001481261,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_motorbike-purchase': {
-    value: 0.003256596,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_motorbike-purchase': {
-    value: 0.003018645,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_motorbike-purchase': {
-    value: 0.002882468,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_motorbike-purchase': {
-    value: 0.002635317,
-    unit: 'vehicle',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_car-sharing-rental': {
-    value: 0.236309982,
-    unit: 'use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_car-sharing-rental': {
-    value: 0.136123272,
-    unit: 'use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_car-sharing-rental': {
-    value: 0.126355552,
-    unit: 'use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_car-sharing-rental': {
-    value: 0.123310036,
-    unit: 'use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_car-sharing-rental': {
-    value: 0.161272731,
-    unit: 'use',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_private-car-maintenance': {
-    value: 47.41693663,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_private-car-maintenance': {
-    value: 57.62349476,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_private-car-maintenance': {
-    value: 59.64400728,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_private-car-maintenance': {
-    value: 62.14332377,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_private-car-maintenance': {
-    value: 55.72777896,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_motorbike-maintenance': {
-    value: 0.297496117,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_motorbike-maintenance': {
-    value: 0.568630562,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_motorbike-maintenance': {
-    value: 0.464008876,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_motorbike-maintenance': {
-    value: 0.475465667,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_motorbike-maintenance': {
-    value: 0.446120353,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_major-city-or-metropolitan-area_bicycle-maintenance': {
-    value: 0.482425985,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-150k-more_bicycle-maintenance': {
-    value: 0.399241827,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_city-50k-150k_bicycle-maintenance': {
-    value: 0.429252268,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_area-less-than-50k_bicycle-maintenance': {
-    value: 0.240751767,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'mileage-by-area_unknown_bicycle-maintenance': {
-    value: 0.406667749,
-    unit: '000JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'food-intake-factor_very-little': {
-    value: 0.741132875,
-    unit: 'times',
-    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
-  },
-  'food-intake-factor_somewhat-little': {
-    value: 1.058761249,
-    unit: 'times',
-    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
-  },
-  'food-intake-factor_moderate': {
-    value: 1.164637374,
-    unit: 'times',
-    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
-  },
-  'food-intake-factor_somewhat-much': {
-    value: 1.270513499,
-    unit: 'times',
-    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
-  },
-  'food-intake-factor_very-much': {
-    value: 1.588141874,
-    unit: 'times',
-    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
-  },
-  'food-intake-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '農林水産省. n.d. 食事バランスガイド. 厚生労働省. 2015. 国民健康・栄養調査より算出'
-  },
-  'food-direct-waste-factor_seldom': {
-    value: 0.275165763,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-direct-waste-factor_1-per-week': {
-    value: 1.10066305,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-direct-waste-factor_2-3-per-week': {
-    value: 2.751657625,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-direct-waste-factor_4-7-per-week': {
-    value: 6.053646775,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-direct-waste-factor_8-more-per-week': {
-    value: 8.8053044,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-direct-waste-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-leftover-factor_seldom': {
-    value: 0.221172481,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-leftover-factor_1-per-week': {
-    value: 1.10066305,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-leftover-factor_2-3-per-week': {
-    value: 2.751657625,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-leftover-factor_4-7-per-week': {
-    value: 6.053646775,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-leftover-factor_8-more-per-week': {
-    value: 8.8053044,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-leftover-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '東京都環境局. 2017. 家庭系食品ロス発生要因等調査より算出　'
-  },
-  'food-waste-share_direct-waste-per-food-waste': {
-    value: 0.411764706,
-    unit: 'times',
-    citation: '農林水産省. 2016. 食品ロス統計調査報告（世帯調査）より算出\t'
-  },
-  'food-waste-share_leftover-per-food-waste': {
-    value: 0.588235294,
-    unit: 'times',
-    citation: '農林水産省. 2016. 食品ロス統計調査報告（世帯調査）より算出\t'
-  },
-  'food-waste-share_food-waste-per-food': {
-    value: 0.037,
-    unit: 'times',
-    citation: '農林水産省. 2016. 食品ロス統計調査報告（世帯調査）より算出\t'
-  },
-  'dish-beef-factor_everyday': {
-    value: 3.734827264,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_4-5-per-week': {
-    value: 2.400960384,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_2-3-per-week': {
-    value: 1.33386688,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_1-per-week': {
-    value: 0.533546752,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_2-3-per-month': {
-    value: 0.33346672,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_1-less-per-month': {
-    value: 0.133386688,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_never': {
-    value: 0,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-beef-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_everyday': {
-    value: 2.652997413,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_4-5-per-week': {
-    value: 1.705498337,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_2-3-per-week': {
-    value: 0.947499076,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_1-per-week': {
-    value: 0.37899963,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_2-3-per-month': {
-    value: 0.236874769,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_1-less-per-month': {
-    value: 0.094749908,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_never': {
-    value: 0,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-pork-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_everyday': {
-    value: 2.773540424,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_4-5-per-week': {
-    value: 1.782990273,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_2-3-per-week': {
-    value: 0.990550152,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_1-per-week': {
-    value: 0.396220061,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_2-3-per-month': {
-    value: 0.247637538,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_1-less-per-month': {
-    value: 0.099055015,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_never': {
-    value: 0,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-chicken-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_everyday': {
-    value: 2.783189535,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_4-5-per-week': {
-    value: 1.789193273,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_2-3-per-week': {
-    value: 0.993996263,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_1-per-week': {
-    value: 0.397598505,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_2-3-per-month': {
-    value: 0.248499066,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_1-less-per-month': {
-    value: 0.099399626,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_never': {
-    value: 0,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dish-seafood-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '日本食肉消費総合センター.  2020. 食肉に関する意識調査報告書より算出'
-  },
-  'dairy-food-factor_3-more-per-day': {
-    value: 1.809645792,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'dairy-food-factor_2-per-day': {
-    value: 1.206430528,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'dairy-food-factor_1-per-day': {
-    value: 0.603215264,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'dairy-food-factor_half-of-week': {
-    value: 0.301607632,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'dairy-food-factor_1-2-less-per-week': {
-    value: 0.129260414,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'dairy-food-factor_never': {
-    value: 0,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'dairy-food-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '農畜産業振興機構. 2025. 牛乳・乳製品の消費動向に関する調査.  一般社団法人ＪＣ総研. 2015. たまごの消費行動調査の概要より算出　'
-  },
-  'alcohol-factor_everyday': {
-    value: 1.803310363,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'alcohol-factor_4-5-per-week': {
-    value: 1.159270947,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'alcohol-factor_2-3-per-week': {
-    value: 0.644039415,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'alcohol-factor_1-per-week': {
-    value: 0.257615766,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'alcohol-factor_2-3-less-per-month': {
-    value: 0.064403942,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'alcohol-factor_never': {
-    value: 0,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'alcohol-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: '国税庁. n.d. お酒に関するアンケートの集計より算出 '
-  },
-  'soft-drink-snack-factor_3k-less': {
-    value: 0.326078322,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'soft-drink-snack-factor_3k-5k': {
-    value: 0.652156644,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'soft-drink-snack-factor_5k-10k': {
-    value: 1.222793708,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'soft-drink-snack-factor_10k-15k': {
-    value: 2.037989514,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'soft-drink-snack-factor_15k-more': {
-    value: 2.853185319,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'soft-drink-snack-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'eat-out-factor_5k-less': {
-    value: 0.19153341,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'eat-out-factor_5k-10k': {
-    value: 0.574600229,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'eat-out-factor_10k-20k': {
-    value: 1.149200457,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'eat-out-factor_20k-50k': {
-    value: 3.064534553,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'eat-out-factor_50k-more': {
-    value: 5.746002287,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'eat-out-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'clothes-beauty-factor_5k-less': {
-    value: 0.258895762,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'clothes-beauty-factor_5k-10k': {
-    value: 0.647239404,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'clothes-beauty-factor_10k-20k': {
-    value: 1.294478809,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'clothes-beauty-factor_20k-50k': {
-    value: 3.020450553,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'clothes-beauty-factor_50k-more': {
-    value: 5.177915234,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'clothes-beauty-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'hobby-goods-factor_5k-less': {
-    value: 0.46277351,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'hobby-goods-factor_5k-10k': {
-    value: 1.156933774,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'hobby-goods-factor_10k-20k': {
-    value: 2.313867548,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'hobby-goods-factor_20k-50k': {
-    value: 5.399024278,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'hobby-goods-factor_50k-more': {
-    value: 9.25547019,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'hobby-goods-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'daily-goods-amount_5k-less': {
-    value: 3000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'daily-goods-amount_5k-10k': {
-    value: 7500,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'daily-goods-amount_10k-20k': {
-    value: 15000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'daily-goods-amount_20k-30k': {
-    value: 25000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'daily-goods-amount_30k-more': {
-    value: 40000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'daily-goods-amount_unknown': {
-    value: 8376.919944,
-    unit: 'JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'daily-goods-amount_average-per-capita': {
-    value: 3595.244611,
-    unit: 'JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'communication-amount_5k-less': {
-    value: 3000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'communication-amount_5k-10k': {
-    value: 7500,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'communication-amount_10k-20k': {
-    value: 15000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'communication-amount_20k-30k': {
-    value: 25000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'communication-amount_30k-more': {
-    value: 40000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'communication-amount_unknown': {
-    value: 28736.48078,
-    unit: 'JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'communication-amount_average-per-capita': {
-    value: 12333.25355,
-    unit: 'JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'service-factor_5k-less': {
-    value: 0.262661425,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'service-factor_5k-10k': {
-    value: 0.562845911,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'service-factor_10k-20k': {
-    value: 1.125691821,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'service-factor_20k-50k': {
-    value: 2.626614249,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'service-factor_50k-more': {
-    value: 5.628459105,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'service-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'appliance-furniture-amount_50k-less': {
-    value: 25000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'appliance-furniture-amount_50k-100k': {
-    value: 75000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'appliance-furniture-amount_100k-200k': {
-    value: 150000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'appliance-furniture-amount_200k-300k': {
-    value: 250000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'appliance-furniture-amount_300k-400k': {
-    value: 350000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'appliance-furniture-amount_400k-more': {
-    value: 500000,
-    unit: 'JPY',
-    citation: 'Assumption'
-  },
-  'appliance-furniture-amount_unknown': {
-    value: 186333.6307,
-    unit: 'JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'appliance-furniture-amount_average-per-capita': {
-    value: 79971.51531,
-    unit: 'JPY',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'leisure-sports-factor_5k-less': {
-    value: 0.285556309,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'leisure-sports-factor_5k-10k': {
-    value: 0.856668926,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'leisure-sports-factor_10k-20k': {
-    value: 1.713337852,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'leisure-sports-factor_20k-50k': {
-    value: 3.99778832,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'leisure-sports-factor_50k-more': {
-    value: 8.566689258,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'leisure-sports-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_10k-less': {
-    value: 0.17764228,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_10k-30k': {
-    value: 0.710569119,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_30k-50k': {
-    value: 1.421138239,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_50k-100k': {
-    value: 2.664634197,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_100k-200k': {
-    value: 5.329268395,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_200k-more': {
-    value: 10.65853679,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  },
-  'travel-factor_unknown': {
-    value: 1,
-    unit: 'times',
-    citation: 'Koide et al. 2021. Environmental Research Letters 16 084001'
-  }
-};
-
-var __assign = undefined && undefined.__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-  };
-  return __assign.apply(this, arguments);
-};
-var getBaselineIntensity = function getBaselineIntensity(domain, item) {
-  return __assign({}, footprints['baseline_' + domain + '_' + item + '_intensity']);
-};
-var getParameter = function getParameter(category, key) {
-  return __assign({}, parameters[category + '_' + key]);
-};
-
-/**
- * 自動車種類に応じて運転時GHG原単位の補正係数を取得
- * @param carType 自動車の種類
- * @param carCharging 自宅充電の割合
- * @param electricityType 家庭での電力の種類
- * @param suffix 削減量計算の時はfactor, 削減施策計算の時はintensityを使う
- * @returns 運転時GHG原単位の補正係数
- */
-var estimateCarDrivingIntensityFactor = function estimateCarDrivingIntensityFactor(carType, carCharging, electricityType, suffix) {
-  if (suffix === void 0) {
-    suffix = 'factor';
-  }
-  // 自家用車の場合は、自動車種類に応じて運転時GHG原単位の補正係数を取得
-  var factor = getParameter('car-intensity-factor', carType + '_driving-' + suffix).value;
-  // PHV, EVの補正
-  if (carType === 'phv' || carType === 'ev') {
-    // PHV, EVの場合は自宅での充電割合と再生エネルギー電力の割合で補正
-    var electricityIntensityFactor = getParameter('electricity-intensity-factor', electricityType).value * getParameter('car-charging', carCharging).value;
-    // GHG原単位の補正係数を電力割合で補正
-    factor = factor * (1 - electricityIntensityFactor) + getParameter('renewable-car-intensity-factor', carType + '_driving-factor').value * electricityIntensityFactor;
-  }
-  return factor;
-};
-
-/**
- * 自家用車の運転時の活動量を計算
- * @param param 自家用車の運転時の活動量を計算するための引数
- * @returns 自家用車の運転時の活動量[km-passenger]
- */
-var estimatePrivateCarDrivingAmount = function estimatePrivateCarDrivingAmount(_a) {
-  var mileage = _a.mileage;
-  return mileage;
-};
-/**
- * 自家用車の運転時のGHG原単位を計算
- * @param param 自家用車の運転時のGHG原単位を計算するための引数
- * @returns 自家用車の運転時のGHG原単位[kgCO2e/km-passenger]
- */
-var estimatePrivateCarDrivingIntensity = function estimatePrivateCarDrivingIntensity(_a) {
-  var carType = _a.carType,
-    carPassengers = _a.carPassengers,
-    _b = _a.carCharging,
-    carCharging = _b === void 0 ? 'unknown' : _b,
-    _c = _a.electricityType,
-    electricityType = _c === void 0 ? 'unknown' : _c;
-  // ベースラインの運転時のGHG原単位を取得
-  var baselineIntensity = getBaselineIntensity('mobility', 'private-car-driving').value;
-  // 自家用車の場合は、自動車種類に応じて運転時GHG原単位の補正係数を取得
-  var carDrivingIntensityFactor = estimateCarDrivingIntensityFactor(carType, carCharging, electricityType);
-  // 人数補正値
-  var passengerIntensityFactor = getParameter('car-passengers', carPassengers + '_private-car-factor').value;
-  return baselineIntensity * carDrivingIntensityFactor * passengerIntensityFactor;
-};
 
 var en = {
 	"jibungotoPlanet.name": "Jibungoto Planet",
