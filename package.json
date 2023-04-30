@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "register": "npx xcratch-register --id=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util",
-    "build": "npx xcratch-build --module=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry",
+    "build": "xcratch-build --module=jibungotoPlanet --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry",
     "watch": "tsc -w",
     "lint": "eslint 'src/**/*.ts' 'src/**/index.{js,jsx}'",
     "lint:fix": "eslint --fix 'src/**/*.ts' 'src/**/index.{js,jsx}'",
@@ -39,7 +39,10 @@
     "typedoc": "^0.23.28",
     "typedoc-theme-hierarchy": "^3.1.0",
     "typescript": "^4.9.5",
-    "xcratch-build": "^0.4.0",
+    "xcratch-build": "github:xcratch/xcratch-build",
     "xcratch-register": "^0.4.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
   }
 }

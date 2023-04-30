@@ -1,3 +1,4 @@
+import moment from 'moment'
 import ArgumentType from '../../extension-support/argument-type'
 import BlockType from '../../extension-support/block-type'
 import Cast from '../../util/cast'
@@ -115,6 +116,10 @@ class ExtensionBlocks {
     )
   }
 
+  dateTime(args) {
+    return moment().format('YYYY-MM-DD HH:mm:ss')
+  }
+
   /*
   airplaneTraveling(args) {
     const mileageByAreaFirstKey = Cast.toString(args.mileageByAreaFirstKey)
@@ -190,6 +195,15 @@ class ExtensionBlocks {
       blockIconURI: blockIcon,
       showStatusButton: false,
       blocks: [
+        // Moment
+        {
+          opcode: 'dateTime',
+          blockType: BlockType.REPORTER,
+          blockAllThreads: false,
+          text: 'Now',
+          func: 'dateTime'
+        },
+
         // 自家用車の運転
         {
           opcode: 'private-car-driving',
