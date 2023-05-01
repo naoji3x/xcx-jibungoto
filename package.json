@@ -38,7 +38,7 @@
     "xcratch-register": "^0.4.2"
   },
   "dependencies": {
-    "cfp-calc": "^0.1.0",
+    "cfp-calc": "^0.1.1",
     "moment": "^2.29.4"
   }
 }
